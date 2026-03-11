@@ -56,7 +56,11 @@ git clone https://github.com/yourusername/agentic-security.git
 cd agentic-security
 pip install -e .
 
-# Set your API key
+# Option 1: Use Ollama (recommended - no API key needed)
+ollama pull llama3.2
+ollama serve
+
+# Option 2: Use OpenAI/Anthropic
 export OPENAI_API_KEY=your_key_here
 # or
 export ANTHROPIC_API_KEY=your_key_here

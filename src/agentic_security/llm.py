@@ -5,10 +5,58 @@ Supports OpenAI and Anthropic APIs.
 
 import json
 import os
+import re
 from abc import ABC, abstractmethod
 from typing import Any
 
 from pydantic import BaseModel
+
+
+def parse_tool_calls_from_text(content: str, available_tools: list[dict] | None) -> list[dict]:
+    """
+    Parse tool calls from LLM text output when formal tool calling isn't used.
+    This handles models like Ollama that output JSON inline.
+    """
+    if not content or not available_tools:
+        return []
+
+    tool_names = set()
+    for tool in available_tools:
+        func = tool.get("function", tool)
+        tool_names.add(func["name"])
+
+    parsed_calls = []
+    seen = set()  # Avoid duplicates
+    
+    # Pattern 1: {"name": "tool_name", "parameters": {...}} - greedy match for nested braces
+    for tool_name in tool_names:
+        pattern = rf'\{{\s*"name"\s*:\s*"{tool_name}"\s*,\s*"parameters"\s*:\s*(\{{[^{{}}]*\}})\s*\}}'
+        for match in re.finditer(pattern, content):
+            params_str = match.group(1)
+            try:
+                params = json.loads(params_str)
+                key = (tool_name, json.dumps(params, sort_keys=True))
+                if key not in seen:
+                    seen.add(key)
+                    parsed_calls.append({"name": tool_name, "arguments": params})
+            except json.JSONDecodeError:
+                pass
+
+    # Pattern 2: Look for JSON objects with tool names as keys
+    for tool_name in tool_names:
+        # Match "tool_name": {...} or tool_name({...})
+        pattern = rf'"{tool_name}"\s*:\s*(\{{[^{{}}]*\}})'
+        for match in re.finditer(pattern, content):
+            try:
+                params = json.loads(match.group(1))
+                key = (tool_name, json.dumps(params, sort_keys=True))
+                if key not in seen:
+                    seen.add(key)
+                    parsed_calls.append({"name": tool_name, "arguments": params})
+            except json.JSONDecodeError:
+                pass
+
+    return parsed_calls
 
 
 class LLMClient(ABC):
@@ -40,10 +88,13 @@ class LLMClient(ABC):
 class OpenAIClient(LLMClient):
     """OpenAI API client."""
 
-    def __init__(self, model: str = "gpt-4o-mini"):
+    def __init__(self, model: str = "gpt-4o-mini", base_url: str | None = None):
         from openai import OpenAI
 
-        self.client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        self.client = OpenAI(
+            api_key=os.environ.get("OPENAI_API_KEY", "ollama"),  # Ollama doesn't need a key
+            base_url=base_url,
+        )
         self.model = model
 
     def complete(
@@ -83,6 +134,11 @@ class OpenAIClient(LLMClient):
                 }
                 for tc in message.tool_calls
             ]
+        elif tools and result["content"]:
+            # Fallback: parse tool calls from text (for Ollama and similar)
+            parsed = parse_tool_calls_from_text(result["content"], tools)
+            if parsed:
+                result["tool_calls"] = parsed
 
         return result
 
@@ -180,6 +236,11 @@ def get_client(provider: str = "openai", model: str | None = None) -> LLMClient:
         return OpenAIClient(model=model or "gpt-4o-mini")
     elif provider == "anthropic":
         return AnthropicClient(model=model or "claude-3-5-sonnet-20241022")
+    elif provider == "ollama":
+        return OpenAIClient(
+            model=model or "llama3.1:8b",
+            base_url="http://localhost:11434/v1",
+        )
     elif provider == "mock":
         return MockClient()
     else:
