@@ -48,6 +48,17 @@ This repo implements multiple architectural patterns against a common attack sce
 | [Dry-Run Evaluation](patterns/04_dry_run.py) | Plan → Evaluate → Execute | Malicious actions | Evaluator can be fooled too |
 | [Combined](patterns/05_combined.py) | Layered defenses | Multiple attack vectors | Complexity, cost |
 
+## Detection Techniques
+
+Interactive notebooks explaining how security tools detect prompt injection:
+
+| Technique | Notebook | Used By |
+|-----------|----------|---------|
+| [Canary Tokens](techniques/canary_tokens.py) | Detect prompt leakage | Vigil, Rebuff |
+| [YARA Rules](techniques/yara_detection.py) | Pattern matching (fast) | Vigil |
+| [Vector Similarity](techniques/vector_similarity.py) | Semantic matching | Vigil, Rebuff |
+| [ML Classifier](techniques/ml_classifier.py) | Context-aware detection | Vigil, LLM Guard |
+
 ## Quick Start
 
 ```bash
