@@ -34,6 +34,7 @@ import marimo as mo
 | **YARA Rules** | <1ms | Exact patterns, known signatures | Rephrased attacks |
 | **Vector Similarity** | ~10ms | Semantic variants | Novel attack types |
 | **ML Classifier** | ~50ms | Context-aware patterns | Adversarial examples |
+| **LLM-as-Judge** | ~200ms | Nuanced, context-aware | Meta-injection |
 | **Canary Tokens** | — | Prompt leakage | Doesn't prevent injection |
 
 **Key insight:** Detection is probabilistic. It reduces risk but cannot eliminate it.
@@ -69,7 +70,8 @@ See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 1. **[yara_detection.py](./yara_detection.py)** — Fast pattern matching for known attacks
 2. **[vector_similarity.py](./vector_similarity.py)** — Semantic similarity search
 3. **[ml_classifier.py](./ml_classifier.py)** — Neural network classification
-4. **[canary_tokens.py](./canary_tokens.py)** — Detecting prompt leakage
+4. **[llm_as_judge.py](./llm_as_judge.py)** — LLM evaluating for injection
+5. **[canary_tokens.py](./canary_tokens.py)** — Detecting prompt leakage
 
 ---
 

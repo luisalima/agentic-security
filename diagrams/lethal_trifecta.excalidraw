@@ -1,0 +1,140 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 250,
+      "y": 30,
+      "width": 300,
+      "height": 35,
+      "text": "The Lethal Trifecta",
+      "fontSize": 28,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#c92a2a"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "x": 180,
+      "y": 70,
+      "width": 440,
+      "height": 25,
+      "text": "Your agent is vulnerable when it has ALL THREE:",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#868e96"
+    },
+    {
+      "id": "circle1",
+      "type": "ellipse",
+      "x": 150,
+      "y": 150,
+      "width": 180,
+      "height": 180,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#ffe3e3",
+      "fillStyle": "solid",
+      "strokeWidth": 3
+    },
+    {
+      "id": "text1",
+      "type": "text",
+      "x": 175,
+      "y": 220,
+      "width": 130,
+      "height": 50,
+      "text": "TOOL\nACCESS",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#c92a2a"
+    },
+    {
+      "id": "circle2",
+      "type": "ellipse",
+      "x": 320,
+      "y": 150,
+      "width": 180,
+      "height": 180,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#ffe3e3",
+      "fillStyle": "solid",
+      "strokeWidth": 3
+    },
+    {
+      "id": "text2",
+      "type": "text",
+      "x": 345,
+      "y": 220,
+      "width": 130,
+      "height": 50,
+      "text": "UNTRUSTED\nINPUT",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#c92a2a"
+    },
+    {
+      "id": "circle3",
+      "type": "ellipse",
+      "x": 235,
+      "y": 280,
+      "width": 180,
+      "height": 180,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#ffe3e3",
+      "fillStyle": "solid",
+      "strokeWidth": 3
+    },
+    {
+      "id": "text3",
+      "type": "text",
+      "x": 260,
+      "y": 350,
+      "width": 130,
+      "height": 50,
+      "text": "SENSITIVE\nCONTEXT",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#c92a2a"
+    },
+    {
+      "id": "danger-zone",
+      "type": "text",
+      "x": 280,
+      "y": 270,
+      "width": 90,
+      "height": 30,
+      "text": "DANGER",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#c92a2a"
+    },
+    {
+      "id": "footer",
+      "type": "text",
+      "x": 170,
+      "y": 480,
+      "width": 460,
+      "height": 25,
+      "text": "Remove ANY ONE to significantly reduce risk",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "strokeColor": "#2f9e44"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}
