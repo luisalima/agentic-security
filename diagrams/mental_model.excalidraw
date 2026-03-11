@@ -1,0 +1,143 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "type": "rectangle",
+      "version": 100,
+      "id": "level1",
+      "x": 100,
+      "y": 100,
+      "width": 600,
+      "height": 80,
+      "strokeColor": "#1971c2",
+      "backgroundColor": "#e7f5ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roundness": { "type": 3 }
+    },
+    {
+      "type": "text",
+      "version": 100,
+      "id": "level1_text",
+      "x": 120,
+      "y": 115,
+      "width": 560,
+      "height": 50,
+      "text": "Level 1: DETECTION\nFilter malicious inputs (YARA, Vectors, ML, Canaries)",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "version": 100,
+      "id": "level2",
+      "x": 100,
+      "y": 200,
+      "width": 600,
+      "height": 80,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "#ebfbee",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roundness": { "type": 3 }
+    },
+    {
+      "type": "text",
+      "version": 100,
+      "id": "level2_text",
+      "x": 120,
+      "y": 215,
+      "width": 560,
+      "height": 50,
+      "text": "Level 2: PROMPT ENGINEERING\nHarden the prompt (Delimiters, Instructions)",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "version": 100,
+      "id": "level3",
+      "x": 100,
+      "y": 300,
+      "width": 600,
+      "height": 80,
+      "strokeColor": "#f08c00",
+      "backgroundColor": "#fff9db",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roundness": { "type": 3 }
+    },
+    {
+      "type": "text",
+      "version": 100,
+      "id": "level3_text",
+      "x": 120,
+      "y": 315,
+      "width": 560,
+      "height": 50,
+      "text": "Level 3: SECURE ARCHITECTURE\nIsolate concerns (Dual LLM, Typed Extraction, Dry-Run)",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left"
+    },
+    {
+      "type": "rectangle",
+      "version": 100,
+      "id": "level4",
+      "x": 100,
+      "y": 400,
+      "width": 600,
+      "height": 80,
+      "strokeColor": "#e03131",
+      "backgroundColor": "#fff5f5",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roundness": { "type": 3 }
+    },
+    {
+      "type": "text",
+      "version": 100,
+      "id": "level4_text",
+      "x": 120,
+      "y": 415,
+      "width": 560,
+      "height": 50,
+      "text": "Level 4: DEFENSE IN DEPTH\nLayer all techniques together",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "textAlign": "left"
+    },
+    {
+      "type": "arrow",
+      "version": 100,
+      "id": "arrow1",
+      "x": 50,
+      "y": 140,
+      "width": 0,
+      "height": 340,
+      "strokeColor": "#868e96",
+      "strokeWidth": 2,
+      "points": [[0, 0], [0, 340]]
+    },
+    {
+      "type": "text",
+      "version": 100,
+      "id": "effort_label",
+      "x": 20,
+      "y": 280,
+      "width": 20,
+      "height": 100,
+      "text": "Effort →",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "angle": -1.5708
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  }
+}

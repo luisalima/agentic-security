@@ -29,7 +29,7 @@ def _():
     import sys
     from pathlib import Path
 
-    sys.path.insert(0, str(Path.cwd().parent / "src"))
+    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
 
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
