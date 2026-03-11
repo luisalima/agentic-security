@@ -49,6 +49,7 @@ def main():
         "2_prompt_engineering",
         "3_secure_architecture",
         "4_defense_in_depth",
+        "5_integration",
     ]
 
     total = 0
@@ -118,6 +119,9 @@ Architectural patterns for isolating concerns and limiting blast radius.
 
 ### [4. Defense in Depth](4_defense_in_depth/)
 Layering all techniques together for comprehensive protection.
+
+### [5. Framework Integration](5_integration/)
+Applying security patterns to real-world frameworks (LangChain, etc.).
 
 ---
 

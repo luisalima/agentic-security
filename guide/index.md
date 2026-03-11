@@ -34,6 +34,9 @@ Architectural patterns for isolating concerns and limiting blast radius.
 ### [4. Defense in Depth](4_defense_in_depth/)
 Layering all techniques together for comprehensive protection.
 
+### [5. Framework Integration](5_integration/)
+Applying security patterns to real-world frameworks (LangChain, etc.).
+
 ---
 
 ## Quick Reference

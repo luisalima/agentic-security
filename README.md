@@ -74,10 +74,11 @@ Don't want to run code? Read the [exported markdown guide](guide/index.md).
 agentic-security/
 ├── notebooks/                   # Interactive Marimo notebooks
 │   ├── 0_baseline/              # The vulnerability
-│   ├── 1_detection/             # YARA, vectors, ML, canaries
+│   ├── 1_detection/             # YARA, vectors, ML, LLM-as-judge, canaries
 │   ├── 2_prompt_engineering/    # Delimiters, hardening
 │   ├── 3_secure_architecture/   # Dual LLM, typed extraction, dry-run
-│   └── 4_defense_in_depth/      # Layered defense
+│   ├── 4_defense_in_depth/      # Layered defense
+│   └── 5_integration/           # LangChain, framework patterns
 ├── guide/                       # Markdown exports (for reading)
 ├── docs/
 │   ├── TOOLS.md                 # Library comparison
@@ -99,6 +100,7 @@ agentic-security/
 - `yara_detection.py` — Fast pattern matching
 - `vector_similarity.py` — Semantic similarity search
 - `ml_classifier.py` — Neural network classification
+- `llm_as_judge.py` — LLM evaluating for injection
 - `canary_tokens.py` — Detect prompt leakage
 
 ### Level 2: Prompt Engineering  
@@ -114,6 +116,10 @@ agentic-security/
 ### Level 4: Defense in Depth
 → [notebooks/4_defense_in_depth/](notebooks/4_defense_in_depth/)
 - `combined.py` — All techniques layered together
+
+### Framework Integration
+→ [notebooks/5_integration/](notebooks/5_integration/)
+- `langchain_integration.py` — Securing LangChain agents
 
 ---
 
