@@ -1,33 +1,40 @@
 import marimo
 
-__generated_with = "0.10.0"
+__generated_with = "0.20.4"
 app = marimo.App(width="medium")
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        """
-        # Pattern 1: Random Token Delimiters
+    mo.md("""
+    # Pattern 1: Random Token Delimiters
 
-        Wraps untrusted content in randomized delimiters, making it harder for attackers
-        to craft payloads that reference the delimiter structure.
+    Wraps untrusted content in randomized delimiters, making it harder for attackers
+    to craft payloads that reference the delimiter structure.
 
-        Based on **Microsoft's Spotlighting** research.
+    Based on **[Microsoft's Spotlighting](https://arxiv.org/abs/2403.14720)** research, which found this reduces 
+    attack success rates from >50% to <2% in their experiments.
 
-        | Protects Against | Doesn't Protect Against |
-        |------------------|-------------------------|
-        | Naive injections | "Ignore the delimiters" attacks |
-        | Static delimiter attacks | Social engineering |
-        | Basic instruction override | Multi-turn manipulation |
-        """
-    )
+    However, as **[Simon Willison points out](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)**, 
+    delimiters alone won't save you—attackers can bypass them without even using the delimiter characters.
+
+    | Protects Against | Doesn't Protect Against |
+    |------------------|-------------------------|
+    | Naive injections | "Ignore the delimiters" attacks |
+    | Static delimiter attacks | Social engineering |
+    | Basic instruction override | Multi-turn manipulation |
+
+    **Libraries using this approach:**
+    - [Microsoft Prompt Shields](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection)
+    - [Vigil](https://github.com/deadbits/vigil-llm) - lightweight prompt injection detection
+    """)
     return
 
 
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -41,13 +48,21 @@ def _():
 
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
-    return EMAIL_TOOLS, MALICIOUS_EMAIL, SimulatedTools, evaluate_defense, get_client, secrets
+
+    return (
+        EMAIL_TOOLS,
+        MALICIOUS_EMAIL,
+        SimulatedTools,
+        evaluate_defense,
+        get_client,
+        secrets,
+    )
 
 
 @app.cell
 def _(mo):
     provider = mo.ui.dropdown(
-        options=["ollama", "openai", "anthropic"],
+        options=["ollama"],
         value="ollama",
         label="LLM Provider",
     )
@@ -57,7 +72,9 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    mo.md("## How It Works")
+    mo.md("""
+    ## How It Works
+    """)
     return
 
 
@@ -72,6 +89,7 @@ def _(secrets):
         start_tag = f"<{delimiter}_START>"
         end_tag = f"<{delimiter}_END>"
         return f"{start_tag}\n{content}\n{end_tag}"
+
     return generate_delimiter, wrap_untrusted
 
 
@@ -117,7 +135,7 @@ def _(MALICIOUS_EMAIL, demo_delimiter, mo, wrap_untrusted):
         ```
         """
     )
-    return (wrapped_body,)
+    return
 
 
 @app.cell
@@ -188,20 +206,7 @@ def _(
             tool_fn(**tc["arguments"])
 
     result = evaluate_defense(tools)
-    return (
-        client,
-        delimiter,
-        end_tag,
-        prompt,
-        response,
-        result,
-        start_tag,
-        system_prompt,
-        tool_calls_made,
-        tools,
-        user_request,
-        wrapped_email,
-    )
+    return response, result, tool_calls_made
 
 
 @app.cell
@@ -225,20 +230,18 @@ def _(mo, response, result, tool_calls_made):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        """
-        ## Honest Assessment
+    mo.md("""
+    ## Honest Assessment
 
-        **Delimiters are speed bumps, not walls.**
+    **Delimiters are speed bumps, not walls.**
 
-        They raise the bar for attackers but can be bypassed with:
-        - "Ignore anything between those delimiter tags"
-        - Social engineering that convinces the LLM the delimiters don't apply
-        - Attacks that close/reopen the delimiter tags
+    They raise the bar for attackers but can be bypassed with:
+    - "Ignore anything between those delimiter tags"
+    - Social engineering that convinces the LLM the delimiters don't apply
+    - Attacks that close/reopen the delimiter tags
 
-        **Use as one layer in a defense-in-depth strategy, not as primary protection.**
-        """
-    )
+    **Use as one layer in a defense-in-depth strategy, not as primary protection.**
+    """)
     return
 
 

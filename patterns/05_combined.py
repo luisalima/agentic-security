@@ -73,7 +73,7 @@ def _():
 @app.cell
 def _(mo):
     provider = mo.ui.dropdown(
-        options=["ollama", "openai", "anthropic"],
+        options=["ollama"],
         value="ollama",
         label="LLM Provider",
     )
