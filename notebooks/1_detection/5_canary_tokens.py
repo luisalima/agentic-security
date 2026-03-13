@@ -220,7 +220,7 @@ def _(mo):
     ---
 
     **Previous:** `notebooks/1_detection/4_llm_as_judge.py` — LLM-as-Judge  
-    **Next:** [../2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts
+    **Next:** `notebooks/2_prompt_engineering/` — Hardening prompts
     """)
     return
 
