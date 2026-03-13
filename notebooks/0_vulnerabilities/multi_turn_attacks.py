@@ -365,7 +365,7 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/0_baseline/baseline.py` — Single-turn injection  
+    **Previous:** `notebooks/0_vulnerabilities/baseline.py` — Single-turn injection
     **Next:** `notebooks/1_detection/overview.py` — Detection techniques
     """)
     return

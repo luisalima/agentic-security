@@ -85,5 +85,5 @@ See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 
 ---
 
-**Previous:** [0_baseline/](../0_baseline/) — The vulnerability
+**Previous:** [0_vulnerabilities/](../0_vulnerabilities/) — The vulnerability
 **Next:** [2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts

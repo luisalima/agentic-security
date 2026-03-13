@@ -56,7 +56,7 @@ ollama pull llama3.1:8b
 
 ```bash
 # See the vulnerability (baseline)
-marimo edit notebooks/0_baseline/baseline.py
+marimo edit notebooks/0_vulnerabilities/baseline.py
 
 # Try a defense pattern
 marimo edit notebooks/3_secure_architecture/dual_llm.py
@@ -73,7 +73,7 @@ Don't want to run code? Read the [exported markdown guide](guide/index.md).
 ```
 agentic-security/
 ├── notebooks/                   # Interactive Marimo notebooks
-│   ├── 0_baseline/              # The vulnerability
+│   ├── 0_vulnerabilities/        # The vulnerability
 │   ├── 1_detection/             # YARA, vectors, ML, LLM-as-judge, canaries
 │   ├── 2_prompt_engineering/    # Delimiters, hardening
 │   ├── 3_secure_architecture/   # Dual LLM, typed extraction, dry-run
@@ -93,7 +93,7 @@ agentic-security/
 ## Learning Path
 
 ### Understand the Problem
-→ [notebooks/0_baseline/](notebooks/0_baseline/) — See how easily an agent can be hijacked
+→ [notebooks/0_vulnerabilities/](notebooks/0_vulnerabilities/) — See how easily an agent can be hijacked
 
 ### Level 1: Detection
 → [notebooks/1_detection/](notebooks/1_detection/)
@@ -105,7 +105,11 @@ agentic-security/
 
 ### Level 2: Prompt Engineering  
 → [notebooks/2_prompt_engineering/](notebooks/2_prompt_engineering/)
-- `delimiters.py` — Random token boundaries (Spotlighting)
+- `1_delimiters.py` — Random token boundaries (Spotlighting)
+- `2_system_prompt_hardening.py` — Role anchoring, explicit negatives
+- `3_instruction_hierarchy.py` — Priority framing (system > user > data)
+- `4_sandwich_defense.py` — Repeat instructions after untrusted content
+- `5_xml_tagging.py` — Structured prompts with semantic XML tags
 
 ### Level 3: Secure Architecture
 → [notebooks/3_secure_architecture/](notebooks/3_secure_architecture/)

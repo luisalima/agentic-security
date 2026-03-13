@@ -132,7 +132,7 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/0_baseline/multi_turn_attacks.py` — Multi-turn attacks  
+    **Previous:** `notebooks/0_vulnerabilities/multi_turn_attacks.py` — Multi-turn attacks
     **Next:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts
     """)
     return

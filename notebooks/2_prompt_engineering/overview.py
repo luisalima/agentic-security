@@ -102,11 +102,11 @@ def _(mo):
     Open any notebook from the repo root:
 
     ```bash
-    marimo edit notebooks/2_prompt_engineering/delimiters.py              # 1. Random token delimiters (Spotlighting)
-    marimo edit notebooks/2_prompt_engineering/system_prompt_hardening.py # 2. Role anchoring, explicit negatives
-    marimo edit notebooks/2_prompt_engineering/instruction_hierarchy.py   # 3. Priority framing (system > user > data)
-    marimo edit notebooks/2_prompt_engineering/sandwich_defense.py        # 4. Repeat instructions after untrusted content
-    marimo edit notebooks/2_prompt_engineering/xml_tagging.py             # 5. Structured prompts with semantic XML tags
+    marimo edit notebooks/2_prompt_engineering/1_delimiters.py              # 1. Random token delimiters (Spotlighting)
+    marimo edit notebooks/2_prompt_engineering/2_system_prompt_hardening.py # 2. Role anchoring, explicit negatives
+    marimo edit notebooks/2_prompt_engineering/3_instruction_hierarchy.py   # 3. Priority framing (system > user > data)
+    marimo edit notebooks/2_prompt_engineering/4_sandwich_defense.py        # 4. Repeat instructions after untrusted content
+    marimo edit notebooks/2_prompt_engineering/5_xml_tagging.py             # 5. Structured prompts with semantic XML tags
     ```
 
     ---
@@ -128,7 +128,7 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/1_detection/overview.py` — Filtering malicious inputs  
+    **Previous:** `notebooks/1_detection/overview.py` — Filtering malicious inputs
     **Next:** `notebooks/3_secure_architecture/overview.py` — Architectural separation
     """)
     return

@@ -10,7 +10,7 @@ A comprehensive guide to securing AI agents against prompt injection and related
 
 ## Sections
 
-### [0. Baseline](0_baseline/)
+### [0. Vulnerabilities](0_vulnerabilities/)
 Understanding the vulnerability: what happens with no protection.
 
 ### [1. Detection](1_detection/)
@@ -24,6 +24,9 @@ Techniques to identify malicious prompts before they reach the LLM.
 Hardening individual LLM calls through prompt design.
 - Random delimiters / Spotlighting
 - System prompt hardening
+- Instruction hierarchy
+- Sandwich defense
+- XML tagging
 
 ### [3. Secure Architecture](3_secure_architecture/)
 Architectural patterns for isolating concerns and limiting blast radius.

@@ -68,7 +68,11 @@ but sophisticated attackers can still bypass them.
 <!---->
 ## Notebooks in This Section
 
-1. **[delimiters.py](./delimiters.py)** — Random token delimiters (Spotlighting)
+1. **[1_delimiters.py](./1_delimiters.py)** — Random token delimiters (Spotlighting)
+2. **[2_system_prompt_hardening.py](./2_system_prompt_hardening.py)** — Role anchoring, explicit negatives
+3. **[3_instruction_hierarchy.py](./3_instruction_hierarchy.py)** — Priority framing (system > user > data)
+4. **[4_sandwich_defense.py](./4_sandwich_defense.py)** — Repeat instructions after untrusted content
+5. **[5_xml_tagging.py](./5_xml_tagging.py)** — Structured prompts with semantic XML tags
 
 ---
 
