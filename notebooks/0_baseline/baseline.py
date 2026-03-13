@@ -314,7 +314,7 @@ def _(mo):
 
     ---
 
-    **Next:** `notebooks/1_detection/overview.py` — Learn techniques to detect malicious inputs
+    **Next:** `notebooks/0_baseline/multi_turn_attacks.py` — Multi-turn manipulation
     """)
     return
 
