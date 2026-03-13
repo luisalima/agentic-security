@@ -21,7 +21,7 @@ def _(mo):
                            known attack?   probability?
     ```
 
-    Each layer catches different attack types. Together, they provide ~95% coverage 
+    Each layer catches different attack types. Together, they provide ~95% coverage
     against known attacks—but sophisticated adversaries can still bypass detection.
 
     <!-- DIAGRAM: diagrams/detection_pipeline.excalidraw -->
@@ -32,6 +32,7 @@ def _(mo):
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -59,17 +60,17 @@ def _(mo):
     mo.md("""
     ## When Detection Works
 
-    ✅ Blocking known attack patterns at scale  
-    ✅ Filtering obvious injection attempts  
-    ✅ Logging and monitoring for security analysis  
-    ✅ Raising the bar for unsophisticated attackers  
+    ✅ Blocking known attack patterns at scale
+    ✅ Filtering obvious injection attempts
+    ✅ Logging and monitoring for security analysis
+    ✅ Raising the bar for unsophisticated attackers
 
     ## When Detection Fails
 
-    ❌ Novel attacks not in training data  
-    ❌ Carefully crafted adversarial prompts  
-    ❌ Social engineering that looks legitimate  
-    ❌ Attacks that exploit application-specific context  
+    ❌ Novel attacks not in training data
+    ❌ Carefully crafted adversarial prompts
+    ❌ Social engineering that looks legitimate
+    ❌ Attacks that exploit application-specific context
     """)
     return
 
@@ -79,12 +80,25 @@ def _(mo):
     mo.md("""
     ## Tools Using These Techniques
 
-    | Tool | YARA | Vectors | ML | Canaries |
-    |------|------|---------|----|---------| 
-    | [Vigil](https://github.com/deadbits/vigil-llm) | ✓ | ✓ | ✓ | ✓ |
-    | [LLM Guard](https://llm-guard.com/) | — | — | ✓ | — |
-    | [Rebuff](https://github.com/protectai/rebuff) | — | ✓ | ✓ | ✓ |
-    | [Lakera Guard](https://www.lakera.ai/) | ? | ? | ✓ | — |
+    **Active tools (2025–2026):**
+
+    | Tool | Type | ML | Key Feature |
+    |------|------|----|-------------|
+    | [LLM Guard](https://llm-guard.com/) | OSS | ✓ | 15 input + 20 output scanners (ProtectAI) |
+    | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | OSS | ✓ | Dialog flow control via Colang DSL (NVIDIA) |
+    | [Promptfoo](https://github.com/promptfoo/promptfoo) | OSS | ✓ | Red-teaming for 50+ vulnerability types |
+    | [Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M) | Model | ✓ | Free 86M-param classifier on HuggingFace |
+    | [Lakera Guard](https://www.lakera.ai/) | Commercial | ✓ | Enterprise API, <50ms, 80M+ attack data points |
+
+    **Historical (archived/inactive):**
+
+    | Tool | Status | Why It Died |
+    |------|--------|-------------|
+    | [Vigil](https://github.com/deadbits/vigil-llm) | Inactive since 2023 | Solo-dev project; author joined Robust Intelligence (now Cisco) |
+    | [Rebuff](https://github.com/protectai/rebuff) | Archived May 2025 | ProtectAI pivoted to LLM Guard; heavy Pinecone/OpenAI dependency |
+
+    *The churn in OSS security tools is itself a lesson: detection is a moving target,
+    and solo-maintained projects can't keep up with evolving attacks.*
 
     See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
     """)
@@ -96,11 +110,15 @@ def _(mo):
     mo.md("""
     ## Notebooks in This Section
 
-    1. **[yara_detection.py](./yara_detection.py)** — Fast pattern matching for known attacks
-    2. **[vector_similarity.py](./vector_similarity.py)** — Semantic similarity search
-    3. **[ml_classifier.py](./ml_classifier.py)** — Neural network classification
-    4. **[llm_as_judge.py](./llm_as_judge.py)** — LLM evaluating for injection
-    5. **[canary_tokens.py](./canary_tokens.py)** — Detecting prompt leakage
+    Open any notebook from the repo root:
+
+    ```bash
+    marimo edit notebooks/1_detection/yara_detection.py       # 1. Fast pattern matching
+    marimo edit notebooks/1_detection/vector_similarity.py     # 2. Semantic similarity search
+    marimo edit notebooks/1_detection/ml_classifier.py         # 3. Neural network classification
+    marimo edit notebooks/1_detection/llm_as_judge.py          # 4. LLM evaluating for injection
+    marimo edit notebooks/1_detection/canary_tokens.py         # 5. Detecting prompt leakage
+    ```
 
     ---
 
@@ -108,14 +126,14 @@ def _(mo):
 
     - **Schulhoff et al. (2023)** — [HackAPrompt: Exposing Systemic Vulnerabilities](https://arxiv.org/abs/2311.16119)
       - Taxonomy of prompt injection techniques from competition
-    
-    - **Vigil Documentation** — [Scanner Architecture](https://vigil.deadbits.ai/overview/use-vigil/scanners/)
-      - Multi-layer detection implementation
+
+    - **tldrsec** — [Prompt Injection Defenses](https://github.com/tldrsec/prompt-injection-defenses)
+      - Comprehensive catalog of every practical and proposed defense
 
     ---
 
-    **Previous:** [0_baseline/](../0_baseline/) — The vulnerability  
-    **Next:** [2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts
+    **Previous:** `notebooks/0_baseline/baseline.py` — The vulnerability  
+    **Next:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts
     """)
     return
 

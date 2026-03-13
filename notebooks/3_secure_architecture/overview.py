@@ -108,9 +108,28 @@ def _(mo):
     mo.md("""
     ## Notebooks in This Section
 
-    1. **[dual_llm.py](./dual_llm.py)** — Quarantined + Privileged LLM separation
-    2. **[typed_extraction.py](./typed_extraction.py)** — Schema constraints as firewall
-    3. **[dry_run.py](./dry_run.py)** — Plan → Evaluate → Execute
+    ```bash
+    marimo edit notebooks/3_secure_architecture/dual_llm.py          # 1. Quarantined + Privileged LLM separation
+    marimo edit notebooks/3_secure_architecture/typed_extraction.py   # 2. Schema constraints as firewall
+    marimo edit notebooks/3_secure_architecture/dry_run.py            # 3. Plan → Evaluate → Execute
+    ```
+
+    ---
+
+    ## Also Worth Knowing: IBAC
+
+    **Intent-Based Access Control** ([ibac.dev](https://ibac.dev)) derives per-request permissions
+    from the user's explicit intent and enforces them via [OpenFGA](https://openfga.dev) before every tool call.
+    Conceptually similar to output validation + capability scoping, but backed by a real authorization engine.
+
+    | Strength | Limitation |
+    |----------|-----------|
+    | Enforcement is deterministic (outside the LLM) | Intent parser is itself an LLM — susceptible to injection |
+    | ~9ms per auth check, TTL-based expiry | 33% automated utility in strict mode (heavy escalation) |
+    | 100% security on AgentDojo (strict mode) | Single benchmark; "no dual-LLM" claim is debatable |
+
+    Promising approach, but the "prompt injection becomes irrelevant" claim overstates it —
+    the intent parser *is* the attack surface. Worth watching as the research matures.
 
     ---
 
@@ -119,11 +138,12 @@ def _(mo):
     - **Simon Willison** — [The Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
     - **StruQ** — [Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
     - **Google DeepMind** — [CaMeL: Capability-based Memory for LLMs](https://arxiv.org/abs/2503.18813)
+    - **Jordan Potti (2026)** — [IBAC: Intent-Based Access Control](https://ibac.dev) — FGA-backed capability scoping
 
     ---
 
-    **Previous:** [2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts  
-    **Next:** [4_defense_in_depth/](../4_defense_in_depth/) — Layering everything
+    **Previous:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts  
+    **Next:** `notebooks/4_defense_in_depth/` — Layering everything
     """)
     return
 

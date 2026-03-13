@@ -69,6 +69,24 @@ def _():
     )
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## Prerequisites
+
+    The interactive demos in these notebooks require a local LLM via [Ollama](https://ollama.com/).
+
+    ```bash
+    # Install Ollama, then pull a model with tool-calling support:
+    ollama pull llama3.1:8b
+    ```
+
+    Ollama must be running on `localhost:11434` (the default).
+    Any model that supports tool/function calling will work.
+    """)
+    return
+
+
 @app.cell
 def _(mo):
     provider = mo.ui.dropdown(
@@ -277,20 +295,26 @@ def _(mo):
 
     ## References
 
-    1. **Greshake et al. (2023)** — [Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/abs/2302.12173)
+    1. **Meta AI (2025)** — [Agents Rule of Two: A Practical Approach to AI Agent Security](https://ai.meta.com/blog/practical-ai-agent-security/)
+       - Extends the "lethal trifecta" into a practical security framework for agents
+       - Rule: agents must satisfy no more than two of: untrusted input, sensitive access, external action
+
+    2. **Nasr, Carlini et al. (2025)** — [The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses](https://arxiv.org/abs/2510.09023)
+       - 14 authors from OpenAI, Anthropic, and DeepMind evaluate 12 defenses
+       - Adaptive attacks bypass all defenses with >90% success; human red-team achieves 100%
+
+    3. **Willison (2025)** — [The Lethal Trifecta for AI Agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) and [Prompt Injection series](https://simonwillison.net/series/prompt-injection/)
+       - Ongoing documentation of prompt injection evolution since 2022
+
+    4. **OWASP (2025)** — [Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+       - LLM01: Prompt Injection remains #1 risk through 2025–2026
+
+    5. **Greshake et al. (2023)** — [Not what you've signed up for](https://arxiv.org/abs/2302.12173)
        - The foundational paper on indirect prompt injection attacks
-       - Demonstrates attacks on Bing Chat, code assistants, and more
-
-    2. **Simon Willison** — [Prompt Injection Attacks](https://simonwillison.net/series/prompt-injection/)
-       - Ongoing series documenting prompt injection evolution
-       - First to name and describe the vulnerability class
-
-    3. **OWASP** — [Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-       - LLM01: Prompt Injection ranked as #1 risk
 
     ---
 
-    **Next:** [1_detection/](../1_detection/) — Learn techniques to detect malicious inputs
+    **Next:** `notebooks/1_detection/overview.py` — Learn techniques to detect malicious inputs
     """)
     return
 
