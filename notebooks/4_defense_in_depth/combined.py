@@ -87,40 +87,31 @@ def _(mo):
 
 @app.cell
 def _(BaseModel, Enum, Field):
-    class Urgency(str, Enum):
-        LOW = "low"
-        MEDIUM = "medium"
-        HIGH = "high"
+    from agentic_security.defenses.dry_run import EvaluationResult, PlannedAction
+    from agentic_security.defenses.typed_extraction import Urgency
 
     class EmailExtraction(BaseModel):
+        """Simplified schema for combined defense demo."""
         sender_email: str = Field(max_length=100)
         subject_summary: str = Field(max_length=100)
         urgency: Urgency
         requires_response: bool
         key_topics: list[str] = Field(max_length=3)
 
-    class PlannedAction(BaseModel):
-        tool: str
-        params: dict
-
-    class EvaluationResult(BaseModel):
-        approved: bool
-        concerns: list[str] = Field(default_factory=list)
     return EmailExtraction, EvaluationResult, PlannedAction, Urgency
 
 
 @app.cell
 def _():
-    # Deterministic validation rules (Layer 5)
-    KNOWN_CONTACTS = {"alice@company.com", "bob@external.com"}
+    from agentic_security.defenses.output_validation import OutputValidator
+
+    _validator = OutputValidator()
+    KNOWN_CONTACTS = _validator.known_contacts
 
     def validate_tool_call(action) -> tuple[bool, str]:
         """Layer 5: Deterministic output validation."""
-        if action.tool in ("send_email", "forward_email"):
-            recipient = action.params.get("to", "")
-            if recipient not in KNOWN_CONTACTS:
-                return False, f"Unknown recipient: {recipient}"
-        return True, "OK"
+        return _validator.validate_tool_call(action.tool, action.params)
+
     return KNOWN_CONTACTS, validate_tool_call
 
 
