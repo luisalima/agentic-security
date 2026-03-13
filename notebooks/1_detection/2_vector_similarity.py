@@ -12,7 +12,7 @@ def _(mo):
     Instead of matching exact patterns, embed prompts as vectors and compare against
     a database of known attacks. This catches **semantic variants** that YARA misses.
 
-    **Speed:** ~10-50ms (depends on embedding model)  
+    **Speed:** ~10-50ms (depends on embedding model)
     **Accuracy:** Catches paraphrases and synonyms, but requires threshold tuning
 
     > "Disregard prior directives" and "ignore previous instructions" have different words
@@ -26,6 +26,7 @@ def _(mo):
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -47,7 +48,7 @@ def _(mo):
                         Cosine Similarity > 0.85? → Flag
     ```
 
-    The embedding model (like `text-embedding-3-small` or `all-MiniLM-L6-v2`) 
+    The embedding model (like `text-embedding-3-small` or `all-MiniLM-L6-v2`)
     captures semantic meaning, not just keywords.
     """)
     return
@@ -83,7 +84,9 @@ def _(SimpleVectorDB, mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("## Try It: Similarity Search")
+    mo.md("""
+    ## Try It: Similarity Search
+    """)
     return
 
 
@@ -118,12 +121,14 @@ def _(db, mo, test_input):
         result = mo.md("## ✅ No similar attacks found").style({"color": "green"})
 
     result
-    return is_attack, matches, matches_table, result
+    return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("## Comparison: What Vector Search Catches")
+    mo.md("""
+    ## Comparison: What Vector Search Catches
+    """)
     return
 
 
@@ -153,7 +158,7 @@ def _(db, mo):
     **Note:** Real embeddings would catch "disregard prior directives" as semantically 
     similar to "ignore previous instructions" even without word overlap.
     """)
-    return is_attack, matches, name, results, test_cases, text, top_match
+    return
 
 
 @app.cell(hide_code=True)
@@ -170,8 +175,8 @@ def _(mo):
     # Future similar attacks are now automatically caught!
     ```
 
-    This is how [Rebuff](https://github.com/protectai/rebuff) and 
-    [Vigil](https://vigil.deadbits.ai/overview/use-vigil/auto-updating-vector-database) 
+    This is how [Rebuff](https://github.com/protectai/rebuff) and
+    [Vigil](https://vigil.deadbits.ai/overview/use-vigil/auto-updating-vector-database)
     implement self-hardening defenses.
     """)
     return
@@ -238,8 +243,8 @@ def _(mo):
 
     ---
 
-    **Previous:** [yara_detection.py](./yara_detection.py) — Pattern matching  
-    **Next:** [ml_classifier.py](./ml_classifier.py) — Neural network classification
+    **Previous:** `notebooks/1_detection/1_yara_detection.py` — Pattern matching
+    **Next:** `notebooks/1_detection/3_ml_classifier.py` — Neural network classification
     """)
     return
 

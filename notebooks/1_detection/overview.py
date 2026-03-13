@@ -113,11 +113,11 @@ def _(mo):
     Open any notebook from the repo root:
 
     ```bash
-    marimo edit notebooks/1_detection/yara_detection.py       # 1. Fast pattern matching
-    marimo edit notebooks/1_detection/vector_similarity.py     # 2. Semantic similarity search
-    marimo edit notebooks/1_detection/ml_classifier.py         # 3. Neural network classification
-    marimo edit notebooks/1_detection/llm_as_judge.py          # 4. LLM evaluating for injection
-    marimo edit notebooks/1_detection/canary_tokens.py         # 5. Detecting prompt leakage
+    marimo edit notebooks/1_detection/1_yara_detection.py      # 1. Fast pattern matching
+    marimo edit notebooks/1_detection/2_vector_similarity.py   # 2. Semantic similarity search
+    marimo edit notebooks/1_detection/3_ml_classifier.py       # 3. Neural network classification
+    marimo edit notebooks/1_detection/4_llm_as_judge.py        # 4. LLM evaluating for injection
+    marimo edit notebooks/1_detection/5_canary_tokens.py       # 5. Detecting prompt leakage
     ```
 
     ---

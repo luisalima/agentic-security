@@ -219,7 +219,7 @@ def _(mo):
 
     ---
 
-    **Previous:** [ml_classifier.py](./ml_classifier.py) — ML classification  
+    **Previous:** `notebooks/1_detection/4_llm_as_judge.py` — LLM-as-Judge  
     **Next:** [../2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts
     """)
     return

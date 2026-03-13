@@ -269,8 +269,8 @@ def _(mo):
 
     ---
 
-    **Previous:** [vector_similarity.py](./vector_similarity.py) — Semantic search  
-    **Next:** [canary_tokens.py](./canary_tokens.py) — Detecting prompt leakage
+    **Previous:** `notebooks/1_detection/2_vector_similarity.py` — Semantic search  
+    **Next:** `notebooks/1_detection/4_llm_as_judge.py` — LLM evaluating for injection
     """)
     return
 

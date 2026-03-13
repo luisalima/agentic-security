@@ -341,8 +341,8 @@ def _(mo):
 
     ---
 
-    **Previous:** [ml_classifier.py](./ml_classifier.py) — Neural classification  
-    **Next:** [canary_tokens.py](./canary_tokens.py) — Detecting leakage
+    **Previous:** `notebooks/1_detection/3_ml_classifier.py` — Neural classification  
+    **Next:** `notebooks/1_detection/5_canary_tokens.py` — Detecting leakage
     """)
     return
 

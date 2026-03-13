@@ -97,11 +97,11 @@ agentic-security/
 
 ### Level 1: Detection
 → [notebooks/1_detection/](notebooks/1_detection/)
-- `yara_detection.py` — Fast pattern matching
-- `vector_similarity.py` — Semantic similarity search
-- `ml_classifier.py` — Neural network classification
-- `llm_as_judge.py` — LLM evaluating for injection
-- `canary_tokens.py` — Detect prompt leakage
+- `1_yara_detection.py` — Fast pattern matching
+- `2_vector_similarity.py` — Semantic similarity search
+- `3_ml_classifier.py` — Neural network classification
+- `4_llm_as_judge.py` — LLM evaluating for injection
+- `5_canary_tokens.py` — Detect prompt leakage
 
 ### Level 2: Prompt Engineering  
 → [notebooks/2_prompt_engineering/](notebooks/2_prompt_engineering/)
