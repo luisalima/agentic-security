@@ -223,5 +223,5 @@ if blocked:
 
 ---
 
-**Previous:** [typed_extraction.md](./typed_extraction.md) — Schema constraints as firewall
-**Next:** [dry_run.md](./dry_run.md) — Plan → Evaluate → Execute
+**Previous:** [3_dry_run](./3_dry_run.md) — Plan → Evaluate → Execute
+**Next:** [../4_defense_in_depth/](../4_defense_in_depth/) — Layering everything

@@ -309,5 +309,5 @@ def extract_and_validate(content: str) -> DocumentExtraction:
 
 ---
 
-**Previous:** [dual_llm.py](./dual_llm.py) — LLM separation
-**Next:** [dry_run.py](./dry_run.py) — Plan → Evaluate → Execute
+**Previous:** [1_dual_llm](./1_dual_llm.md) — LLM separation
+**Next:** [3_dry_run](./3_dry_run.md) — Plan → Evaluate → Execute

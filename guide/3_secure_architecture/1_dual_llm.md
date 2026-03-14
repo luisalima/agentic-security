@@ -293,4 +293,4 @@ class DualLLMAgent:
 
 ---
 
-**Next:** [typed_extraction.py](./typed_extraction.py) — Schema constraints as firewall
+**Next:** [2_typed_extraction](./2_typed_extraction.md) — Schema constraints as firewall

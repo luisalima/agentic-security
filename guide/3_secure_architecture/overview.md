@@ -79,9 +79,10 @@ Architecture:        Untrusted data → Quarantined LLM → Structured data
 <!---->
 ## Notebooks in This Section
 
-1. **[dual_llm.py](./dual_llm.py)** — Quarantined + Privileged LLM separation
-2. **[typed_extraction.py](./typed_extraction.py)** — Schema constraints as firewall
-3. **[dry_run.py](./dry_run.py)** — Plan → Evaluate → Execute
+1. **[1_dual_llm](./1_dual_llm.md)** — Quarantined + Privileged LLM separation
+2. **[2_typed_extraction](./2_typed_extraction.md)** — Schema constraints as firewall
+3. **[3_dry_run](./3_dry_run.md)** — Plan → Evaluate → Execute
+4. **[4_tool_validation](./4_tool_validation.md)** — MCP/tool manifest validation
 
 ---
 

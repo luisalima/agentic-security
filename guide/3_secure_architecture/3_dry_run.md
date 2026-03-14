@@ -347,5 +347,6 @@ def validate_plan(plan: ExecutionPlan, user_request: str) -> tuple[bool, str]:
 
 ---
 
-**Previous:** [typed_extraction.py](./typed_extraction.py) — Schema constraints
+**Previous:** [2_typed_extraction](./2_typed_extraction.md) — Schema constraints
+**Next:** [4_tool_validation](./4_tool_validation.md) — MCP/tool manifest validation
 **Next:** [../4_defense_in_depth/](../4_defense_in_depth/) — Layering everything

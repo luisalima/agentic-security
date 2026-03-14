@@ -59,7 +59,7 @@ ollama pull llama3.1:8b
 marimo edit notebooks/0_vulnerabilities/baseline.py
 
 # Try a defense pattern
-marimo edit notebooks/3_secure_architecture/dual_llm.py
+marimo edit notebooks/3_secure_architecture/1_dual_llm.py
 ```
 
 ### Read the Guide
@@ -113,9 +113,10 @@ agentic-security/
 
 ### Level 3: Secure Architecture
 → [notebooks/3_secure_architecture/](notebooks/3_secure_architecture/)
-- `dual_llm.py` — Quarantined + Privileged separation
-- `typed_extraction.py` — Schema as firewall
-- `dry_run.py` — Plan → Evaluate → Execute
+- `1_dual_llm.py` — Quarantined + Privileged separation
+- `2_typed_extraction.py` — Schema as firewall
+- `3_dry_run.py` — Plan → Evaluate → Execute
+- `4_tool_validation.py` — MCP/tool manifest validation
 
 ### Level 4: Defense in Depth
 → [notebooks/4_defense_in_depth/](notebooks/4_defense_in_depth/)
