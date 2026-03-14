@@ -19,6 +19,13 @@ from agentic_security.defenses.ml_classifier import (
     SimulatedInjectionClassifier,
 )
 from agentic_security.defenses.output_validation import OutputValidator
+from agentic_security.defenses.tool_validation import (
+    ToolDefinition,
+    ToolValidationResult,
+    ToolValidator,
+    parse_mcp_tools,
+    parse_openai_tools,
+)
 from agentic_security.defenses.typed_extraction import EmailExtraction, extract_typed_data
 from agentic_security.defenses.vector_similarity import SimpleVectorDB
 from agentic_security.defenses.yara_detection import SimpleYaraScanner, YaraMatch
@@ -36,8 +43,13 @@ __all__ = [
     "SimpleVectorDB",
     "SimpleYaraScanner",
     "SimulatedInjectionClassifier",
+    "ToolDefinition",
+    "ToolValidationResult",
+    "ToolValidator",
     "YaraMatch",
     "extract_typed_data",
     "generate_delimiter",
+    "parse_mcp_tools",
+    "parse_openai_tools",
     "wrap_untrusted",
 ]
