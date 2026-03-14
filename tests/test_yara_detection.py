@@ -43,13 +43,16 @@ class TestSimpleYaraScanner:
     # Legitimate inputs should NOT be flagged
     # ------------------------------------------------------------------
 
-    @pytest.mark.parametrize("safe_input", [
-        "What is the weather in Paris?",
-        "Please summarize this document for me.",
-        "Can you help me write a poem about nature?",
-        "Schedule a meeting for next Tuesday at 3pm.",
-        "The project is on track for delivery next week.",
-    ])
+    @pytest.mark.parametrize(
+        "safe_input",
+        [
+            "What is the weather in Paris?",
+            "Please summarize this document for me.",
+            "Can you help me write a poem about nature?",
+            "Schedule a meeting for next Tuesday at 3pm.",
+            "The project is on track for delivery next week.",
+        ],
+    )
     def test_safe_inputs_not_flagged(self, scanner, safe_input):
         matches = scanner.scan(safe_input)
         assert len(matches) == 0, f"False positive on: {safe_input!r}"

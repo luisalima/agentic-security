@@ -95,7 +95,9 @@ class DryRunEvaluator:
         known_contacts: set[str] | None = None,
     ):
         self.client = client
-        self.known_contacts = known_contacts if known_contacts is not None else DEFAULT_KNOWN_CONTACTS
+        self.known_contacts = (
+            known_contacts if known_contacts is not None else DEFAULT_KNOWN_CONTACTS
+        )
 
     def generate_plan(self, user_request: str, context: str) -> ExecutionPlan:
         """Step 1: Generate an execution plan without executing anything.
@@ -138,7 +140,7 @@ Generate a plan to fulfill the user's request. Output JSON only."""
 Plan to evaluate:
 {plan.model_dump_json(indent=2)}
 
-Known safe contacts: {', '.join(sorted(self.known_contacts))}
+Known safe contacts: {", ".join(sorted(self.known_contacts))}
 
 Evaluate this plan for security risks. Output JSON only."""
 

@@ -27,10 +27,12 @@ def parse_tool_calls_from_text(content: str, available_tools: list[dict] | None)
 
     parsed_calls = []
     seen = set()  # Avoid duplicates
-    
+
     # Pattern 1: {"name": "tool_name", "parameters": {...}} - greedy match for nested braces
     for tool_name in tool_names:
-        pattern = rf'\{{\s*"name"\s*:\s*"{tool_name}"\s*,\s*"parameters"\s*:\s*(\{{[^{{}}]*\}})\s*\}}'
+        pattern = (
+            rf'\{{\s*"name"\s*:\s*"{tool_name}"\s*,\s*"parameters"\s*:\s*(\{{[^{{}}]*\}})\s*\}}'
+        )
         for match in re.finditer(pattern, content):
             params_str = match.group(1)
             try:
@@ -72,13 +74,13 @@ class LLMClient(ABC):
     ) -> dict:
         """
         Complete a prompt.
-        
+
         Args:
             system: System prompt
             user: User message
             tools: Optional list of tool definitions
             response_format: Optional Pydantic model for structured output
-        
+
         Returns:
             dict with 'content' and optionally 'tool_calls'
         """
@@ -171,11 +173,15 @@ class AnthropicClient(LLMClient):
             anthropic_tools = []
             for tool in tools:
                 func = tool.get("function", tool)
-                anthropic_tools.append({
-                    "name": func["name"],
-                    "description": func.get("description", ""),
-                    "input_schema": func.get("parameters", {"type": "object", "properties": {}}),
-                })
+                anthropic_tools.append(
+                    {
+                        "name": func["name"],
+                        "description": func.get("description", ""),
+                        "input_schema": func.get(
+                            "parameters", {"type": "object", "properties": {}}
+                        ),
+                    }
+                )
             kwargs["tools"] = anthropic_tools
 
         if response_format:
@@ -192,10 +198,12 @@ class AnthropicClient(LLMClient):
             elif block.type == "tool_use":
                 if "tool_calls" not in result:
                     result["tool_calls"] = []
-                result["tool_calls"].append({
-                    "name": block.name,
-                    "arguments": block.input,
-                })
+                result["tool_calls"].append(
+                    {
+                        "name": block.name,
+                        "arguments": block.input,
+                    }
+                )
 
         return result
 
@@ -215,12 +223,14 @@ class MockClient(LLMClient):
         tools: list[dict] | None = None,
         response_format: type[BaseModel] | None = None,
     ) -> dict:
-        self.calls.append({
-            "system": system,
-            "user": user,
-            "tools": tools,
-            "response_format": response_format,
-        })
+        self.calls.append(
+            {
+                "system": system,
+                "user": user,
+                "tools": tools,
+                "response_format": response_format,
+            }
+        )
 
         if self.call_count < len(self.responses):
             response = self.responses[self.call_count]
@@ -240,6 +250,11 @@ def get_client(provider: str = "openai", model: str | None = None) -> LLMClient:
         return OpenAIClient(
             model=model or "llama3.1:8b",
             base_url="http://localhost:11434/v1",
+        )
+    elif provider == "lmstudio":
+        return OpenAIClient(
+            model=model or "default",
+            base_url="http://localhost:1234/v1",
         )
     elif provider == "mock":
         return MockClient()

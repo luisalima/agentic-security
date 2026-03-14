@@ -18,7 +18,9 @@ class OutputValidator:
     """Rule-based validator for tool calls and execution plans."""
 
     def __init__(self, known_contacts: set[str] | None = None):
-        self.known_contacts = known_contacts if known_contacts is not None else DEFAULT_KNOWN_CONTACTS
+        self.known_contacts = (
+            known_contacts if known_contacts is not None else DEFAULT_KNOWN_CONTACTS
+        )
 
     def validate_tool_call(
         self,

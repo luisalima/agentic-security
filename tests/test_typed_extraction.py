@@ -4,9 +4,9 @@ import pytest
 from pydantic import ValidationError
 
 from agentic_security.defenses.typed_extraction import (
+    EXTRACTOR_SYSTEM_PROMPT,
     Category,
     EmailExtraction,
-    EXTRACTOR_SYSTEM_PROMPT,
     Urgency,
     extract_typed_data,
 )

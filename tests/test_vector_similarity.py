@@ -2,7 +2,11 @@
 
 import pytest
 
-from agentic_security.defenses.vector_similarity import SimpleVectorDB, cosine_similarity, simple_tokenize
+from agentic_security.defenses.vector_similarity import (
+    SimpleVectorDB,
+    cosine_similarity,
+    simple_tokenize,
+)
 from agentic_security.scenario import INJECTION_VARIANTS
 
 
@@ -17,17 +21,20 @@ class TestSimpleTokenize:
 class TestCosineSimilarity:
     def test_identical_vectors(self):
         from collections import Counter
+
         v = Counter(["a", "b", "c"])
         assert cosine_similarity(v, v) == pytest.approx(1.0)
 
     def test_orthogonal_vectors(self):
         from collections import Counter
+
         v1 = Counter(["a"])
         v2 = Counter(["b"])
         assert cosine_similarity(v1, v2) == pytest.approx(0.0)
 
     def test_empty_vector(self):
         from collections import Counter
+
         assert cosine_similarity(Counter(), Counter(["a"])) == 0.0
 
 
@@ -57,12 +64,15 @@ class TestSimpleVectorDB:
     # Safe inputs should NOT be flagged
     # ------------------------------------------------------------------
 
-    @pytest.mark.parametrize("safe_input", [
-        "What is the weather in Paris?",
-        "Please summarize this document for me.",
-        "Can you help me write a poem about nature?",
-        "The project is on track for delivery next week.",
-    ])
+    @pytest.mark.parametrize(
+        "safe_input",
+        [
+            "What is the weather in Paris?",
+            "Please summarize this document for me.",
+            "Can you help me write a poem about nature?",
+            "The project is on track for delivery next week.",
+        ],
+    )
     def test_safe_inputs_not_flagged(self, db, safe_input):
         is_attack, _ = db.is_attack(safe_input)
         assert not is_attack, f"False positive on: {safe_input!r}"

@@ -92,11 +92,13 @@ class SimpleYaraScanner:
             for pattern in rule_data["patterns"]:
                 match = re.search(pattern, text_lower, re.IGNORECASE)
                 if match:
-                    matches.append(YaraMatch(
-                        rule_name=rule_name,
-                        category=rule_data["category"],
-                        matched_string=match.group(0),
-                    ))
+                    matches.append(
+                        YaraMatch(
+                            rule_name=rule_name,
+                            category=rule_data["category"],
+                            matched_string=match.group(0),
+                        )
+                    )
                     break  # One match per rule is enough
 
         return matches

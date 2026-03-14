@@ -1,7 +1,5 @@
 """Tests for random delimiter defense (Spotlighting)."""
 
-import pytest
-
 from agentic_security.defenses.delimiters import (
     DELIMITER_SYSTEM_PROMPT_TEMPLATE,
     build_delimiter_prompt,
@@ -77,8 +75,6 @@ class TestDelimiterSystemPromptTemplate:
         assert "{end_tag}" in DELIMITER_SYSTEM_PROMPT_TEMPLATE
 
     def test_renders_without_error(self):
-        rendered = DELIMITER_SYSTEM_PROMPT_TEMPLATE.format(
-            start_tag="<START>", end_tag="<END>"
-        )
+        rendered = DELIMITER_SYSTEM_PROMPT_TEMPLATE.format(start_tag="<START>", end_tag="<END>")
         assert "<START>" in rendered
         assert "<END>" in rendered

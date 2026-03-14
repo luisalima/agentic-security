@@ -2,7 +2,10 @@
 
 import pytest
 
-from agentic_security.defenses.ml_classifier import ClassificationResult, SimulatedInjectionClassifier
+from agentic_security.defenses.ml_classifier import (
+    ClassificationResult,
+    SimulatedInjectionClassifier,
+)
 from agentic_security.scenario import INJECTION_VARIANTS
 
 
@@ -54,13 +57,16 @@ class TestSimulatedInjectionClassifier:
     # Safe inputs should NOT be flagged
     # ------------------------------------------------------------------
 
-    @pytest.mark.parametrize("safe_input", [
-        "What is the capital of France?",
-        "Help me write a poem about nature",
-        "Explain quantum computing simply",
-        "What is the weather in Paris?",
-        "Can you summarize this article for me?",
-    ])
+    @pytest.mark.parametrize(
+        "safe_input",
+        [
+            "What is the capital of France?",
+            "Help me write a poem about nature",
+            "Explain quantum computing simply",
+            "What is the weather in Paris?",
+            "Can you summarize this article for me?",
+        ],
+    )
     def test_safe_inputs_not_flagged(self, clf, safe_input):
         result = clf.classify(safe_input)
         assert not result.is_injection, f"False positive on: {safe_input!r}"

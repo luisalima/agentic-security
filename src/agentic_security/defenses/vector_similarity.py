@@ -21,8 +21,8 @@ def cosine_similarity(vec1: Counter, vec2: Counter) -> float:
     """Compute cosine similarity between two word count vectors."""
     all_words = set(vec1.keys()) | set(vec2.keys())
     dot_product = sum(vec1[w] * vec2[w] for w in all_words)
-    mag1 = math.sqrt(sum(v ** 2 for v in vec1.values()))
-    mag2 = math.sqrt(sum(v ** 2 for v in vec2.values()))
+    mag1 = math.sqrt(sum(v**2 for v in vec1.values()))
+    mag2 = math.sqrt(sum(v**2 for v in vec2.values()))
 
     if mag1 == 0 or mag2 == 0:
         return 0.0
