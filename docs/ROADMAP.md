@@ -80,9 +80,9 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 ## Phase 4: Polish
 
 ### 4.1 Fix repo hygiene
-- [ ] Update `pyproject.toml` author placeholder (`"Your Name"`)
-- [ ] Export diagrams to SVG (README references `mental_model.svg` but no SVGs exist)
-- [ ] Fix stale notebook paths in `docs/TOOLS.md` (references `patterns/01_delimiter.py` etc.)
+- [x] Update `pyproject.toml` author placeholder (`"Your Name"`)
+- [ ] Export diagrams to SVG (README updated to reference .excalidraw)
+- [x] Fix stale notebook paths in `docs/TOOLS.md` (references `patterns/01_delimiter.py` etc.)
 
 ### 4.2 Stretch goals
 - Translations

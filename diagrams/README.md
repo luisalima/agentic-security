@@ -37,5 +37,5 @@ Visual diagrams for the Agentic Security guide, created with [Excalidraw](https:
 Place exported SVGs in this folder with `.svg` extension. Reference them in markdown:
 
 ```markdown
-![Mental Model](diagrams/mental_model.svg)
+<!-- Diagram: see mental_model.excalidraw -->
 ```

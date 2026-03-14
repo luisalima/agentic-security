@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-    { name = "Your Name", email = "your@email.com" }
+    { name = "Luisa Lima" }
 ]
 keywords = ["llm", "security", "prompt-injection", "ai-safety", "agents"]
 classifiers = [
@@ -47,5 +47,16 @@ target-version = "py310"
 [tool.ruff.lint]
 select = ["E", "F", "I", "W"]
 
+[tool.ruff.lint.per-file-ignores]
+# Prompt templates and injection test strings are intentionally long
+"src/agentic_security/defenses/dry_run.py" = ["E501", "W291"]
+"src/agentic_security/defenses/dual_llm.py" = ["E501"]
+"src/agentic_security/defenses/typed_extraction.py" = ["E501"]
+"src/agentic_security/scenario.py" = ["E501", "W291"]
+"src/agentic_security/llm.py" = ["E501"]
+"benchmark/run.py" = ["E501"]
+# Notebooks contain markdown prose, code examples, and diagram strings
+"notebooks/**/*.py" = ["E501", "W291", "W293", "F841", "F821", "F401", "F541", "I001"]
+
 [tool.pytest.ini_options]
-asyncio_mode = "auto"
+testpaths = ["tests"]
