@@ -43,11 +43,12 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 - Guide: `guide/3_secure_architecture/5_camel.md`
 - Tests: `tests/test_camel.py` (25 tests)
 
-### 2.3 Multi-agent attack scenarios
-- RAG poisoning (malicious documents in retrieval)
-- Multi-agent delegation attacks (agent A tricks agent B)
-- Plugin/skill supply-chain attacks (mentioned in THREAT_MODEL, no notebook)
-- Currently only single-agent email scenario
+### 2.3 Multi-agent attack scenarios ✅
+- RAG poisoning, delegation attacks, plugin supply-chain
+- Module: `src/agentic_security/attacks/multi_agent.py`
+- Notebook: `notebooks/0_vulnerabilities/multi_agent_attacks.py`
+- Guide: `guide/0_vulnerabilities/multi_agent_attacks.md`
+- Tests: `tests/test_multi_agent.py` (30 tests)
 
 ### 2.4 MCP / tool-use protocol security
 - Tool poisoning attacks (malicious tool descriptions)

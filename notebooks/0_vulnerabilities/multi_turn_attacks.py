@@ -365,8 +365,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/0_vulnerabilities/baseline.py` — Single-turn injection
-    **Next:** `notebooks/1_detection/overview.py` — Detection techniques
+    **Previous:** `baseline.py` — Single-turn injection
+    **Next:** `multi_agent_attacks.py` — RAG poisoning, delegation, plugin supply-chain
     """)
     return
 

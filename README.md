@@ -94,6 +94,9 @@ agentic-security/
 
 ### Understand the Problem
 → [notebooks/0_vulnerabilities/](notebooks/0_vulnerabilities/) — See how easily an agent can be hijacked
+- `baseline.py` — Single-turn indirect prompt injection
+- `multi_turn_attacks.py` — Crescendo, context stuffing, many-shot
+- `multi_agent_attacks.py` — RAG poisoning, delegation attacks, plugin supply-chain
 
 ### Level 1: Detection
 → [notebooks/1_detection/](notebooks/1_detection/)
