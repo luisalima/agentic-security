@@ -65,8 +65,9 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 ## Phase 3: Ecosystem & Reach
 
 ### 3.1 More framework integrations
-- LlamaIndex, CrewAI, AutoGen, Semantic Kernel
-- Currently only LangChain
+- [x] Pydantic AI — structured output, tool approval, TestModel
+- [ ] LlamaIndex (future)
+- CrewAI, AutoGen have less traction; deprioritized
 
 ### 3.2 Real-world case studies / CTF exercises
 - "Here's how Company X was compromised" walkthroughs

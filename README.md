@@ -129,6 +129,7 @@ agentic-security/
 ### Framework Integration
 → [notebooks/5_integration/](notebooks/5_integration/)
 - `langchain_integration.py` — Securing LangChain agents
+- `pydantic_ai_integration.py` — Securing Pydantic AI agents
 
 ---
 

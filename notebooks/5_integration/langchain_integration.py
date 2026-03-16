@@ -361,7 +361,7 @@ def _(mo):
 
     ---
 
-    **Next:** More framework integrations coming (LlamaIndex, CrewAI)
+    **Next:** [pydantic_ai_integration.py](./pydantic_ai_integration.py) — Securing Pydantic AI agents
     """)
     return
 
