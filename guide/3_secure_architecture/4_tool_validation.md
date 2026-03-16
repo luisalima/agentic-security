@@ -224,4 +224,4 @@ if blocked:
 ---
 
 **Previous:** [3_dry_run](./3_dry_run.md) — Plan → Evaluate → Execute
-**Next:** [../4_defense_in_depth/](../4_defense_in_depth/) — Layering everything
+**Next:** [5_camel](./5_camel.md) — CaMeL capability-based security

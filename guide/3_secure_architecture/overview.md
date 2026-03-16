@@ -31,11 +31,12 @@ import marimo as mo
 | **Dual LLM** | Quarantined LLM (no tools) + Privileged LLM (tools, no raw data) | Medium | High |
 | **Typed Extraction** | Schema constraints as firewall—payload can't fit | Medium | High |
 | **Dry-Run Evaluation** | Plan → Evaluate → Execute with approval | Medium-High | High |
+| **CaMeL** | Capability-based data tagging prevents exfiltration | Medium-High | Very High |
 
 These patterns come from academic research:
 - **Dual LLM** — [Simon Willison](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/), 2023
 - **Typed Extraction** — [StruQ](https://arxiv.org/abs/2402.06363), 2024
-- **Capability-Based** — [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813), 2025
+- **CaMeL (Capability-Based)** — [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813), 2025
 <!---->
 ## Why Architecture Matters
 
@@ -83,6 +84,7 @@ Architecture:        Untrusted data → Quarantined LLM → Structured data
 2. **[2_typed_extraction](./2_typed_extraction.md)** — Schema constraints as firewall
 3. **[3_dry_run](./3_dry_run.md)** — Plan → Evaluate → Execute
 4. **[4_tool_validation](./4_tool_validation.md)** — MCP/tool manifest validation
+5. **[5_camel](./5_camel.md)** — CaMeL capability-based security
 
 ---
 

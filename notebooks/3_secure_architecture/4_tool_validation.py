@@ -437,8 +437,8 @@ def _(mo):
 
     ---
 
-    **Previous:** [typed_extraction.py](./typed_extraction.py) — Schema constraints as firewall
-    **Next:** [dry_run.py](./dry_run.py) — Plan → Evaluate → Execute
+    **Previous:** [3_dry_run.py](./3_dry_run.py) — Plan → Evaluate → Execute
+    **Next:** [5_camel.py](./5_camel.py) — CaMeL capability-based security
     """)
     return
 

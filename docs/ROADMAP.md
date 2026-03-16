@@ -37,10 +37,11 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 - XML tagging patterns (structured prompts)
 - Currently the thinnest section (only delimiters)
 
-### 2.2 CaMeL / capability-based security notebook
-- Referenced in docs but no implementation
-- Implement the capability-based pattern from the DeepMind paper
-- High interest topic, differentiates from other resources
+### 2.2 CaMeL / capability-based security notebook ✅
+- Implemented in `src/agentic_security/defenses/camel.py`
+- Notebook: `notebooks/3_secure_architecture/5_camel.py`
+- Guide: `guide/3_secure_architecture/5_camel.md`
+- Tests: `tests/test_camel.py` (25 tests)
 
 ### 2.3 Multi-agent attack scenarios
 - RAG poisoning (malicious documents in retrieval)

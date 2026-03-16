@@ -117,6 +117,7 @@ agentic-security/
 - `2_typed_extraction.py` — Schema as firewall
 - `3_dry_run.py` — Plan → Evaluate → Execute
 - `4_tool_validation.py` — MCP/tool manifest validation
+- `5_camel.py` — CaMeL capability-based security
 
 ### Level 4: Defense in Depth
 → [notebooks/4_defense_in_depth/](notebooks/4_defense_in_depth/)

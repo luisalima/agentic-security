@@ -5,6 +5,14 @@ Each module implements a defense technique that can be used independently
 or composed together for defense-in-depth.
 """
 
+from agentic_security.defenses.camel import (
+    CaMeLPipeline,
+    CapabilityPolicy,
+    DataValue,
+    PlannedToolCall,
+    PolicyEngine,
+    PolicyResult,
+)
 from agentic_security.defenses.canary_tokens import CanaryTokens
 from agentic_security.defenses.delimiters import generate_delimiter, wrap_untrusted
 from agentic_security.defenses.dry_run import (
@@ -31,8 +39,11 @@ from agentic_security.defenses.vector_similarity import SimpleVectorDB
 from agentic_security.defenses.yara_detection import SimpleYaraScanner, YaraMatch
 
 __all__ = [
+    "CaMeLPipeline",
     "CanaryTokens",
+    "CapabilityPolicy",
     "ClassificationResult",
+    "DataValue",
     "DryRunEvaluator",
     "DualLLMProcessor",
     "EmailExtraction",
@@ -40,6 +51,9 @@ __all__ = [
     "ExecutionPlan",
     "OutputValidator",
     "PlannedAction",
+    "PlannedToolCall",
+    "PolicyEngine",
+    "PolicyResult",
     "SimpleVectorDB",
     "SimpleYaraScanner",
     "SimulatedInjectionClassifier",
