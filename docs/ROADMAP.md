@@ -69,10 +69,11 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 - [ ] LlamaIndex (future)
 - CrewAI, AutoGen have less traction; deprioritized
 
-### 3.2 Real-world case studies / CTF exercises
-- "Here's how Company X was compromised" walkthroughs
-- CTF-style challenges: "Can you bypass this defense?"
-- Makes the repo engaging, not just reference material
+### 3.2 Real-world case studies / CTF exercises ✅
+- Clinejection, Bing/Sydney, EchoLeak case studies
+- CTF resource links (Gandalf, PromptMe, Garak, HackAPrompt)
+- Notebook: `notebooks/0_vulnerabilities/case_studies.py`
+- Guide: `guide/0_vulnerabilities/case_studies.md`
 
 ### 3.3 CONTRIBUTING.md
 - How to add new attacks, defenses, notebooks

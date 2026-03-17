@@ -212,4 +212,4 @@ All three attacks exploit the same fundamental flaw:
 ---
 
 **Previous:** [baseline](./baseline.md) — Single-turn injection
-**Next:** [../1_detection/](../1_detection/) — Detection techniques
+**Next:** [case_studies](./case_studies.md) — Real-world prompt injection incidents

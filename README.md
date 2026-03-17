@@ -97,6 +97,7 @@ agentic-security/
 - `baseline.py` — Single-turn indirect prompt injection
 - `multi_turn_attacks.py` — Crescendo, context stuffing, many-shot
 - `multi_agent_attacks.py` — RAG poisoning, delegation attacks, plugin supply-chain
+- `case_studies.py` — Real-world incidents: Clinejection, Bing/Sydney, EchoLeak
 
 ### Level 1: Detection
 → [notebooks/1_detection/](notebooks/1_detection/)

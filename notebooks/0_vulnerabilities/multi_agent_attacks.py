@@ -405,7 +405,7 @@ def _(mo):
     ---
 
     **Previous:** `multi_turn_attacks.py` — Multi-turn manipulation
-    **Next:** `../1_detection/overview.py` — Detection techniques
+    **Next:** `case_studies.py` — Real-world prompt injection incidents
     """)
     return
 
