@@ -1,0 +1,10 @@
+flowchart LR
+    Raw[Raw Email<br/>with injection] --> LLM[LLM Extractor]
+    LLM --> Schema["Pydantic Schema<br/>max_length=50<br/>enum values<br/>bool fields"]
+    Schema --> Validated[Validated Data]
+    
+    Inject["Injection payload<br/>200+ characters"] -.->|"Can't fit in<br/>constrained fields"| Schema
+    
+    style Raw fill:#e03131,color:#fff
+    style Validated fill:#2f9e44,color:#fff
+    style Schema fill:#1971c2,color:#fff

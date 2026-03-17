@@ -1,0 +1,13 @@
+flowchart TD
+    Content[Untrusted Content] --> Q[Quarantined LLM<br/>NO tools]
+    Q --> Summary[Sanitized Summary]
+    Summary --> Controller[Controller<br/>Deterministic Validation]
+    Controller -->|passed| P[Privileged LLM<br/>Has tools]
+    Controller -->|flagged| Block[Blocked]
+    P --> Action[Tool Execution]
+    
+    style Q fill:#f08c00,color:#fff
+    style Controller fill:#868e96,color:#fff
+    style P fill:#1971c2,color:#fff
+    style Block fill:#e03131,color:#fff
+    style Action fill:#2f9e44,color:#fff

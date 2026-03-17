@@ -1,0 +1,10 @@
+flowchart LR
+    SysPrompt[System Prompt] --> Inject[Inject Canary Token]
+    Inject --> LLM[LLM Processing]
+    LLM --> Output[Output]
+    Output --> Check{Canary in Output?}
+    Check -->|Yes| Leak[Prompt Leakage Detected]
+    Check -->|No| Safe[No Leakage]
+    
+    style Leak fill:#e03131,color:#fff
+    style Safe fill:#2f9e44,color:#fff

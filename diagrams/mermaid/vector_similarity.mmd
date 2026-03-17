@@ -1,0 +1,10 @@
+flowchart LR
+    Input[Input Text] --> Embed[Vectorize]
+    DB[(Known Attacks DB)] --> Compare[Cosine Similarity]
+    Embed --> Compare
+    Compare --> Thresh{Above Threshold?}
+    Thresh -->|Yes| Flag[Potential Injection]
+    Thresh -->|No| Pass[Pass Through]
+    
+    style Flag fill:#e03131,color:#fff
+    style Pass fill:#2f9e44,color:#fff

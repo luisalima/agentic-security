@@ -1,0 +1,11 @@
+{
+  "name": "agentic-security-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "diagrams": "node export_diagrams.mjs"
+  },
+  "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.4.2"
+  }
+}

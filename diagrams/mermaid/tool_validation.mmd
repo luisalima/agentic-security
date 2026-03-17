@@ -1,0 +1,10 @@
+flowchart LR
+    Manifest[Tool Manifest] --> Scan[Description Scanner]
+    Scan --> Perms[Permission Check]
+    Perms --> Allow[Allowlist Check]
+    Allow --> Result{Valid?}
+    Result -->|Yes| Register[Register Tool]
+    Result -->|No| Reject[Reject Tool]
+    
+    style Register fill:#2f9e44,color:#fff
+    style Reject fill:#e03131,color:#fff

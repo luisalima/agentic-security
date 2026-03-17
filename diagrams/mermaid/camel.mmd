@@ -1,0 +1,13 @@
+flowchart TD
+    Query[Trusted User Query] --> Plan[Plan Generation<br/>LLM plans from query ONLY]
+    Plan --> Tag[Data Tagging<br/>public vs tool output]
+    Tag --> Policy[Policy Engine<br/>Check capabilities]
+    Policy -->|allowed| Execute[Execute Tool Call]
+    Policy -->|denied| Block[Blocked: Policy Violation]
+    
+    ToolData["Tool Output<br/>tagged: tool:read_email"] -.-> Tag
+    
+    style Query fill:#2f9e44,color:#fff
+    style Block fill:#e03131,color:#fff
+    style Execute fill:#2f9e44,color:#fff
+    style Policy fill:#1971c2,color:#fff

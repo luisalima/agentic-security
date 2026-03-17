@@ -1,0 +1,12 @@
+flowchart TD
+    A[Secure Architecture Patterns] --> B[Dual LLM]
+    A --> C[Typed Extraction]
+    A --> D[Dry-Run Evaluation]
+    A --> E[Tool Validation]
+    A --> F[CaMeL]
+    
+    B --> B1[Quarantine + Privilege separation]
+    C --> C1[Schema constraints as firewall]
+    D --> D1[Plan → Evaluate → Execute]
+    E --> E1[Scan tool descriptions]
+    F --> F1[Capability-based data tagging]

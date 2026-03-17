@@ -1,0 +1,9 @@
+flowchart LR
+    Request[User Request + Context] --> Plan[Step 1: Generate Plan]
+    Plan --> Eval[Step 2: Evaluate Plan]
+    Eval --> Valid{Approved?}
+    Valid -->|Yes| Exec[Step 3: Execute]
+    Valid -->|No| Block[Blocked]
+    
+    style Exec fill:#2f9e44,color:#fff
+    style Block fill:#e03131,color:#fff

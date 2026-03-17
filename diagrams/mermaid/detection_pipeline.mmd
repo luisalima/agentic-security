@@ -1,0 +1,14 @@
+flowchart LR
+    Input[Input Text] --> YARA[YARA Rules]
+    YARA --> Vec[Vector Similarity]
+    Vec --> ML[ML Classifier]
+    ML --> LLM[LLM-as-Judge]
+    LLM --> Canary[Canary Tokens]
+    
+    YARA -->|match| Block[Blocked]
+    Vec -->|similar| Block
+    ML -->|injection| Block
+    LLM -->|suspicious| Block
+    Canary -->|leaked| Block
+    
+    style Block fill:#e03131,color:#fff

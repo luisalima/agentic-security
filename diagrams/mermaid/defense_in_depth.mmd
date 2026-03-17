@@ -1,0 +1,17 @@
+flowchart LR
+    Input[Input] --> L1[Layer 1<br/>Detection]
+    L1 --> L2[Layer 2<br/>Prompt Eng]
+    L2 --> L3[Layer 3<br/>Architecture]
+    L3 --> L4[Layer 4<br/>Output Validation]
+    L4 --> Safe[Safe Output]
+    
+    L1 -->|blocked| X1[Blocked]
+    L2 -->|blocked| X2[Blocked]
+    L3 -->|blocked| X3[Blocked]
+    L4 -->|blocked| X4[Blocked]
+    
+    style Safe fill:#2f9e44,color:#fff
+    style X1 fill:#e03131,color:#fff
+    style X2 fill:#e03131,color:#fff
+    style X3 fill:#e03131,color:#fff
+    style X4 fill:#e03131,color:#fff

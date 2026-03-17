@@ -1,0 +1,8 @@
+flowchart LR
+    Input[Input Text] --> Judge[LLM Judge]
+    Judge --> Verdict{Injection?}
+    Verdict -->|Yes| Block[Block + Log]
+    Verdict -->|No| Allow[Allow]
+    
+    style Block fill:#e03131,color:#fff
+    style Allow fill:#2f9e44,color:#fff

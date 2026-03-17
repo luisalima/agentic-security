@@ -1,0 +1,9 @@
+flowchart LR
+    Input[Input Text] --> Features[Extract Features]
+    Features --> Model[Classifier Model]
+    Model --> Score{Score > Threshold?}
+    Score -->|Yes| Inject[Injection Detected]
+    Score -->|No| Safe[Safe Input]
+    
+    style Inject fill:#e03131,color:#fff
+    style Safe fill:#2f9e44,color:#fff

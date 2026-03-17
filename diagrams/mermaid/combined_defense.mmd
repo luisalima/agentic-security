@@ -1,0 +1,11 @@
+flowchart TD
+    Input[Untrusted Input] --> Detect[Detection Layer<br/>YARA + Vector + ML]
+    Detect -->|blocked| B1[Blocked]
+    Detect -->|passed| Extract[Typed Extraction<br/>Schema constraints]
+    Extract --> Validate[Output Validation<br/>Check tool calls]
+    Validate -->|blocked| B2[Blocked]
+    Validate -->|passed| Execute[Safe Execution]
+    
+    style B1 fill:#e03131,color:#fff
+    style B2 fill:#e03131,color:#fff
+    style Execute fill:#2f9e44,color:#fff

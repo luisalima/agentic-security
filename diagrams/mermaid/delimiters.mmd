@@ -1,0 +1,7 @@
+flowchart LR
+    Raw[Raw Untrusted Content] --> Wrap["Wrap with Random Token<br/>«abc123»...«/abc123»"]
+    Wrap --> Prompt[Include in Prompt]
+    Prompt --> LLM[LLM]
+    LLM --> Response[Response]
+    
+    Note["Attacker can't predict<br/>the random delimiter"]

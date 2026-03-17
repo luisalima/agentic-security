@@ -1,0 +1,9 @@
+flowchart TD
+    S["System Prompt<br/>(Highest Priority)"] --> U["User Request<br/>(Medium Priority)"]
+    U --> D["Data / Content<br/>(Lowest Priority)"]
+    
+    D -.->|"Injection tries<br/>to override"| S
+    
+    style S fill:#2f9e44,color:#fff
+    style U fill:#1971c2,color:#fff
+    style D fill:#e03131,color:#fff
