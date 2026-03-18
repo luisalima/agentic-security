@@ -9,14 +9,14 @@ def _(mo):
     mo.md("""
     # Level 2: Prompt Engineering
 
-    Prompt engineering defenses harden **individual LLM calls** through careful 
+    Prompt engineering defenses harden **individual LLM calls** through careful
     prompt design. No architectural changes required—just smarter prompts.
 
     ## The Idea
 
-    Instead of hoping the LLM will "just know" to ignore malicious content, 
+    Instead of hoping the LLM will "just know" to ignore malicious content,
     we explicitly structure prompts to:
-    
+
     1. **Mark boundaries** — Clearly separate trusted from untrusted content
     2. **Set expectations** — Tell the LLM what to trust and what to ignore
     3. **Reduce ambiguity** — Make the data/instruction distinction explicit
@@ -29,6 +29,7 @@ def _(mo):
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -45,7 +46,7 @@ def _(mo):
     | **Sandwich Defense** | Repeat instructions after untrusted content | Medium |
     | **XML Tagging** | Structured prompts with semantic boundaries | Medium |
 
-    **Key insight:** All prompt engineering techniques are **probabilistic**. 
+    **Key insight:** All prompt engineering techniques are **probabilistic**.
     They reduce attack success rates but cannot eliminate them.
     Combine multiple techniques for best results.
     """)
@@ -64,11 +65,11 @@ def _(mo):
 
     However, Simon Willison's response:
 
-    > "Delimiters won't save you. Attackers can say 'ignore the delimiters' 
+    > "Delimiters won't save you. Attackers can say 'ignore the delimiters'
     > without ever using the delimiter characters."
     > — [simonwillison.net](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)
 
-    **Both are right.** Delimiters help significantly against naive attacks 
+    **Both are right.** Delimiters help significantly against naive attacks
     but sophisticated attackers can still bypass them.
     """)
     return
@@ -79,17 +80,17 @@ def _(mo):
     mo.md("""
     ## When Prompt Engineering Works
 
-    ✅ Blocking naive/automated injection attempts  
-    ✅ Reducing attack surface for unsophisticated attackers  
-    ✅ Adding friction without architectural changes  
-    ✅ Quick wins for existing systems  
+    ✅ Blocking naive/automated injection attempts
+    ✅ Reducing attack surface for unsophisticated attackers
+    ✅ Adding friction without architectural changes
+    ✅ Quick wins for existing systems
 
     ## When It Fails
 
-    ❌ Sophisticated social engineering  
-    ❌ "Ignore the security instructions" attacks  
-    ❌ Multi-turn manipulation  
-    ❌ Attacks that exploit application-specific context  
+    ❌ Sophisticated social engineering
+    ❌ "Ignore the security instructions" attacks
+    ❌ Multi-turn manipulation
+    ❌ Attacks that exploit application-specific context
     """)
     return
 
