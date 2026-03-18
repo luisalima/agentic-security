@@ -6,7 +6,7 @@ width: medium
 
 # Multi-Agent Attack Scenarios
 
-Prompt injection isn't limited to single-agent email assistants.
+Prompt injection isn't limited to single-agent assistants.
 Any system boundary where **untrusted text crosses into a trusted context**
 is an injection surface. This guide demonstrates three:
 
@@ -18,8 +18,8 @@ is an injection surface. This guide demonstrates three:
 
 All demos are **fully simulated** — no LLM required.
 
-> "The attack surface of an agentic system is every boundary where
-> untrusted data enters a trusted context."
+> The attack surface of an agentic system is every boundary where
+> untrusted data enters a trusted context.
 
 ```python {.marimo}
 import marimo as mo
@@ -205,11 +205,14 @@ All three attacks exploit the same fundamental flaw:
 ## References
 
 - **Greshake et al. (2023)** — [Not what you've signed up for](https://arxiv.org/abs/2302.12173)
-- **Invariant Labs (2025)** — [MCP Security Notification](https://invariantlabs.ai/blog/mcp-security)
+- **Zou et al. (2024)** — [PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation](https://arxiv.org/abs/2402.07867)
+- **Zhan et al. (2024)** — [InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated LLM Agents](https://arxiv.org/abs/2403.02691)
+- **Invariant Labs (2025)** — [MCP Security Notification: Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
 - **Google DeepMind (2025)** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
 - **OWASP (2025)** — [Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **Chaudhari et al. (2025)** — [Phantom: Backdoor Attacks Against RAG](https://arxiv.org/abs/2502.14175)
 
 ---
 
-**Previous:** [baseline](./baseline.md) — Single-turn injection
-**Next:** [case_studies](./case_studies.md) — Real-world prompt injection incidents
+**Previous:** [baseline](./1_baseline.md) — Single-turn injection
+**Next:** [case_studies](./4_case_studies.md) — Real-world prompt injection incidents

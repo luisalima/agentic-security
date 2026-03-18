@@ -314,7 +314,7 @@ def _(mo):
 
     ---
 
-    **Next:** `notebooks/0_vulnerabilities/multi_turn_attacks.py` — Multi-turn manipulation
+    **Next:** `2_multi_turn_attacks.py` — Multi-turn manipulation
     """)
     return
 

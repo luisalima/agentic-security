@@ -132,8 +132,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/0_vulnerabilities/multi_turn_attacks.py` — Multi-turn attacks
-    **Next:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts
+    **Previous:** `../0_vulnerabilities/4_case_studies.py` — Real-world case studies
+    **Next:** `../2_prompt_engineering/overview.py` — Hardening prompts
     """)
     return
 

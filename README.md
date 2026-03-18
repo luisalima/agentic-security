@@ -56,7 +56,7 @@ ollama pull llama3.1:8b
 
 ```bash
 # See the vulnerability (baseline)
-marimo edit notebooks/0_vulnerabilities/baseline.py
+marimo edit notebooks/0_vulnerabilities/1_baseline.py
 
 # Try a defense pattern
 marimo edit notebooks/3_secure_architecture/1_dual_llm.py
@@ -94,10 +94,10 @@ agentic-security/
 
 ### Understand the Problem
 → [notebooks/0_vulnerabilities/](notebooks/0_vulnerabilities/) — See how easily an agent can be hijacked
-- `baseline.py` — Single-turn indirect prompt injection
-- `multi_turn_attacks.py` — Crescendo, context stuffing, many-shot
-- `multi_agent_attacks.py` — RAG poisoning, delegation attacks, plugin supply-chain
-- `case_studies.py` — Real-world incidents: Clinejection, Bing/Sydney, EchoLeak
+- `1_baseline.py` — Single-turn indirect prompt injection
+- `2_multi_turn_attacks.py` — Crescendo, context stuffing, many-shot
+- `3_multi_agent_attacks.py` — RAG poisoning, delegation attacks, plugin supply-chain
+- `4_case_studies.py` — Real-world incidents: Clinejection, Bing/Sydney, EchoLeak
 
 ### Level 1: Detection
 → [notebooks/1_detection/](notebooks/1_detection/)

@@ -141,7 +141,7 @@ and the attack fails.
 
 ## Practice: Prompt Injection CTFs
 
-Instead of building our own CTFs, here are excellent existing resources:
+Want to practice prompt injection? Here are excellent resources:
 
 | Resource | Description | Link |
 |----------|-------------|------|
@@ -166,5 +166,5 @@ Instead of building our own CTFs, here are excellent existing resources:
 
 ---
 
-**Previous:** [multi_agent_attacks](./multi_agent_attacks.md) — Multi-agent attack scenarios
+**Previous:** [multi_agent_attacks](./3_multi_agent_attacks.md) — Multi-agent attack scenarios
 **Next:** [../1_detection/](../1_detection/) — Detection techniques

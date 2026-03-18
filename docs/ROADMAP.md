@@ -46,8 +46,8 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 ### 2.3 Multi-agent attack scenarios ✅
 - RAG poisoning, delegation attacks, plugin supply-chain
 - Module: `src/agentic_security/attacks/multi_agent.py`
-- Notebook: `notebooks/0_vulnerabilities/multi_agent_attacks.py`
-- Guide: `guide/0_vulnerabilities/multi_agent_attacks.md`
+- Notebook: `notebooks/0_vulnerabilities/3_multi_agent_attacks.py`
+- Guide: `guide/0_vulnerabilities/3_multi_agent_attacks.md`
 - Tests: `tests/test_multi_agent.py` (30 tests)
 
 ### 2.4 MCP / tool-use protocol security
@@ -72,8 +72,8 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 ### 3.2 Real-world case studies / CTF exercises ✅
 - Clinejection, Bing/Sydney, EchoLeak case studies
 - CTF resource links (Gandalf, PromptMe, Garak, HackAPrompt)
-- Notebook: `notebooks/0_vulnerabilities/case_studies.py`
-- Guide: `guide/0_vulnerabilities/case_studies.md`
+- Notebook: `notebooks/0_vulnerabilities/4_case_studies.py`
+- Guide: `guide/0_vulnerabilities/4_case_studies.md`
 
 ### 3.3 CONTRIBUTING.md
 - How to add new attacks, defenses, notebooks

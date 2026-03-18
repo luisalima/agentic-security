@@ -180,7 +180,7 @@ def _(mo):
 
     ## Practice: Prompt Injection CTFs
 
-    Instead of building our own CTFs, here are excellent existing resources:
+    Want to practice prompt injection? Here are excellent resources:
 
     | Resource | Description | Link |
     |----------|-------------|------|
@@ -211,7 +211,7 @@ def _(mo):
 
     ---
 
-    **Previous:** `multi_agent_attacks.py` — Multi-agent attack scenarios
+    **Previous:** `3_multi_agent_attacks.py` — Multi-agent attack scenarios
     **Next:** `../1_detection/overview.py` — Detection techniques
     """)
     return

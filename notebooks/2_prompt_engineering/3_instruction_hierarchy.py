@@ -173,7 +173,7 @@ def _(MALICIOUS_EMAIL, mo):
 With the hierarchy defense, these are Priority 3 data — they **cannot** override the
 Priority 1 rule that blocks sending to unknown contacts.
 
-Compare this to the [baseline notebook](../0_vulnerabilities/baseline.py) where the same 
+Compare this to the [baseline notebook](../0_vulnerabilities/1_baseline.py) where the same 
 email succeeds in hijacking the agent.
 """)
     return

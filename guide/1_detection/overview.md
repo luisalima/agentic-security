@@ -56,22 +56,35 @@ Use detection as one layer in defense-in-depth, not as your only protection.
 <!---->
 ## Tools Using These Techniques
 
-| Tool | YARA | Vectors | ML | Canaries |
-|------|------|---------|----|---------|
-| [Vigil](https://github.com/deadbits/vigil-llm) | ✓ | ✓ | ✓ | ✓ |
-| [LLM Guard](https://llm-guard.com/) | — | — | ✓ | — |
-| [Rebuff](https://github.com/protectai/rebuff) | — | ✓ | ✓ | ✓ |
-| [Lakera Guard](https://www.lakera.ai/) | ? | ? | ✓ | — |
+**Active tools (2025–2026):**
+
+| Tool | Type | ML | Key Feature |
+|------|------|----|-------------|
+| [LLM Guard](https://llm-guard.com/) | OSS | ✓ | 15 input + 20 output scanners (ProtectAI) |
+| [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | OSS | ✓ | Dialog flow control via Colang DSL (NVIDIA) |
+| [Promptfoo](https://github.com/promptfoo/promptfoo) | OSS | ✓ | Red-teaming for 50+ vulnerability types |
+| [Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M) | Model | ✓ | Free 86M-param classifier on HuggingFace |
+| [Lakera Guard](https://www.lakera.ai/) | Commercial | ✓ | Enterprise API, <50ms, 80M+ attack data points |
+
+**Historical (archived/inactive):**
+
+| Tool | Status | Why It Died |
+|------|--------|-------------|
+| [Vigil](https://github.com/deadbits/vigil-llm) | Inactive since 2023 | Solo-dev project; author joined Robust Intelligence (now Cisco) |
+| [Rebuff](https://github.com/protectai/rebuff) | Archived May 2025 | ProtectAI pivoted to LLM Guard; heavy Pinecone/OpenAI dependency |
+
+*The churn in OSS security tools is itself a lesson: detection is a moving target,
+and solo-maintained projects can't keep up with evolving attacks.*
 
 See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 <!---->
 ## Notebooks in This Section
 
-1. **[yara_detection.py](./yara_detection.py)** — Fast pattern matching for known attacks
-2. **[vector_similarity.py](./vector_similarity.py)** — Semantic similarity search
-3. **[ml_classifier.py](./ml_classifier.py)** — Neural network classification
-4. **[llm_as_judge.py](./llm_as_judge.py)** — LLM evaluating for injection
-5. **[canary_tokens.py](./canary_tokens.py)** — Detecting prompt leakage
+1. **[1_yara_detection.py](./yara_detection.md)** — Fast pattern matching for known attacks
+2. **[2_vector_similarity.py](./vector_similarity.md)** — Semantic similarity search
+3. **[3_ml_classifier.py](./ml_classifier.md)** — Neural network classification
+4. **[4_llm_as_judge.py](./llm_as_judge.md)** — LLM evaluating for injection
+5. **[5_canary_tokens.py](./canary_tokens.md)** — Detecting prompt leakage
 
 ---
 
@@ -80,8 +93,8 @@ See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 - **Schulhoff et al. (2023)** — [HackAPrompt: Exposing Systemic Vulnerabilities](https://arxiv.org/abs/2311.16119)
   - Taxonomy of prompt injection techniques from competition
 
-- **Vigil Documentation** — [Scanner Architecture](https://vigil.deadbits.ai/overview/use-vigil/scanners/)
-  - Multi-layer detection implementation
+- **tldrsec** — [Prompt Injection Defenses](https://github.com/tldrsec/prompt-injection-defenses)
+  - Comprehensive catalog of every practical and proposed defense
 
 ---
 

@@ -370,8 +370,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `baseline.py` — Single-turn injection
-    **Next:** `multi_agent_attacks.py` — RAG poisoning, delegation, plugin supply-chain
+    **Previous:** `1_baseline.py` — Single-turn injection
+    **Next:** `3_multi_agent_attacks.py` — RAG poisoning, delegation, plugin supply-chain
     """)
     return
 
