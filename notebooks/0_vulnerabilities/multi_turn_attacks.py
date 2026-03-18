@@ -361,7 +361,12 @@ def _(mo):
     - **Microsoft (2024)** — [Crescendo: Multi-Turn LLM Jailbreak](https://crescendo-the-multiturn-jailbreak.github.io/)
     - **Anthropic (2024)** — [Many-Shot Jailbreaking](https://www.anthropic.com/research/many-shot-jailbreaking)
     - **Anil et al. (2024)** — [Many-shot Jailbreaking (paper)](https://arxiv.org/abs/2404.02151)
-    - **Russinovich et al. (2024)** — [Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack](https://arxiv.org/abs/2404.01833)
+    - **Russinovich et al. (2025)** — [Crescendo Multi-Turn LLM Jailbreak Attack](https://arxiv.org/abs/2404.01833)
+    - **Weng et al. (2025)** — [Foot-In-The-Door: A Multi-turn Jailbreak for LLMs](https://arxiv.org/abs/2502.19820)
+    - **Das et al. (2026)** — [Multi-turn Jailbreaking Attack in Multi-Modal LLMs](https://arxiv.org/abs/2601.05339)
+    - **Gibbs et al. (2026)** — [Automating Deception: Scalable Multi-Turn LLM Jailbreaks](https://arxiv.org/abs/2511.19517)
+    - **Praetorian (2026)** — [Augustus: Multi-Turn Attacks for LLMs](https://www.praetorian.com/blog/llm-multi-turn-attacks-augustus/)
+    - **Meta (2024)** — [GOAT: Generative Offensive Agent Tester](https://arxiv.org/abs/2410.01606)
 
     ---
 
