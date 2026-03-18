@@ -127,6 +127,11 @@ def _(mo):
     the probability of the forbidden action under adversarial pressure,
     especially with smaller models. Think of it as the LLM equivalent of
     "don't think of a white bear."
+
+    Recent research confirms this is a real and persistent issue:
+    - [Vrabcová et al. (2025)](https://arxiv.org/abs/2503.22395) — "Negation: A Pink Elephant in the LLMs' Room?" shows negation tokens have limited effect on learned representations, and LLMs exhibit "negation blindness" leading to hallucinations.
+    - [Barreto & Jana (2025)](https://aclanthology.org/2025.findings-emnlp.761/) — "This is *not* a Disimprovement" finds that within an LLM family, negation performance correlates more with attention to negative tokens (NTAS) than with model size.
+    - [Alhamoud et al. (2025)](https://arxiv.org/abs/2501.09425) — "Vision-Language Models Do Not Understand Negation" demonstrates strong affirmation bias in CLIP-based models — asked for "no elephant," they produce elephants.
     """)
     return
 
