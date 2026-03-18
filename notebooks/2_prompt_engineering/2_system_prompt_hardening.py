@@ -481,8 +481,10 @@ def _(mo):
     ## References
 
     - **OpenAI** — [Best practices for prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering)
-    - **OWASP** — [Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — LLM01: Prompt Injection
-    - **Anthropic** — [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection, LLM07: System Prompt Leakage
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
+    - **Vrabcová et al. (2025)** — [Negation: A Pink Elephant in the LLMs' Room?](https://arxiv.org/abs/2503.22395)
+    - **Anthropic** — [Mitigate jailbreaks](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)
     - **Simon Willison** — [Prompt Injection Attacks](https://simonwillison.net/series/prompt-injection/)
 
     ---

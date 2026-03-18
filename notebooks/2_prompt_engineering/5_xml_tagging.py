@@ -451,7 +451,9 @@ def _(mo):
 
     - **Anthropic** — [Using XML tags in prompts](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags)
     - **OpenAI** — [Prompt engineering best practices](https://platform.openai.com/docs/guides/prompt-engineering)
-    - **OWASP** — [Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Prompt_Injection_Prevention_Cheat_Sheet.html)
+    - **Chen et al. (2025)** — [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 
     ---
 

@@ -454,7 +454,9 @@ def _(mo):
 
     - **Microsoft Research** — [Spotlighting: Defending LLMs via Backtranslation](https://arxiv.org/abs/2403.14720)
     - **Simon Willison** — [Delimiters won't save you from prompt injection](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)
-    - **OWASP** — [Prompt Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Prompt_Injection_Prevention_Cheat_Sheet.html)
+    - **Chen et al. (2025)** — [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 
     ---
 

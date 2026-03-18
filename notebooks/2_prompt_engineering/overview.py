@@ -124,8 +124,11 @@ def _(mo):
     ## References
 
     - **Microsoft Research** — [Spotlighting: Defending LLMs via Backtranslation](https://arxiv.org/abs/2403.14720)
+    - **Wallace et al. (2024)** — [The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions](https://arxiv.org/abs/2404.13208)
     - **Simon Willison** — [Delimiters won't save you](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)
-    - **OWASP** — [Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Prompt_Injection_Prevention_Cheat_Sheet.html)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
+    - **Ferrag et al. (2026)** — [Securing LLM Agents: From Prompt Sanitization to Autonomous Red Teaming](https://doi.org/10.1016/j.iotcps.2026.03.001)
 
     ---
 

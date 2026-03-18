@@ -353,9 +353,11 @@ def _(mo):
 
     ## References
 
-    - **Sandwich defense** — Concept from the prompt engineering community
+    - **Sandwich defense** — Concept from the prompt engineering community; see also [OWASP Cheat Sheet — Structured Prompts](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
     - **Recency bias in transformers** — Later tokens receive higher attention weights in causal attention
-    - **OWASP** — [Prompt Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Prompt_Injection_Prevention_Cheat_Sheet.html)
+    - **Chen et al. (2025)** — [DefensiveToken: Defending Against Prompt Injection With a Few Tokens](https://arxiv.org/abs/2507.07974)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 
     ---
 
