@@ -34,12 +34,6 @@ def _():
 
 @app.cell
 def _():
-    import secrets
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
-
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import (
         DELIMITER_AWARE_EMAIL,
@@ -48,14 +42,7 @@ def _():
         evaluate_defense,
     )
 
-    return (
-        DELIMITER_AWARE_EMAIL,
-        EMAIL_TOOLS,
-        MALICIOUS_EMAIL,
-        SimulatedTools,
-        evaluate_defense,
-        get_client,
-    )
+    return DELIMITER_AWARE_EMAIL, EMAIL_TOOLS, MALICIOUS_EMAIL, SimulatedTools, evaluate_defense, get_client
 
 
 @app.cell

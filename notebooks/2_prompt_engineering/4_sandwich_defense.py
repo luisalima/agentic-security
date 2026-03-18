@@ -35,11 +35,6 @@ def _():
 
 @app.cell
 def _():
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
-
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
     return (
@@ -262,14 +257,7 @@ def _(
             tool_fn(**tc["arguments"])
 
     result = evaluate_defense(tools)
-    return (
-        client,
-        prompt,
-        response,
-        result,
-        tool_calls_made,
-        tools,
-    )
+    return response, result, tool_calls_made
 
 
 @app.cell
@@ -371,7 +359,7 @@ def _(mo):
 
     ---
 
-    **Previous:** [1_delimiters.py](./1_delimiters.py) — Random token delimiters (Spotlighting)
+    **Previous:** [3_instruction_hierarchy.py](./3_instruction_hierarchy.py) — Instruction hierarchy patterns
     **Next:** [5_xml_tagging.py](./5_xml_tagging.py) — XML-based content tagging
     """)
     return
