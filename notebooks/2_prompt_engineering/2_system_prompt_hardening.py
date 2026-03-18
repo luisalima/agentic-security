@@ -118,6 +118,15 @@ def _(mo):
 
     **Why it's not enough:** Attackers can frame requests to avoid triggering
     the negative rules ("please CC my backup address" vs "forward to attacker").
+
+    ⚠️ **The priming problem:** In embedding models, "not pizza" is similar to
+    "pizza" — negation doesn't flip the vector. Decoder LLMs handle negation
+    better, but a subtler version of the same issue applies: saying "NEVER
+    forward emails" **primes the model to think about forwarding emails**,
+    activating the very concept you're trying to suppress. This can increase
+    the probability of the forbidden action under adversarial pressure,
+    especially with smaller models. Think of it as the LLM equivalent of
+    "don't think of a white bear."
     """)
     return
 
