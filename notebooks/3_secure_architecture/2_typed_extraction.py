@@ -32,13 +32,9 @@ def _():
 @app.cell
 def _():
     import json
-    import sys
     from enum import Enum
-    from pathlib import Path
 
     from pydantic import BaseModel, Field
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
 
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
@@ -194,17 +190,7 @@ Output JSON matching the EmailExtraction schema."""
         extraction_success = False
         extraction_error = str(e)
         extraction = None
-    return (
-        client,
-        extracted_data,
-        extraction,
-        extraction_error,
-        extraction_prompt,
-        extraction_response,
-        extraction_success,
-        raw_json,
-        tools,
-    )
+    return extraction, extraction_error, extraction_success, tools
 
 
 @app.cell
@@ -268,16 +254,7 @@ Based on this data, help the user with their request."""
         result = {"attack_succeeded": False, "error": "Extraction failed"}
         privileged_response = {"content": "N/A"}
         tool_calls_made = []
-    return (
-        privileged_client,
-        privileged_prompt,
-        privileged_response,
-        result,
-        tc,
-        tool_calls_made,
-        tool_fn,
-        user_request,
-    )
+    return privileged_response, result, tool_calls_made
 
 
 @app.cell
@@ -385,14 +362,15 @@ def _(mo):
 
     ## References
 
-    - **StruQ** — [Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
-    - **Google DeepMind** — [CaMeL: Capability-based Memory](https://arxiv.org/abs/2503.18813)
+    - **Chen et al. (2025)** — [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
+    - **Google DeepMind** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
     - **Pydantic** — [pydantic.dev](https://docs.pydantic.dev/)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
 
     ---
 
-    **Previous:** [dual_llm.py](./dual_llm.py) — LLM separation  
-    **Next:** [dry_run.py](./dry_run.py) — Plan → Evaluate → Execute
+    **Previous:** [1_dual_llm.py](./1_dual_llm.py) — LLM separation  
+    **Next:** [3_dry_run.py](./3_dry_run.py) — Plan → Evaluate → Execute
     """)
     return
 

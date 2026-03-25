@@ -32,12 +32,8 @@ def _():
 @app.cell
 def _():
     import json
-    import sys
-    from pathlib import Path
 
     from pydantic import BaseModel, Field
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
 
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
@@ -194,16 +190,7 @@ Generate a plan to fulfill the user's request. Output JSON only."""
         plan_success = False
         plan = None
         plan_error = str(e)
-    return (
-        client,
-        plan,
-        plan_data,
-        plan_response,
-        plan_success,
-        planning_prompt,
-        raw_json,
-        user_request,
-    )
+    return client, plan, plan_success, user_request
 
 
 @app.cell
@@ -316,7 +303,7 @@ def _(SimulatedTools, evaluation, evaluate_defense, plan, plan_success):
                 tool_fn(**action.params)
 
     result = evaluate_defense(tools)
-    return action, result, tool_calls_made, tool_fn, tools
+    return result, tool_calls_made
 
 
 @app.cell
@@ -397,13 +384,14 @@ def _(mo):
 
     ## References
 
-    - **Google DeepMind** — [CaMeL: Capability-based Memory](https://arxiv.org/abs/2503.18813)
-    - **Anthropic** — [Constitutional AI](https://arxiv.org/abs/2212.08073) (evaluation concept)
+    - **Google DeepMind** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
+    - **Anthropic** — [Mitigate jailbreaks](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM06: Excessive Agency
 
     ---
 
-    **Previous:** [typed_extraction.py](./typed_extraction.py) — Schema constraints  
-    **Next:** [../4_defense_in_depth/](../4_defense_in_depth/) — Layering everything
+    **Previous:** [2_typed_extraction.py](./2_typed_extraction.py) — Schema constraints  
+    **Next:** [4_tool_validation.py](./4_tool_validation.py) — Tool & MCP manifest validation
     """)
     return
 

@@ -32,11 +32,6 @@ def _():
 
 @app.cell
 def _():
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
-
     from agentic_security.defenses.camel import (
         CaMeLPipeline,
         CapabilityPolicy,
@@ -392,7 +387,8 @@ def _(mo):
 
     - **Google DeepMind** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
     - **Simon Willison** — [The Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
-    - **StruQ** — [Structured Queries for Prompt Injection Defense](https://arxiv.org/abs/2402.06363)
+    - **Chen et al. (2025)** — [StruQ: Structured Queries for Prompt Injection Defense](https://arxiv.org/abs/2402.06363)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
 
     ---
 

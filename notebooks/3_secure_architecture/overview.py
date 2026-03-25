@@ -109,9 +109,11 @@ def _(mo):
     ## Notebooks in This Section
 
     ```bash
-    marimo edit notebooks/3_secure_architecture/dual_llm.py          # 1. Quarantined + Privileged LLM separation
-    marimo edit notebooks/3_secure_architecture/typed_extraction.py   # 2. Schema constraints as firewall
-    marimo edit notebooks/3_secure_architecture/dry_run.py            # 3. Plan → Evaluate → Execute
+    marimo edit notebooks/3_secure_architecture/1_dual_llm.py          # 1. Quarantined + Privileged LLM separation
+    marimo edit notebooks/3_secure_architecture/2_typed_extraction.py   # 2. Schema constraints as firewall
+    marimo edit notebooks/3_secure_architecture/3_dry_run.py            # 3. Plan → Evaluate → Execute
+    marimo edit notebooks/3_secure_architecture/4_tool_validation.py    # 4. Tool & MCP manifest validation
+    marimo edit notebooks/3_secure_architecture/5_camel.py              # 5. CaMeL capability-based security
     ```
 
     ---
@@ -136,9 +138,11 @@ def _(mo):
     ## References
 
     - **Simon Willison** — [The Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
-    - **StruQ** — [Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
-    - **Google DeepMind** — [CaMeL: Capability-based Memory for LLMs](https://arxiv.org/abs/2503.18813)
+    - **Chen et al. (2025)** — [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
+    - **Google DeepMind** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
     - **Jordan Potti (2026)** — [IBAC: Intent-Based Access Control](https://ibac.dev) — FGA-backed capability scoping
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection, LLM06: Excessive Agency
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 
     ---
 

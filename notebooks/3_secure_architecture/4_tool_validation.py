@@ -32,11 +32,6 @@ def _():
 
 @app.cell
 def _():
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
-
     from agentic_security.defenses.tool_validation import (
         ToolDefinition,
         ToolValidator,
@@ -434,6 +429,8 @@ def _(mo):
     - **Invariant Labs** — [MCP Security Notification](https://invariantlabs.ai/blog/mcp-security)
     - **OpenAI** — [Function Calling](https://platform.openai.com/docs/guides/function-calling)
     - **Anthropic** — [Tool Use](https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM06: Excessive Agency
+    - **Ferrag et al. (2026)** — [From prompt injections to protocol exploits](https://doi.org/10.1016/j.icte.2025.12.001) — agent workflow threats
 
     ---
 

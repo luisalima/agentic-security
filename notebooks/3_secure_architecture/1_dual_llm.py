@@ -32,11 +32,6 @@ def _():
 
 @app.cell
 def _():
-    import sys
-    from pathlib import Path
-
-    sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
-
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
     return EMAIL_TOOLS, MALICIOUS_EMAIL, SimulatedTools, evaluate_defense, get_client
@@ -153,7 +148,7 @@ Body:
     )
 
     summary = quarantined_response["content"]
-    return quarantined_client, quarantined_prompt, quarantined_response, summary
+    return (summary,)
 
 
 @app.cell
@@ -195,7 +190,7 @@ def _(mo, summary):
         mo.md("The controller performs **deterministic** checks—not fooled by clever wording."),
         validation_result,
     ])
-    return controller_passed, flagged, pattern, suspicious_patterns, validation_result
+    return
 
 
 @app.cell
@@ -239,17 +234,7 @@ Based on this summary, help the user with their request."""
             tool_fn(**tc["arguments"])
 
     result = evaluate_defense(tools)
-    return (
-        privileged_client,
-        privileged_prompt,
-        privileged_response,
-        result,
-        tc,
-        tool_calls_made,
-        tool_fn,
-        tools,
-        user_request,
-    )
+    return privileged_response, result, tool_calls_made
 
 
 @app.cell
@@ -353,11 +338,13 @@ def _(mo):
     ## References
 
     - **Simon Willison** — [The Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
-    - **Google DeepMind** — [CaMeL: Capability-based Memory](https://arxiv.org/abs/2503.18813)
+    - **Google DeepMind** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
+    - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM06: Excessive Agency
+    - **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 
     ---
 
-    **Next:** [typed_extraction.py](./typed_extraction.py) — Schema constraints as firewall
+    **Next:** [2_typed_extraction.py](./2_typed_extraction.py) — Schema constraints as firewall
     """)
     return
 
