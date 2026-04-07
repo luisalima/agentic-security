@@ -16,9 +16,9 @@ They make it easy to build agents but leave security as an exercise for the deve
 | Framework | Focus | Security Approach |
 |-----------|-------|-------------------|
 | **LangChain** | Orchestration, chains, agents | "Use callbacks for DIY" |
+| **Pydantic AI** | Type-safe agents, structured output | Structured output, tool approval, TestModel |
 | **LlamaIndex** | RAG, data connectors | Data residency only |
 | **CrewAI** | Multi-agent orchestration | "Careful guardrails" (manual) |
-| **AutoGen** | Agent conversations | Human-in-the-loop |
 
 <!-- DIAGRAM: diagrams/framework_gap.excalidraw -->
 
@@ -40,8 +40,7 @@ The examples in this section show practical integration approaches.
 ## Notebooks in This Section
 
 1. **[langchain_integration.py](./langchain_integration.py)** — Securing LangChain agents
-
-(More framework examples coming: LlamaIndex, CrewAI)
+2. **[pydantic_ai_integration.py](./pydantic_ai_integration.py)** — Securing Pydantic AI agents
 
 ---
 

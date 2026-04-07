@@ -1,5 +1,5 @@
 ---
-title: Real-World Case Studies
+title: 4 Case Studies
 marimo-version: 0.16.1
 width: medium
 ---
@@ -11,6 +11,10 @@ Understanding how attacks work in production is essential for building defenses.
 
 > "The individual components of these attacks are not new. What makes them dangerous
 > is how they compose." — Adnan Khan, Clinejection disclosure
+
+```python {.marimo}
+import marimo as mo
+```
 
 ---
 
@@ -70,7 +74,7 @@ prompt — a textbook indirect prompt injection surface.
 - [Adnan Khan — Clinejection](https://adnanthekhan.com/posts/clinejection/)
 - [Snyk — How Clinejection Turned an AI Bot into a Supply Chain Attack](https://snyk.io/blog/cline-supply-chain-attack-prompt-injection-github-actions/)
 - [Cline Post-Mortem](https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm)
-
+<!---->
 ---
 
 ## Case Study 2: Bing Chat "Sydney" — The Prompt That Started It All
@@ -98,7 +102,7 @@ another method the same day.
 - This incident launched the entire field of prompt injection security research
 
 **Source:** [Ars Technica — AI-powered Bing Chat spills its secrets](https://arstechnica.com/information-technology/2023/02/ai-powered-bing-chat-spills-its-secrets-via-prompt-injection-attack/)
-
+<!---->
 ---
 
 ## Case Study 3: EchoLeak — Zero-Click Data Exfiltration via Microsoft 365 Copilot
@@ -123,7 +127,7 @@ automatically.
 - This is exactly the Dual LLM pattern's motivation: quarantine untrusted content processing
 
 **Source:** [EchoLeak paper](https://arxiv.org/abs/2509.10540)
-
+<!---->
 ---
 
 ## The Pattern: Every Incident Follows the Same Structure
@@ -136,7 +140,7 @@ automatically.
 
 Every incident is a variation of the **Lethal Trifecta**. Remove any one factor
 and the attack fails.
-
+<!---->
 ---
 
 ## Practice: Prompt Injection CTFs
@@ -150,7 +154,7 @@ Want to practice prompt injection? Here are excellent resources:
 | **Garak** | LLM vulnerability scanner by NVIDIA — automated red teaming | [github.com/NVIDIA/garak](https://github.com/NVIDIA/garak) |
 | **Prompt Injection Cheat Sheet** | Comprehensive attack techniques for pentesters | [github.com/Z333RO/prompt-injection-cheat-sheet](https://github.com/Z333RO/prompt-injection-cheat-sheet) |
 | **HackAPrompt** | Prompt injection competition dataset (600K+ attempts) | [huggingface.co/datasets/hackaprompt](https://huggingface.co/datasets/hackaprompt/hackaprompt-dataset) |
-
+<!---->
 ---
 
 ## References
@@ -166,5 +170,5 @@ Want to practice prompt injection? Here are excellent resources:
 
 ---
 
-**Previous:** [multi_agent_attacks](./3_multi_agent_attacks.md) — Multi-agent attack scenarios
-**Next:** [../1_detection/](../1_detection/) — Detection techniques
+**Previous:** `3_multi_agent_attacks.py` — Multi-agent attack scenarios
+**Next:** `../1_detection/overview.py` — Detection techniques

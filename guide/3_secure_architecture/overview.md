@@ -31,12 +31,11 @@ import marimo as mo
 | **Dual LLM** | Quarantined LLM (no tools) + Privileged LLM (tools, no raw data) | Medium | High |
 | **Typed Extraction** | Schema constraints as firewall—payload can't fit | Medium | High |
 | **Dry-Run Evaluation** | Plan → Evaluate → Execute with approval | Medium-High | High |
-| **CaMeL** | Capability-based data tagging prevents exfiltration | Medium-High | Very High |
 
 These patterns come from academic research:
 - **Dual LLM** — [Simon Willison](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/), 2023
 - **Typed Extraction** — [StruQ](https://arxiv.org/abs/2402.06363), 2024
-- **CaMeL (Capability-Based)** — [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813), 2025
+- **Capability-Based** — [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813), 2025
 <!---->
 ## Why Architecture Matters
 
@@ -80,21 +79,43 @@ Architecture:        Untrusted data → Quarantined LLM → Structured data
 <!---->
 ## Notebooks in This Section
 
-1. **[1_dual_llm](./1_dual_llm.md)** — Quarantined + Privileged LLM separation
-2. **[2_typed_extraction](./2_typed_extraction.md)** — Schema constraints as firewall
-3. **[3_dry_run](./3_dry_run.md)** — Plan → Evaluate → Execute
-4. **[4_tool_validation](./4_tool_validation.md)** — MCP/tool manifest validation
-5. **[5_camel](./5_camel.md)** — CaMeL capability-based security
+```bash
+marimo edit notebooks/3_secure_architecture/1_dual_llm.py          # 1. Quarantined + Privileged LLM separation
+marimo edit notebooks/3_secure_architecture/2_typed_extraction.py   # 2. Schema constraints as firewall
+marimo edit notebooks/3_secure_architecture/3_dry_run.py            # 3. Plan → Evaluate → Execute
+marimo edit notebooks/3_secure_architecture/4_tool_validation.py    # 4. Tool & MCP manifest validation
+marimo edit notebooks/3_secure_architecture/5_camel.py              # 5. CaMeL capability-based security
+```
+
+---
+
+## Also Worth Knowing: IBAC
+
+**Intent-Based Access Control** ([ibac.dev](https://ibac.dev)) derives per-request permissions
+from the user's explicit intent and enforces them via [OpenFGA](https://openfga.dev) before every tool call.
+Conceptually similar to output validation + capability scoping, but backed by a real authorization engine.
+
+| Strength | Limitation |
+|----------|-----------|
+| Enforcement is deterministic (outside the LLM) | Intent parser is itself an LLM — susceptible to injection |
+| ~9ms per auth check, TTL-based expiry | 33% automated utility in strict mode (heavy escalation) |
+| 100% security on AgentDojo (strict mode) | Single benchmark; "no dual-LLM" claim is debatable |
+
+Promising approach, but the "prompt injection becomes irrelevant" claim overstates it —
+the intent parser *is* the attack surface. Worth watching as the research matures.
 
 ---
 
 ## References
 
 - **Simon Willison** — [The Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
-- **StruQ** — [Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
-- **Google DeepMind** — [CaMeL: Capability-based Memory for LLMs](https://arxiv.org/abs/2503.18813)
+- **Chen et al. (2025)** — [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
+- **Google DeepMind** — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
+- **Jordan Potti (2026)** — [IBAC: Intent-Based Access Control](https://ibac.dev) — FGA-backed capability scoping
+- **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection, LLM06: Excessive Agency
+- **OWASP** — [LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 
 ---
 
-**Previous:** [2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts
-**Next:** [4_defense_in_depth/](../4_defense_in_depth/) — Layering everything
+**Previous:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts
+**Next:** `notebooks/4_defense_in_depth/` — Layering everything

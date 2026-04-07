@@ -80,11 +80,15 @@ See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 <!---->
 ## Notebooks in This Section
 
-1. **[1_yara_detection.py](./yara_detection.md)** — Fast pattern matching for known attacks
-2. **[2_vector_similarity.py](./vector_similarity.md)** — Semantic similarity search
-3. **[3_ml_classifier.py](./ml_classifier.md)** — Neural network classification
-4. **[4_llm_as_judge.py](./llm_as_judge.md)** — LLM evaluating for injection
-5. **[5_canary_tokens.py](./canary_tokens.md)** — Detecting prompt leakage
+Open any notebook from the repo root:
+
+```bash
+marimo edit notebooks/1_detection/1_yara_detection.py      # 1. Fast pattern matching
+marimo edit notebooks/1_detection/2_vector_similarity.py   # 2. Semantic similarity search
+marimo edit notebooks/1_detection/3_ml_classifier.py       # 3. Neural network classification
+marimo edit notebooks/1_detection/4_llm_as_judge.py        # 4. LLM evaluating for injection
+marimo edit notebooks/1_detection/5_canary_tokens.py       # 5. Detecting prompt leakage
+```
 
 ---
 
@@ -98,5 +102,5 @@ See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 
 ---
 
-**Previous:** [0_vulnerabilities/](../0_vulnerabilities/) — The vulnerability
-**Next:** [2_prompt_engineering/](../2_prompt_engineering/) — Hardening prompts
+**Previous:** `../0_vulnerabilities/4_case_studies.py` — Real-world case studies
+**Next:** `../2_prompt_engineering/overview.py` — Hardening prompts

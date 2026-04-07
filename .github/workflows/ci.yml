@@ -35,3 +35,20 @@ jobs:
 
       - name: Run benchmark (smoke test)
         run: uv run python benchmark/run.py --json
+
+  guide-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Check guide markdown is in sync with notebooks
+        run: uv run bash scripts/export_guide.sh --check
