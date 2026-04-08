@@ -8,6 +8,7 @@
 | [ ] | `PRINCIPLES.md` | |
 | [ ] | `CONTRIBUTING.md` | |
 | [ ] | `CHANGELOG.md` | |
+| [ ] | `ROADMAP.md` | |
 
 ## 0 — Vulnerabilities (Notebooks)
 
@@ -72,59 +73,37 @@
 | [ ] | `notebooks_securing_guide/6_integration/langchain_integration.py` | |
 | [ ] | `notebooks_securing_guide/6_integration/pydantic_ai_integration.py` | |
 
-## Guide (Markdown Exports)
+## Docs Site (MkDocs / GitHub Pages)
 
 | Status | File | Notes |
 |--------|------|-------|
-| [ ] | `guide/0_vulnerabilities/1_baseline.md` | |
-| [ ] | `guide/0_vulnerabilities/2_multi_turn_attacks.md` | |
-| [ ] | `guide/0_vulnerabilities/3_multi_agent_attacks.md` | |
-| [ ] | `guide/0_vulnerabilities/4_case_studies.md` | |
-| [ ] | `guide/1_detection/overview.md` | |
-| [ ] | `guide/1_detection/1_yara_detection.md` | |
-| [ ] | `guide/1_detection/2_vector_similarity.md` | |
-| [ ] | `guide/1_detection/3_ml_classifier.md` | |
-| [ ] | `guide/1_detection/4_llm_as_judge.md` | |
-| [ ] | `guide/1_detection/5_canary_tokens.md` | |
-| [ ] | `guide/2_prompt_engineering/overview.md` | |
-| [ ] | `guide/2_prompt_engineering/1_delimiters.md` | |
-| [ ] | `guide/2_prompt_engineering/2_system_prompt_hardening.md` | |
-| [ ] | `guide/2_prompt_engineering/3_instruction_hierarchy.md` | |
-| [ ] | `guide/2_prompt_engineering/4_sandwich_defense.md` | |
-| [ ] | `guide/2_prompt_engineering/5_xml_tagging.md` | |
-| [ ] | `guide/4_secure_architecture_software/overview.md` | |
-| [ ] | `guide/4_secure_architecture_software/1_dual_llm.md` | |
-| [ ] | `guide/4_secure_architecture_software/2_typed_extraction.md` | |
-| [ ] | `guide/4_secure_architecture_software/3_dry_run.md` | |
-| [ ] | `guide/4_secure_architecture_software/4_tool_validation.md` | |
-| [ ] | `guide/4_secure_architecture_software/5_camel.md` | |
-| [ ] | `guide/5_defense_in_depth/overview.md` | |
-| [ ] | `guide/5_defense_in_depth/combined.md` | |
-| [ ] | `guide/6_integration/overview.md` | |
-| [ ] | `guide/6_integration/langchain_integration.md` | |
-| [ ] | `guide/6_integration/pydantic_ai_integration.md` | |
-
-## Docs
-
-| Status | File | Notes |
-|--------|------|-------|
-| [ ] | `docs/ARCHITECTURE.md` | |
-| [ ] | `docs/CHEATSHEET.md` | |
-| [ ] | `docs/REFERENCES.md` | |
-| [ ] | `docs/ROADMAP.md` | |
-| [ ] | `docs/ATTACK_TAXONOMY.md` | |
-| [ ] | `docs/THREAT_MODEL.md` | |
-| [ ] | `docs/TOOLS.md` | |
-| [ ] | `docs/TRADEOFFS.md` | |
+| [ ] | `docs/index.md` | |
+| [ ] | `docs/principles.md` | |
+| [ ] | `docs/guide/0_vulnerabilities.md` | Stub — needs content |
+| [ ] | `docs/guide/1_detection.md` | Stub — needs content |
+| [ ] | `docs/guide/2_prompt_engineering.md` | Stub — needs content |
+| [ ] | `docs/guide/3_isolation.md` | Stub — needs content |
+| [ ] | `docs/guide/4_secure_architecture.md` | Stub — needs content |
+| [ ] | `docs/guide/5_defense_in_depth.md` | Stub — needs content |
+| [ ] | `docs/guide/6_integration.md` | Stub — needs content |
+| [ ] | `docs/guide/7_securing_prepackaged_agents.md` | |
+| [ ] | `docs/reference/tools.md` | |
+| [ ] | `docs/reference/attack_taxonomy.md` | |
+| [ ] | `docs/reference/threat_model.md` | |
+| [ ] | `docs/reference/cheatsheet.md` | |
+| [ ] | `docs/reference/architecture.md` | |
+| [ ] | `docs/reference/tradeoffs.md` | |
+| [ ] | `docs/reference/references.md` | |
 
 ## Scripts & Config
 
 | Status | File | Notes |
 |--------|------|-------|
-| [ ] | `scripts/export_guide.py` | |
-| [ ] | `scripts/export_guide.sh` | |
+| [ ] | `mkdocs.yml` | |
 | [ ] | `pyproject.toml` | |
 | [ ] | `.gitignore` | |
+| [ ] | `.github/workflows/ci.yml` | |
+| [ ] | `.github/workflows/docs.yml` | |
 
 ## Source Code
 

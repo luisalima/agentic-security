@@ -1,0 +1,54 @@
+site_name: Agentic Security
+site_url: https://luisalima.github.io/agentic-security/
+site_description: The definitive guide to securing AI agents against prompt injection.
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Principles: principles.md
+  - Guide:
+      - Vulnerabilities: guide/0_vulnerabilities.md
+      - Detection: guide/1_detection.md
+      - Prompt Engineering: guide/2_prompt_engineering.md
+      - Isolation (Infra): guide/3_isolation.md
+      - Secure Architecture (Software): guide/4_secure_architecture.md
+      - Defense in Depth: guide/5_defense_in_depth.md
+      - Framework Integration: guide/6_integration.md
+      - Securing Pre-Packaged Agents: guide/7_securing_prepackaged_agents.md
+  - Reference:
+      - Tools Landscape: reference/tools.md
+      - Attack Taxonomy: reference/attack_taxonomy.md
+      - Threat Model: reference/threat_model.md
+      - Cheatsheet: reference/cheatsheet.md
+      - Architecture: reference/architecture.md
+      - Tradeoffs: reference/tradeoffs.md
+      - References: reference/references.md

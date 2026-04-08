@@ -22,6 +22,23 @@ Unlike traditional injection attacks (SQL injection, XSS), there's no equivalent
 
 ---
 
+## Threat Model
+
+Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?*
+
+| Blast Radius | Example | Acceptable? |
+|-------------|---------|-------------|
+| Agent sends 1 email to wrong person | Scoped token, approval required | Usually yes |
+| Agent exfiltrates all contacts | Full contact access, outbound network | Usually no |
+| Agent pushes malicious code to prod | Git credentials, CI/CD access | Never |
+| Agent deletes database | DB write credentials in env | Never |
+
+**If the blast radius is unacceptable, you need more isolation — not better prompts.**
+
+→ Full threat modeling guide: [docs/reference/threat_model.md](docs/reference/threat_model.md)
+
+---
+
 ## Defense Levels
 
 | Level | Approach | What Changes | Protection |
@@ -67,7 +84,7 @@ marimo edit notebooks_securing_guide/4_secure_architecture_software/1_dual_llm.p
 
 ### Read the Guide
 
-Don't want to run code? Read the [exported markdown guide](guide/index.md).
+Don't want to run code? Read the guide on [GitHub Pages](https://luisalima.github.io/agentic-security/).
 
 ---
 
@@ -83,12 +100,9 @@ agentic-security/
 │   ├── 4_secure_architecture_software/  # Dual LLM, typed extraction, dry-run
 │   ├── 5_defense_in_depth/      # Layered defense
 │   └── 6_integration/           # LangChain, framework patterns
-├── guide/                       # Markdown exports (for reading)
-├── docs/
-│   ├── TOOLS.md                 # Library comparison
-│   ├── ATTACK_TAXONOMY.md       # Attack vectors & risk matrix
-│   ├── THREAT_MODEL.md          # How to threat-model your agent
-│   └── CHEATSHEET.md            # One-page quick reference
+├── docs/                        # MkDocs site (GitHub Pages)
+│   ├── guide/                   # Hand-written guide pages
+│   └── reference/               # Tools, attack taxonomy, threat model, etc.
 ├── diagrams/                    # Excalidraw visuals
 └── src/agentic_security/        # Supporting code
 ```
@@ -97,49 +111,17 @@ agentic-security/
 
 ## Learning Path
 
-### Understand the Problem
-→ [notebooks_securing_guide/0_vulnerabilities/](notebooks_securing_guide/0_vulnerabilities/) — See how easily an agent can be hijacked
-- `1_baseline.py` — Single-turn indirect prompt injection
-- `2_multi_turn_attacks.py` — Crescendo, context stuffing, many-shot
-- `3_multi_agent_attacks.py` — RAG poisoning, delegation attacks, plugin supply-chain
-- `4_case_studies.py` — Real-world incidents: Clinejection, Bing/Sydney, EchoLeak
+Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-security/), or run the interactive notebooks locally with `marimo edit`.
 
-### Level 1: Detection
-→ [notebooks_securing_guide/1_detection/](notebooks_securing_guide/1_detection/)
-- `1_yara_detection.py` — Fast pattern matching
-- `2_vector_similarity.py` — Semantic similarity search
-- `3_ml_classifier.py` — Neural network classification
-- `4_llm_as_judge.py` — LLM evaluating for injection
-- `5_canary_tokens.py` — Detect prompt leakage
-
-### Level 2: Prompt Engineering  
-→ [notebooks_securing_guide/2_prompt_engineering/](notebooks_securing_guide/2_prompt_engineering/)
-- `1_delimiters.py` — Random token boundaries (Spotlighting)
-- `2_system_prompt_hardening.py` — Role anchoring, explicit negatives
-- `3_instruction_hierarchy.py` — Priority framing (system > user > data)
-- `4_sandwich_defense.py` — Repeat instructions after untrusted content
-- `5_xml_tagging.py` — Structured prompts with semantic XML tags
-
-### Level 3: Isolation (Infra-Level)
-→ [notebooks_securing_guide/3_isolation_infra_level/](notebooks_securing_guide/3_isolation_infra_level/)
-- `overview.py` — Containers, VMs, network isolation, least privilege, kill switches
-
-### Level 4: Secure Architecture (Software)
-→ [notebooks_securing_guide/4_secure_architecture_software/](notebooks_securing_guide/4_secure_architecture_software/)
-- `1_dual_llm.py` — Quarantined + Privileged separation
-- `2_typed_extraction.py` — Schema as firewall
-- `3_dry_run.py` — Plan → Evaluate → Execute
-- `4_tool_validation.py` — MCP/tool manifest validation
-- `5_camel.py` — CaMeL capability-based security
-
-### Level 5: Defense in Depth
-→ [notebooks_securing_guide/5_defense_in_depth/](notebooks_securing_guide/5_defense_in_depth/)
-- `combined.py` — All techniques layered together
-
-### Framework Integration
-→ [notebooks_securing_guide/6_integration/](notebooks_securing_guide/6_integration/)
-- `langchain_integration.py` — Securing LangChain agents
-- `pydantic_ai_integration.py` — Securing Pydantic AI agents
+| Level | Guide | Notebooks |
+|-------|-------|-----------|
+| **0. Vulnerabilities** | [The Problem](https://luisalima.github.io/agentic-security/guide/0_vulnerabilities/) | `notebooks_securing_guide/0_vulnerabilities/` |
+| **1. Detection** | [Detection](https://luisalima.github.io/agentic-security/guide/1_detection/) | `notebooks_securing_guide/1_detection/` |
+| **2. Prompt Engineering** | [Prompt Engineering](https://luisalima.github.io/agentic-security/guide/2_prompt_engineering/) | `notebooks_securing_guide/2_prompt_engineering/` |
+| **3. Isolation (Infra)** | [Isolation](https://luisalima.github.io/agentic-security/guide/3_isolation/) | `notebooks_securing_guide/3_isolation_infra_level/` |
+| **4. Secure Architecture** | [Secure Architecture](https://luisalima.github.io/agentic-security/guide/4_secure_architecture/) | `notebooks_securing_guide/4_secure_architecture_software/` |
+| **5. Defense in Depth** | [Defense in Depth](https://luisalima.github.io/agentic-security/guide/5_defense_in_depth/) | `notebooks_securing_guide/5_defense_in_depth/` |
+| **6. Integration** | [Framework Integration](https://luisalima.github.io/agentic-security/guide/6_integration/) | `notebooks_securing_guide/6_integration/` |
 
 ---
 
@@ -163,7 +145,7 @@ agentic-security/
 
 ## Tools Landscape
 
-See [docs/TOOLS.md](docs/TOOLS.md) for detailed comparison. Quick picks:
+See [docs/reference/tools.md](docs/reference/tools.md) for detailed comparison. Quick picks:
 
 | Need | Tool |
 |------|------|
@@ -197,3 +179,7 @@ This aims to be **the** resource for agentic AI security. Contributions welcome:
 ## License
 
 MIT — Use freely, but please link back if this helped you.
+
+---
+
+> **Start here: [Principles](PRINCIPLES.md)** — The mental model for agentic security, before you touch any code.

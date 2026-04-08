@@ -149,7 +149,7 @@ Not unlikely. Not difficult. **Impossible** — enforced by infrastructure, not 
 
 ## References
 
-- [PRINCIPLES.md](../PRINCIPLES.md) — Core axioms and the Read → Propose → Approve → Execute pattern
-- [Attack Taxonomy](ATTACK_TAXONOMY.md) — Catalogue of attack vectors and risk matrix
-- [notebooks_securing_guide/3_isolation_infra_level/](../notebooks_securing_guide/3_isolation_infra_level/) — Infra-level isolation patterns
-- [notebooks_securing_guide/4_secure_architecture_software/](../notebooks_securing_guide/4_secure_architecture_software/) — Software-level defenses
+- [Principles](../principles.md) — Core axioms and the Read → Propose → Approve → Execute pattern
+- [Attack Taxonomy](attack_taxonomy.md) — Catalogue of attack vectors and risk matrix
+- [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/3_isolation_infra_level) — Infra-level isolation patterns
+- [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/4_secure_architecture_software) — Software-level defenses

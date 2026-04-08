@@ -42,6 +42,9 @@ Thumbs.db
 *.log
 results/
 
+# MkDocs build output
+site/
+
 # Marimo notebook cache
 **/__marimo__/
 scripts/node_modules/
