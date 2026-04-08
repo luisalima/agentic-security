@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file.
 - **Guide** — Markdown exports of all notebooks (`guide/`)
 - **Documentation**: THREAT_MODEL, ARCHITECTURE, TOOLS comparison,
   CHEATSHEET, TRADEOFFS, REFERENCES, ROADMAP
-- **Whitepaper** — Comprehensive markdown + PDF covering all levels
+- **PRINCIPLES.md** — Core axioms and mental model for agentic security
 - **Evaluation dataset** — 70 curated samples (50 injection, 20 legitimate)
   across 14 categories (`data/injection_dataset.json`)
 - **CI pipeline** — GitHub Actions: lint, format, test, benchmark smoke test
