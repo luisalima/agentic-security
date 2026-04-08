@@ -39,8 +39,8 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 
 ### 2.2 CaMeL / capability-based security notebook ✅
 - Implemented in `src/agentic_security/defenses/camel.py`
-- Notebook: `notebooks/3_secure_architecture/5_camel.py`
-- Guide: `guide/3_secure_architecture/5_camel.md`
+- Notebook: `notebooks/4_secure_architecture_software/5_camel.py`
+- Guide: `guide/4_secure_architecture_software/5_camel.md`
 - Tests: `tests/test_camel.py` (25 tests)
 
 ### 2.3 Multi-agent attack scenarios ✅

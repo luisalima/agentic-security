@@ -59,7 +59,7 @@ ollama pull llama3.1:8b
 marimo edit notebooks/0_vulnerabilities/1_baseline.py
 
 # Try a defense pattern
-marimo edit notebooks/3_secure_architecture/1_dual_llm.py
+marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py
 ```
 
 ### Read the Guide
@@ -76,9 +76,10 @@ agentic-security/
 │   ├── 0_vulnerabilities/        # The vulnerability
 │   ├── 1_detection/             # YARA, vectors, ML, LLM-as-judge, canaries
 │   ├── 2_prompt_engineering/    # Delimiters, hardening
-│   ├── 3_secure_architecture/   # Dual LLM, typed extraction, dry-run
-│   ├── 4_defense_in_depth/      # Layered defense
-│   └── 5_integration/           # LangChain, framework patterns
+│   ├── 3_isolation/              # Isolation patterns
+│   ├── 4_secure_architecture_software/  # Dual LLM, typed extraction, dry-run
+│   ├── 5_defense_in_depth/      # Layered defense
+│   └── 6_integration/           # LangChain, framework patterns
 ├── guide/                       # Markdown exports (for reading)
 ├── docs/
 │   ├── TOOLS.md                 # Library comparison
@@ -116,7 +117,7 @@ agentic-security/
 - `5_xml_tagging.py` — Structured prompts with semantic XML tags
 
 ### Level 3: Secure Architecture
-→ [notebooks/3_secure_architecture/](notebooks/3_secure_architecture/)
+→ [notebooks/4_secure_architecture_software/](notebooks/4_secure_architecture_software/)
 - `1_dual_llm.py` — Quarantined + Privileged separation
 - `2_typed_extraction.py` — Schema as firewall
 - `3_dry_run.py` — Plan → Evaluate → Execute
@@ -124,11 +125,11 @@ agentic-security/
 - `5_camel.py` — CaMeL capability-based security
 
 ### Level 4: Defense in Depth
-→ [notebooks/4_defense_in_depth/](notebooks/4_defense_in_depth/)
+→ [notebooks/5_defense_in_depth/](notebooks/5_defense_in_depth/)
 - `combined.py` — All techniques layered together
 
 ### Framework Integration
-→ [notebooks/5_integration/](notebooks/5_integration/)
+→ [notebooks/6_integration/](notebooks/6_integration/)
 - `langchain_integration.py` — Securing LangChain agents
 - `pydantic_ai_integration.py` — Securing Pydantic AI agents
 

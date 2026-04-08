@@ -70,4 +70,4 @@ provides good balance. Level 4 is for when you truly can't afford failures.
 
 ---
 
-**Previous:** [3_secure_architecture/](../3_secure_architecture/) — Architectural patterns
+**Previous:** [4_secure_architecture_software/](../4_secure_architecture_software/) — Architectural patterns

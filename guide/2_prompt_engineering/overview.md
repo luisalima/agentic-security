@@ -103,4 +103,4 @@ For real security, you need architectural separation (Level 3).
 ---
 
 **Previous:** `notebooks/1_detection/overview.py` — Filtering malicious inputs
-**Next:** `notebooks/3_secure_architecture/overview.py` — Architectural separation
+**Next:** `notebooks/3_isolation/overview.py` — Isolation patterns

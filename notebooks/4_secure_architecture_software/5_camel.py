@@ -393,7 +393,7 @@ def _(mo):
     ---
 
     **Previous:** [4_tool_validation.py](./4_tool_validation.py) — MCP/tool manifest validation
-    **Next:** [../4_defense_in_depth/](../4_defense_in_depth/) — Layering everything
+    **Next:** [../5_defense_in_depth/](../5_defense_in_depth/) — Layering everything
     """)
     return
 

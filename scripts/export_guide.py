@@ -47,9 +47,10 @@ def main():
         "0_vulnerabilities",
         "1_detection",
         "2_prompt_engineering",
-        "3_secure_architecture",
-        "4_defense_in_depth",
-        "5_integration",
+        "3_isolation",
+        "4_secure_architecture_software",
+        "5_defense_in_depth",
+        "6_integration",
     ]
 
     total = 0
@@ -114,16 +115,19 @@ Hardening individual LLM calls through prompt design.
 - Sandwich defense
 - XML tagging
 
-### [3. Secure Architecture](3_secure_architecture/)
+### [3. Isolation](3_isolation/)
+Sandboxing and isolation techniques for limiting agent capabilities.
+
+### [4. Secure Architecture](4_secure_architecture_software/)
 Architectural patterns for isolating concerns and limiting blast radius.
 - Dual LLM (quarantine + privilege)
 - Typed extraction (schema as firewall)
 - Dry-run evaluation (plan → evaluate → execute)
 
-### [4. Defense in Depth](4_defense_in_depth/)
+### [5. Defense in Depth](5_defense_in_depth/)
 Layering all techniques together for comprehensive protection.
 
-### [5. Framework Integration](5_integration/)
+### [6. Framework Integration](6_integration/)
 Applying security patterns to real-world frameworks (LangChain, etc.).
 
 ---

@@ -7,7 +7,7 @@ app = marimo.App(width="medium")
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Level 4: Defense in Depth
+    # Level 5: Defense in Depth
 
     Layer all techniques together. **Assume breach at each layer.**
 
@@ -93,7 +93,7 @@ def _(mo):
 
     ---
 
-    **Previous:** [3_secure_architecture/](../3_secure_architecture/) — Architectural patterns
+    **Previous:** [4_secure_architecture_software/](../4_secure_architecture_software/) — Architectural patterns
     """)
     return
 

@@ -460,7 +460,7 @@ def _(mo):
 
     ---
 
-    **Next:** [3_secure_architecture/](../3_secure_architecture/) — When prompt engineering isn't enough
+    **Next:** [3_isolation/](../3_isolation/) — Isolating untrusted content from tool access
     """)
     return
 

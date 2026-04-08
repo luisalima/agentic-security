@@ -8,10 +8,10 @@ Visual diagrams for the Agentic Security guide, created with [Excalidraw](https:
 |---------|-------------|---------|
 | `mental_model.excalidraw` | Four-level defense mental model | README, guide/index |
 | `detection_flow.excalidraw` | Detection pipeline (YARA → Vector → ML) | 1_detection |
-| `dual_llm.excalidraw` | Quarantined + Privileged architecture | 3_secure_architecture |
-| `typed_extraction.excalidraw` | Schema as firewall concept | 3_secure_architecture |
-| `dry_run.excalidraw` | Plan → Evaluate → Execute flow | 3_secure_architecture |
-| `defense_in_depth.excalidraw` | Layered defense overview | 4_defense_in_depth |
+| `dual_llm.excalidraw` | Quarantined + Privileged architecture | 4_secure_architecture_software |
+| `typed_extraction.excalidraw` | Schema as firewall concept | 4_secure_architecture_software |
+| `dry_run.excalidraw` | Plan → Evaluate → Execute flow | 4_secure_architecture_software |
+| `defense_in_depth.excalidraw` | Layered defense overview | 5_defense_in_depth |
 
 ## How to Edit
 

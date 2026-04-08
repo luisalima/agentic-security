@@ -354,4 +354,4 @@ def secure_prompt(user_input: str, untrusted_data: str) -> tuple[str, str]:
 
 ---
 
-**Next:** [3_secure_architecture/](../3_secure_architecture/) — When prompt engineering isn't enough
+**Next:** [3_isolation/](../3_isolation/) — When prompt engineering isn't enough

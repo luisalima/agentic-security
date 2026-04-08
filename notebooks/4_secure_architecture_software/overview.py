@@ -7,7 +7,7 @@ app = marimo.App(width="medium")
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Level 3: Secure Agentic Architecture
+    # Level 4: Secure Agentic Architecture
 
     When detection and prompt engineering aren't enough, you need **architectural separation**.
     These patterns fundamentally change how your system handles untrusted content.
@@ -109,11 +109,11 @@ def _(mo):
     ## Notebooks in This Section
 
     ```bash
-    marimo edit notebooks/3_secure_architecture/1_dual_llm.py          # 1. Quarantined + Privileged LLM separation
-    marimo edit notebooks/3_secure_architecture/2_typed_extraction.py   # 2. Schema constraints as firewall
-    marimo edit notebooks/3_secure_architecture/3_dry_run.py            # 3. Plan → Evaluate → Execute
-    marimo edit notebooks/3_secure_architecture/4_tool_validation.py    # 4. Tool & MCP manifest validation
-    marimo edit notebooks/3_secure_architecture/5_camel.py              # 5. CaMeL capability-based security
+    marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py          # 1. Quarantined + Privileged LLM separation
+    marimo edit notebooks/4_secure_architecture_software/2_typed_extraction.py   # 2. Schema constraints as firewall
+    marimo edit notebooks/4_secure_architecture_software/3_dry_run.py            # 3. Plan → Evaluate → Execute
+    marimo edit notebooks/4_secure_architecture_software/4_tool_validation.py    # 4. Tool & MCP manifest validation
+    marimo edit notebooks/4_secure_architecture_software/5_camel.py              # 5. CaMeL capability-based security
     ```
 
     ---
@@ -146,8 +146,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts  
-    **Next:** `notebooks/4_defense_in_depth/` — Layering everything
+    **Previous:** `notebooks/3_isolation/overview.py` — Isolation patterns  
+    **Next:** `notebooks/5_defense_in_depth/` — Layering everything
     """)
     return
 

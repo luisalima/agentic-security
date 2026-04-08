@@ -290,9 +290,9 @@ Each technique has tradeoffs. This repo includes notebooks demonstrating how the
 | LLM-as-Judge | `notebooks/1_detection/4_llm_as_judge.py` | Nuanced, context-aware | Meta-injection risk |
 | Canary Tokens | `notebooks/1_detection/5_canary_tokens.py` | Detects leakage | Doesn't prevent injection |
 | Delimiters | `notebooks/2_prompt_engineering/1_delimiters.py` | Simple, no ML | Easily bypassed |
-| Dual LLM | `notebooks/3_secure_architecture/dual_llm.py` | Strong isolation | 2x latency/cost |
-| Typed Extraction | `notebooks/3_secure_architecture/typed_extraction.py` | Schema constraints | Requires modeling |
-| Dry-Run Eval | `notebooks/3_secure_architecture/dry_run.py` | Validates actions | Evaluator can be fooled |
+| Dual LLM | `notebooks/4_secure_architecture_software/dual_llm.py` | Strong isolation | 2x latency/cost |
+| Typed Extraction | `notebooks/4_secure_architecture_software/typed_extraction.py` | Schema constraints | Requires modeling |
+| Dry-Run Eval | `notebooks/4_secure_architecture_software/dry_run.py` | Validates actions | Evaluator can be fooled |
 
 ---
 
