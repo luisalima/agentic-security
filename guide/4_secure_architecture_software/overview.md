@@ -80,11 +80,11 @@ Architecture:        Untrusted data → Quarantined LLM → Structured data
 ## Notebooks in This Section
 
 ```bash
-marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py          # 1. Quarantined + Privileged LLM separation
-marimo edit notebooks/4_secure_architecture_software/2_typed_extraction.py   # 2. Schema constraints as firewall
-marimo edit notebooks/4_secure_architecture_software/3_dry_run.py            # 3. Plan → Evaluate → Execute
-marimo edit notebooks/4_secure_architecture_software/4_tool_validation.py    # 4. Tool & MCP manifest validation
-marimo edit notebooks/4_secure_architecture_software/5_camel.py              # 5. CaMeL capability-based security
+marimo edit notebooks_securing_guide/4_secure_architecture_software/1_dual_llm.py          # 1. Quarantined + Privileged LLM separation
+marimo edit notebooks_securing_guide/4_secure_architecture_software/2_typed_extraction.py   # 2. Schema constraints as firewall
+marimo edit notebooks_securing_guide/4_secure_architecture_software/3_dry_run.py            # 3. Plan → Evaluate → Execute
+marimo edit notebooks_securing_guide/4_secure_architecture_software/4_tool_validation.py    # 4. Tool & MCP manifest validation
+marimo edit notebooks_securing_guide/4_secure_architecture_software/5_camel.py              # 5. CaMeL capability-based security
 ```
 
 ---
@@ -117,5 +117,5 @@ the intent parser *is* the attack surface. Worth watching as the research mature
 
 ---
 
-**Previous:** `notebooks/2_prompt_engineering/overview.py` — Hardening prompts
-**Next:** `notebooks/5_defense_in_depth/` — Layering everything
+**Previous:** `notebooks_securing_guide/2_prompt_engineering/overview.py` — Hardening prompts
+**Next:** `notebooks_securing_guide/5_defense_in_depth/` — Layering everything

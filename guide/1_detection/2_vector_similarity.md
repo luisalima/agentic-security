@@ -193,5 +193,5 @@ def is_attack(text: str, threshold: float = 0.85) -> bool:
 
 ---
 
-**Previous:** `notebooks/1_detection/1_yara_detection.py` — Pattern matching
-**Next:** `notebooks/1_detection/3_ml_classifier.py` — Neural network classification
+**Previous:** `notebooks_securing_guide/1_detection/1_yara_detection.py` — Pattern matching
+**Next:** `notebooks_securing_guide/1_detection/3_ml_classifier.py` — Neural network classification

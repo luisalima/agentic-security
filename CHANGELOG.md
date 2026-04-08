@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
   (0–5) including vulnerabilities, detection, prompt engineering,
   secure architecture, defense in depth, and framework integration
 - **Guide** — Markdown exports of all notebooks (`guide/`)
-- **Documentation**: THREAT_MODEL, ARCHITECTURE, TOOLS comparison,
+- **Documentation**: ATTACK_TAXONOMY, THREAT_MODEL, ARCHITECTURE, TOOLS comparison,
   CHEATSHEET, TRADEOFFS, REFERENCES, ROADMAP
 - **PRINCIPLES.md** — Core axioms and mental model for agentic security
 - **Evaluation dataset** — 70 curated samples (50 injection, 20 legitimate)

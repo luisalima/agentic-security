@@ -93,7 +93,7 @@ A comprehensive guide to securing AI agents against prompt injection and related
 
 **Reading online?** Browse the markdown files in each section.
 
-**Want to experiment?** Run the interactive [Marimo notebooks](../notebooks/).
+**Want to experiment?** Run the interactive [Marimo notebooks](../notebooks_securing_guide/).
 
 ## Sections
 
@@ -141,7 +141,7 @@ Applying security patterns to real-world frameworks (LangChain, etc.).
 | Secure Architecture | Redesign system | High | +10% |
 | Defense in Depth | All of above | Highest | ~99% |
 
-See also: [Tools Comparison](../docs/TOOLS.md) | [Threat Model](../docs/THREAT_MODEL.md)
+See also: [Tools Comparison](../docs/TOOLS.md) | [Attack Taxonomy](../docs/ATTACK_TAXONOMY.md) | [Threat Model](../docs/THREAT_MODEL.md)
 """
 
     index_path = guide_dir / "index.md"

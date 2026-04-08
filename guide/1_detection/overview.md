@@ -83,11 +83,11 @@ See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
 Open any notebook from the repo root:
 
 ```bash
-marimo edit notebooks/1_detection/1_yara_detection.py      # 1. Fast pattern matching
-marimo edit notebooks/1_detection/2_vector_similarity.py   # 2. Semantic similarity search
-marimo edit notebooks/1_detection/3_ml_classifier.py       # 3. Neural network classification
-marimo edit notebooks/1_detection/4_llm_as_judge.py        # 4. LLM evaluating for injection
-marimo edit notebooks/1_detection/5_canary_tokens.py       # 5. Detecting prompt leakage
+marimo edit notebooks_securing_guide/1_detection/1_yara_detection.py      # 1. Fast pattern matching
+marimo edit notebooks_securing_guide/1_detection/2_vector_similarity.py   # 2. Semantic similarity search
+marimo edit notebooks_securing_guide/1_detection/3_ml_classifier.py       # 3. Neural network classification
+marimo edit notebooks_securing_guide/1_detection/4_llm_as_judge.py        # 4. LLM evaluating for injection
+marimo edit notebooks_securing_guide/1_detection/5_canary_tokens.py       # 5. Detecting prompt leakage
 ```
 
 ---

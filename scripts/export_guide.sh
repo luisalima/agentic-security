@@ -18,7 +18,7 @@ fi
 drift_found=false
 
 while IFS= read -r notebook; do
-    # notebooks/4_secure_architecture_software/2_typed_extraction.py → 4_secure_architecture_software/2_typed_extraction
+    # notebooks_securing_guide/4_secure_architecture_software/2_typed_extraction.py → 4_secure_architecture_software/2_typed_extraction
     rel="${notebook#"$NOTEBOOKS_DIR/"}"
     stem="${rel%.py}"
     md_file="$GUIDE_DIR/${stem}.md"

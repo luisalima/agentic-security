@@ -129,6 +129,6 @@ Block or flag if the agent tries to:
 
 ## Resources
 
-- **This Repo:** [notebooks/](../notebooks/) — Interactive examples
+- **This Repo:** [notebooks_securing_guide/](../notebooks_securing_guide/) — Interactive examples
 - **OWASP:** [Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - **Simon Willison:** [Prompt Injection Series](https://simonwillison.net/series/prompt-injection/)

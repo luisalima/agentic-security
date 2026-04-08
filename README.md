@@ -2,7 +2,7 @@
 
 **The definitive guide to securing AI agents against prompt injection.**
 
-AI agents that can take actions (send emails, execute code, access APIs) are vulnerable to prompt injection attacks. This repository provides practical, runnable examples of defense patterns—from simple detection to secure multi-agent architectures.
+AI agents are vulnerable to prompt injection attacks. This is more concerning since they can take actions and "live" in spaces that can access (and edit) private information. This repository provides practical, runnable examples of defense patterns—from simple detection to secure multi-agent architectures.
 
 > **Start here: [PRINCIPLES.md](PRINCIPLES.md)** — The mental model for agentic security, before you touch any code.
 
@@ -59,10 +59,10 @@ ollama pull llama3.1:8b
 
 ```bash
 # See the vulnerability (baseline)
-marimo edit notebooks/0_vulnerabilities/1_baseline.py
+marimo edit notebooks_securing_guide/0_vulnerabilities/1_baseline.py
 
 # Try a defense pattern
-marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py
+marimo edit notebooks_securing_guide/4_secure_architecture_software/1_dual_llm.py
 ```
 
 ### Read the Guide
@@ -75,7 +75,7 @@ Don't want to run code? Read the [exported markdown guide](guide/index.md).
 
 ```
 agentic-security/
-├── notebooks/                   # Interactive Marimo notebooks
+├── notebooks_securing_guide/                   # Interactive Marimo notebooks
 │   ├── 0_vulnerabilities/        # The vulnerability
 │   ├── 1_detection/             # YARA, vectors, ML, LLM-as-judge, canaries
 │   ├── 2_prompt_engineering/    # Delimiters, hardening
@@ -86,7 +86,8 @@ agentic-security/
 ├── guide/                       # Markdown exports (for reading)
 ├── docs/
 │   ├── TOOLS.md                 # Library comparison
-│   ├── THREAT_MODEL.md          # Attack taxonomy
+│   ├── ATTACK_TAXONOMY.md       # Attack vectors & risk matrix
+│   ├── THREAT_MODEL.md          # How to threat-model your agent
 │   └── CHEATSHEET.md            # One-page quick reference
 ├── diagrams/                    # Excalidraw visuals
 └── src/agentic_security/        # Supporting code
@@ -97,14 +98,14 @@ agentic-security/
 ## Learning Path
 
 ### Understand the Problem
-→ [notebooks/0_vulnerabilities/](notebooks/0_vulnerabilities/) — See how easily an agent can be hijacked
+→ [notebooks_securing_guide/0_vulnerabilities/](notebooks_securing_guide/0_vulnerabilities/) — See how easily an agent can be hijacked
 - `1_baseline.py` — Single-turn indirect prompt injection
 - `2_multi_turn_attacks.py` — Crescendo, context stuffing, many-shot
 - `3_multi_agent_attacks.py` — RAG poisoning, delegation attacks, plugin supply-chain
 - `4_case_studies.py` — Real-world incidents: Clinejection, Bing/Sydney, EchoLeak
 
 ### Level 1: Detection
-→ [notebooks/1_detection/](notebooks/1_detection/)
+→ [notebooks_securing_guide/1_detection/](notebooks_securing_guide/1_detection/)
 - `1_yara_detection.py` — Fast pattern matching
 - `2_vector_similarity.py` — Semantic similarity search
 - `3_ml_classifier.py` — Neural network classification
@@ -112,7 +113,7 @@ agentic-security/
 - `5_canary_tokens.py` — Detect prompt leakage
 
 ### Level 2: Prompt Engineering  
-→ [notebooks/2_prompt_engineering/](notebooks/2_prompt_engineering/)
+→ [notebooks_securing_guide/2_prompt_engineering/](notebooks_securing_guide/2_prompt_engineering/)
 - `1_delimiters.py` — Random token boundaries (Spotlighting)
 - `2_system_prompt_hardening.py` — Role anchoring, explicit negatives
 - `3_instruction_hierarchy.py` — Priority framing (system > user > data)
@@ -120,11 +121,11 @@ agentic-security/
 - `5_xml_tagging.py` — Structured prompts with semantic XML tags
 
 ### Level 3: Isolation (Infra-Level)
-→ [notebooks/3_isolation_infra_level/](notebooks/3_isolation_infra_level/)
+→ [notebooks_securing_guide/3_isolation_infra_level/](notebooks_securing_guide/3_isolation_infra_level/)
 - `overview.py` — Containers, VMs, network isolation, least privilege, kill switches
 
 ### Level 4: Secure Architecture (Software)
-→ [notebooks/4_secure_architecture_software/](notebooks/4_secure_architecture_software/)
+→ [notebooks_securing_guide/4_secure_architecture_software/](notebooks_securing_guide/4_secure_architecture_software/)
 - `1_dual_llm.py` — Quarantined + Privileged separation
 - `2_typed_extraction.py` — Schema as firewall
 - `3_dry_run.py` — Plan → Evaluate → Execute
@@ -132,11 +133,11 @@ agentic-security/
 - `5_camel.py` — CaMeL capability-based security
 
 ### Level 5: Defense in Depth
-→ [notebooks/5_defense_in_depth/](notebooks/5_defense_in_depth/)
+→ [notebooks_securing_guide/5_defense_in_depth/](notebooks_securing_guide/5_defense_in_depth/)
 - `combined.py` — All techniques layered together
 
 ### Framework Integration
-→ [notebooks/6_integration/](notebooks/6_integration/)
+→ [notebooks_securing_guide/6_integration/](notebooks_securing_guide/6_integration/)
 - `langchain_integration.py` — Securing LangChain agents
 - `pydantic_ai_integration.py` — Securing Pydantic AI agents
 

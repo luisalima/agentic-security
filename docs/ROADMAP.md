@@ -39,14 +39,14 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 
 ### 2.2 CaMeL / capability-based security notebook ✅
 - Implemented in `src/agentic_security/defenses/camel.py`
-- Notebook: `notebooks/4_secure_architecture_software/5_camel.py`
+- Notebook: `notebooks_securing_guide/4_secure_architecture_software/5_camel.py`
 - Guide: `guide/4_secure_architecture_software/5_camel.md`
 - Tests: `tests/test_camel.py` (25 tests)
 
 ### 2.3 Multi-agent attack scenarios ✅
 - RAG poisoning, delegation attacks, plugin supply-chain
 - Module: `src/agentic_security/attacks/multi_agent.py`
-- Notebook: `notebooks/0_vulnerabilities/3_multi_agent_attacks.py`
+- Notebook: `notebooks_securing_guide/0_vulnerabilities/3_multi_agent_attacks.py`
 - Guide: `guide/0_vulnerabilities/3_multi_agent_attacks.md`
 - Tests: `tests/test_multi_agent.py` (30 tests)
 
@@ -72,7 +72,7 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 ### 3.2 Real-world case studies / CTF exercises ✅
 - Clinejection, Bing/Sydney, EchoLeak case studies
 - CTF resource links (Gandalf, PromptMe, Garak, HackAPrompt)
-- Notebook: `notebooks/0_vulnerabilities/4_case_studies.py`
+- Notebook: `notebooks_securing_guide/0_vulnerabilities/4_case_studies.py`
 - Guide: `guide/0_vulnerabilities/4_case_studies.md`
 
 ### 3.3 CONTRIBUTING.md

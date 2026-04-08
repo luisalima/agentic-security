@@ -212,8 +212,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/2_prompt_engineering/` — Hardening prompts
-    **Next:** `notebooks/4_secure_architecture_software/` — Software-level architectural defenses
+    **Previous:** `notebooks_securing_guide/2_prompt_engineering/` — Hardening prompts
+    **Next:** `notebooks_securing_guide/4_secure_architecture_software/` — Software-level architectural defenses
     """)
     return
 

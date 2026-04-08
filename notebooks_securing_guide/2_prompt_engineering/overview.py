@@ -103,11 +103,11 @@ def _(mo):
     Open any notebook from the repo root:
 
     ```bash
-    marimo edit notebooks/2_prompt_engineering/1_delimiters.py              # 1. Random token delimiters (Spotlighting)
-    marimo edit notebooks/2_prompt_engineering/2_system_prompt_hardening.py # 2. Role anchoring, explicit negatives
-    marimo edit notebooks/2_prompt_engineering/3_instruction_hierarchy.py   # 3. Priority framing (system > user > data)
-    marimo edit notebooks/2_prompt_engineering/4_sandwich_defense.py        # 4. Repeat instructions after untrusted content
-    marimo edit notebooks/2_prompt_engineering/5_xml_tagging.py             # 5. Structured prompts with semantic XML tags
+    marimo edit notebooks_securing_guide/2_prompt_engineering/1_delimiters.py              # 1. Random token delimiters (Spotlighting)
+    marimo edit notebooks_securing_guide/2_prompt_engineering/2_system_prompt_hardening.py # 2. Role anchoring, explicit negatives
+    marimo edit notebooks_securing_guide/2_prompt_engineering/3_instruction_hierarchy.py   # 3. Priority framing (system > user > data)
+    marimo edit notebooks_securing_guide/2_prompt_engineering/4_sandwich_defense.py        # 4. Repeat instructions after untrusted content
+    marimo edit notebooks_securing_guide/2_prompt_engineering/5_xml_tagging.py             # 5. Structured prompts with semantic XML tags
     ```
 
     ---
@@ -132,8 +132,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/1_detection/overview.py` — Filtering malicious inputs
-    **Next:** `notebooks/3_isolation_infra_level/overview.py` — Isolation & blast radius containment
+    **Previous:** `notebooks_securing_guide/1_detection/overview.py` — Filtering malicious inputs
+    **Next:** `notebooks_securing_guide/3_isolation_infra_level/overview.py` — Isolation & blast radius containment
     """)
     return
 
