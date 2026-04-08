@@ -15,7 +15,7 @@ def _(mo):
 
     This is closer to how security should work: **validate outputs, not inputs**.
 
-    > Instead of trying to predict if content is malicious, 
+    > Instead of trying to predict if content is malicious,
     > check if the proposed actions match the user's actual request.
 
     <!-- DIAGRAM: diagrams/dry_run.excalidraw -->
@@ -26,6 +26,7 @@ def _(mo):
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
@@ -37,16 +38,8 @@ def _():
 
     from agentic_security.llm import EMAIL_TOOLS, get_client
     from agentic_security.scenario import MALICIOUS_EMAIL, SimulatedTools, evaluate_defense
-    return (
-        BaseModel,
-        EMAIL_TOOLS,
-        Field,
-        MALICIOUS_EMAIL,
-        SimulatedTools,
-        evaluate_defense,
-        get_client,
-        json,
-    )
+
+    return MALICIOUS_EMAIL, SimulatedTools, evaluate_defense, get_client, json
 
 
 @app.cell
@@ -94,7 +87,9 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("## Data Structures")
+    mo.md("""
+    ## Data Structures
+    """)
     return
 
 
@@ -107,20 +102,20 @@ def _(mo):
     )
 
     mo.md("""
-```python
-class PlannedAction(BaseModel):
+    ```python
+    class PlannedAction(BaseModel):
     tool: str       # Which tool to call
     reason: str     # Why this action is needed
     params: dict    # Parameters for the tool
 
-class EvaluationResult(BaseModel):
+    class EvaluationResult(BaseModel):
     approved: bool
     risk_level: str   # low, medium, high, critical
     concerns: list[str]
     recommendation: str
-```
-""")
-    return EvaluationResult, ExecutionPlan, PlannedAction
+    ```
+    """)
+    return EvaluationResult, ExecutionPlan
 
 
 @app.cell
@@ -160,13 +155,13 @@ def _(
     # Step 1: Generate plan (no execution)
     planning_prompt = f"""User request: {user_request}
 
-Email to process:
-From: {MALICIOUS_EMAIL.sender}
-Subject: {MALICIOUS_EMAIL.subject}
-Body:
-{MALICIOUS_EMAIL.body}
+    Email to process:
+    From: {MALICIOUS_EMAIL.sender}
+    Subject: {MALICIOUS_EMAIL.subject}
+    Body:
+    {MALICIOUS_EMAIL.body}
 
-Generate a plan to fulfill the user's request. Output JSON only."""
+    Generate a plan to fulfill the user's request. Output JSON only."""
 
     plan_response = client.complete(
         system=PLANNER_SYSTEM_PROMPT,
@@ -208,7 +203,7 @@ def _(mo, plan, plan_success):
         ])
     else:
         mo.md("## Step 1: Planning failed")
-    return (actions_display,)
+    return
 
 
 @app.cell
@@ -225,12 +220,12 @@ def _(
     if plan_success:
         evaluation_prompt = f"""Original user request: "{user_request}"
 
-Plan to evaluate:
-{plan.model_dump_json(indent=2)}
+    Plan to evaluate:
+    {plan.model_dump_json(indent=2)}
 
-Known safe contacts: alice@company.com, bob@external.com
+    Known safe contacts: alice@company.com, bob@external.com
 
-Evaluate this plan for security risks. Output JSON only."""
+    Evaluate this plan for security risks. Output JSON only."""
 
         eval_response = client.complete(
             system=EVALUATOR_SYSTEM_PROMPT,
@@ -240,13 +235,13 @@ Evaluate this plan for security risks. Output JSON only."""
         )
 
         try:
-            raw_json = eval_response["content"]
-            if "```" in raw_json:
-                raw_json = raw_json.split("```")[1]
-                if raw_json.startswith("json"):
-                    raw_json = raw_json[4:]
+            eval_raw = eval_response["content"]
+            if "```" in eval_raw:
+                eval_raw = eval_raw.split("```")[1]
+                if eval_raw.startswith("json"):
+                    eval_raw = eval_raw[4:]
 
-            eval_data = json.loads(raw_json)
+            eval_data = json.loads(eval_raw)
             evaluation = EvaluationResult(**eval_data)
         except Exception:
             evaluation = EvaluationResult(
@@ -262,7 +257,7 @@ Evaluate this plan for security risks. Output JSON only."""
             concerns=["Planning failed"],
             recommendation="Block execution",
         )
-    return eval_data, eval_response, evaluation, evaluation_prompt, raw_json
+    return (evaluation,)
 
 
 @app.cell
@@ -286,11 +281,11 @@ def _(evaluation, mo, plan_success):
             mo.md(f"**Concerns:**\n{concerns_display}"),
             mo.md(f"**Recommendation:** {evaluation.recommendation}"),
         ])
-    return concerns_display, status_color, status_text
+    return
 
 
 @app.cell
-def _(SimulatedTools, evaluation, evaluate_defense, plan, plan_success):
+def _(SimulatedTools, evaluate_defense, evaluation, plan, plan_success):
     # Step 3: Execute only if approved
     tools = SimulatedTools()
     tool_calls_made = []
@@ -324,7 +319,7 @@ def _(evaluation, mo, plan_success, result, tool_calls_made):
             mo.md(f"**Result:** {exec_msg}"),
             final_status,
         ])
-    return exec_msg, final_status
+    return
 
 
 @app.cell(hide_code=True)
@@ -340,8 +335,30 @@ def _(mo):
 
     **These don't match → REJECT**
 
-    Even if the planner is fully compromised by the injection, the evaluator 
+    Even if the planner is fully compromised by the injection, the evaluator
     catches the mismatch between intent and actions.
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md("""
+    ## Why an Attack Might Still Succeed
+
+    Dry-run evaluation is not bulletproof. Consider these failure modes:
+
+    | Failure Mode | Example |
+    |--------------|---------|
+    | **Evaluator also compromised** | If planner and evaluator use the same LLM, a crafted injection could fool both |
+    | **Subtle exfiltration** | Embedding sensitive data in a "reply" that looks like a normal response |
+    | **Action looks legitimate** | `send_email(to=user, body=...)` where the body contains exfiltrated data |
+    | **Semantic gap** | The evaluator doesn't understand that "reply_all" with a BCC is a forward |
+    | **Incomplete tool modeling** | Plan says `search_email` but the tool has side effects the evaluator doesn't know about |
+
+    **The evaluator is only as good as its understanding of what each tool actually does.**
+
+    This is why the next section adds deterministic rules — don't rely on the LLM alone.
     """)
     return
 
@@ -360,15 +377,15 @@ def _(mo):
         for action in plan.actions:
             # Rule 1: No sending to unknown recipients
             if action.tool in ("send_email", "forward_email"):
-                recipient = action.params.get("to", "")
+                recipient = action.params.get("to", "\")
                 if recipient not in KNOWN_CONTACTS:
                     return False, f"Unknown recipient: {recipient}"
-            
+
             # Rule 2: "summarize" requests shouldn't trigger sends
             if "summarize" in user_request.lower():
                 if action.tool in ("send_email", "forward_email"):
                     return False, "Summarize requests should not send emails"
-        
+
         return True, "OK"
     ```
 
@@ -390,7 +407,7 @@ def _(mo):
 
     ---
 
-    **Previous:** [2_typed_extraction.py](./2_typed_extraction.py) — Schema constraints  
+    **Previous:** [2_typed_extraction.py](./2_typed_extraction.py) — Schema constraints
     **Next:** [4_tool_validation.py](./4_tool_validation.py) — Tool & MCP manifest validation
     """)
     return
