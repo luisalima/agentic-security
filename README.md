@@ -4,6 +4,8 @@
 
 AI agents that can take actions (send emails, execute code, access APIs) are vulnerable to prompt injection attacks. This repository provides practical, runnable examples of defense patterns—from simple detection to secure multi-agent architectures.
 
+> **Start here: [PRINCIPLES.md](PRINCIPLES.md)** — The mental model for agentic security, before you touch any code.
+
 <!-- Diagram: see diagrams/mental_model.excalidraw -->
 
 ---
