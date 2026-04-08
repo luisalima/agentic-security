@@ -28,8 +28,9 @@ Unlike traditional injection attacks (SQL injection, XSS), there's no equivalent
 |-------|----------|--------------|------------|
 | **1. Detection** | Filter malicious inputs | Add a library | ~95% |
 | **2. Prompt Engineering** | Harden the prompt | Change prompts | +marginal |
-| **3. Secure Architecture** | Isolate concerns | Redesign system | +significant |
-| **4. Defense in Depth** | Layer everything | Full investment | ~99%* |
+| **3. Isolation (Infra)** | Containers, network, permissions | Wrap the agent | +significant |
+| **4. Secure Architecture (Software)** | Dual LLM, dry-run, typed extraction | Redesign system | +significant |
+| **5. Defense in Depth** | Layer everything | Full investment | ~99%* |
 
 *Nothing is 100%. The goal is raising the bar high enough to deter attacks and limit blast radius.
 
@@ -78,7 +79,7 @@ agentic-security/
 │   ├── 0_vulnerabilities/        # The vulnerability
 │   ├── 1_detection/             # YARA, vectors, ML, LLM-as-judge, canaries
 │   ├── 2_prompt_engineering/    # Delimiters, hardening
-│   ├── 3_isolation/              # Isolation patterns
+│   ├── 3_isolation_infra_level/  # Containers, network, permissions
 │   ├── 4_secure_architecture_software/  # Dual LLM, typed extraction, dry-run
 │   ├── 5_defense_in_depth/      # Layered defense
 │   └── 6_integration/           # LangChain, framework patterns
@@ -118,7 +119,11 @@ agentic-security/
 - `4_sandwich_defense.py` — Repeat instructions after untrusted content
 - `5_xml_tagging.py` — Structured prompts with semantic XML tags
 
-### Level 3: Secure Architecture
+### Level 3: Isolation (Infra-Level)
+→ [notebooks/3_isolation_infra_level/](notebooks/3_isolation_infra_level/)
+- `overview.py` — Containers, VMs, network isolation, least privilege, kill switches
+
+### Level 4: Secure Architecture (Software)
 → [notebooks/4_secure_architecture_software/](notebooks/4_secure_architecture_software/)
 - `1_dual_llm.py` — Quarantined + Privileged separation
 - `2_typed_extraction.py` — Schema as firewall
@@ -126,7 +131,7 @@ agentic-security/
 - `4_tool_validation.py` — MCP/tool manifest validation
 - `5_camel.py` — CaMeL capability-based security
 
-### Level 4: Defense in Depth
+### Level 5: Defense in Depth
 → [notebooks/5_defense_in_depth/](notebooks/5_defense_in_depth/)
 - `combined.py` — All techniques layered together
 

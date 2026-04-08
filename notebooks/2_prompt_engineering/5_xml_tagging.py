@@ -466,7 +466,7 @@ def _(mo):
     ---
 
     **Previous:** [1_delimiters.py](./1_delimiters.py) — Random token delimiters
-    **Next:** [3_isolation/](../3_isolation/) — Isolating untrusted content from tool access
+    **Next:** [3_isolation_infra_level/](../3_isolation_infra_level/) — Isolation & blast radius containment
     """)
     return
 

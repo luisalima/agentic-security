@@ -460,7 +460,7 @@ def _(mo):
 
     ---
 
-    **Next:** [3_isolation/](../3_isolation/) — Isolating untrusted content from tool access
+    **Next:** [3_isolation_infra_level/](../3_isolation_infra_level/) — Isolation & blast radius containment
     """)
     return
 

@@ -47,7 +47,7 @@ def main():
         "0_vulnerabilities",
         "1_detection",
         "2_prompt_engineering",
-        "3_isolation",
+        "3_isolation_infra_level",
         "4_secure_architecture_software",
         "5_defense_in_depth",
         "6_integration",
@@ -115,7 +115,7 @@ Hardening individual LLM calls through prompt design.
 - Sandwich defense
 - XML tagging
 
-### [3. Isolation](3_isolation/)
+### [3. Isolation (Infra-Level)](3_isolation_infra_level/)
 Sandboxing and isolation techniques for limiting agent capabilities.
 
 ### [4. Secure Architecture](4_secure_architecture_software/)

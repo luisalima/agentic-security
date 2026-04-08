@@ -146,7 +146,7 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks/3_isolation/overview.py` — Isolation patterns  
+    **Previous:** `notebooks/3_isolation_infra_level/overview.py` — Isolation & blast radius containment  
     **Next:** `notebooks/5_defense_in_depth/` — Layering everything
     """)
     return

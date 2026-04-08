@@ -133,7 +133,7 @@ def _(mo):
     ---
 
     **Previous:** `notebooks/1_detection/overview.py` — Filtering malicious inputs
-    **Next:** `notebooks/3_isolation/overview.py` — Isolating untrusted content from tool access
+    **Next:** `notebooks/3_isolation_infra_level/overview.py` — Isolation & blast radius containment
     """)
     return
 

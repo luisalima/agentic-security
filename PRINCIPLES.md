@@ -170,7 +170,7 @@ Start with what's easiest and works on anything, then add layers:
 
 **This is the lowest-hanging fruit.** Containerize, restrict network, scope permissions.
 
-→ [notebooks/3_isolation/](notebooks/3_isolation/)
+→ [notebooks/3_isolation_infra_level/](notebooks/3_isolation_infra_level/)
 
 ### Step 2: Software Architecture (requires code changes)
 

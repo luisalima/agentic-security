@@ -7,7 +7,7 @@ app = marimo.App(width="medium")
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Level 3: Isolation & Blast Radius Containment
+    # Level 3: Isolation & Blast Radius Containment (Infra-Level)
 
     Before changing agent code, **restrict what a compromised agent can do**.
 
