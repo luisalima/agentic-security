@@ -1,6 +1,6 @@
 # Principles of Agentic Security
 
-**Read this first.** This document gives you the mental model. The [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide) show you the implementation.
+**Read this first.** This document gives you the mental model. The [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) show you the implementation.
 
 ---
 
@@ -22,7 +22,7 @@ The problem: every useful agent has all three. Your coding assistant reads untru
 
 **All personal assistants and coding assistants are instances of the lethal trifecta. All. Of. Them.**
 
-→ *Deep dive:* [Vulnerabilities notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/0_vulnerabilities)
+→ *Deep dive:* [Vulnerabilities notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/0_vulnerabilities)
 
 ---
 
@@ -86,34 +86,18 @@ Multiple documented cases of agents ignoring explicit "STOP" commands:
 
 For any system you're designing, split the agent into stages with hard boundaries:
 
-```
-┌─────────────────────────────────────────────┐
-│  1. READ & PROPOSE                          │
-│  Agent can only read data and propose       │
-│  actions. No execution capability.          │
-│  ⚠️ Assume this agent IS compromised.      │
-└─────────────────┬───────────────────────────┘
-                  │ proposed actions
-                  ▼
-┌─────────────────────────────────────────────┐
-│  2. APPROVE                                 │
-│  Human reviews and approves the actions.    │
-│  (Or a separate evaluator agent — at your   │
-│   own risk.)                                │
-└─────────────────┬───────────────────────────┘
-                  │ approved actions only
-                  ▼
-┌─────────────────────────────────────────────┐
-│  3. EXECUTE                                 │
-│  Deterministic execution of approved        │
-│  actions. As little LLM as possible.        │
-│  Ideally no LLM at all.                     │
-└─────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A["1. READ & PROPOSE\nAgent can only read data and propose actions.\nNo execution capability.\n⚠️ Assume this agent IS compromised."]
+    B["2. APPROVE\nHuman reviews and approves the actions.\n(Or a separate evaluator agent — at your own risk.)"]
+    C["3. EXECUTE\nDeterministic execution of approved actions.\nAs little LLM as possible. Ideally no LLM at all."]
+    A -- "proposed actions" --> B
+    B -- "approved actions only" --> C
 ```
 
 **Why this works:** Even if the proposer is fully compromised by a prompt injection, it can only *propose* malicious actions. The approval step catches the mismatch between user intent and proposed actions. The executor is deterministic — no LLM to manipulate.
 
-→ *Deep dive:* [Dry-run notebook](https://github.com/luisalima/agentic-security/blob/main/notebooks_securing_guide/4_secure_architecture_software/3_dry_run.py)
+→ *Deep dive:* [Dry-run notebook](https://github.com/luisalima/agentic-security/blob/main/notebooks/4_secure_architecture_software/3_dry_run.py)
 
 ---
 
@@ -158,7 +142,7 @@ Any tool server the agent connects to is an extension of the attack surface.
 | **Validate tool schemas** | Ensure tool parameters match expectations |
 | **Run servers in isolation** | Each MCP server in its own container with scoped access |
 
-→ *Deep dive:* [Tool validation notebook](https://github.com/luisalima/agentic-security/blob/main/notebooks_securing_guide/4_secure_architecture_software/4_tool_validation.py)
+→ *Deep dive:* [Tool validation notebook](https://github.com/luisalima/agentic-security/blob/main/notebooks/4_secure_architecture_software/4_tool_validation.py)
 
 ---
 
@@ -170,25 +154,25 @@ Start with what's easiest and works on anything, then add layers:
 
 **This is the lowest-hanging fruit.** Containerize, restrict network, scope permissions.
 
-→ [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/3_isolation_infra_level)
+→ [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/3_isolation_infra_level)
 
 ### Step 2: Software Architecture (requires code changes)
 
 If you're building your own agent: dual LLM, typed extraction, dry-run evaluation.
 
-→ [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/4_secure_architecture_software)
+→ [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/4_secure_architecture_software)
 
 ### Step 3: Detection (layer on top)
 
 Add input scanning, canary tokens, and monitoring.
 
-→ [Detection notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/1_detection)
+→ [Detection notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/1_detection)
 
 ### Step 4: Defense in Depth (combine everything)
 
 No single defense is sufficient. Layer them.
 
-→ [Defense in depth notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/5_defense_in_depth)
+→ [Defense in depth notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/5_defense_in_depth)
 
 ---
 

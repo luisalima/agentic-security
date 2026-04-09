@@ -93,7 +93,7 @@ A comprehensive guide to securing AI agents against prompt injection and related
 
 **Reading online?** Browse the markdown files in each section.
 
-**Want to experiment?** Run the interactive [Marimo notebooks](../notebooks_securing_guide/).
+**Want to experiment?** Run the interactive [Marimo notebooks](../notebooks/).
 
 ## Sections
 

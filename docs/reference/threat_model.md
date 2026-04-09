@@ -40,14 +40,25 @@ List every component of the lethal trifecta for your system:
 
 For every data flow, ask: **where does untrusted data enter, and where do privileged actions happen?**
 
-```
-UNTRUSTED ZONE          │  TRUST BOUNDARY         │  PRIVILEGED ZONE
-                        │                         │
-  Emails                │                         │  send_email()
-  Web pages      ──────▶│  validation / approval  │──────▶  write_file()
-  RAG documents         │                         │  execute_code()
-  User uploads          │                         │  api_call()
-                        │                         │
+```mermaid
+flowchart LR
+    subgraph UNTRUSTED["Untrusted Zone"]
+        E[Emails]
+        W[Web pages]
+        R[RAG documents]
+        U[User uploads]
+    end
+    subgraph BOUNDARY["Trust Boundary"]
+        V[Validation / Approval]
+    end
+    subgraph PRIVILEGED["Privileged Zone"]
+        S["send_email()"]
+        WF["write_file()"]
+        EX["execute_code()"]
+        API["api_call()"]
+    end
+    E & W & R & U --> V
+    V --> S & WF & EX & API
 ```
 
 **The question is: what sits at the trust boundary?**
@@ -151,5 +162,5 @@ Not unlikely. Not difficult. **Impossible** — enforced by infrastructure, not 
 
 - [Principles](../principles.md) — Core axioms and the Read → Propose → Approve → Execute pattern
 - [Attack Taxonomy](attack_taxonomy.md) — Catalogue of attack vectors and risk matrix
-- [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/3_isolation_infra_level) — Infra-level isolation patterns
-- [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/4_secure_architecture_software) — Software-level defenses
+- [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/3_isolation_infra_level) — Infra-level isolation patterns
+- [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/4_secure_architecture_software) — Software-level defenses

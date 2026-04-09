@@ -3,7 +3,7 @@
 When detection and prompt engineering aren't enough, you need **architectural separation**. These patterns fundamentally change how your system handles untrusted content — the privileged component should never see raw untrusted content.
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/4_secure_architecture_software/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/4_secure_architecture_software).
+    For runnable examples, see [`notebooks/4_secure_architecture_software/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/4_secure_architecture_software).
 
 ---
 

@@ -3,7 +3,7 @@
 Layer all techniques together. **Assume breach at each layer.**
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/5_defense_in_depth/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/5_defense_in_depth).
+    For runnable examples, see [`notebooks/5_defense_in_depth/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/5_defense_in_depth).
 
 ---
 

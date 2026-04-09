@@ -3,7 +3,7 @@
 Prompt injection is the **#1 security risk** for LLM-powered agents ([OWASP LLM Top 10, 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)). This section covers the fundamental vulnerability, how it scales across turns and agents, and real-world incidents.
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/0_vulnerabilities/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/0_vulnerabilities).
+    For runnable examples, see [`notebooks/0_vulnerabilities/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/0_vulnerabilities).
 
 ---
 

@@ -55,4 +55,4 @@ Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this 
 
 Explore the [Guide](guide/0_vulnerabilities.md) to understand each defense level, or jump to the [Cheatsheet](reference/cheatsheet.md) for a quick reference.
 
-For runnable code examples, see the [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide) in the repository.
+For runnable code examples, see the [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) in the repository.

@@ -48,7 +48,7 @@ agentic-security/
 │   ├── scenario.py        # Email scenario + INJECTION_VARIANTS attack corpus
 │   └── llm.py             # LLM abstraction layer
 ├── tests/                 # pytest tests for each defense
-├── notebooks_securing_guide/             # Marimo interactive notebooks (by defense level)
+├── notebooks/             # Marimo interactive notebooks (by defense level)
 ├── guide/                 # Markdown exports of notebooks
 ├── docs/                  # Reference docs (TOOLS, ATTACK_TAXONOMY, THREAT_MODEL, CHEATSHEET, etc.)
 ├── benchmark/run.py       # Comparative defense benchmark
@@ -70,7 +70,7 @@ agentic-security/
 
    See `tests/test_yara_detection.py` for the canonical example.
 
-3. **Optionally add a notebook** in the appropriate `notebooks_securing_guide/<level>/` directory, using Marimo. Export a markdown version to `guide/`.
+3. **Optionally add a notebook** in the appropriate `notebooks/<level>/` directory, using Marimo. Export a markdown version to `guide/`.
 
 4. **Add a benchmark adapter** in `benchmark/run.py` if the defense is deterministic (no LLM calls).
 

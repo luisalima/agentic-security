@@ -1,6 +1,6 @@
 # Principles of Agentic Security
 
-**Read this first.** This document gives you the mental model. The [notebooks](notebooks_securing_guide/) show you the implementation.
+**Read this first.** This document gives you the mental model. The [notebooks](notebooks/) show you the implementation.
 
 ---
 
@@ -22,7 +22,7 @@ The problem: every useful agent has all three. Your coding assistant reads untru
 
 **All personal assistants and coding assistants are instances of the lethal trifecta. All. Of. Them.**
 
-→ *Deep dive:* [notebooks_securing_guide/0_vulnerabilities/](notebooks_securing_guide/0_vulnerabilities/)
+→ *Deep dive:* [notebooks/0_vulnerabilities/](notebooks/0_vulnerabilities/)
 
 ---
 
@@ -113,7 +113,7 @@ For any system you're designing, split the agent into stages with hard boundarie
 
 **Why this works:** Even if the proposer is fully compromised by a prompt injection, it can only *propose* malicious actions. The approval step catches the mismatch between user intent and proposed actions. The executor is deterministic — no LLM to manipulate.
 
-→ *Deep dive:* [notebooks_securing_guide/4_secure_architecture_software/3_dry_run.py](notebooks_securing_guide/4_secure_architecture_software/3_dry_run.py)
+→ *Deep dive:* [notebooks/4_secure_architecture_software/3_dry_run.py](notebooks/4_secure_architecture_software/3_dry_run.py)
 
 ---
 
@@ -158,7 +158,7 @@ Any tool server the agent connects to is an extension of the attack surface.
 | **Validate tool schemas** | Ensure tool parameters match expectations |
 | **Run servers in isolation** | Each MCP server in its own container with scoped access |
 
-→ *Deep dive:* [notebooks_securing_guide/4_secure_architecture_software/4_tool_validation.py](notebooks_securing_guide/4_secure_architecture_software/4_tool_validation.py)
+→ *Deep dive:* [notebooks/4_secure_architecture_software/4_tool_validation.py](notebooks/4_secure_architecture_software/4_tool_validation.py)
 
 ---
 
@@ -170,25 +170,25 @@ Start with what's easiest and works on anything, then add layers:
 
 **This is the lowest-hanging fruit.** Containerize, restrict network, scope permissions.
 
-→ [notebooks_securing_guide/3_isolation_infra_level/](notebooks_securing_guide/3_isolation_infra_level/)
+→ [notebooks/3_isolation_infra_level/](notebooks/3_isolation_infra_level/)
 
 ### Step 2: Software Architecture (requires code changes)
 
 If you're building your own agent: dual LLM, typed extraction, dry-run evaluation.
 
-→ [notebooks_securing_guide/4_secure_architecture_software/](notebooks_securing_guide/4_secure_architecture_software/)
+→ [notebooks/4_secure_architecture_software/](notebooks/4_secure_architecture_software/)
 
 ### Step 3: Detection (layer on top)
 
 Add input scanning, canary tokens, and monitoring.
 
-→ [notebooks_securing_guide/1_detection/](notebooks_securing_guide/1_detection/)
+→ [notebooks/1_detection/](notebooks/1_detection/)
 
 ### Step 4: Defense in Depth (combine everything)
 
 No single defense is sufficient. Layer them.
 
-→ [notebooks_securing_guide/5_defense_in_depth/](notebooks_securing_guide/5_defense_in_depth/)
+→ [notebooks/5_defense_in_depth/](notebooks/5_defense_in_depth/)
 
 ---
 

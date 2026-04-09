@@ -3,7 +3,7 @@
 Detection techniques attempt to identify malicious prompts **before** they reach the LLM. Think of this as a firewall — it filters known threats but won't catch everything.
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/1_detection/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/1_detection).
+    For runnable examples, see [`notebooks/1_detection/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/1_detection).
 
 ---
 

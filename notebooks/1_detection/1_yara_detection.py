@@ -243,7 +243,7 @@ def _(mo):
 
     ---
 
-    **Next:** `notebooks_securing_guide/1_detection/2_vector_similarity.py` — Catching semantic variants
+    **Next:** `notebooks/1_detection/2_vector_similarity.py` — Catching semantic variants
     """)
     return
 

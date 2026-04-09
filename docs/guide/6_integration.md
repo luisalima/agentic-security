@@ -3,7 +3,7 @@
 Most frameworks focus on **capability**, not **security**. They make it easy to build agents but leave security as an exercise for the developer.
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/6_integration/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/6_integration).
+    For runnable examples, see [`notebooks/6_integration/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/6_integration).
 
 ---
 

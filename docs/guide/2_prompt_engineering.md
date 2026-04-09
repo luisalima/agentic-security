@@ -3,7 +3,7 @@
 Prompt engineering defenses harden **individual LLM calls** through careful prompt design. No architectural changes required — just smarter prompts.
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/2_prompt_engineering/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/2_prompt_engineering).
+    For runnable examples, see [`notebooks/2_prompt_engineering/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/2_prompt_engineering).
 
 !!! warning "Necessary but not sufficient"
     All prompt engineering techniques are **probabilistic**. They reduce attack success rates but cannot eliminate them. Use prompt engineering as a baseline defense, but don't rely on it alone for high-stakes applications. For real security, you need [architectural separation](4_secure_architecture.md).

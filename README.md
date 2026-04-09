@@ -76,10 +76,10 @@ ollama pull llama3.1:8b
 
 ```bash
 # See the vulnerability (baseline)
-marimo edit notebooks_securing_guide/0_vulnerabilities/1_baseline.py
+marimo edit notebooks/0_vulnerabilities/1_baseline.py
 
 # Try a defense pattern
-marimo edit notebooks_securing_guide/4_secure_architecture_software/1_dual_llm.py
+marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py
 ```
 
 ### Read the Guide
@@ -92,7 +92,7 @@ Don't want to run code? Read the guide on [GitHub Pages](https://luisalima.githu
 
 ```
 agentic-security/
-├── notebooks_securing_guide/                   # Interactive Marimo notebooks
+├── notebooks/                   # Interactive Marimo notebooks
 │   ├── 0_vulnerabilities/        # The vulnerability
 │   ├── 1_detection/             # YARA, vectors, ML, LLM-as-judge, canaries
 │   ├── 2_prompt_engineering/    # Delimiters, hardening
@@ -115,13 +115,13 @@ Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-securi
 
 | Level | Guide | Notebooks |
 |-------|-------|-----------|
-| **0. Vulnerabilities** | [The Problem](https://luisalima.github.io/agentic-security/guide/0_vulnerabilities/) | `notebooks_securing_guide/0_vulnerabilities/` |
-| **1. Detection** | [Detection](https://luisalima.github.io/agentic-security/guide/1_detection/) | `notebooks_securing_guide/1_detection/` |
-| **2. Prompt Engineering** | [Prompt Engineering](https://luisalima.github.io/agentic-security/guide/2_prompt_engineering/) | `notebooks_securing_guide/2_prompt_engineering/` |
-| **3. Isolation (Infra)** | [Isolation](https://luisalima.github.io/agentic-security/guide/3_isolation/) | `notebooks_securing_guide/3_isolation_infra_level/` |
-| **4. Secure Architecture** | [Secure Architecture](https://luisalima.github.io/agentic-security/guide/4_secure_architecture/) | `notebooks_securing_guide/4_secure_architecture_software/` |
-| **5. Defense in Depth** | [Defense in Depth](https://luisalima.github.io/agentic-security/guide/5_defense_in_depth/) | `notebooks_securing_guide/5_defense_in_depth/` |
-| **6. Integration** | [Framework Integration](https://luisalima.github.io/agentic-security/guide/6_integration/) | `notebooks_securing_guide/6_integration/` |
+| **0. Vulnerabilities** | [The Problem](https://luisalima.github.io/agentic-security/guide/0_vulnerabilities/) | `notebooks/0_vulnerabilities/` |
+| **1. Detection** | [Detection](https://luisalima.github.io/agentic-security/guide/1_detection/) | `notebooks/1_detection/` |
+| **2. Prompt Engineering** | [Prompt Engineering](https://luisalima.github.io/agentic-security/guide/2_prompt_engineering/) | `notebooks/2_prompt_engineering/` |
+| **3. Isolation (Infra)** | [Isolation](https://luisalima.github.io/agentic-security/guide/3_isolation/) | `notebooks/3_isolation_infra_level/` |
+| **4. Secure Architecture** | [Secure Architecture](https://luisalima.github.io/agentic-security/guide/4_secure_architecture/) | `notebooks/4_secure_architecture_software/` |
+| **5. Defense in Depth** | [Defense in Depth](https://luisalima.github.io/agentic-security/guide/5_defense_in_depth/) | `notebooks/5_defense_in_depth/` |
+| **6. Integration** | [Framework Integration](https://luisalima.github.io/agentic-security/guide/6_integration/) | `notebooks/6_integration/` |
 
 ---
 

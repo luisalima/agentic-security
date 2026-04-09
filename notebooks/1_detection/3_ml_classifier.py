@@ -298,8 +298,8 @@ def _(mo):
 
     ---
 
-    **Previous:** `notebooks_securing_guide/1_detection/2_vector_similarity.py` — Semantic search
-    **Next:** `notebooks_securing_guide/1_detection/4_llm_as_judge.py` — LLM evaluating for injection
+    **Previous:** `notebooks/1_detection/2_vector_similarity.py` — Semantic search
+    **Next:** `notebooks/1_detection/4_llm_as_judge.py` — LLM evaluating for injection
     """)
     return
 

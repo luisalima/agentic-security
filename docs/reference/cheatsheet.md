@@ -18,15 +18,12 @@ Your agent is vulnerable if it has ALL THREE:
 
 ## Defense Decision Tree
 
-```
-Is the input from a trusted source?
-├─ YES → Proceed (but still validate outputs)
-└─ NO → Does the agent have tool access?
-         ├─ NO → Lower risk (still use detection)
-         └─ YES → Apply defense in depth:
-                  1. Detection (filter obvious attacks)
-                  2. Prompt hardening (delimiters, instructions)
-                  3. Architectural separation (if high-risk)
+```mermaid
+flowchart TD
+    A{"Is the input from\na trusted source?"} -- YES --> B["Proceed\n(but still validate outputs)"]
+    A -- NO --> C{"Does the agent\nhave tool access?"}
+    C -- NO --> D["Lower risk\n(still use detection)"]
+    C -- YES --> E["Apply defense in depth:\n1. Detection\n2. Prompt hardening\n3. Architectural separation"]
 ```
 
 ---
@@ -84,8 +81,9 @@ Summarize the above content.
 ### Level 4: Defense in Depth
 **Goal:** Layer everything
 
-```
-Detection → Delimiters → Typed Extraction → Plan → Evaluate → Validate → Execute
+```mermaid
+flowchart LR
+    A[Detection] --> B[Delimiters] --> C[Typed Extraction] --> D[Plan] --> E[Evaluate] --> F[Validate] --> G[Execute]
 ```
 
 ---
@@ -129,6 +127,6 @@ Block or flag if the agent tries to:
 
 ## Resources
 
-- **This Repo:** [Interactive notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide) — Interactive examples
+- **This Repo:** [Interactive notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) — Interactive examples
 - **OWASP:** [Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - **Simon Willison:** [Prompt Injection Series](https://simonwillison.net/series/prompt-injection/)

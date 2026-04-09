@@ -284,15 +284,15 @@ Each technique has tradeoffs. This repo includes notebooks demonstrating how the
 
 | Technique | Notebook | Pros | Cons |
 |-----------|----------|------|------|
-| YARA Rules | `notebooks_securing_guide/1_detection/1_yara_detection.py` | Fast, customizable | Only catches known patterns |
-| Vector Similarity | `notebooks_securing_guide/1_detection/2_vector_similarity.py` | Catches variants | Requires embedding DB |
-| ML Classifier | `notebooks_securing_guide/1_detection/3_ml_classifier.py` | Context-aware | Probabilistic |
-| LLM-as-Judge | `notebooks_securing_guide/1_detection/4_llm_as_judge.py` | Nuanced, context-aware | Meta-injection risk |
-| Canary Tokens | `notebooks_securing_guide/1_detection/5_canary_tokens.py` | Detects leakage | Doesn't prevent injection |
-| Delimiters | `notebooks_securing_guide/2_prompt_engineering/1_delimiters.py` | Simple, no ML | Easily bypassed |
-| Dual LLM | `notebooks_securing_guide/4_secure_architecture_software/dual_llm.py` | Strong isolation | 2x latency/cost |
-| Typed Extraction | `notebooks_securing_guide/4_secure_architecture_software/typed_extraction.py` | Schema constraints | Requires modeling |
-| Dry-Run Eval | `notebooks_securing_guide/4_secure_architecture_software/dry_run.py` | Validates actions | Evaluator can be fooled |
+| YARA Rules | `notebooks/1_detection/1_yara_detection.py` | Fast, customizable | Only catches known patterns |
+| Vector Similarity | `notebooks/1_detection/2_vector_similarity.py` | Catches variants | Requires embedding DB |
+| ML Classifier | `notebooks/1_detection/3_ml_classifier.py` | Context-aware | Probabilistic |
+| LLM-as-Judge | `notebooks/1_detection/4_llm_as_judge.py` | Nuanced, context-aware | Meta-injection risk |
+| Canary Tokens | `notebooks/1_detection/5_canary_tokens.py` | Detects leakage | Doesn't prevent injection |
+| Delimiters | `notebooks/2_prompt_engineering/1_delimiters.py` | Simple, no ML | Easily bypassed |
+| Dual LLM | `notebooks/4_secure_architecture_software/dual_llm.py` | Strong isolation | 2x latency/cost |
+| Typed Extraction | `notebooks/4_secure_architecture_software/typed_extraction.py` | Schema constraints | Requires modeling |
+| Dry-Run Eval | `notebooks/4_secure_architecture_software/dry_run.py` | Validates actions | Evaluator can be fooled |
 
 ---
 

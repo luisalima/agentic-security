@@ -3,7 +3,7 @@
 Before changing agent code, **restrict what a compromised agent can do**. This is the lowest-hanging fruit in agentic security — you can apply it to off-the-shelf agents you don't control.
 
 !!! tip "Try the notebooks"
-    For runnable examples, see [`notebooks_securing_guide/3_isolation_infra_level/`](https://github.com/luisalima/agentic-security/tree/main/notebooks_securing_guide/3_isolation_infra_level).
+    For runnable examples, see [`notebooks/3_isolation_infra_level/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/3_isolation_infra_level).
 
 ---
 

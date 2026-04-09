@@ -63,19 +63,11 @@ Agent A reads a poisoned document. Agent A's summary — now containing hidden i
 
 ### The Pattern
 
-```
-┌──────────────────┐     structured data     ┌──────────────────┐
-│  Research Agent   │ ──────────────────────▶ │  Coding Agent    │
-│  (read-only)      │     (typed schema)      │  (write, no net) │
-│  ⚠️ Untrusted     │                         │  ⚠️ Untrusted    │
-└──────────────────┘                         └──────────────────┘
-         │                                            │
-         │              proposed actions              │
-         └──────────────┬─────────────────────────────┘
-                        ▼
-              ┌──────────────────┐
-              │  Human Approval  │
-              └──────────────────┘
+```mermaid
+flowchart TD
+    A["Research Agent\n(read-only)\n⚠️ Untrusted"] -- "structured data\n(typed schema)" --> B["Coding Agent\n(write, no net)\n⚠️ Untrusted"]
+    A -- "proposed actions" --> C["Human Approval"]
+    B -- "proposed actions" --> C
 ```
 
 ---

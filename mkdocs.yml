@@ -1,4 +1,4 @@
-site_name: Agentic Security
+site_name: Agentic Security Guide
 site_url: https://luisalima.github.io/agentic-security/
 site_description: The definitive guide to securing AI agents against prompt injection.
 
@@ -31,6 +31,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 nav:
   - Home: index.md
@@ -38,12 +40,14 @@ nav:
   - Guide:
       - Vulnerabilities: guide/0_vulnerabilities.md
       - Detection: guide/1_detection.md
+      - Observability & Audit Trails: guide/1b_observability.md
       - Prompt Engineering: guide/2_prompt_engineering.md
       - Isolation (Infra): guide/3_isolation.md
       - Secure Architecture (Software): guide/4_secure_architecture.md
       - Defense in Depth: guide/5_defense_in_depth.md
       - Framework Integration: guide/6_integration.md
       - Securing Pre-Packaged Agents: guide/7_securing_prepackaged_agents.md
+      - Enterprise Zero Trust: guide/8_enterprise_zero_trust.md
   - Reference:
       - Tools Landscape: reference/tools.md
       - Attack Taxonomy: reference/attack_taxonomy.md

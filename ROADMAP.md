@@ -29,20 +29,20 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 
 ### 2.1 Prompt engineering section ✅
 - Delimiters, system prompt hardening, instruction hierarchy, sandwich defense, XML tagging
-- All in `notebooks_securing_guide/2_prompt_engineering/`
+- All in `notebooks/2_prompt_engineering/`
 
 ### 2.2 CaMeL / capability-based security ✅
 - `src/agentic_security/defenses/camel.py`
-- Notebook: `notebooks_securing_guide/4_secure_architecture_software/5_camel.py`
+- Notebook: `notebooks/4_secure_architecture_software/5_camel.py`
 
 ### 2.3 Multi-agent attack scenarios ✅
 - RAG poisoning, delegation attacks, plugin supply-chain
 - `src/agentic_security/attacks/multi_agent.py`
-- Notebook: `notebooks_securing_guide/0_vulnerabilities/3_multi_agent_attacks.py`
+- Notebook: `notebooks/0_vulnerabilities/3_multi_agent_attacks.py`
 
 ### 2.4 MCP / tool-use protocol security ✅
 - `src/agentic_security/defenses/tool_validation.py`
-- Notebook: `notebooks_securing_guide/4_secure_architecture_software/4_tool_validation.py`
+- Notebook: `notebooks/4_secure_architecture_software/4_tool_validation.py`
 
 ### 2.5 Curated evaluation dataset ✅
 - `data/injection_dataset.json`
