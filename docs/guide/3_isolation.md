@@ -114,6 +114,12 @@ iptables -A OUTPUT -j DROP  # block everything else
 
 This prevents data exfiltration even if the agent is fully compromised.
 
+!!! tip "Pipelock: inline agent firewall"
+    [Pipelock](https://github.com/luckyPipewrench/pipelock) is a Go binary that sits inline between agent and network, providing DLP scanning, SSRF protection, and prompt injection blocking out of the box.
+    ```bash
+    brew install luckyPipewrench/tap/pipelock
+    ```
+
 ---
 
 ## 4. Secret & Filesystem Scoping

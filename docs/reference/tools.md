@@ -6,6 +6,8 @@ A comprehensive comparison of tools for defending against prompt injection and o
 
 | Tool | Type | License | Best For | Status |
 |------|------|---------|----------|--------|
+| [ATR](https://github.com/AgenTRules/atr) | Detection | MIT | 108 rules, 685 regex patterns — "Sigma for prompt injection" (Cisco/OWASP) | ✅ Active |
+| [Pipelock](https://github.com/luckyPipewrench/pipelock) | Firewall | OSS | Inline agent firewall — DLP, SSRF, prompt injection blocking (Go) | ✅ Active |
 | [LLM Guard](https://llm-guard.com/) | Guardrails | MIT | Runtime input/output scanning | ✅ Active |
 | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | Guardrails | Apache 2.0 | Dialog flow control (NVIDIA) | ✅ Active |
 | [Promptfoo](https://github.com/promptfoo/promptfoo) | Testing | MIT | Evaluation + red teaming (50+ vuln types) | ✅ Active |

@@ -35,6 +35,12 @@ User Input → [YARA] → [Vector DB] → [ML Classifier] → LLM
 
 YARA is a pattern-matching tool originally designed for malware detection, repurposed to scan prompts for known injection signatures — exact strings or regex patterns.
 
+!!! tip "Production alternative: ATR"
+    [Agent Threat Rules (ATR)](https://github.com/AgenTRules/atr) provides 108 detection rules with 685 regex patterns — "like Sigma, but for prompt injection." Already adopted by Cisco AI Defense and OWASP. MIT licensed.
+    ```bash
+    npm install -g agent-threat-rules && atr scan <file>
+    ```
+
 **How it works:** Define rules with string patterns and matching conditions:
 
 ```yara
@@ -108,7 +114,7 @@ Train a neural network to classify prompts as safe or malicious. Unlike pattern 
 | Model | Size | Speed |
 |-------|------|-------|
 | `deepset/deberta-v3-base-injection` | 184M | ~50ms |
-| `protectai/deberta-v3-base-prompt-injection` | 184M | ~50ms |
+| `protectai/deberta-v3-base-prompt-injection` | 184M | ~50ms — 79% on PINT benchmark |
 | `meta-llama/Prompt-Guard-86M` | 86M | Free on HuggingFace |
 | `fmops/distilbert-prompt-injection` | 67M | ~20ms |
 
@@ -208,6 +214,7 @@ Use random tokens per request, not static ones.
 
 | Tool | Type | Key Feature |
 |------|------|-------------|
+| [ATR](https://github.com/AgenTRules/atr) | OSS | 108 rules, 685 regex patterns — "Sigma for prompt injection" (Cisco/OWASP) |
 | [LLM Guard](https://llm-guard.com/) | OSS | 15 input + 20 output scanners (ProtectAI) |
 | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | OSS | Dialog flow control via Colang DSL (NVIDIA) |
 | [Promptfoo](https://github.com/promptfoo/promptfoo) | OSS | Red-teaming for 50+ vulnerability types |
