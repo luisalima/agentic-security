@@ -79,14 +79,16 @@
 |--------|------|-------|
 | [ ] | `docs/index.md` | |
 | [ ] | `docs/principles.md` | |
-| [ ] | `docs/guide/0_vulnerabilities.md` | Stub — needs content |
-| [ ] | `docs/guide/1_detection.md` | Stub — needs content |
-| [ ] | `docs/guide/2_prompt_engineering.md` | Stub — needs content |
-| [ ] | `docs/guide/3_isolation.md` | Stub — needs content |
-| [ ] | `docs/guide/4_secure_architecture.md` | Stub — needs content |
-| [ ] | `docs/guide/5_defense_in_depth.md` | Stub — needs content |
-| [ ] | `docs/guide/6_integration.md` | Stub — needs content |
+| [ ] | `docs/guide/0_vulnerabilities.md` | Populated from notebooks |
+| [ ] | `docs/guide/1_detection.md` | Populated from notebooks |
+| [ ] | `docs/guide/1b_observability.md` | |
+| [ ] | `docs/guide/2_prompt_engineering.md` | Populated from notebooks |
+| [ ] | `docs/guide/3_isolation.md` | Populated from notebooks |
+| [ ] | `docs/guide/4_secure_architecture.md` | Populated from notebooks |
+| [ ] | `docs/guide/5_defense_in_depth.md` | Populated from notebooks |
+| [ ] | `docs/guide/6_integration.md` | Populated from notebooks |
 | [ ] | `docs/guide/7_securing_prepackaged_agents.md` | |
+| [ ] | `docs/guide/8_enterprise_zero_trust.md` | |
 | [ ] | `docs/reference/tools.md` | |
 | [ ] | `docs/reference/attack_taxonomy.md` | |
 | [ ] | `docs/reference/threat_model.md` | |
