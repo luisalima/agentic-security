@@ -57,6 +57,8 @@
 | [ ] | `notebooks/4_secure_architecture_software/3_dry_run.py` | |
 | [ ] | `notebooks/4_secure_architecture_software/4_tool_validation.py` | |
 | [ ] | `notebooks/4_secure_architecture_software/5_camel.py` | |
+| [ ] | `notebooks/4_secure_architecture_software/6_mcp_security.py` | New — tool poisoning, rug pulls, config scanning |
+| [ ] | `notebooks/4_secure_architecture_software/7_memory_security.py` | New — memory guard, namespace isolation, audit |
 
 ## 5 — Defense in Depth (Notebooks)
 
@@ -89,6 +91,8 @@
 | [ ] | `docs/guide/6_integration.md` | Populated from notebooks |
 | [ ] | `docs/guide/7_securing_prepackaged_agents.md` | |
 | [ ] | `docs/guide/8_enterprise_zero_trust.md` | |
+| [ ] | `docs/guide/9_mcp_security.md` | New — MCP tool poisoning, rug pulls, supply chain |
+| [ ] | `docs/guide/10_memory_security.md` | New — memory poisoning, namespace isolation, provenance |
 | [ ] | `docs/reference/tools.md` | |
 | [ ] | `docs/reference/attack_taxonomy.md` | |
 | [ ] | `docs/reference/threat_model.md` | |
@@ -107,11 +111,55 @@
 | [ ] | `.github/workflows/ci.yml` | |
 | [ ] | `.github/workflows/docs.yml` | |
 
-## Source Code
+## Source Code — Defenses
 
 | Status | File | Notes |
 |--------|------|-------|
-| [ ] | `src/` (all modules) | |
-| [ ] | `tests/` (all tests) | |
-| [ ] | `data/` (datasets) | |
-| [ ] | `benchmark/` | |
+| [ ] | `src/agentic_security/defenses/camel.py` | |
+| [ ] | `src/agentic_security/defenses/canary_tokens.py` | |
+| [ ] | `src/agentic_security/defenses/delimiters.py` | |
+| [ ] | `src/agentic_security/defenses/dry_run.py` | |
+| [ ] | `src/agentic_security/defenses/dual_llm.py` | |
+| [ ] | `src/agentic_security/defenses/mcp_security.py` | New — MCP tool poisoning, rug pull detection |
+| [ ] | `src/agentic_security/defenses/memory_security.py` | New — memory guard, namespace isolation |
+| [ ] | `src/agentic_security/defenses/ml_classifier.py` | |
+| [ ] | `src/agentic_security/defenses/output_validation.py` | |
+| [ ] | `src/agentic_security/defenses/tool_validation.py` | |
+| [ ] | `src/agentic_security/defenses/typed_extraction.py` | |
+| [ ] | `src/agentic_security/defenses/vector_similarity.py` | |
+| [ ] | `src/agentic_security/defenses/xml_tagging.py` | |
+| [ ] | `src/agentic_security/defenses/yara_detection.py` | |
+
+## Source Code — Attacks & Core
+
+| Status | File | Notes |
+|--------|------|-------|
+| [ ] | `src/agentic_security/attacks/multi_agent.py` | |
+| [ ] | `src/agentic_security/llm.py` | |
+| [ ] | `src/agentic_security/scenario.py` | |
+
+## Tests
+
+| Status | File | Notes |
+|--------|------|-------|
+| [ ] | `tests/test_camel.py` | |
+| [ ] | `tests/test_canary_tokens.py` | |
+| [ ] | `tests/test_delimiters.py` | |
+| [ ] | `tests/test_dry_run.py` | |
+| [ ] | `tests/test_dual_llm.py` | |
+| [ ] | `tests/test_mcp_security.py` | New — 14 tests |
+| [ ] | `tests/test_memory_security.py` | New — 16 tests |
+| [ ] | `tests/test_ml_classifier.py` | |
+| [ ] | `tests/test_multi_agent.py` | |
+| [ ] | `tests/test_output_validation.py` | |
+| [ ] | `tests/test_tool_validation.py` | |
+| [ ] | `tests/test_typed_extraction.py` | |
+| [ ] | `tests/test_vector_similarity.py` | |
+| [ ] | `tests/test_yara_detection.py` | |
+
+## Data & Benchmark
+
+| Status | File | Notes |
+|--------|------|-------|
+| [ ] | `data/injection_dataset.json` | Updated — 14 new samples, 4 new categories |
+| [ ] | `benchmark/run.py` | |

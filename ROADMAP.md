@@ -49,6 +49,32 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 
 ---
 
+## Phase 2.5: Agentic Security Landscape (2026 Update) ✅
+
+### 2.5.1 OWASP Agentic Top 10 (2026) alignment ✅
+- Attack taxonomy updated with 8 new attack vectors (ASI01–ASI10 mapping)
+- References updated across README, PRINCIPLES, and docs
+
+### 2.5.2 MCP security defenses ✅
+- `src/agentic_security/defenses/mcp_security.py` — tool poisoning detection, rug pull detection, config scanning
+- Tests in `tests/test_mcp_security.py`
+
+### 2.5.3 Memory poisoning defenses ✅
+- `src/agentic_security/defenses/memory_security.py` — memory guard, namespace isolation, provenance tracking
+- Tests in `tests/test_memory_security.py`
+
+### 2.5.4 Tools landscape update ✅
+- Added 8 new tools: DeepTeam, Guardrails AI, OpenAI Guardrails, MCP-Scan, Docker MCP Gateway, Agentic Radar, Giskard, Invariant Guardrails
+- Updated acquisition status: Lakera (Check Point), Protect AI (Palo Alto Networks)
+
+### 2.5.5 Dataset expansion ✅
+- Added multilingual injection samples (French, German, Japanese, Spanish, Russian)
+- Added MCP tool poisoning samples
+- Added memory poisoning, second-order injection, and supply chain samples
+- New categories: tool_poisoning, memory_poisoning, second_order, supply_chain
+
+---
+
 ## Phase 3: Docs & Ecosystem (Current)
 
 ### 3.1 GitHub Pages site 🔧
@@ -71,8 +97,9 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 - [x] LangChain
 - [ ] LlamaIndex
 
-### 3.4 Remove stale CI job
-- [ ] Remove `guide-sync` job from `.github/workflows/ci.yml` (was for the old markdown export)
+### 3.4 Remove stale CI job ✅
+- [x] Remove `guide-sync` job from `.github/workflows/ci.yml` (was for the old markdown export)
+- [x] Remove stale `scripts/` directory (export_guide.py, export_guide.sh, export_diagrams.mjs, node_modules)
 
 ---
 
