@@ -47,4 +47,4 @@ site/
 
 # Marimo notebook cache
 **/__marimo__/
-scripts/node_modules/
+
