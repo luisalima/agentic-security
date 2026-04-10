@@ -150,9 +150,11 @@ See [docs/reference/tools.md](docs/reference/tools.md) for detailed comparison. 
 | Need | Tool |
 |------|------|
 | Quick start, open source | [LLM Guard](https://llm-guard.com/) |
-| Self-hosted, multi-layer | [Vigil](https://github.com/deadbits/vigil-llm) |
-| Enterprise, managed | [Lakera Guard](https://www.lakera.ai/) |
-| Red teaming | [Garak](https://github.com/NVIDIA/garak) |
+| Red teaming (comprehensive) | [DeepTeam](https://github.com/confident-ai/deepteam) |
+| Red teaming (CI/CD native) | [Promptfoo](https://github.com/promptfoo/promptfoo) |
+| Enterprise, managed | [Lakera Guard](https://www.lakera.ai/) (Check Point) |
+| MCP server security | [MCP-Scan](https://github.com/AltimateAI/mcp-scan) |
+| Output validation | [Guardrails AI](https://guardrailsai.com/) |
 
 ---
 
@@ -169,10 +171,16 @@ This aims to be **the** resource for agentic AI security. Contributions welcome:
 
 ## References
 
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [OWASP Top 10 for LLM Applications (2025)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+- [OWASP GenAI Data Security Risks & Mitigations (2026)](https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/)
+- [MITRE ATLAS — Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
+- [NIST AI 600-1 — GenAI Risk Management Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
 - [Simon Willison's Prompt Injection Series](https://simonwillison.net/series/prompt-injection/)
 - [Google DeepMind CaMeL Paper](https://arxiv.org/abs/2503.18813)
 - [Microsoft Spotlighting Research](https://arxiv.org/abs/2403.14720)
+- [NCSC — Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-not-sql-injection)
+- [Zhan et al. — Adaptive Attacks Break Defenses Against Indirect Prompt Injection (NAACL 2025)](https://doi.org/10.18653/v1/2025.findings-naacl.395)
 
 ---
 

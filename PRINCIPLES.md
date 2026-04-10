@@ -157,6 +157,7 @@ Any tool server the agent connects to is an extension of the attack surface.
 | **Principle of least privilege** | Only connect the MCP servers needed for the task |
 | **Validate tool schemas** | Ensure tool parameters match expectations |
 | **Run servers in isolation** | Each MCP server in its own container with scoped access |
+| **Scan for tool poisoning** | Use MCP-Scan to detect hidden instructions in tool descriptions |
 
 → *Deep dive:* [notebooks/4_secure_architecture_software/4_tool_validation.py](notebooks/4_secure_architecture_software/4_tool_validation.py)
 
@@ -208,3 +209,11 @@ No single defense is sufficient. Layer them.
 ---
 
 **Nothing is 100% secure.** The goal is raising the bar high enough to deter attacks and limiting the blast radius when — not if — something gets through.
+
+---
+
+## Further Reading
+
+- [OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+- [OWASP Top 10 for LLM Applications (2025)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [MITRE ATLAS](https://atlas.mitre.org/)
