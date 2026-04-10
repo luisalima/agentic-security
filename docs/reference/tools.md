@@ -14,10 +14,18 @@ A comprehensive comparison of tools for defending against prompt injection and o
 | [Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M) | Model | Llama | Free 86M-param injection classifier | ✅ Active |
 | [Garak](https://github.com/NVIDIA/garak) | Red Team | Apache 2.0 | Vulnerability scanning (NVIDIA) | ✅ Active |
 | [Prompt Shields](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection) | Detection | Commercial | Azure managed service (Microsoft) | ✅ Active |
-| [Lakera Guard](https://www.lakera.ai/) | Detection | Commercial | Enterprise API (<50ms latency) | ✅ Active |
+| [Lakera Guard](https://www.lakera.ai/) | Detection | Commercial | Enterprise API (<50ms latency) | ✅ Active (Check Point) |
 | [Augustus](https://github.com/praetorian-inc/augustus) | Red Team | Apache 2.0 | Go-based vulnerability scanner | ✅ Active |
 | [PyRIT](https://github.com/Azure/PyRIT) | Red Team | MIT | Multi-modal red teaming (Microsoft) | ✅ Active |
 | [Vigil](https://github.com/deadbits/vigil-llm) | Detection | Apache 2.0 | Multi-layer detection (historical) | ⚠️ Inactive since 2023 |
+| [DeepTeam](https://github.com/confident-ai/deepteam) | Red Team | Apache 2.0 | 50+ vuln types, 20+ attacks, OWASP/NIST mapping (Confident AI) | ✅ Active |
+| [Guardrails AI](https://guardrailsai.com/) | Guardrails | Apache 2.0 | Output validation with composable validator hub | ✅ Active |
+| [OpenAI Guardrails](https://platform.openai.com/docs/guides/agents) | Guardrails | MIT | Input/output guards for OpenAI Agents SDK | ✅ Active |
+| [MCP-Scan](https://github.com/AltimateAI/mcp-scan) | MCP Security | OSS | Scans MCP configs for tool poisoning, rug pulls | ✅ Active |
+| [Agentic Radar](https://github.com/splx-ai/agentic-radar) | MCP Security | OSS | CLI scanner for agentic workflow security gaps | ✅ Active |
+| [Docker MCP Gateway](https://docs.docker.com/ai/mcp-gateway/) | MCP Security | OSS | Container isolation + network blocking for MCP servers | ✅ Active |
+| [Giskard](https://github.com/Giskard-AI/giskard) | Testing | Apache 2.0 | Continuous red teaming, OWASP-aligned LLM testing | ✅ Active |
+| [Invariant Guardrails](https://github.com/invariantlabs-ai/invariant) | MCP Security | OSS | Runtime policy enforcement for MCP tool calls | ✅ Active |
 | [Rebuff](https://github.com/protectai/rebuff) | Detection | Apache 2.0 | Self-hardening canary tokens (historical) | ⚠️ Archived May 2025 |
 
 ---
@@ -50,7 +58,7 @@ result = app.input_scanner.perform_scan(input_prompt="Ignore previous instructio
 ---
 
 ### LLM Guard
-**Open-source runtime guardrails by Protect AI**
+**Open-source runtime guardrails by Protect AI (acquired by Palo Alto Networks, July 2025)**
 
 ```python
 from llm_guard import scan_prompt, scan_output
@@ -161,7 +169,7 @@ promptfoo redteam --provider openai:gpt-4o --plugins prompt-injection,hijacking
 ---
 
 ### Lakera Guard
-**Enterprise prompt injection API**
+**Enterprise prompt injection API (acquired by Check Point, September 2025)**
 
 - Sub-50ms latency
 - 98%+ detection rate (claimed)
@@ -234,6 +242,35 @@ await orchestrator.send_prompts_async(prompt_list)
 
 ---
 
+### DeepTeam (Confident AI)
+**Open-source LLM red teaming framework with 50+ vulnerability types**
+
+```python
+from deepteam import red_team
+from deepteam.frameworks import OWASPTop10
+
+async def model_callback(input: str) -> str:
+    return llm.generate(input)
+
+risk_assessment = red_team(
+    model_callback=model_callback,
+    framework=OWASPTop10()
+)
+```
+
+| Feature | Detail |
+|---------|--------|
+| Vulnerability Types | 50+ (bias, PII leakage, BFLA, BOLA, SSRF, tool poisoning, etc.) |
+| Attack Methods | 20+ (prompt injection, crescendo, gray box, multilingual, etc.) |
+| Frameworks | OWASP Top 10 LLM, OWASP Agentic 2026, NIST AI RMF, MITRE ATLAS |
+| Guardrails | 7 production guards (toxicity, injection, privacy, etc.) |
+| Agentic | Goal theft, recursive hijacking, tool orchestration abuse |
+
+**Pros:** Comprehensive agentic-specific vulnerabilities, framework-aligned, ships guardrails too
+**Cons:** Requires LLM for attack generation, newer than Garak/Promptfoo
+
+---
+
 ## Guardrail Frameworks
 
 ### NeMo Guardrails (NVIDIA)
@@ -265,18 +302,127 @@ define flow greeting
 
 ---
 
+### Guardrails AI
+**Output validation framework with composable validator hub**
+
+```python
+from guardrails import Guard
+from guardrails.hub import ToxicLanguage, DetectPII
+
+guard = Guard().use(
+    ToxicLanguage(threshold=0.5),
+    DetectPII()
+)
+
+result = guard.validate("Some LLM output to validate")
+```
+
+| Feature | Detail |
+|---------|--------|
+| Validators | 50+ on Guardrails Hub (PII, toxicity, injection, hallucination, etc.) |
+| Architecture | Composable input/output guards with configurable on-fail policies |
+| Integration | Python library or standalone API server via Docker |
+| Custom | Build and publish custom validators to the hub |
+
+**Pros:** Modular, extensible, large validator ecosystem, API server mode
+**Cons:** Some validators require ML models, community-maintained quality varies
+
+---
+
+### OpenAI Guardrails
+**Input/output validation built into the OpenAI Agents SDK**
+
+| Feature | Detail |
+|---------|--------|
+| Input Guards | Validate user input before agent processes it |
+| Output Guards | Filter agent responses before returning to user |
+| Integration | Native to OpenAI Agents SDK |
+
+**Pros:** Zero setup if using OpenAI, tightly integrated with tool calling
+**Cons:** OpenAI-only, limited customization compared to standalone tools
+
+---
+
+## MCP & Agentic Security Tools
+
+### MCP-Scan
+**Security scanner for MCP server configurations**
+
+```bash
+npx mcp-scan check --config ~/.cursor/mcp.json
+```
+
+| Threat | Detection |
+|--------|-----------|
+| Tool Poisoning | Scans tool descriptions for hidden instructions |
+| Rug Pull | Detects tool definition changes after initial approval |
+| Cross-Origin | Flags cross-server data exfiltration patterns |
+
+**Pros:** Quick setup, catches tool poisoning in MCP manifests
+**Cons:** Config-scanning only, not runtime protection
+
+---
+
+### Docker MCP Gateway
+**Container-based firewall for MCP server traffic**
+
+| Feature | Detail |
+|---------|--------|
+| Isolation | Each MCP server runs in its own container |
+| Network | Blocks unauthorized egress, enforces allowlists |
+| Signing | Signature verification to prevent supply chain attacks |
+| Secrets | Prevents credential leakage from agent to tool |
+| Audit | Complete audit trail of agent-to-tool interactions |
+
+**Pros:** True isolation via containers, zero-trust networking for agents
+**Cons:** Requires Docker, adds operational complexity
+
+---
+
+### Agentic Radar
+**CLI scanner for agentic workflow security**
+
+```bash
+agentic-radar scan --framework langchain --path ./my_agent
+```
+
+Analyzes agentic pipelines (LangChain, CrewAI, etc.) for security gaps across the entire agent workflow — tool permissions, data flow, and trust boundaries.
+
+**Pros:** Workflow-level analysis (not just prompt-level), framework-aware
+**Cons:** Newer tool, limited framework support
+
+---
+
+### Invariant Guardrails
+**Runtime policy enforcement for MCP tool calls**
+
+```python
+from invariant import Policy
+
+policy = Policy.from_string("""
+raise "blocked" if:
+    (call: ToolCall) -> call.function.name == "send_email"
+    and not call.function.arguments["to"] in ALLOWED_RECIPIENTS
+""")
+```
+
+**Pros:** Declarative policies for tool-call validation, MCP-native
+**Cons:** Early stage, limited documentation
+
+---
+
 ## Feature Comparison Matrix
 
-| Feature | LLM Guard | NeMo | Promptfoo | Prompt Guard | Garak | Prompt Shields | Lakera |
-|---------|-----------|------|-----------|--------------|-------|----------------|--------|
-| Runtime Protection | ✓ | ✓ | ✗ | ✓ | ✗ | ✓ | ✓ |
-| Input Scanning | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Output Scanning | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ |
-| Red Teaming | ✗ | ✗ | ✓ | ✗ | ✓ | ✗ | ✗ |
-| ML Classifier | ✓ | ✗ | ✗ | ✓ | ✗ | ✓ | ✓ |
-| Dialog Control | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ |
-| Self-Hosted | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | Enterprise |
-| Open Source | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Feature | LLM Guard | NeMo | Promptfoo | Prompt Guard | Garak | Prompt Shields | Lakera | DeepTeam | Guardrails AI |
+|---------|-----------|------|-----------|--------------|-------|----------------|--------|----------|---------------|
+| Runtime Protection | ✓ | ✓ | ✗ | ✓ | ✗ | ✓ | ✓ | ✓ (guards) | ✓ |
+| Input Scanning | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Output Scanning | ✓ | ✓ | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ | ✓ |
+| Red Teaming | ✗ | ✗ | ✓ | ✗ | ✓ | ✗ | ✗ | ✓ | ✗ |
+| ML Classifier | ✓ | ✗ | ✗ | ✓ | ✗ | ✓ | ✓ | ✗ | ✗ |
+| Dialog Control | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+| Self-Hosted | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | Enterprise | ✓ | ✓ |
+| Open Source | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ |
 
 ---
 
@@ -303,6 +449,7 @@ Each technique has tradeoffs. This repo includes notebooks demonstrating how the
 ### For Startups / Small Teams
 - **LLM Guard** — Open source, easy to start (ProtectAI)
 - **Meta Prompt Guard** — Free classifier, runs locally, no API needed
+- **Guardrails AI** — Composable validators, open-source hub
 
 ### For Enterprise
 - **Lakera Guard** — Managed, fast, proven (80M+ attack data points)
@@ -312,9 +459,15 @@ Each technique has tradeoffs. This repo includes notebooks demonstrating how the
 - **Promptfoo** — OSS red-teaming with 50+ vulnerability types, CI/CD native
 - **Garak** — Comprehensive probe library (NVIDIA)
 - **Augustus** — If you prefer Go
+- **DeepTeam** — 50+ vuln types with OWASP/NIST framework mapping
 
 ### For Conversational AI
 - **NeMo Guardrails** — Dialog flow control via Colang DSL
+
+### For MCP / Tool Security
+- **MCP-Scan** — Quick config scanning for tool poisoning
+- **Docker MCP Gateway** — Container isolation for MCP servers
+- **Invariant Guardrails** — Runtime policy enforcement for tool calls
 
 ### For Research / Learning
 - **This repo!** — Understand how each technique works
@@ -372,6 +525,8 @@ chain = LLMChain(
 | **Azure AI Content Safety** | Integrated into Azure OpenAI endpoints |
 | **AWS Bedrock Guardrails** | Built into Bedrock API |
 | **Anthropic's Constitutional AI** | Trained into the model |
+| **Docker MCP Gateway** | Container isolation + network controls for MCP |
+| **OWASP Agentic Top 10 (2026)** | Industry-standard threat taxonomy for agents |
 
 ### The Real Solution
 
