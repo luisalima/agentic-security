@@ -117,6 +117,37 @@ class OutputAdapter(DefenseAdapter):
         return not valid
 
 
+class MCPAdapter(DefenseAdapter):
+    name = "MCP"
+    note = "Detects tool description poisoning patterns"
+
+    def __init__(self) -> None:
+        from agentic_security.defenses.mcp_security import MCPScanner
+
+        self.scanner = MCPScanner()
+
+    def detect(self, text: str) -> bool:
+        issues = self.scanner._scan_text_for_poisoning(text)
+        return len(issues) > 0
+
+
+class MemoryAdapter(DefenseAdapter):
+    name = "Memory"
+    note = "Detects memory/context poisoning patterns"
+
+    def __init__(self) -> None:
+        from agentic_security.defenses.memory_security import MemoryGuard
+
+        self.guard = MemoryGuard()
+
+    def detect(self, text: str) -> bool:
+        from agentic_security.defenses.memory_security import MemoryEntry
+
+        entry = MemoryEntry(key="test", value=text, source="tool:unknown")
+        result = self.guard.scan_entry(entry)
+        return not result.safe
+
+
 # Delimiters are preventive-only — no detection method.
 DELIMITER_NOTE = "Delimiters (Spotlighting): preventive only — instructs the LLM to treat wrapped content as data, not commands. Not included in detection benchmark."
 
@@ -130,6 +161,8 @@ DETECTION_DEFENSES: list[DefenseAdapter] = [
     MLAdapter(),
     CanaryAdapter(),
     OutputAdapter(),
+    MCPAdapter(),
+    MemoryAdapter(),
 ]
 
 
