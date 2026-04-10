@@ -48,6 +48,8 @@ nav:
       - Framework Integration: guide/6_integration.md
       - Securing Pre-Packaged Agents: guide/7_securing_prepackaged_agents.md
       - Enterprise Zero Trust: guide/8_enterprise_zero_trust.md
+      - MCP Security: guide/9_mcp_security.md
+      - Memory & Context Security: guide/10_memory_security.md
   - Reference:
       - Tools Landscape: reference/tools.md
       - Attack Taxonomy: reference/attack_taxonomy.md
