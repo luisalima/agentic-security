@@ -22,6 +22,13 @@ from agentic_security.defenses.dry_run import (
     PlannedAction,
 )
 from agentic_security.defenses.dual_llm import DualLLMProcessor
+from agentic_security.defenses.mcp_security import (
+    MCPScanner,
+    MCPScanResult,
+    MCPServerConfig,
+    RugPullDetector,
+    parse_mcp_config,
+)
 from agentic_security.defenses.ml_classifier import (
     ClassificationResult,
     SimulatedInjectionClassifier,
@@ -48,12 +55,16 @@ __all__ = [
     "DualLLMProcessor",
     "EmailExtraction",
     "EvaluationResult",
+    "MCPScanner",
+    "MCPServerConfig",
+    "MCPScanResult",
     "ExecutionPlan",
     "OutputValidator",
     "PlannedAction",
     "PlannedToolCall",
     "PolicyEngine",
     "PolicyResult",
+    "RugPullDetector",
     "SimpleVectorDB",
     "SimpleYaraScanner",
     "SimulatedInjectionClassifier",
@@ -63,6 +74,7 @@ __all__ = [
     "YaraMatch",
     "extract_typed_data",
     "generate_delimiter",
+    "parse_mcp_config",
     "parse_mcp_tools",
     "parse_openai_tools",
     "wrap_untrusted",
