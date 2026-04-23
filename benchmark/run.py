@@ -1,8 +1,12 @@
 """
-Benchmark: Comparative evaluation of deterministic defense patterns.
+Benchmark: Illustrative comparison of deterministic defense patterns.
 
-Runs all deterministic defenses against the INJECTION_VARIANTS attack corpus
-and legitimate inputs, producing a technique × attack variant → pass/fail matrix.
+Runs a small deterministic attack corpus and a few legitimate inputs against
+the example defenses in this repo, producing a technique × input matrix.
+
+This script is for learning and side-by-side comparison inside this repository.
+It is not a claim about real-world detection rates, production efficacy, or
+cross-model security performance.
 
 Usage:
     python benchmark/run.py          # Rich table output
@@ -149,7 +153,10 @@ class MemoryAdapter(DefenseAdapter):
 
 
 # Delimiters are preventive-only — no detection method.
-DELIMITER_NOTE = "Delimiters (Spotlighting): preventive only — instructs the LLM to treat wrapped content as data, not commands. Not included in detection benchmark."
+DELIMITER_NOTE = (
+    "Delimiters (Spotlighting): preventive only — instructs the LLM to treat wrapped "
+    "content as data, not commands. Not included in this illustrative benchmark."
+)
 
 # ---------------------------------------------------------------------------
 # Benchmark runner
@@ -177,6 +184,8 @@ def run_benchmark() -> dict:
     """Run all defenses against all attacks and legitimate inputs.
 
     Returns a dict with 'attacks', 'legit', and 'summary' keys.
+
+    The reported rates are corpus-specific to this script.
     """
     attack_results: list[dict] = []
     for variant in INJECTION_VARIANTS:
@@ -217,6 +226,10 @@ def run_benchmark() -> dict:
         "legit": legit_results,
         "summary": summary,
         "delimiter_note": DELIMITER_NOTE,
+        "benchmark_note": (
+            "Illustrative only: these numbers reflect the bundled corpus in benchmark/run.py, "
+            "not real-world security performance."
+        ),
     }
 
 
@@ -226,9 +239,14 @@ def render_rich(results: dict) -> None:
     console.print()
     console.print(
         Panel(
-            "[bold]Agentic Security — Defense Benchmark[/bold]",
+            "[bold]Agentic Security — Illustrative Defense Benchmark[/bold]",
             expand=False,
         )
+    )
+
+    console.print(
+        "[dim]This benchmark compares repo examples on a small bundled corpus. "
+        "Do not treat the resulting rates as production security claims.[/dim]"
     )
 
     # --- Attack Detection Matrix ---

@@ -18,7 +18,7 @@ LLMs process instructions and data in the same channel (the context window). The
 - Output filtering
 - Pattern matching
 
-**Assessment:** ~95-99% catch rate. Sounds good until you realize 99% is a failing grade in security. Use as one layer, not primary defense.
+**Assessment:** Can catch many common attacks in benchmarks, but adaptive attacks still get through. Use as one layer, not as your primary control.
 
 ### Tier 3: Defense in Depth
 - Tier 2 + sandboxing

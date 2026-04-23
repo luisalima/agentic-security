@@ -2,16 +2,19 @@
 
 A practical comparison of each defense pattern.
 
+The table below is directional. It is meant to compare design tradeoffs, not
+to claim measured coverage percentages across real deployments.
+
 ## Quick Reference
 
-| Pattern | Complexity | Latency | Cost | Coverage | Production-Ready |
-|---------|------------|---------|------|----------|------------------|
-| Baseline | None | 1x | 1x | 0% | No |
-| Delimiters | Low | 1x | 1x | ~30% | Maybe |
-| Dual LLM | Medium | 2x | 2x | ~70% | Yes, with caveats |
-| Typed Extraction | Medium | 2x | 2x | ~80% | Yes |
-| Dry-Run | High | 3x | 3x | ~85% | Yes, with caveats |
-| Combined | Very High | 4-5x | 4-5x | ~95% | For high-risk only |
+| Pattern | Complexity | Latency | Cost | Security Effect | Production-Ready |
+|---------|------------|---------|------|-----------------|------------------|
+| Baseline | None | 1x | 1x | None | No |
+| Delimiters | Low | 1x | 1x | Limited, defense-in-depth only | Maybe |
+| Dual LLM | Medium | 2x | 2x | Strong architectural separation | Yes, with caveats |
+| Typed Extraction | Medium | 2x | 2x | Strong when schemas stay tight | Yes |
+| Dry-Run | High | 3x | 3x | Strong review layer, still probabilistic | Yes, with caveats |
+| Combined | Very High | 4-5x | 4-5x | Layered resilience | For high-risk only |
 
 ---
 
@@ -78,7 +81,7 @@ A practical comparison of each defense pattern.
 
 **When to use:** When you have tools that can take dangerous actions (send email, API calls, file writes).
 
-**Honest assessment:** This is the pattern that actually works. The complexity is justified. Simon Willison proposed it for good reason—it's the closest thing to real isolation we have without model-level changes.
+**Honest assessment:** This is one of the strongest patterns in the repo because it changes the data flow, not just the prompt. The complexity is often justified for agents with meaningful write or outbound capabilities.
 
 ---
 

@@ -12,15 +12,15 @@ Layer all techniques together. **Assume breach at each layer.**
 No single defense is perfect. Each layer catches what the previous missed:
 
 ```
-Input → Detection (YARA, ML) → ~95% blocked
-          ↓ (5% bypass)
-     Delimiters → ~2% bypass
-          ↓ (0.1% bypass)
-     Typed Extraction → Payload can't fit
+Input → Detection (YARA, ML) → catches many common attacks
+          ↓ (adaptive bypasses still exist)
+     Delimiters → adds another boundary
+          ↓ (still not sufficient alone)
+     Typed Extraction → payload must fit schema
           ↓
-     Dry-Run Evaluation → Intent mismatch caught
+     Dry-Run Evaluation → intent mismatch reviewed
           ↓
-     Deterministic Validation → Unknown recipients blocked
+     Deterministic Validation → unknown recipients blocked
           ↓
      Execute (if all pass)
 ```
@@ -68,7 +68,7 @@ Even if an attacker bypasses detection, delimiters constrain what the LLM sees. 
 | **Latency** | 1x | 1.1x | 4-5x |
 | **Cost** | 1x | 1.1x | 4-5x |
 | **Complexity** | Low | Low | High |
-| **Protection** | ~0% | ~95% | ~99%+ |
+| **Security Effect** | None | Limited, probabilistic filtering | Layered resilience and containment |
 
 **Defense in depth is expensive.** Use it when the stakes justify the cost.
 
@@ -90,7 +90,7 @@ Even if an attacker bypasses detection, delimiters constrain what the LLM sees. 
 
 The question isn't "is this secure?" — nothing is perfectly secure.
 
-The question is: **Does the protection justify the complexity and cost?**
+The question is: **Does the extra resilience justify the complexity and cost?**
 
 For most production systems, detection + some architecture (Levels 2–3) provides good balance. Full defense in depth is for when you truly can't afford failures.
 

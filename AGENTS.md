@@ -11,7 +11,7 @@ Agentic Security is a learning and implementation reference for securing AI agen
 - **Testing:** `uv run pytest`
 - **Linting:** `uv run ruff check src/ tests/`
 - **Docs:** `uv run mkdocs serve` (MkDocs Material)
-- **Notebooks:** `marimo edit notebooks/<path>.py`
+- **Notebooks:** `uv run marimo edit notebooks/<path>.py`
 
 ## Key commands
 
@@ -82,3 +82,4 @@ data/                  # Curated injection dataset
 - Never commit API keys or secrets
 - All defenses should work without network access (deterministic/mock by default)
 - The benchmark runs all deterministic defenses — no LLM calls
+- After completing a discrete step, commit and push the scoped changes unless the user says otherwise

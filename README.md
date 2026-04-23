@@ -41,15 +41,15 @@ Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this 
 
 ## Defense Levels
 
-| Level | Approach | What Changes | Protection |
-|-------|----------|--------------|------------|
-| **1. Detection** | Filter malicious inputs | Add a library | ~95% |
-| **2. Prompt Engineering** | Harden the prompt | Change prompts | +marginal |
-| **3. Isolation (Infra)** | Containers, network, permissions | Wrap the agent | +significant |
-| **4. Secure Architecture (Software)** | Dual LLM, dry-run, typed extraction | Redesign system | +significant |
-| **5. Defense in Depth** | Layer everything | Full investment | ~99%* |
+| Level | Approach | What Changes | Security Effect |
+|-------|----------|--------------|-----------------|
+| **1. Detection** | Filter malicious inputs | Add a library | Catches common attack patterns |
+| **2. Prompt Engineering** | Harden the prompt | Change prompts | Marginal on its own |
+| **3. Isolation (Infra)** | Containers, network, permissions | Wrap the agent | Reduces blast radius |
+| **4. Secure Architecture (Software)** | Dual LLM, dry-run, typed extraction | Redesign system | Removes dangerous data flows |
+| **5. Defense in Depth** | Layer everything | Full investment | Raises attacker cost and limits failures |
 
-*Nothing is 100%. The goal is raising the bar high enough to deter attacks and limit blast radius.
+*These are directional descriptions, not measured protection rates. Real-world performance depends on your threat model, tools, prompts, and operational controls.
 
 ---
 
