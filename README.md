@@ -61,11 +61,7 @@ Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this 
 # Clone and setup
 git clone https://github.com/luisalima/agentic-security.git
 cd agentic-security
-python -m venv .venv && source .venv/bin/activate
-pip install -e .
-
-# For running notebooks
-pip install marimo
+uv sync
 
 # For local LLM testing (optional)
 # Install Ollama: https://ollama.ai
@@ -76,10 +72,10 @@ ollama pull llama3.1:8b
 
 ```bash
 # See the vulnerability (baseline)
-marimo edit notebooks/0_vulnerabilities/1_baseline.py
+uv run marimo edit notebooks/0_vulnerabilities/1_baseline.py
 
 # Try a defense pattern
-marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py
+uv run marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py
 ```
 
 ### Read the Guide
@@ -111,7 +107,7 @@ agentic-security/
 
 ## Learning Path
 
-Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-security/), or run the interactive notebooks locally with `marimo edit`.
+Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-security/), or run the interactive notebooks locally with `uv run marimo edit`.
 
 | Level | Guide | Notebooks |
 |-------|-------|-----------|
