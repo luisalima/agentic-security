@@ -53,6 +53,23 @@ Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this 
 
 ---
 
+## How to Read This Repo
+
+This repo mixes vulnerable baselines, teaching examples, and patterns you can
+actually build around. Use the labels below as a guide:
+
+- **Teaching example** — Useful for understanding the attack or defense shape. Not enough on its own for production.
+- **Defense-in-depth layer** — Worth adding as a supporting control, but not a primary trust boundary.
+- **Production-hardenable component** — Reasonable building block for real systems when paired with deterministic checks, least privilege, and monitoring.
+- **High-risk reference architecture** — A stronger starting point for high-stakes systems, but still requires environment-specific hardening.
+
+In this repo, **detection** and most **prompt-engineering** patterns are usually
+teaching examples or defense-in-depth layers. **Dual LLM**, **typed extraction**,
+**output validation**, **tool/MCP validation**, and **memory isolation** are the
+patterns closest to production-hardenable components.
+
+---
+
 ## Quick Start
 
 ### Prerequisites

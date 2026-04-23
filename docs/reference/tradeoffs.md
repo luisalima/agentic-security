@@ -7,18 +7,20 @@ to claim measured coverage percentages across real deployments.
 
 ## Quick Reference
 
-| Pattern | Complexity | Latency | Cost | Security Effect | Production-Ready |
-|---------|------------|---------|------|-----------------|------------------|
-| Baseline | None | 1x | 1x | None | No |
-| Delimiters | Low | 1x | 1x | Limited, defense-in-depth only | Maybe |
-| Dual LLM | Medium | 2x | 2x | Strong architectural separation | Yes, with caveats |
-| Typed Extraction | Medium | 2x | 2x | Strong when schemas stay tight | Yes |
-| Dry-Run | High | 3x | 3x | Strong review layer, still probabilistic | Yes, with caveats |
-| Combined | Very High | 4-5x | 4-5x | Layered resilience | For high-risk only |
+| Pattern | Complexity | Latency | Cost | Security Effect | Repo Label |
+|---------|------------|---------|------|-----------------|------------|
+| Baseline | None | 1x | 1x | None | Teaching example |
+| Delimiters | Low | 1x | 1x | Limited, defense-in-depth only | Defense-in-depth layer |
+| Dual LLM | Medium | 2x | 2x | Strong architectural separation | Production-hardenable component |
+| Typed Extraction | Medium | 2x | 2x | Strong when schemas stay tight | Production-hardenable component |
+| Dry-Run | High | 3x | 3x | Strong review layer, still probabilistic | Production-hardenable component |
+| Combined | Very High | 4-5x | 4-5x | Layered resilience | High-risk reference architecture |
 
 ---
 
 ## Pattern 0: Baseline
+
+**Repo label:** Teaching example.
 
 **What it does:** Nothing. Raw untrusted content goes to LLM with full tool access.
 
@@ -31,6 +33,8 @@ to claim measured coverage percentages across real deployments.
 ---
 
 ## Pattern 1: Random Token Delimiters
+
+**Repo label:** Defense-in-depth layer.
 
 **What it does:** Wraps untrusted content in randomized delimiters. Instructs the LLM to treat content between delimiters as data, not commands.
 
@@ -57,6 +61,8 @@ to claim measured coverage percentages across real deployments.
 ---
 
 ## Pattern 2: Dual LLM (Quarantined + Privileged)
+
+**Repo label:** Production-hardenable component.
 
 **What it does:** 
 - Quarantined LLM processes untrusted content with NO tools
@@ -86,6 +92,8 @@ to claim measured coverage percentages across real deployments.
 ---
 
 ## Pattern 3: Typed Data Extraction
+
+**Repo label:** Production-hardenable component.
 
 **What it does:** Extracts structured data (JSON with strict schema) instead of passing raw text. The schema constrains what information can flow between agents.
 
@@ -118,6 +126,8 @@ to claim measured coverage percentages across real deployments.
 ---
 
 ## Pattern 4: Dry-Run Evaluation
+
+**Repo label:** Production-hardenable component.
 
 **What it does:** 
 1. Generate a plan of actions (don't execute)
@@ -157,6 +167,8 @@ def validate_plan(plan):
 ---
 
 ## Pattern 5: Combined Defense
+
+**Repo label:** High-risk reference architecture.
 
 **What it does:** Layers multiple patterns:
 1. Random delimiters
