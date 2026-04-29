@@ -6,8 +6,9 @@ A comprehensive comparison of tools for defending against prompt injection and o
 
 | Tool | Type | License | Best For | Status |
 |------|------|---------|----------|--------|
-| [ATR](https://github.com/AgenTRules/atr) | Detection | MIT | 108 rules, 685 regex patterns — "Sigma for prompt injection" (Cisco/OWASP) | ✅ Active |
+| [ATR](https://github.com/Agent-Threat-Rule/agent-threat-rules) | Detection | MIT | 108 rules, 685 regex patterns — "Sigma for prompt injection" (Cisco/OWASP) | ✅ Active |
 | [Pipelock](https://github.com/luckyPipewrench/pipelock) | Firewall | OSS | Inline agent firewall — DLP, SSRF, prompt injection blocking (Go) | ✅ Active |
+| [PurpleLlama](https://github.com/meta-llama/PurpleLlama) | Firewall | MIT/Llama | LlamaFirewall + PromptGuard 2 + CodeShield + CyberSecEval (Meta) | ✅ Active |
 | [LLM Guard](https://llm-guard.com/) | Guardrails | MIT | Runtime input/output scanning | ✅ Active |
 | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | Guardrails | Apache 2.0 | Dialog flow control (NVIDIA) | ✅ Active |
 | [Promptfoo](https://github.com/promptfoo/promptfoo) | Testing | MIT | Evaluation + red teaming (50+ vuln types) | ✅ Active |
@@ -326,6 +327,31 @@ result = guard.validate("Some LLM output to validate")
 
 **Pros:** Modular, extensible, large validator ecosystem, API server mode
 **Cons:** Some validators require ML models, community-maintained quality varies
+
+---
+
+### PurpleLlama / LlamaFirewall (Meta)
+**Agent-firewall framework bundling several guardrail models**
+
+```python
+from llamafirewall import LlamaFirewall, UserMessage, Role, ScannerType
+
+firewall = LlamaFirewall({
+    Role.USER: [ScannerType.PROMPT_GUARD],
+})
+result = firewall.scan(UserMessage(content="Ignore previous instructions..."))
+```
+
+| Component | Purpose |
+|-----------|---------|
+| LlamaFirewall | Modular runtime firewall for LLM agents |
+| PromptGuard 2 | Classifier for direct + indirect prompt injection |
+| AlignmentCheck | Chain-of-thought auditor for goal hijacking |
+| CodeShield | Static analysis on generated code (insecure patterns) |
+| CyberSecEval | Benchmark suite for LLM cybersecurity risk |
+
+**Pros:** Backed by Meta AI Red Team, covers prompt + reasoning + code layers, MIT-licensed framework
+**Cons:** Model weights under Llama license (not pure OSS), English-focused, Python-only runtime
 
 ---
 

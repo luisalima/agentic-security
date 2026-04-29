@@ -257,7 +257,7 @@ LLM is convinced to misuse its tools (exfiltrate data, take harmful actions).
 **Mitigation:** Least privilege, human-in-the-loop, output validation.
 
 ### Data Exfiltration
-Sensitive context (system prompts, credentials, user data) is leaked.
+Private data (system prompts, credentials, user data) is leaked.
 
 **Mitigation:** Minimize sensitive data in context, output filtering, sandboxing.
 

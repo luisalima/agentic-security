@@ -33,7 +33,7 @@ Academic papers, blog posts, and resources on LLM security and prompt injection.
 | [Zhan et al. — Adaptive Attacks Break Defenses Against Indirect Prompt Injection (NAACL 2025)](https://doi.org/10.18653/v1/2025.findings-naacl.395) | Zhan et al. | 2025 | Adaptive attacks defeating current defenses |
 | [Heverin et al. — Systematically Analysing Prompt Injection Vulnerabilities in Diverse LLM Architectures (2025)](https://doi.org/10.34190/iccws.20.1.3292) | Heverin et al. | 2025 | Systematic analysis across architectures |
 | [Fu et al. — Imprompter: Tricking LLM Agents into Improper Tool Use](https://imprompter.ai/paper.pdf) | Fu et al. | 2025 | Attacks on agent tool use |
-| [PoisonedRAG — Knowledge Poisoning Attacks to RAG (USENIX Security 2025)](https://arxiv.org/abs/2402.07867) | Zou et al. | 2025 | 5 crafted documents can manipulate AI responses 90% of the time |
+| [PoisonedRAG — Knowledge Corruption Attacks to RAG (USENIX Security 2025)](https://arxiv.org/abs/2402.07867) | Zou et al. | 2025 | 5 crafted documents can manipulate AI responses 90% of the time |
 
 ---
 

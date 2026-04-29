@@ -13,9 +13,9 @@ Your agent is vulnerable when it has **all three** of the following:
 
 | Factor | Example | Risk |
 |--------|---------|------|
-| **Tool Access** | `send_email`, `forward_email` | Agent can take real actions |
-| **Untrusted Input** | Email body, retrieved docs, web pages | Attacker-controlled content |
-| **Sensitive Context** | Access to user's emails, secrets, internal data | Data worth exfiltrating |
+| **Access to Private Data** | User's emails, secrets, internal data | Data worth stealing |
+| **Exposure to Untrusted Content** | Email body, retrieved docs, web pages | Attacker-controlled text reaching the LLM |
+| **Ability to Exfiltrate** | `send_email`, `forward_email`, API calls | Mechanism to steal data externally |
 
 Remove any one factor and the attack surface shrinks dramatically.
 
@@ -137,7 +137,7 @@ All three attacks exploit the same flaw: **untrusted text crosses a trust bounda
 
 Cline, a VS Code AI coding extension, added an AI-powered issue triage bot using Claude with Bash/Write/Edit tools. Configuration allowed **any** GitHub user to trigger it. An attacker crafted an issue title with prompt injection that caused Claude to run `npm install` from an attacker-controlled repo, deploying a cache poisoning tool. The poisoned cache compromised Cline's nightly release pipeline, exfiltrating `NPM_RELEASE_TOKEN` and publishing a malicious package installed by ~4,000 developers in 8 hours.
 
-**Lethal Trifecta:** Tool access (Bash, Write, Edit) + Untrusted input (issue title from any user) + Sensitive context (shared cache with release pipeline).
+**Lethal Trifecta:** Access to private data (shared cache with release pipeline secrets) + Untrusted content (issue title from any user) + Ability to exfiltrate (Bash, Write, Edit — arbitrary code execution).
 
 **Defenses that would have helped:** least privilege (triage doesn't need Bash), input sanitization, architectural separation of triage from release pipeline.
 

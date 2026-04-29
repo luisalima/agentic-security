@@ -313,8 +313,6 @@ Track **data provenance** and enforce **capability policies** on tool calls. Dat
 - **Data tagging:** User input is tagged `public` (trusted). Tool outputs are tagged with their source (e.g., `tool:read_email` — untrusted).
 - **Policy engine:** A deterministic check per tool call. `send_email` only allows `public` data in its arguments. If `body` contains data tagged `tool:read_email`, the call is blocked.
 
-**Strongest pattern:** CaMeL provides **provable** security guarantees — if the policy is correct, private data cannot reach unauthorized tools, regardless of what the LLM does.
-
 ### Comparison with other patterns
 
 | Pattern | Protects Against | Mechanism |
@@ -358,7 +356,6 @@ Promising approach, but the "prompt injection becomes irrelevant" claim overstat
 | **Implementation effort** | Low | Low | Medium-High |
 | **Latency** | +10-50ms | +0ms | +100-500ms (2x LLM calls) |
 | **Cost** | +10-20% | +0% | +100% (2x LLM calls) |
-| **Protection level** | ~95% | ~98% | ~99%+ |
 
 ---
 

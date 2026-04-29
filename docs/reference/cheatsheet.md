@@ -8,9 +8,9 @@ One-page quick reference for securing AI agents.
 
 Your agent is vulnerable if it has ALL THREE:
 
-1. **Tool Access** — Can take actions (send email, write files, API calls)
-2. **Untrusted Input** — Processes external data (emails, documents, web, RAG)
-3. **Sensitive Context** — Has access to credentials, PII, or private data
+1. **Access to Private Data** — Can read your emails, files, credentials, PII
+2. **Exposure to Untrusted Content** — Attacker-controlled text or images can reach the LLM (emails, documents, web, RAG)
+3. **Ability to Exfiltrate** — Can externally communicate to steal data (send email, API calls, outbound network)
 
 **Remove any one to significantly reduce risk.**
 

@@ -32,9 +32,9 @@ def _(mo):
 
     | Factor | In This Demo | Risk |
     |--------|--------------|------|
-    | **Tool Access** | `send_email`, `forward_email` | Agent can take real actions |
-    | **Untrusted Input** | Email body from external sender | Attacker-controlled content |
-    | **Sensitive Context** | Access to user's emails | Data worth exfiltrating |
+    | **Access to Private Data** | Access to user's emails | Data worth stealing |
+    | **Exposure to Untrusted Content** | Email body from external sender | Attacker-controlled text reaching the LLM |
+    | **Ability to Exfiltrate** | `send_email`, `forward_email` | Mechanism to steal data externally |
 
     Remove any one factor and the attack surface shrinks dramatically.
 
@@ -297,7 +297,7 @@ def _(mo):
 
     1. **Meta AI (2025)** — [Agents Rule of Two: A Practical Approach to AI Agent Security](https://ai.meta.com/blog/practical-ai-agent-security/)
        - Extends the "lethal trifecta" into a practical security framework for agents
-       - Rule: agents must satisfy no more than two of: untrusted input, sensitive access, external action
+       - Rule: agents must satisfy no more than two of: private data access, untrusted content exposure, exfiltration ability
 
     2. **Nasr, Carlini et al. (2025)** — [The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses](https://arxiv.org/abs/2510.09023)
        - 14 authors from OpenAI, Anthropic, and DeepMind evaluate 12 defenses

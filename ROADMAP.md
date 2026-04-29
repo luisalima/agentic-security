@@ -77,19 +77,19 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 
 ## Phase 3: Docs & Ecosystem (Current)
 
-### 3.1 GitHub Pages site 🔧
+### 3.1 GitHub Pages site ✅
 - MkDocs Material setup complete
-- Guide stub pages created — need to write content for each section
+- Guide and reference pages written
 - Reference docs migrated
 
-### 3.2 Write guide pages
-- [ ] Vulnerabilities (`docs/guide/0_vulnerabilities.md`)
-- [ ] Detection (`docs/guide/1_detection.md`)
-- [ ] Prompt Engineering (`docs/guide/2_prompt_engineering.md`)
-- [ ] Isolation (`docs/guide/3_isolation.md`)
-- [ ] Secure Architecture (`docs/guide/4_secure_architecture.md`)
-- [ ] Defense in Depth (`docs/guide/5_defense_in_depth.md`)
-- [ ] Framework Integration (`docs/guide/6_integration.md`)
+### 3.2 Write guide pages ✅
+- [x] Vulnerabilities (`docs/guide/0_vulnerabilities.md`)
+- [x] Detection (`docs/guide/1_detection.md`)
+- [x] Prompt Engineering (`docs/guide/2_prompt_engineering.md`)
+- [x] Isolation (`docs/guide/3_isolation.md`)
+- [x] Secure Architecture (`docs/guide/4_secure_architecture.md`)
+- [x] Defense in Depth (`docs/guide/5_defense_in_depth.md`)
+- [x] Framework Integration (`docs/guide/6_integration.md`)
 - [x] Securing Pre-Packaged Agents (`docs/guide/7_securing_prepackaged_agents.md`)
 
 ### 3.3 More framework integrations

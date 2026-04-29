@@ -316,9 +316,9 @@ Catastrophic risk requires ALL THREE:
 
 | Component | Examples | Break It To Reduce Risk |
 |-----------|----------|-------------------------|
-| Untrusted Input | Emails, web pages, RAG docs, user uploads | Use only curated/internal data |
-| Tool Access | Send email, API calls, file write, code exec | Read-only tools, require approval |
-| Sensitive Context | Credentials, PII, system prompts, internal docs | Minimize context, use references |
+| Access to Private Data | Emails, credentials, PII, internal docs | Minimize context, use references, scoped access |
+| Exposure to Untrusted Content | Emails, web pages, RAG docs, user uploads | Use only curated/internal data, quarantine untrusted input |
+| Ability to Exfiltrate | Send email, API calls, file write, code exec | Read-only tools, require approval, block outbound |
 
 ## Risk Assessment Matrix
 

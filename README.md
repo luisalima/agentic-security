@@ -1,6 +1,6 @@
 # Agentic Security
 
-**The definitive guide to securing AI agents against prompt injection.**
+**A step-by-step guide to securing AI agents against prompt injection.**
 
 AI agents are vulnerable to prompt injection attacks. This is more concerning since they can take actions and "live" in spaces that can access (and edit) private information. This repository provides practical, runnable examples of defense patterns—from simple detection to secure multi-agent architectures.
 
@@ -14,9 +14,9 @@ AI agents are vulnerable to prompt injection attacks. This is more concerning si
 
 Your AI agent is vulnerable if it has the **Lethal Trifecta**:
 
-1. **Tool Access** — Can take real-world actions
-2. **Untrusted Input** — Processes external data (emails, documents, web, RAG)
-3. **Sensitive Context** — Has access to credentials, PII, or private data
+1. **Access to Private Data** — Can read your emails, files, credentials, PII
+2. **Exposure to Untrusted Content** — Processes text or images controlled by a potential attacker (emails, documents, web, RAG)
+3. **Ability to Exfiltrate** — Can externally communicate in ways that could steal your data (send emails, API calls, outbound network)
 
 Unlike traditional injection attacks (SQL injection, XSS), there's no equivalent to parameterized queries for LLMs. Instructions and data flow through the same channel.
 

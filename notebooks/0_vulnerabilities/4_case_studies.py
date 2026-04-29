@@ -57,9 +57,9 @@ def _(mo):
 
     | Factor | In This Incident |
     |--------|-----------------|
-    | **Tool Access** | Bash, Write, Edit — arbitrary code execution |
-    | **Untrusted Input** | GitHub issue title from ANY user |
-    | **Sensitive Context** | Shared cache scope with release pipeline |
+    | **Access to Private Data** | Shared cache scope with release pipeline secrets |
+    | **Exposure to Untrusted Content** | GitHub issue title from ANY user |
+    | **Ability to Exfiltrate** | Bash, Write, Edit — arbitrary code execution |
 
     **What defenses would have helped:**
 

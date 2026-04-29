@@ -12,9 +12,9 @@ List every component of the lethal trifecta for your system:
 
 | Factor | Your System | Can You Remove It? |
 |--------|-------------|-------------------|
-| **Tools** | _List every tool the agent can call_ | Can any be removed? Made read-only? Require approval? |
-| **Untrusted Input** | _List every source of external data_ | Can any be eliminated? Curated? Sandboxed? |
-| **Sensitive Context** | _List every secret, credential, PII in scope_ | Can any be removed from context? Replaced with references? |
+| **Access to Private Data** | _List every source of private data the agent can read_ | Can any be removed from context? Replaced with references? Scoped? |
+| **Exposure to Untrusted Content** | _List every source of external/attacker-controlled data_ | Can any be eliminated? Curated? Sandboxed? |
+| **Ability to Exfiltrate** | _List every way the agent can communicate externally_ | Can any be removed? Made read-only? Require approval? Block outbound? |
 
 **Removing any one factor dramatically reduces risk.**
 
@@ -22,17 +22,17 @@ List every component of the lethal trifecta for your system:
 
 | Factor | Components | Mitigation |
 |--------|-----------|------------|
-| **Tools** | `send_email`, `forward_email`, `read_email`, `search_contacts` | Remove `forward_email`. Require approval for `send_email` |
-| **Untrusted Input** | Incoming emails (body, subject, attachments) | Process in quarantined LLM with no tool access |
-| **Sensitive Context** | Contact list, email history, OAuth tokens | Only expose contacts for the current thread. Use scoped tokens |
+| **Access to Private Data** | Contact list, email history, OAuth tokens | Only expose contacts for the current thread. Use scoped tokens |
+| **Exposure to Untrusted Content** | Incoming emails (body, subject, attachments) | Process in quarantined LLM with no tool access |
+| **Ability to Exfiltrate** | `send_email`, `forward_email` | Remove `forward_email`. Require approval for `send_email` |
 
 ### Example: Coding Assistant
 
 | Factor | Components | Mitigation |
 |--------|-----------|------------|
-| **Tools** | `read_file`, `write_file`, `execute_code`, `bash`, `git` | Read-only by default. Require approval for writes. No `git push` |
-| **Untrusted Input** | Code files, dependencies, README, PRs, issues | Run in container. Don't mount `~/.ssh`, `~/.aws` |
-| **Sensitive Context** | Env vars, API keys, `.env` files, git credentials | Don't inject secrets. Use project-scoped tokens only |
+| **Access to Private Data** | Env vars, API keys, `.env` files, git credentials | Don't inject secrets. Use project-scoped tokens only |
+| **Exposure to Untrusted Content** | Code files, dependencies, README, PRs, issues | Run in container. Don't mount `~/.ssh`, `~/.aws` |
+| **Ability to Exfiltrate** | `bash` (curl, network access), `git push`, `execute_code` | Block outbound network. Require approval for `git push`. Sandbox execution |
 
 ---
 
@@ -132,7 +132,7 @@ Different agents have different risk profiles:
 
 ### Medium Risk: Internal-Only Agents
 - Code assistants (no deploy), internal workflow automation
-- **Trifecta status:** Tools + sensitive context, but no untrusted input → medium risk
+- **Trifecta status:** Private data access + exfiltration ability, but no untrusted content → medium risk
 - **Main risk:** User prompt injection, credential misuse
 - **Controls:** Least privilege, scoped tokens, review before commit
 

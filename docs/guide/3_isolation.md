@@ -120,6 +120,12 @@ This prevents data exfiltration even if the agent is fully compromised.
     brew install luckyPipewrench/tap/pipelock
     ```
 
+!!! tip "PurpleLlama / LlamaFirewall: model-based agent firewall"
+    Meta's [PurpleLlama](https://github.com/meta-llama/PurpleLlama) bundles **LlamaFirewall** (modular runtime firewall), **PromptGuard 2** (injection classifier), **AlignmentCheck** (goal-hijack auditor), and **CodeShield** (static analysis on generated code). Sits in-process rather than on the network path — pair it with Pipelock/iptables for layered defense.
+    ```bash
+    pip install llamafirewall
+    ```
+
 ---
 
 ## 4. Secret & Filesystem Scoping

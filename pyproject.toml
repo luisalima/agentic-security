@@ -37,7 +37,14 @@ dev = [
 ]
 
 docs = [
-    "mkdocs-material>=9.0.0",
+    "mkdocs-material>=9.5.0",
+    "pymdown-extensions>=10.0",
+]
+
+# Optional: enables auto-generated social cards (`- social` plugin in mkdocs.yml).
+# Requires system libs (cairo, pango) — see Material docs before enabling.
+docs-social = [
+    "mkdocs-material[imaging]>=9.5.0",
 ]
 
 [build-system]

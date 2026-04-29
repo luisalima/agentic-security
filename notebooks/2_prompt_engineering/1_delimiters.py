@@ -42,7 +42,14 @@ def _():
         evaluate_defense,
     )
 
-    return DELIMITER_AWARE_EMAIL, EMAIL_TOOLS, MALICIOUS_EMAIL, SimulatedTools, evaluate_defense, get_client
+    return (
+        DELIMITER_AWARE_EMAIL,
+        EMAIL_TOOLS,
+        MALICIOUS_EMAIL,
+        SimulatedTools,
+        evaluate_defense,
+        get_client,
+    )
 
 
 @app.cell

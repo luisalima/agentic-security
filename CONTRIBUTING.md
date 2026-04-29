@@ -1,6 +1,6 @@
 # Contributing to Agentic Security
 
-Thanks for your interest in improving the definitive guide to securing AI agents against prompt injection. Every contribution matters—whether it's a new defense pattern, a novel attack variant, a typo fix, or a better explanation.
+Thanks for your interest in improving the step-by-step guide to securing AI agents against prompt injection. Every contribution matters—whether it's a new defense pattern, a novel attack variant, a typo fix, or a better explanation.
 
 ---
 

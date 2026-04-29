@@ -1,29 +1,107 @@
 site_name: Agentic Security Guide
 site_url: https://luisalima.github.io/agentic-security/
-site_description: The definitive guide to securing AI agents against prompt injection.
+site_description: A step-by-step guide to securing AI agents against prompt injection.
+site_author: Luisa Lima
+repo_url: https://github.com/luisalima/agentic-security
+repo_name: luisalima/agentic-security
+edit_uri: edit/main/docs/
 
 theme:
   name: material
+  language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/shield-lock
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  favicon: assets/favicon.svg
   palette:
-    - scheme: slate
-      primary: deep purple
+    - media: "(prefers-color-scheme)"
       toggle:
-        icon: material/brightness-4
+        icon: material/brightness-auto
         name: Switch to light mode
-    - scheme: default
-      primary: deep purple
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.indexes
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
     - content.code.copy
+    - content.code.annotate
+    - content.code.select
+    - content.tabs.link
+    - content.action.edit
+    - content.action.view
+    - content.tooltips
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/luisalima/agentic-security
+      name: Source on GitHub
+
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
-  - tables
+  # Python Markdown
+  - abbr
   - admonition
-  - pymdownx.highlight
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Anchor link to this section
+
+  # PyMdown Extensions
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -33,6 +111,13 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  # Uncomment once `mkdocs-material[imaging]` and system libs (cairo, pango) are
+  # installed — enables auto-generated Open Graph / Twitter social cards.
+  # - social
 
 nav:
   - Home: index.md

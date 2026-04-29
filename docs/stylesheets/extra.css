@@ -1,0 +1,406 @@
+/* ===========================================================================
+ * Agentic Security — "Refined" theme
+ * Near-monochrome base, single indigo accent. Inspired by Linear, Resend,
+ * Substack, Tailwind. Flat, quiet, typography-forward.
+ * ======================================================================== */
+
+/* ---------------------------------------------------------------------------
+ * Typography — safe under :root
+ * ------------------------------------------------------------------------ */
+
+:root {
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --md-code-font: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ---------------------------------------------------------------------------
+ * Color palette — Light mode
+ * Scoped to [data-md-color-scheme="default"] so it wins the specificity battle
+ * against Material's own scheme-scoped defaults (otherwise :root loses).
+ * ------------------------------------------------------------------------ */
+
+[data-md-color-scheme="default"] {
+  /* Primary = header. White, not colored — that's the Linear/Resend move. */
+  --md-primary-fg-color:           #ffffff;
+  --md-primary-fg-color--light:    #fafafa;
+  --md-primary-fg-color--dark:     #f4f4f5;
+  --md-primary-bg-color:           #09090b;   /* text on header */
+  --md-primary-bg-color--light:    #52525b;
+
+  /* Accent — the one color the site uses. Indigo. */
+  --md-accent-fg-color:            #4f46e5;   /* indigo-600 */
+  --md-accent-fg-color--transparent: rgba(79, 70, 229, 0.08);
+  --md-accent-bg-color:            #ffffff;
+  --md-accent-bg-color--light:     #eef2ff;
+
+  /* Body — pure white, near-black text */
+  --md-default-bg-color:           #ffffff;
+  --md-default-fg-color:           #09090b;   /* zinc-950 */
+  --md-default-fg-color--light:    #52525b;   /* zinc-600 */
+  --md-default-fg-color--lighter:  #a1a1aa;   /* zinc-400 */
+  --md-default-fg-color--lightest: #e4e4e7;   /* zinc-200 — borders */
+
+  /* Code — monochrome, not colored */
+  --md-code-bg-color:              #f4f4f5;   /* zinc-100 */
+  --md-code-fg-color:              #18181b;
+
+  /* Links — explicit, so Material's primary-derived default doesn't leak through */
+  --md-typeset-a-color:            #4f46e5;
+}
+
+/* ---------------------------------------------------------------------------
+ * Color palette — Dark mode
+ * ------------------------------------------------------------------------ */
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:           #09090b;   /* near-black header */
+  --md-primary-fg-color--light:    #18181b;
+  --md-primary-fg-color--dark:     #000000;
+  --md-primary-bg-color:           #fafafa;
+
+  --md-accent-fg-color:            #818cf8;   /* indigo-400 */
+  --md-accent-fg-color--transparent: rgba(129, 140, 248, 0.12);
+
+  --md-default-bg-color:           #0a0a0a;   /* near-black */
+  --md-default-bg-color--light:    #111113;
+  --md-default-bg-color--lighter:  #18181b;
+  --md-default-fg-color:           #fafafa;
+  --md-default-fg-color--light:    #a1a1aa;
+  --md-default-fg-color--lighter:  #52525b;
+  --md-default-fg-color--lightest: #27272a;
+
+  --md-code-bg-color:              #18181b;
+  --md-code-fg-color:              #fafafa;
+
+  --md-typeset-a-color:            #a5b4fc;   /* indigo-300 */
+}
+
+/* ---------------------------------------------------------------------------
+ * Header — flat, just a hairline at the bottom
+ * ------------------------------------------------------------------------ */
+
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.md-header--shadow {
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-header__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Tabs — quiet. No colored bar, just text on header-bg, with a thin underline
+ * under the active tab. */
+.md-tabs {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-tabs__link {
+  opacity: 0.7;
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin-top: 0;
+  padding: 0.7rem 0;
+  transition: opacity 150ms ease;
+}
+
+.md-tabs__link:hover {
+  opacity: 1;
+}
+
+.md-tabs__link--active {
+  opacity: 1;
+  font-weight: 600;
+  border-bottom: 2px solid var(--md-default-fg-color);
+}
+
+/* Search bar — subtle, doesn't shout */
+.md-search__form {
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+}
+
+[data-md-color-scheme="slate"] .md-search__form {
+  background: #1f1f22;
+}
+
+/* ---------------------------------------------------------------------------
+ * Typography
+ * ------------------------------------------------------------------------ */
+
+.md-typeset {
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-size: 2.1rem;
+  margin-bottom: 0.6em;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  font-size: 1.5rem;
+  margin-top: 2.5em;
+  padding-bottom: 0;
+  border-bottom: none;    /* cleaner than an underline */
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.15rem;
+  margin-top: 2em;
+}
+
+.md-typeset p,
+.md-typeset li {
+  line-height: 1.75;
+}
+
+.md-typeset hr {
+  border: none;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  margin: 3em 0;
+}
+
+/* Quieter blockquote */
+.md-typeset blockquote {
+  color: var(--md-default-fg-color--light);
+  border-left: 2px solid var(--md-default-fg-color--lightest);
+  padding-left: 1rem;
+  font-style: normal;
+}
+
+/* ---------------------------------------------------------------------------
+ * Grid cards — flat, thin border, barely-there hover
+ * ------------------------------------------------------------------------ */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: transparent;
+  padding: 1.2rem 1.3rem;
+  transition: border-color 150ms ease, background 150ms ease;
+  box-shadow: none;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > .card:hover {
+  border-color: var(--md-default-fg-color);
+  transform: none;        /* no lift — Linear/Resend don't lift */
+  box-shadow: none;
+  background: var(--md-default-fg-color--lightest);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li:hover,
+[data-md-color-scheme="slate"] .md-typeset .grid > .card:hover {
+  background: #141416;
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  margin: 0.6rem 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Tables — thin borders, minimal header emphasis
+ * ------------------------------------------------------------------------ */
+
+.md-typeset table:not([class]) {
+  border-radius: 0;
+  overflow: hidden;
+  font-size: 0.78rem;
+  border: none;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) th {
+  background: transparent;
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* ---------------------------------------------------------------------------
+ * Code — monochrome, flat
+ * ------------------------------------------------------------------------ */
+
+.md-typeset code {
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: 0.82em;
+  color: var(--md-default-fg-color);
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset pre > code {
+  border-radius: 8px;
+  color: inherit;
+  background: inherit;
+  border: none;
+  font-size: 0.78rem;
+}
+
+.md-typeset .highlight {
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* ---------------------------------------------------------------------------
+ * Admonitions — flatter, less decorated
+ * ------------------------------------------------------------------------ */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left-width: 3px;
+  box-shadow: none;
+  font-size: 0.78rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 600;
+  background: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+ * Buttons — flat, no shadow
+ * ------------------------------------------------------------------------ */
+
+.md-typeset .md-button {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  background: transparent;
+  transition: all 150ms ease;
+  box-shadow: none;
+}
+
+.md-typeset .md-button:hover,
+.md-typeset .md-button:focus {
+  border-color: var(--md-default-fg-color);
+  background: transparent;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset .md-button--primary {
+  background: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.md-typeset .md-button--primary:hover,
+.md-typeset .md-button--primary:focus {
+  background: var(--md-default-fg-color--light);
+  border-color: var(--md-default-fg-color--light);
+  color: var(--md-default-bg-color);
+}
+
+/* ---------------------------------------------------------------------------
+ * Sidebar nav — tighter, quieter
+ * ------------------------------------------------------------------------ */
+
+.md-nav__title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--md-default-fg-color--light);
+  font-weight: 600;
+}
+
+.md-nav__link {
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-nav__link--active,
+.md-nav__link[for]:focus,
+.md-nav__link:hover {
+  color: var(--md-default-fg-color);
+}
+
+.md-nav__link--active {
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+ * Home page hero — solid, confident, no gradient
+ * ------------------------------------------------------------------------ */
+
+.md-typeset .hero {
+  padding: 3.5rem 0 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  margin-bottom: 2rem;
+}
+
+.md-typeset .hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin-bottom: 0.3em;
+  color: var(--md-default-fg-color);
+  /* kill any gradient */
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.md-typeset .hero p.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--md-default-fg-color--light);
+  max-width: 36rem;
+  margin: 0 auto 2rem;
+  font-weight: 400;
+}
+
+.md-typeset .hero .md-button {
+  margin: 0 0.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Footer — minimal
+ * ------------------------------------------------------------------------ */
+
+.md-footer {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color--light);
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-footer-meta {
+  background: var(--md-default-bg-color);
+  font-size: 0.72rem;
+}
+
+.md-copyright {
+  color: var(--md-default-fg-color--lighter);
+}

@@ -12,13 +12,13 @@ An AI agent becomes catastrophically vulnerable when it has **all three**:
 
 | Factor | Example |
 |--------|---------|
-| **Tool access** | Send emails, execute code, call APIs, write files |
-| **Untrusted input** | Emails, web pages, RAG documents, user uploads |
-| **Sensitive context** | Credentials, PII, internal docs, system prompts |
+| **Access to private data** | Emails, files, credentials, PII, internal docs |
+| **Exposure to untrusted content** | Emails, web pages, RAG documents, user uploads — any text or images controlled by a malicious attacker |
+| **Ability to exfiltrate** | Send emails, make API calls, write to external services — any mechanism to externally communicate and steal data |
 
 **Remove any one factor and the attack surface shrinks dramatically.**
 
-The problem: every useful agent has all three. Your coding assistant reads untrusted code, has access to your filesystem, and sees your secrets. Your email assistant reads external emails, can send messages, and has your contacts. Your personal assistant browses the web, takes actions on your behalf, and knows your schedule.
+The problem: every useful agent has all three. Your coding assistant has access to your codebase, reads untrusted code from repos, and can execute commands that exfiltrate data. Your email assistant reads your private emails, processes untrusted message content, and can forward messages externally. Your personal assistant knows your schedule, browses untrusted web pages, and can send messages and make purchases on your behalf.
 
 **All personal assistants and coding assistants are instances of the lethal trifecta. All. Of. Them.**
 
@@ -197,7 +197,7 @@ No single defense is sufficient. Layer them.
 
 | Principle | One-liner |
 |-----------|-----------|
-| **Lethal Trifecta** | Tools + untrusted input + sensitive context = catastrophe |
+| **Lethal Trifecta** | Private data access + untrusted content + exfiltration ability = catastrophe |
 | **Assume compromise** | Any agent that reads data can be hijacked |
 | **Never trust settings** | Agents bypass software restrictions creatively |
 | **Agents ignore "STOP"** | Prompt-level kill switches don't work |

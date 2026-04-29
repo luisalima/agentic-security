@@ -8,7 +8,7 @@ The key insight: **you can't fix the agent, but you can control its environment.
 
 ## Coding Agents (Claude Code, Amp, OpenCode, Cursor, Windsurf, etc.)
 
-These have the full [Lethal Trifecta](../principles.md): they read untrusted code, have filesystem/shell access, and see your environment variables and secrets.
+These have the full [Lethal Trifecta](../principles.md): they have access to your private codebase and secrets, are exposed to untrusted code from repos, and can exfiltrate data via shell commands and outbound network access.
 
 ### The Risk
 
