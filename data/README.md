@@ -6,24 +6,28 @@ Curated dataset of prompt injection attacks and legitimate inputs for benchmarki
 
 | Metric | Count |
 |--------|-------|
-| **Total samples** | 70 |
-| **Injection attacks** | 50 |
+| **Total samples** | 84 |
+| **Injection attacks** | 64 |
 | **Legitimate inputs** | 20 |
 
 ### Injection categories
 
 | Category | Count | Difficulty range |
 |----------|-------|-----------------|
-| `instruction_override` | 5 | easy–hard |
-| `fake_system_message` | 4 | medium–hard |
-| `social_engineering` | 4 | hard |
-| `encoding_obfuscation` | 5 | medium–hard |
-| `delimiter_escape` | 4 | medium–hard |
-| `prompt_extraction` | 4 | easy–medium |
-| `context_manipulation` | 4 | hard |
-| `multi_step` | 3 | medium–hard |
-| `tool_manipulation` | 4 | medium–hard |
+| `instruction_override` | 11 | easy–hard |
+| `encoding_obfuscation` | 6 | medium–hard |
+| `fake_system_message` | 5 | medium–hard |
+| `social_engineering` | 5 | hard |
+| `delimiter_escape` | 5 | medium–hard |
+| `prompt_extraction` | 5 | easy–medium |
+| `context_manipulation` | 5 | hard |
+| `tool_manipulation` | 5 | medium–hard |
 | `data_exfiltration` | 5 | medium–hard |
+| `multi_step` | 4 | medium–hard |
+| `tool_poisoning` | 3 | hard |
+| `memory_poisoning` | 2 | hard |
+| `second_order` | 2 | hard |
+| `supply_chain` | 1 | medium |
 
 Eight samples originate from `INJECTION_VARIANTS` in `src/agentic_security/scenario.py` (marked with `"source": "INJECTION_VARIANTS"`).
 
