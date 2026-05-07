@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability disclosure
+    url: https://github.com/luisalima/agentic-security/blob/main/SECURITY.md
+    about: Found a security issue in a defense or example? Please follow SECURITY.md instead of filing a public issue.
+  - name: Documentation site
+    url: https://luisalima.github.io/agentic-security/
+    about: Browse the published guide and reference docs.
