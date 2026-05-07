@@ -48,3 +48,8 @@ site/
 # Marimo notebook cache
 **/__marimo__/
 
+# Local-only tooling
+.obsidian/
+.sheal/
+.claude/
+
