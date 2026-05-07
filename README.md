@@ -49,7 +49,7 @@ Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this 
 | **4. Secure Architecture (Software)** | Dual LLM, dry-run, typed extraction | Redesign system | Removes dangerous data flows |
 | **5. Defense in Depth** | Layer everything | Full investment | Raises attacker cost and limits failures |
 
-*These are directional descriptions, not measured protection rates. Real-world performance depends on your threat model, tools, prompts, and operational controls.
+*These are directional descriptions, not measured protection rates. Real-world performance depends on your threat model, tools, prompts, and operational controls.*
 
 ---
 

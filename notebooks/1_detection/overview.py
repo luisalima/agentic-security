@@ -100,7 +100,7 @@ def _(mo):
     *The churn in OSS security tools is itself a lesson: detection is a moving target,
     and solo-maintained projects can't keep up with evolving attacks.*
 
-    See [docs/TOOLS.md](../../docs/TOOLS.md) for detailed comparison.
+    See [docs/reference/tools.md](../../docs/reference/tools.md) for detailed comparison.
     """)
     return
 

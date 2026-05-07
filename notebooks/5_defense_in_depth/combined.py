@@ -426,7 +426,7 @@ def _(mo):
 
     **Congratulations!** You've completed the Agentic Security guide.
 
-    For quick reference, see [docs/CHEATSHEET.md](../../docs/CHEATSHEET.md).
+    For quick reference, see [docs/reference/cheatsheet.md](../../docs/reference/cheatsheet.md).
     """)
     return
 
