@@ -1,5 +1,75 @@
 # Review Checklist
 
+## Publish-Readiness Punch List (2026-05-04)
+
+### CI / would fail today
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `ruff format` 6 files | `src/agentic_security/attacks/multi_agent.py`, `src/agentic_security/defenses/mcp_security.py`, `src/agentic_security/defenses/memory_security.py`, `tests/test_camel.py`, `tests/test_multi_agent.py`, `tests/test_tool_validation.py` |
+
+### Broken / stale paths
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `notebooks/1_detection/overview.py:103` | Repointed to `docs/reference/tools.md` |
+| [x] | `notebooks/5_defense_in_depth/combined.py:429` | Repointed to `docs/reference/cheatsheet.md` |
+| [x] | `CONTRIBUTING.md:52,73` | Removed top-level `guide/` references; pointed contributors to `docs/guide/` and `mkdocs.yml` |
+| [x] | `data/README.md` | Counts updated to 84/64; 4 new categories added to table |
+| [x] | `diagrams/README.md` | Rewritten to match actual files (21 SVGs, mermaid + excalidraw sources) |
+| [x] | `README.md:52` | Closed the italic `*` |
+
+### Metadata gaps
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `LICENSE` | Now `Copyright (c) 2025-2026 Luisa Lima` |
+| [x] | `pyproject.toml` | Author email + `[project.urls]` block added |
+| [x] | `CONTRIBUTING.md:184` | Now points to `SECURITY.md` |
+
+### Missing community files
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `SECURITY.md` | Created with disclosure email and scope |
+| [x] | `CODE_OF_CONDUCT.md` | Short project-specific CoC; reports go to luisa@nubia-labs.com |
+| [x] | `.github/ISSUE_TEMPLATE/` and `PULL_REQUEST_TEMPLATE.md` | Bug report + feature request + config.yml; PR template with test plan |
+
+### Repo hygiene
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | Untrack committed `__marimo__` files | `git rm --cached` applied to both session JSONs |
+| [x] | `.gitignore` | `.obsidian/`, `.sheal/`, `.claude/` added |
+
+### Versioning
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `CHANGELOG.md` | Single `[0.1.0] — Unreleased` section; counts (253 tests, 84 dataset samples) are now accurate. Pick a release date when ready |
+
+### Workflow nits
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `.github/workflows/docs.yml` | Now uses `uv sync --extra docs` and `uv run mkdocs gh-deploy` |
+
+### Roadmap drift (cosmetic)
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `ROADMAP.md` Phase 4.1 | "Export diagrams to SVG" ticked |
+| [x] | `ROADMAP.md` Phase 3.3 | LlamaIndex explicitly dropped — LangChain + Pydantic AI cover the same patterns |
+| [x] | `REVIEW_CHECKLIST.md` | Keep at repo root as a personal review tracker — file-by-file sections below still pending |
+
+### Optional (only if publishing to PyPI)
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `pyproject.toml` | Skip — not publishing to PyPI; this is a reference repo, marimo stays in main deps |
+
+### Cleanup follow-ups from review pass
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | `CONTRIBUTING.md:38` | Removed misleading `pip install marimo` note (marimo is in main deps; `uv sync --dev` covers it) |
+| [x] | `docs/reference/cheatsheet.md` | Quick-pick tools list aligned with README + tools.md (was recommending Vigil, inactive since 2023); added missing Level 3 (Isolation); added OWASP Agentic Top 10 + NCSC links to Resources |
+| [x] | `src/agentic_security/defenses/__init__.py` | Added `MemoryEntry`, `MemoryGuard`, `MemoryScanResult`, `MemoryStore` exports (oversight from when memory_security was added) |
+| [x] | `src/agentic_security/llm.py` | Bumped Anthropic default from `claude-3-5-sonnet-20241022` to `claude-sonnet-4-6` |
+| [x] | `tests/test_xml_tagging.py` | Added missing test file (every other defense had one); 15 tests covering `wrap_xml_untrusted`, `build_xml_prompt`, prompt templates |
+
+---
+
 ## Top-Level Docs
 
 | Status | File | Notes |

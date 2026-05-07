@@ -92,10 +92,10 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 - [x] Framework Integration (`docs/guide/6_integration.md`)
 - [x] Securing Pre-Packaged Agents (`docs/guide/7_securing_prepackaged_agents.md`)
 
-### 3.3 More framework integrations
+### 3.3 More framework integrations ✅
 - [x] Pydantic AI
 - [x] LangChain
-- [ ] LlamaIndex
+- [x] LlamaIndex — *dropped:* LangChain and Pydantic AI already demonstrate the same defensive patterns (input scanning, output validation, dual-LLM, typed extraction). LlamaIndex's churn cost outweighs the marginal teaching value.
 
 ### 3.4 Remove stale CI job ✅
 - [x] Remove `guide-sync` job from `.github/workflows/ci.yml` (was for the old markdown export)
@@ -107,7 +107,7 @@ Prioritized roadmap to make this the de facto learning and implementation refere
 
 ### 4.1 Repo hygiene
 - [x] Fix `pyproject.toml` author
-- [ ] Export diagrams to SVG from Excalidraw sources
+- [x] Export diagrams to SVG from Excalidraw sources (21 SVGs in `diagrams/`)
 - [x] Fix stale doc paths after `docs/` reorganization
 
 ### 4.2 Stretch goals
