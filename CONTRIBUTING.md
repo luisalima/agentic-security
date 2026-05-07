@@ -35,7 +35,7 @@ uv run ruff check src/ tests/ benchmark/
 uv run pytest tests/ -v --tb=short
 ```
 
-For running notebooks, you'll also need [Marimo](https://marimo.io/) (`pip install marimo`). For local LLM testing, optionally install [Ollama](https://ollama.ai/) and pull a model (e.g., `ollama pull llama3.1:8b`).
+[Marimo](https://marimo.io/) is included in the project dependencies, so `uv sync --dev` is enough to run the notebooks. For local LLM testing, optionally install [Ollama](https://ollama.ai/) and pull a model (e.g., `ollama pull llama3.1:8b`).
 
 ---
 
@@ -49,8 +49,7 @@ agentic-security/
 │   └── llm.py             # LLM abstraction layer
 ├── tests/                 # pytest tests for each defense
 ├── notebooks/             # Marimo interactive notebooks (by defense level)
-├── guide/                 # Markdown exports of notebooks
-├── docs/                  # Reference docs (TOOLS, ATTACK_TAXONOMY, THREAT_MODEL, CHEATSHEET, etc.)
+├── docs/                  # MkDocs site — guide pages and reference docs (tools, attack taxonomy, threat model, cheatsheet, etc.)
 ├── benchmark/run.py       # Comparative defense benchmark
 └── diagrams/              # Excalidraw diagrams
 ```
@@ -70,7 +69,7 @@ agentic-security/
 
    See `tests/test_yara_detection.py` for the canonical example.
 
-3. **Optionally add a notebook** in the appropriate `notebooks/<level>/` directory, using Marimo. Export a markdown version to `guide/`.
+3. **Optionally add a notebook** in the appropriate `notebooks/<level>/` directory, using Marimo. If you also want a hand-written explainer, add a markdown page under `docs/guide/` and link it from `mkdocs.yml`.
 
 4. **Add a benchmark adapter** in `benchmark/run.py` if the defense is deterministic (no LLM calls).
 
@@ -181,7 +180,7 @@ The benchmark runs all deterministic defenses against the `INJECTION_VARIANTS` c
 
 ## Reporting Security Issues
 
-If you discover a security vulnerability in the defense implementations or infrastructure, please **do not open a public issue**. Instead, email the maintainer directly at the address listed in the repository. We'll work with you to understand and address the issue before any public disclosure.
+If you discover a security vulnerability in the defense implementations or infrastructure, please **do not open a public issue**. Follow the disclosure process in [SECURITY.md](SECURITY.md). We'll work with you to understand and address the issue before any public disclosure.
 
 For general bugs or issues with the educational content, regular GitHub issues are fine.
 
