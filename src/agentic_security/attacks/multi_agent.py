@@ -153,8 +153,7 @@ SAFE_RAG_DOCS = [
         title="Product Roadmap 2025",
         source="internal_wiki",
         content=(
-            "Major milestones: v2.0 launch in March, API redesign in June, "
-            "mobile app in September."
+            "Major milestones: v2.0 launch in March, API redesign in June, mobile app in September."
         ),
         trusted=True,
     ),

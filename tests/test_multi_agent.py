@@ -195,9 +195,7 @@ class TestRAGPoisoning:
         run_vulnerable_rag([POISONED_RAG_DOC], tools)
         email_actions = [a for a in tools.actions_log if a["tool"] == "send_email"]
         assert len(email_actions) > 0
-        assert any(
-            "external-review.com" in a["params"]["to"] for a in email_actions
-        )
+        assert any("external-review.com" in a["params"]["to"] for a in email_actions)
 
     def test_evaluation_flags_attack(self, tools):
         run_vulnerable_rag(SAFE_RAG_DOCS + [POISONED_RAG_DOC], tools)
@@ -225,9 +223,7 @@ class TestDelegationAttack:
         run_vulnerable_delegation(MALICIOUS_DELEGATION, tools)
         email_actions = [a for a in tools.actions_log if a["tool"] == "send_email"]
         assert len(email_actions) > 0
-        assert any(
-            "external-partners.com" in a["params"]["to"] for a in email_actions
-        )
+        assert any("external-partners.com" in a["params"]["to"] for a in email_actions)
 
     def test_safe_delegation_no_attack(self, tools):
         safe_msg = DelegationMessage(

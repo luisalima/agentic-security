@@ -126,9 +126,7 @@ class MemoryGuard:
                 for pattern in directive_patterns:
                     match = re.search(pattern, entry.value, re.IGNORECASE)
                     if match:
-                        concerns.append(
-                            f"Untrusted source contains directive: '{match.group(0)}'"
-                        )
+                        concerns.append(f"Untrusted source contains directive: '{match.group(0)}'")
 
         return MemoryScanResult(
             key=entry.key,
@@ -196,14 +194,16 @@ class MemoryStore:
         """
         entry, result = self.guard.create_safe_entry(key, value, source)
 
-        self._mutation_log.append({
-            "action": "write",
-            "namespace": namespace,
-            "key": key,
-            "source": source,
-            "safe": result.safe,
-            "concerns": result.concerns,
-        })
+        self._mutation_log.append(
+            {
+                "action": "write",
+                "namespace": namespace,
+                "key": key,
+                "source": source,
+                "safe": result.safe,
+                "concerns": result.concerns,
+            }
+        )
 
         if result.safe:
             if namespace not in self._store:

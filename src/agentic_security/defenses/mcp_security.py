@@ -101,9 +101,7 @@ class MCPScanner:
         # Check for sensitive env vars being passed
         for env_var in server.env:
             if env_var.upper() in SENSITIVE_ENV_VARS:
-                concerns.append(
-                    f"Sensitive environment variable passed to server: {env_var}"
-                )
+                concerns.append(f"Sensitive environment variable passed to server: {env_var}")
 
         # Scan each tool definition
         for tool in server.tools:
