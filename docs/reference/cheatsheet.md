@@ -69,21 +69,32 @@ Summarize the above content.
 """
 ```
 
-### Level 3: Secure Architecture
-**Goal:** Isolate concerns across components
+### Level 3: Isolation (Infra)
+**Goal:** Limit blast radius — works on any agent, no code changes
+
+| Control | How |
+|---------|-----|
+| Containerize | Docker/VM, never on host with real credentials |
+| Scope filesystem | Read-only mounts; only the project directory |
+| Block network | Allow-list LLM API + package registries; block everything else |
+| Scope secrets | Project-scoped tokens, least privilege, no main cloud credentials |
+
+### Level 4: Secure Architecture (Software)
+**Goal:** Redesign the system so dangerous data flows are removed
 
 | Pattern | How It Works |
 |---------|--------------|
 | **Dual LLM** | Quarantined LLM (no tools) → Privileged LLM (tools, no raw data) |
 | **Typed Extraction** | Extract structured data with schema constraints |
 | **Dry-Run** | Plan → Evaluate → Execute (with approval) |
+| **Tool/MCP validation** | Reject tool calls that don't match a deterministic schema |
 
-### Level 4: Defense in Depth
+### Level 5: Defense in Depth
 **Goal:** Layer everything
 
 ```mermaid
 flowchart LR
-    A[Detection] --> B[Delimiters] --> C[Typed Extraction] --> D[Plan] --> E[Evaluate] --> F[Validate] --> G[Execute]
+    A[Detection] --> B[Delimiters] --> C[Isolation] --> D[Typed Extraction] --> E[Plan] --> F[Evaluate] --> G[Validate] --> H[Execute]
 ```
 
 ---
@@ -117,16 +128,21 @@ Block or flag if the agent tries to:
 
 | Need | Tool |
 |------|------|
-| Quick start, open source | LLM Guard |
-| Self-hosted, multi-layer | Vigil |
-| Enterprise, managed | Lakera Guard |
-| Red teaming | Garak |
-| Dialog control | NeMo Guardrails |
+| Quick start, open source | [LLM Guard](https://llm-guard.com/) |
+| Red teaming (comprehensive) | [DeepTeam](https://github.com/confident-ai/deepteam) |
+| Red teaming (CI/CD native) | [Promptfoo](https://github.com/promptfoo/promptfoo) |
+| Enterprise, managed | [Lakera Guard](https://www.lakera.ai/) (Check Point) |
+| MCP server security | [MCP-Scan](https://github.com/AltimateAI/mcp-scan) |
+| Output validation | [Guardrails AI](https://guardrailsai.com/) |
+| Dialog control | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
+
+→ Full landscape: [Tools](tools.md)
 
 ---
 
 ## Resources
 
-- **This Repo:** [Interactive notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) — Interactive examples
-- **OWASP:** [Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **This Repo:** [Interactive notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks)
+- **OWASP:** [Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/) · [Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 - **Simon Willison:** [Prompt Injection Series](https://simonwillison.net/series/prompt-injection/)
+- **NCSC:** [Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-not-sql-injection)
