@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [
-    { name = "Luisa Lima" }
+    { name = "Luisa Lima", email = "luisa@nubia-labs.com" }
 ]
 keywords = ["llm", "security", "prompt-injection", "ai-safety", "agents"]
 classifiers = [
@@ -20,6 +20,13 @@ classifiers = [
     "Topic :: Security",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
+
+[project.urls]
+Homepage = "https://luisalima.github.io/agentic-security/"
+Repository = "https://github.com/luisalima/agentic-security"
+Issues = "https://github.com/luisalima/agentic-security/issues"
+Documentation = "https://luisalima.github.io/agentic-security/"
+Changelog = "https://github.com/luisalima/agentic-security/blob/main/CHANGELOG.md"
 
 dependencies = [
     "openai>=1.0.0",
