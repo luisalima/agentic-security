@@ -148,7 +148,7 @@ class OpenAIClient(LLMClient):
 class AnthropicClient(LLMClient):
     """Anthropic API client."""
 
-    def __init__(self, model: str = "claude-3-5-sonnet-20241022"):
+    def __init__(self, model: str = "claude-sonnet-4-6"):
         import anthropic
 
         self.client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
@@ -245,7 +245,7 @@ def get_client(provider: str = "openai", model: str | None = None) -> LLMClient:
     if provider == "openai":
         return OpenAIClient(model=model or "gpt-4o-mini")
     elif provider == "anthropic":
-        return AnthropicClient(model=model or "claude-3-5-sonnet-20241022")
+        return AnthropicClient(model=model or "claude-sonnet-4-6")
     elif provider == "ollama":
         return OpenAIClient(
             model=model or "llama3.1:8b",

@@ -29,6 +29,12 @@ from agentic_security.defenses.mcp_security import (
     RugPullDetector,
     parse_mcp_config,
 )
+from agentic_security.defenses.memory_security import (
+    MemoryEntry,
+    MemoryGuard,
+    MemoryScanResult,
+    MemoryStore,
+)
 from agentic_security.defenses.ml_classifier import (
     ClassificationResult,
     SimulatedInjectionClassifier,
@@ -55,10 +61,14 @@ __all__ = [
     "DualLLMProcessor",
     "EmailExtraction",
     "EvaluationResult",
+    "ExecutionPlan",
+    "MCPScanResult",
     "MCPScanner",
     "MCPServerConfig",
-    "MCPScanResult",
-    "ExecutionPlan",
+    "MemoryEntry",
+    "MemoryGuard",
+    "MemoryScanResult",
+    "MemoryStore",
     "OutputValidator",
     "PlannedAction",
     "PlannedToolCall",
