@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file.
 - **MkDocs site** — Hand-written guide pages and reference docs published to GitHub Pages
 - **Reference documentation** (`docs/reference/`): tools landscape,
   attack taxonomy, threat model, cheatsheet, architecture, tradeoffs, references
-- **PRINCIPLES.md** — Core axioms and mental model for agentic security
+- **Principles page** (`docs/principles.md`) — Core axioms and mental model for agentic security
 - **Evaluation dataset** — 84 curated samples (64 injection, 20 legitimate)
   across 18 categories (`data/injection_dataset.json`), including multilingual
   injections (FR, DE, JA, ES, RU), MCP tool poisoning, memory poisoning,
@@ -42,7 +42,7 @@ All notable changes to this project will be documented in this file.
   Docker MCP Gateway, Agentic Radar, Giskard, Invariant Guardrails
 - Acquisition status: Lakera Guard (Check Point, Sep 2025),
   Protect AI/LLM Guard (Palo Alto Networks, Jul 2025)
-- References updated across README.md, PRINCIPLES.md, docs/reference/references.md
+- References updated across README.md, docs/principles.md, docs/reference/references.md
   with 2025–2026 research, standards, and real-world incidents
 - Anthropic client default bumped to `claude-sonnet-4-6` (was `claude-3-5-sonnet-20241022`)
 

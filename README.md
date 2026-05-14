@@ -2,17 +2,17 @@
 
 **A step-by-step guide to securing AI agents against prompt injection.**
 
-AI agents are vulnerable to prompt injection attacks. This is more concerning since they can take actions and "live" in spaces that can access (and edit) private information. This repository provides practical, runnable examples of defense patterns—from simple detection to secure multi-agent architectures.
+AI agents are vulnerable to prompt injection attacks. This is more concerning since they can take actions and "live" in spaces that can access (and edit) private information. This repository provides practical, runnable examples of defense patterns, from simple detection to secure multi-agent architectures.
 
-> **Start here: [PRINCIPLES.md](PRINCIPLES.md)** — The mental model for agentic security, before you touch any code.
+> **Start here: [Principles](docs/principles.md)** — The mental model for agentic security, before you touch any code.
 
-<!-- Diagram: see diagrams/mental_model.excalidraw -->
+![Mental model for agentic security](diagrams/mental_model.svg)
 
 ---
 
 ## The Problem
 
-Your AI agent is vulnerable if it has the **Lethal Trifecta**:
+Your AI agent is vulnerable if it has the **Lethal Trifecta** (coined by [Simon Willison](https://simonwillison.net/series/prompt-injection/)):
 
 1. **Access to Private Data** — Can read your emails, files, credentials, PII
 2. **Exposure to Untrusted Content** — Processes text or images controlled by a potential attacker (emails, documents, web, RAG)
@@ -63,10 +63,7 @@ actually build around. Use the labels below as a guide:
 - **Production-hardenable component** — Reasonable building block for real systems when paired with deterministic checks, least privilege, and monitoring.
 - **High-risk reference architecture** — A stronger starting point for high-stakes systems, but still requires environment-specific hardening.
 
-In this repo, **detection** and most **prompt-engineering** patterns are usually
-teaching examples or defense-in-depth layers. **Dual LLM**, **typed extraction**,
-**output validation**, **tool/MCP validation**, and **memory isolation** are the
-patterns closest to production-hardenable components.
+In this repo, **detection** and most **prompt-engineering** patterns are teaching examples or defense-in-depth layers; **dual LLM**, **typed extraction**, **output validation**, **tool/MCP validation**, and **memory isolation** are the closest to production-hardenable components.
 
 ---
 
@@ -130,11 +127,16 @@ Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-securi
 |-------|-------|-----------|
 | **0. Vulnerabilities** | [The Problem](https://luisalima.github.io/agentic-security/guide/0_vulnerabilities/) | `notebooks/0_vulnerabilities/` |
 | **1. Detection** | [Detection](https://luisalima.github.io/agentic-security/guide/1_detection/) | `notebooks/1_detection/` |
+| **1b. Observability** | [Observability & Audit Trails](https://luisalima.github.io/agentic-security/guide/1b_observability/) | — |
 | **2. Prompt Engineering** | [Prompt Engineering](https://luisalima.github.io/agentic-security/guide/2_prompt_engineering/) | `notebooks/2_prompt_engineering/` |
 | **3. Isolation (Infra)** | [Isolation](https://luisalima.github.io/agentic-security/guide/3_isolation/) | `notebooks/3_isolation_infra_level/` |
 | **4. Secure Architecture** | [Secure Architecture](https://luisalima.github.io/agentic-security/guide/4_secure_architecture/) | `notebooks/4_secure_architecture_software/` |
 | **5. Defense in Depth** | [Defense in Depth](https://luisalima.github.io/agentic-security/guide/5_defense_in_depth/) | `notebooks/5_defense_in_depth/` |
 | **6. Integration** | [Framework Integration](https://luisalima.github.io/agentic-security/guide/6_integration/) | `notebooks/6_integration/` |
+| **7. Pre-Packaged Agents** | [Securing Pre-Packaged Agents](https://luisalima.github.io/agentic-security/guide/7_securing_prepackaged_agents/) | — |
+| **8. Enterprise Zero Trust** | [Enterprise Zero Trust](https://luisalima.github.io/agentic-security/guide/8_enterprise_zero_trust/) | — |
+| **9. MCP Security** | [MCP Security](https://luisalima.github.io/agentic-security/guide/9_mcp_security/) | `notebooks/4_secure_architecture_software/6_mcp_security.py` |
+| **10. Memory & Context** | [Memory & Context Security](https://luisalima.github.io/agentic-security/guide/10_memory_security/) | `notebooks/4_secure_architecture_software/7_memory_security.py` |
 
 ---
 
@@ -203,4 +205,4 @@ MIT — Use freely, but please link back if this helped you.
 
 ---
 
-> **Start here: [Principles](PRINCIPLES.md)** — The mental model for agentic security, before you touch any code.
+> **Start here: [Principles](docs/principles.md)** — The mental model for agentic security, before you touch any code.

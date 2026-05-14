@@ -75,7 +75,6 @@
 | Status | File | Notes |
 |--------|------|-------|
 | [ ] | `README.md` | |
-| [ ] | `PRINCIPLES.md` | |
 | [ ] | `CONTRIBUTING.md` | |
 | [ ] | `CHANGELOG.md` | |
 | [ ] | `ROADMAP.md` | |
