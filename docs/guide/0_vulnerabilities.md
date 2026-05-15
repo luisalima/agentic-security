@@ -5,6 +5,9 @@ Prompt injection is the **#1 security risk** for LLM-powered agents ([OWASP LLM 
 !!! tip "Try the notebooks"
     For runnable examples, see [`notebooks/0_vulnerabilities/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/0_vulnerabilities).
 
+!!! info "Reference chapter"
+    This chapter shows the vulnerability surface, not a defense. The four repo labels (teaching example, defense-in-depth layer, production-hardenable component, high-risk reference architecture) start applying from the [Detection chapter](1_detection.md) onward.
+
 ---
 
 ## The Lethal Trifecta

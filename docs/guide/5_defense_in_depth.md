@@ -5,6 +5,9 @@ Layer all techniques together. **Assume breach at each layer.**
 !!! tip "Try the notebooks"
     For runnable examples, see [`notebooks/5_defense_in_depth/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/5_defense_in_depth).
 
+!!! info "Repo label: High-risk reference architecture"
+    Layering every defense is a stronger starting point for high-stakes systems, but it still requires environment-specific hardening: tuned policies, real credentials, and operational monitoring.
+
 ---
 
 ## The Philosophy

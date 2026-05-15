@@ -9,6 +9,9 @@ Even if every defense fails, a good audit trail lets you:
 - **Recover** by knowing exactly what to undo
 - **Improve** defenses based on real attack patterns
 
+!!! info "Repo label: Defense-in-depth layer"
+    Observability does not stop attacks — it lets you detect, understand, and recover from them. Treat audit trails as a supporting control alongside isolation and architectural defenses, not as a trust boundary on their own.
+
 ---
 
 ## What to Log

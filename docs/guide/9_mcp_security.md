@@ -5,6 +5,9 @@ The Model Context Protocol (MCP) is the connective tissue between AI agents and 
 !!! danger "MCP is now the #1 agentic attack surface"
     Tool descriptions become part of the agent's prompt. A poisoned description hijacks agent behavior **before the tool is even called**.
 
+!!! info "Repo label: Production-hardenable component"
+    Tool-poisoning detection and rug-pull guards are real defenses you can ship around an MCP-enabled agent. They still need allowlists, signed manifests, and runtime monitoring for high-risk deployments.
+
 ---
 
 ## Why MCP Is Different

@@ -4,6 +4,9 @@ Your developers can build secure agents. But at enterprise scale, you need **pla
 
 This section is for **security teams and platform engineers** deploying agentic systems across an organization.
 
+!!! info "Repo label: High-risk reference architecture"
+    The platform controls described here are a stronger starting point for organizations deploying agents at scale, but every control needs adaptation to your identity provider, network architecture, and audit requirements.
+
 ---
 
 ## The Enterprise Problem

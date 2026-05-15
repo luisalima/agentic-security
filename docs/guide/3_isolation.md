@@ -5,6 +5,9 @@ Before changing agent code, **restrict what a compromised agent can do**. This i
 !!! tip "Try the notebooks"
     For runnable examples, see [`notebooks/3_isolation_infra_level/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/3_isolation_infra_level).
 
+!!! info "Repo label: Production-hardenable component"
+    Infrastructure isolation is the primary blast-radius control for high-risk agents. It still needs least-privilege credentials, egress restrictions, and monitoring layered on top.
+
 ---
 
 ## The Core Principle

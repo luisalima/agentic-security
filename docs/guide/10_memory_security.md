@@ -5,6 +5,9 @@ Agents that remember things across sessions are powerful — and vulnerable. If 
 !!! danger "Memory poisoning is persistent"
     Unlike prompt injection which is per-session, memory poisoning corrupts **future** sessions. The attacker interacts once; the agent misbehaves forever.
 
+!!! info "Repo label: Production-hardenable component"
+    Namespace isolation, provenance tracking, and memory guards are real building blocks for any agent with persistent memory. They still need deterministic policy enforcement and audit trails layered around them.
+
 ---
 
 ## Why Memory Is an Attack Surface

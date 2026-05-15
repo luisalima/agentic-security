@@ -5,6 +5,9 @@ Most frameworks focus on **capability**, not **security**. They make it easy to 
 !!! tip "Try the notebooks"
     For runnable examples, see [`notebooks/6_integration/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/6_integration).
 
+!!! info "Repo label: Teaching example"
+    These patterns show how to wire defenses into LangChain and Pydantic AI. Treat them as illustrative — production deployments need framework-specific tuning, real credentials, and additional architectural controls.
+
 ---
 
 ## The Gap

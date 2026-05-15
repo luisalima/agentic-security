@@ -5,6 +5,9 @@ Prompt engineering defenses harden **individual LLM calls** through careful prom
 !!! tip "Try the notebooks"
     For runnable examples, see [`notebooks/2_prompt_engineering/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/2_prompt_engineering).
 
+!!! info "Repo label: Defense-in-depth layer"
+    Prompt engineering is probabilistic and bypassable. Treat it as a baseline that raises the bar slightly, not as a trust boundary on its own.
+
 !!! warning "Necessary but not sufficient"
     All prompt engineering techniques are **probabilistic**. They reduce attack success rates but cannot eliminate them. Use prompt engineering as a baseline defense, but don't rely on it alone for high-stakes applications. For real security, you need [architectural separation](4_secure_architecture.md).
 

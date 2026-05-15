@@ -4,6 +4,9 @@ You don't always control the agent's code. This guide covers how to secure agent
 
 The key insight: **you can't fix the agent, but you can control its environment.**
 
+!!! info "Repo label: Production-hardenable component"
+    The environment-level controls in this chapter — sandboxing, egress restriction, scoped credentials — are real production techniques. They still need monitoring and policy review tailored to the specific agent and tools you're running.
+
 ---
 
 ## Coding Agents (Claude Code, Amp, OpenCode, Cursor, Windsurf, etc.)
