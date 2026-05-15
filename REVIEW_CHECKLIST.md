@@ -232,3 +232,16 @@
 |--------|------|-------|
 | [ ] | `data/injection_dataset.json` | Updated — 14 new samples, 4 new categories |
 | [ ] | `benchmark/run.py` | |
+
+## Tooling & Supply Chain
+
+| Status | Item | Notes |
+|--------|------|-------|
+| [ ] | Lockfile compliance in CI | Switch `uv sync --dev` → `uv sync --locked --dev` in `.github/workflows/ci.yml` so CI fails on lockfile drift |
+| [ ] | Tighten floor versions in `pyproject.toml` | Lower bounds are 2023-vintage (`openai>=1.0.0`, `anthropic>=0.18.0`, `pydantic>=2.0.0`) |
+| [ ] | Supply-chain audit in CI | Add `pip-audit` step (or equivalent) to surface known CVEs in pinned deps |
+| [ ] | Dependabot / Renovate config | Add `.github/dependabot.yml` for `pip` + `github-actions` ecosystems |
+| [ ] | Static type checker | Add `mypy` (or `pyright`) to dev deps; configure in `pyproject.toml`; run in CI; fix what it flags in `src/` |
+| [ ] | (Optional) Expand ruff rules | Currently `E`, `F`, `I`, `W`. Consider adding `S` (security), `B` (bugbear), `UP` (pyupgrade), `N` (naming), `RUF` |
+| [ ] | Soften security-disclosure framing | Collapse `CONTRIBUTING.md:181-185` to a one-liner; loosen `SECURITY.md` (5-business-day SLA, 30-day window, formal acknowledgement language) to match the educational-repo scope it already declares in its own "Scope" section |
+| [ ] | URLs still resolve | Sweep external links in `README.md`, `docs/`, `CONTRIBUTING.md`, `SECURITY.md`, `pyproject.toml`. Optional: wire a link checker (`lychee` / `markdown-link-check`) into CI |

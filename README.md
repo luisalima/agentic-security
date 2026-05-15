@@ -24,16 +24,16 @@ Unlike traditional injection attacks (SQL injection, XSS), there's no equivalent
 
 ## Threat Model
 
-Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?*
+Your threat model should be simple: **the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?*
 
 | Blast Radius | Example | Acceptable? |
 |-------------|---------|-------------|
-| Agent sends 1 email to wrong person | Scoped token, approval required | Usually yes |
-| Agent exfiltrates all contacts | Full contact access, outbound network | Usually no |
+| Agent tries to send 1 email to wrong person | Scoped token, approval required | Usually yes |
+| Agent exfiltrates all contacts | Full contact access, outbound network | No |
 | Agent pushes malicious code to prod | Git credentials, CI/CD access | Never |
-| Agent deletes database | DB write credentials in env | Never |
+| Agent deletes database | DB write credentials in env | Never!!! |
 
-**If the blast radius is unacceptable, you need more isolation — not better prompts.**
+**If the blast radius is unacceptable, you need more isolation..**
 
 → Full threat modeling guide: [docs/reference/threat_model.md](docs/reference/threat_model.md)
 
@@ -48,8 +48,6 @@ Your threat model is simple: **the agent can go rogue.** Ask yourself: *if this 
 | **3. Isolation (Infra)** | Containers, network, permissions | Wrap the agent | Reduces blast radius |
 | **4. Secure Architecture (Software)** | Dual LLM, dry-run, typed extraction | Redesign system | Removes dangerous data flows |
 | **5. Defense in Depth** | Layer everything | Full investment | Raises attacker cost and limits failures |
-
-*These are directional descriptions, not measured protection rates. Real-world performance depends on your threat model, tools, prompts, and operational controls.*
 
 ---
 
@@ -144,7 +142,7 @@ Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-securi
 
 ### What Works
 
-- **Architectural separation** — The privileged LLM never sees raw untrusted content
+- **Architectural separation** — A privileged LLM never sees raw untrusted content
 - **Typed extraction** — A schema with `max_length=50` fields can't carry sophisticated payloads
 - **Output validation** — Check what the LLM tries to *do*, not just what it receives
 - **Dry-run evaluation** — Generate plans, evaluate them, then execute
@@ -175,7 +173,7 @@ See [docs/reference/tools.md](docs/reference/tools.md) for detailed comparison. 
 
 ## Contributing
 
-This aims to be **the** resource for agentic AI security. Contributions welcome:
+This guide aims to be an encompassing learning resource for agentic AI security, especially focused on prompt injection. Contributions welcome:
 
 - New attack patterns and defenses
 - Framework integration examples (LangChain, LlamaIndex, etc.)
@@ -186,8 +184,7 @@ This aims to be **the** resource for agentic AI security. Contributions welcome:
 
 ## References
 
-- [OWASP Top 10 for LLM Applications (2025)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+- [OWASP Top 10 for Agentic Applications (December 2025)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 - [OWASP GenAI Data Security Risks & Mitigations (2026)](https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/)
 - [MITRE ATLAS — Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
 - [NIST AI 600-1 — GenAI Risk Management Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf)
@@ -201,8 +198,6 @@ This aims to be **the** resource for agentic AI security. Contributions welcome:
 
 ## License
 
-MIT — Use freely, but please link back if this helped you.
+MIT — Use freely, please link back if this helped you!
 
 ---
-
-> **Start here: [Principles](docs/principles.md)** — The mental model for agentic security, before you touch any code.

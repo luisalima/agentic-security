@@ -1,4 +1,4 @@
-# Contributing to Agentic Security
+# Contributing to Agentic Security Guide
 
 Thanks for your interest in improving the step-by-step guide to securing AI agents against prompt injection. Every contribution matters—whether it's a new defense pattern, a novel attack variant, a typo fix, or a better explanation.
 
@@ -10,7 +10,7 @@ Thanks for your interest in improving the step-by-step guide to securing AI agen
 |--------------|--------|
 | New defense patterns | Expands the catalog of practical techniques |
 | New attack variants | Stress-tests existing defenses |
-| Framework integrations | LangChain, LlamaIndex, CrewAI, etc. |
+| Framework integrations | LangChain, LlamaIndex, PydanticAI, CrewAI, etc. |
 | Notebook improvements | Better explanations, clearer examples |
 | Documentation fixes | Typos, broken links, clarifications |
 | Benchmark improvements | Fairer comparisons, new metrics |
@@ -60,7 +60,7 @@ agentic-security/
 
 1. **Create the defense module** in `src/agentic_security/defenses/your_defense.py`.
    - Follow the conventions of existing modules (dataclass results, clear docstrings, a class with a main detection/defense method).
-   - Keep it self-contained and deterministic where possible.
+   - Keep it self-contained as deterministic as possible.
 
 2. **Add tests** in `tests/test_your_defense.py`. Every defense test should cover:
    - **Attacks are blocked** — test against relevant `INJECTION_VARIANTS` from `scenario.py`
@@ -143,9 +143,9 @@ uv run pytest tests/test_yara_detection.py::TestSimpleYaraScanner::test_detects_
 Every defense should have tests that verify two things:
 
 1. **Security** — known attacks are detected/blocked
-2. **Usability** — legitimate inputs are not flagged (no false positives)
+2. **Usability** — legitimate inputs are not flagged (false positives)
 
-CI runs tests on Python 3.10, 3.11, and 3.12.
+CI runs tests on Python 3.10, 3.11, 3.12, and 3.13.
 
 ---
 
