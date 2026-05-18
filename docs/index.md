@@ -9,7 +9,7 @@ hide:
 # Agentic Security
 
 <p class="subtitle">
-A step-by-step guide to securing AI agents against prompt injection, with practical defense patterns, ranging from simple detection to secure multi-agent architectures.
+A step-by-step guide to securing AI agents against prompt injection, with defense patterns from simple detection to secure multi-agent architectures.
 </p>
 
 [:octicons-rocket-16: &nbsp; Start with Principles](principles.md){ .md-button .md-button--primary }
@@ -21,7 +21,7 @@ A step-by-step guide to securing AI agents against prompt injection, with practi
 
 ## The Lethal Trifecta
 
-The Lethal Trifecta was coined by Simon Willison. Your AI agent is vulnerable if it has all three:
+Coined by Simon Willison: your AI agent is vulnerable if it has all three.
 
 <div class="grid cards" markdown>
 
@@ -41,7 +41,7 @@ The Lethal Trifecta was coined by Simon Willison. Your AI agent is vulnerable if
 
     ---
 
-    The agent can externally communicate in ways that could steal your data — send emails, make API calls, write to external services.
+    The agent can take outbound actions: send emails, make API calls, write to external services.
 
 </div>
 
@@ -51,19 +51,17 @@ Unlike SQL injection or XSS, there's **no parameterized-query equivalent for LLM
 
 ## Threat Model, in a Nutshell
 
-For me, the threat model when working with AI is always: **Assume the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?*
-
-Then work from there to design your system in a way that the outcome would be acceptable.
+**Assume the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?* Then design the system so that the worst case is still acceptable.
 
 | Blast Radius | Example | Acceptable? |
 |-------------|---------|-------------|
-| Agent sends 1 email to wrong person | Scoped token, approval required | Usually yes, because it won't reach the destination |
+| Agent sends 1 email to wrong person | Scoped token, approval required | Usually yes |
 | Agent exfiltrates all contacts | Full contact access, outbound network | Usually no |
 | Agent pushes malicious code to prod | Git credentials, CI/CD access | Never |
 | Agent deletes database | DB write credentials in env | Never |
 
 !!! tip "Rule of thumb"
-    If the blast radius is unacceptable, you need **more isolation and more deterministic controls around the agent (not better prompts)**.
+    If the blast radius is unacceptable, you need **deterministic controls (isolation, scoped tokens, schema validation), not better prompts**.
 
 → Full threat modeling guide: [Threat Model](reference/threat_model.md)
 
@@ -113,21 +111,39 @@ Then work from there to design your system in a way that the outcome would be ac
 
     [:octicons-arrow-right-24: Defense in Depth](guide/5_defense_in_depth.md)
 
--   :material-book-open-page-variant:{ .lg .middle } __Cheatsheet__
+</div>
+
+---
+
+## Supporting Systems
+
+Agents don't run in isolation. Two surrounding surfaces have their own attack patterns and defenses.
+
+<div class="grid cards" markdown>
+
+-   :material-toolbox-outline:{ .lg .middle } __MCP Security__
 
     ---
 
-    Quick reference for when you just need the answer.
+    Tool poisoning, rug pulls, and supply-chain risks in MCP servers and tool providers.
 
-    [:octicons-arrow-right-24: Cheatsheet](reference/cheatsheet.md)
+    [:octicons-arrow-right-24: MCP Security](guide/9_mcp_security.md)
+
+-   :material-database-lock:{ .lg .middle } __Memory & Context Security__
+
+    ---
+
+    Memory poisoning, namespace isolation, and provenance tracking across agent runs.
+
+    [:octicons-arrow-right-24: Memory Security](guide/10_memory_security.md)
 
 </div>
-
 
 ---
 
 ## Getting Started
 
-- :material-map: &nbsp; New here? Read the [Principles](principles.md) first — the mental model before any code.
+- :material-map: &nbsp; New here? Read the [Principles](principles.md) first, the mental model before any code.
 - :material-book-multiple: &nbsp; Working through the material? Start the [Guide](guide/0_vulnerabilities.md) at Vulnerabilities.
+- :material-book-open-page-variant: &nbsp; Just need the answer? Jump to the [Cheatsheet](reference/cheatsheet.md).
 - :material-notebook: &nbsp; Want runnable code? See the [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) in the repository.

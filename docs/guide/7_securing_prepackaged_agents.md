@@ -23,12 +23,12 @@ This is not hypothetical. See [Clinejection](https://www.theregister.com/2025/04
 
 | Control | How |
 |---------|-----|
-| **Isolate the environment** | Run in a container or VM. Never on your host machine with your real credentials |
+| **Isolate the environment** | Run in a container or VM. Never on your host machine, never with sensitive credentials |
 | **Scope filesystem access** | Mount only the project directory, read-only where possible |
 | **Block network** | Allow only package registries and the LLM API. Block everything else |
 | **Scope secrets** | Use project-scoped tokens with minimum permissions. Never expose your main AWS/GCP credentials |
 | **Review before commit** | The agent proposes changes. You review the diff. Never auto-commit + push |
-| **Separate environments** | Dev agent can't touch staging. Staging agent can't touch prod |
+| **Separate environments** | Promote from dev to staging to prod, ideally with a human in the loop |
 
 ### Practical Setup
 

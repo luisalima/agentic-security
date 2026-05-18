@@ -38,7 +38,7 @@ Treat every agent as a very bright intern who unfortunately doesn't know very we
 
 You cannot rely on permissions baked into tools or agent configurations alone.
 
-Real example: while building letai, an orchestrator of coding agents, the CTO agent was configured as an orchestrator that should never write code. Edit permissions were removed via the agent's settings and the prompt was fine-tuned to say "you never write code, you are the CTO".
+Real example: while building letai, a multi-agent orchestrator at Liwala, the CTO agent was configured as an orchestrator that should never write code. Edit permissions were removed via the agent's settings and the prompt was fine-tuned to say "you never write code, you are the CTO".
 
 What happened:
 
@@ -48,10 +48,9 @@ Removed Edit tool    → Agent used sed to edit files
 
 Removed sed          → Agent used awk with redirect
                        "sed isn't available, let me try awk"
-
-Removed awk          → Agent tried echo with redirect
-                       ...you get the idea
 ```
+
+We could have kept removing tools indefinitely. With bash available, the agent will always find a workaround.
 
 **The agent will find a way around software-level restrictions to be helpful.** It's creative. It is not optimizing for intention, but rather for task completion.
 
@@ -63,18 +62,16 @@ Multiple documented cases of agents ignoring explicit "STOP" commands:
 - Agents acknowledging the stop command and then continuing with the exact action they were told to stop
 - Agents interpreting "don't do X" as context about X, then doing X
 
-**You cannot rely on the agent respecting human-in-the-loop controls at the prompt level.** Agent output is probabilistic, not deterministic. There will be instances where even the most well designed agent will fail to comply with instructions (view instructions a suggestions).
+**You cannot rely on the agent respecting human-in-the-loop controls at the prompt level.** Agent output is probabilistic, not deterministic. There will be instances where even the most well designed agent will fail to comply with instructions (view instructions as suggestions).
 
 ### Axiom 4: Deterministically deny access
 
-> The key is to **deterministically** remove, or rather not provide, access. As a **wrapper**. Not as a setting.
+> Restrictions must be enforced *outside* the agent, by the surrounding system, not by the agent's own configuration. The agent itself is unreliable; the wrapper is what makes it safe.
 
 - Don't configure the agent to not use a tool — **don't give it the tool**
 - Don't tell the agent to not access a directory — **don't mount the directory**
 - Don't ask the agent to not use the network — **block the network**
 - Don't rely on the agent to not read secrets — **don't inject the secrets**
-
-etc...
 
 **Always enforce at the infrastructure level, and never rely on the prompt level.**
 
@@ -95,82 +92,45 @@ flowchart TD
 
 **Why this works:** Even if the proposer is fully compromised by a prompt injection, it can only *propose* malicious actions. The approval step catches the mismatch between user intent and proposed actions. The executor is deterministic — no LLM to manipulate.
 
-→ *Deep dive:* [Dry-run notebook](https://github.com/luisalima/agentic-security/blob/main/notebooks/4_secure_architecture_software/3_dry_run.py)
+→ *Deep dive:* [Secure Architecture: Dry-Run Evaluation](guide/4_secure_architecture.md#dry-run-evaluation)
 
 ---
 
 ## 4. Securing Pre-Packaged Agents
 
-You don't always control the agent's code. Here's how to secure agents you can't modify.
+You don't always control the agent's code, but you can always control its environment. For coding agents, personal assistants, multi-agent workspaces, and MCP servers you can't modify, the practical playbook lives in the guide.
 
-### Coding Agents (Cursor, Windsurf, Claude Code, Amp, etc.)
-
-These have the full trifecta: they read untrusted code, have filesystem/shell access, and see your environment variables and secrets.
-
-| Control | How |
-|---------|-----|
-| **Isolate the environment** | Run in a container or VM. Never on your host machine, never with sensitive credentials |
-| **Scope filesystem access** | Mount only the project directory, read-only where possible |
-| **Block network** | Allow only package registries and the LLM API. Block everything else |
-| **Scope secrets** | Use project-scoped tokens with minimum permissions. Never expose your main AWS/GCP credentials |
-| **Review before commit** | The agent proposes changes. You review the diff. Never auto-commit + push |
-| **Separate environments** | Promote from dev to staging to prod, ideally with a human in the loop |
-
-### Personal Assistants / Agentic Loops (OpenClaw, NanoClaw, etc.)
-
-These are very dangerous: they read your emails/messages, have access to your accounts, and can communicate externally on your behalf.
-
-| Control | How |
-|---------|-----|
-| **Isolate each capability** | Reading agent in one container, sending agent in another |
-| **Require approval for outbound** | Any external communication (email, message, API call) needs explicit human approval — enforced at the infrastructure level, not the prompt level |
-| **Scope API access** | Read-only tokens for data access. Separate write-scoped tokens only for the executor |
-| **Time-bound sessions** | Short-lived tokens that expire. No persistent credentials |
-| **Monitor and rate-limit** | Alert on unusual patterns (bulk sends, new recipients, large data transfers) |
-| **No credential forwarding** | The agent gets a task-scoped proxy, never your actual credentials |
-
-### MCP Servers / Tool Providers
-
-Any tool server the agent connects to is an extension of the attack surface.
-
-| Control | How |
-|---------|-----|
-| **Audit the manifest** | Review what tools and permissions the server declares |
-| **Principle of least privilege** | Only connect the MCP servers needed for the task |
-| **Validate tool schemas** | Ensure tool parameters match expectations |
-| **Run servers in isolation** | Each MCP server in its own container with scoped access |
-
-→ *Deep dive:* [Tool validation notebook](https://github.com/luisalima/agentic-security/blob/main/notebooks/4_secure_architecture_software/4_tool_validation.py)
+→ *Deep dive:* [Guide §7: Securing Pre-Packaged Agents](guide/7_securing_prepackaged_agents.md)
 
 ---
 
-## 5. The Implementation Path
+## 5. Implementation Order
 
-Start with what's easiest and works on anything, then add layers:
+Deploy in this order: cheapest and most universal first. (This is the *deployment* sequence. The numbered Defense Levels in the Guide are the *reading* order, which is different.)
 
 ### Step 1: Isolation (works on any agent, no code changes)
 
 **This is the lowest-hanging fruit.** Containerize, restrict network, scope permissions.
 
-→ [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/3_isolation_infra_level)
+→ [Isolation guide](guide/3_isolation.md)
 
-### Step 2: Software Architecture (requires code changes)
+### Step 2: Detection (layer on top)
 
-If you're building your own agent: dual LLM, typed extraction, dry-run evaluation.
+Add input scanning, canary tokens, and monitoring. Drop-in defenses that don't require modifying the agent itself.
 
-→ [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/4_secure_architecture_software)
+→ [Detection guide](guide/1_detection.md)
 
-### Step 3: Detection (layer on top)
+### Step 3: Secure Architecture (requires code changes)
 
-Add input scanning, canary tokens, and monitoring.
+If you're building your own agent: dual LLM, typed extraction, dry-run evaluation. The most invasive layer, but the strongest separation.
 
-→ [Detection notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/1_detection)
+→ [Secure Architecture guide](guide/4_secure_architecture.md)
 
 ### Step 4: Defense in Depth (combine everything)
 
 No single defense is sufficient. Layer them.
 
-→ [Defense in depth notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/5_defense_in_depth)
+→ [Defense in Depth guide](guide/5_defense_in_depth.md)
 
 ---
 
