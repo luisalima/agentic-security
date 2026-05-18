@@ -77,7 +77,6 @@
 | [ ] | `README.md` | |
 | [ ] | `CONTRIBUTING.md` | |
 | [ ] | `CHANGELOG.md` | |
-| [ ] | `ROADMAP.md` | |
 
 ## 0 — Vulnerabilities (Notebooks)
 
