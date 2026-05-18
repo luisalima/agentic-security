@@ -22,13 +22,6 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 
-[project.urls]
-Homepage = "https://luisalima.github.io/agentic-security/"
-Repository = "https://github.com/luisalima/agentic-security"
-Issues = "https://github.com/luisalima/agentic-security/issues"
-Documentation = "https://luisalima.github.io/agentic-security/"
-Changelog = "https://github.com/luisalima/agentic-security/blob/main/CHANGELOG.md"
-
 dependencies = [
     "openai>=1.0.0",
     "anthropic>=0.18.0",
@@ -43,17 +36,22 @@ dev = [
     "pytest-asyncio>=0.21.0",
     "ruff>=0.1.0",
 ]
-
 docs = [
     "mkdocs-material>=9.5.0",
     "pymdown-extensions>=10.0",
 ]
-
 # Optional: enables auto-generated social cards (`- social` plugin in mkdocs.yml).
 # Requires system libs (cairo, pango) — see Material docs before enabling.
 docs-social = [
     "mkdocs-material[imaging]>=9.5.0",
 ]
+
+[project.urls]
+Homepage = "https://luisalima.github.io/agentic-security/"
+Repository = "https://github.com/luisalima/agentic-security"
+Issues = "https://github.com/luisalima/agentic-security/issues"
+Documentation = "https://luisalima.github.io/agentic-security/"
+Changelog = "https://github.com/luisalima/agentic-security/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]
