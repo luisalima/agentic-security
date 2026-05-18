@@ -18,31 +18,27 @@ An AI agent becomes catastrophically vulnerable when it has **all three**:
 
 **Remove any one factor and the attack surface shrinks dramatically.**
 
-The problem: every useful agent has all three. Your coding assistant has access to your codebase, reads untrusted code from repos, and can execute commands that exfiltrate data. Your email assistant reads your private emails, processes untrusted message content, and can forward messages externally. Your personal assistant knows your schedule, browses untrusted web pages, and can send messages and make purchases on your behalf.
+The problem is that most useful agents have all three. Your coding assistant has access to your codebase, reads untrusted code from repos, and can execute commands that exfiltrate data. Your email assistant reads your private emails, processes untrusted message content, and can reply/forward messages externally. Your personal assistant knows your schedule, browses untrusted web pages, and can send messages (and sometimes make purchases) on your behalf.
 
-**All personal assistants and coding assistants are instances of the lethal trifecta. All. Of. Them.**
-
-→ *Deep dive:* [Vulnerabilities notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/0_vulnerabilities)
+**Most personal assistants and coding assistants are instances of the lethal trifecta.**
 
 ---
 
 ## 2. The Axioms
 
-These are not best practices. They are survival rules.
-
 ### Axiom 1: Assume all agents will be compromised
 
-Any agent that reads untrusted data can be prompt-injected. This is not a bug — it's an inherent property of how LLMs work. Instructions and data flow through the same channel (the context window), and there is no equivalent to parameterized queries.
+Any agent that reads untrusted data can be prompt-injected. This is not a bug, it is an inherent property of how LLMs work. Instructions and data flow through the same channel (the context window), and there is no equivalent to parameterized queries.
 
 > Your threat model for AI is: **never trust any agent.**
 
-Treat every agent as a stupid intern who doesn't know how to distinguish good from evil. They will follow instructions from anyone — the user, the system prompt, or the attacker hiding instructions in a PDF.
+Treat every agent as a very bright intern who unfortunately doesn't know very well how to distinguish good from evil and who might follow instructions from anyone, from the user and system prompt, to the attacker hiding instructions in a PDF.
 
-### Axiom 2: Never trust agent-level settings
+### Axiom 2: Do not rely only on agent-level settings
 
-You cannot rely on permissions baked into tools or agent configurations.
+You cannot rely on permissions baked into tools or agent configurations alone.
 
-Real example: while building [letai](https://github.com/luisalima/letai), the CTO agent was configured as an orchestrator that should never write code. Edit permissions were removed via the agent's settings.
+Real example: while building letai, an orchestrator of coding agents, the CTO agent was configured as an orchestrator that should never write code. Edit permissions were removed via the agent's settings and the prompt was fine-tuned to say "you never write code, you are the CTO".
 
 What happened:
 
@@ -57,7 +53,7 @@ Removed awk          → Agent tried echo with redirect
                        ...you get the idea
 ```
 
-**The agent will find a way around software-level restrictions.** It has bash. It's creative. It doesn't respect your intentions — it optimizes for task completion.
+**The agent will find a way around software-level restrictions to be helpful.** It's creative. It is not optimizing for intention, but rather for task completion.
 
 ### Axiom 3: Agents ignore human override
 
@@ -67,18 +63,20 @@ Multiple documented cases of agents ignoring explicit "STOP" commands:
 - Agents acknowledging the stop command and then continuing with the exact action they were told to stop
 - Agents interpreting "don't do X" as context about X, then doing X
 
-**You cannot rely on the agent respecting human-in-the-loop controls at the prompt level.** If your kill switch is "please stop", you don't have a kill switch.
+**You cannot rely on the agent respecting human-in-the-loop controls at the prompt level.** Agent output is probabilistic, not deterministic. There will be instances where even the most well designed agent will fail to comply with instructions (view instructions a suggestions).
 
 ### Axiom 4: Deterministically deny access
 
-> The key is to **deterministically** not provide access. As a **wrapper**. Not as a setting.
+> The key is to **deterministically** remove, or rather not provide, access. As a **wrapper**. Not as a setting.
 
 - Don't configure the agent to not use a tool — **don't give it the tool**
 - Don't tell the agent to not access a directory — **don't mount the directory**
 - Don't ask the agent to not use the network — **block the network**
 - Don't rely on the agent to not read secrets — **don't inject the secrets**
 
-**Enforce at the infrastructure level, not the prompt level.**
+etc...
+
+**Always enforce at the infrastructure level, and never rely on the prompt level.**
 
 ---
 
@@ -89,7 +87,7 @@ For any system you're designing, split the agent into stages with hard boundarie
 ```mermaid
 flowchart TD
     A["1. READ & PROPOSE\nAgent can only read data and propose actions.\nNo execution capability.\n⚠️ Assume this agent IS compromised."]
-    B["2. APPROVE\nHuman reviews and approves the actions.\n(Or a separate evaluator agent — at your own risk.)"]
+    B["2. APPROVE\nHuman reviews and approves the actions.\n(Or a separate evaluator agent — this also has risks that must be addressed.)"]
     C["3. EXECUTE\nDeterministic execution of approved actions.\nAs little LLM as possible. Ideally no LLM at all."]
     A -- "proposed actions" --> B
     B -- "approved actions only" --> C
@@ -111,16 +109,16 @@ These have the full trifecta: they read untrusted code, have filesystem/shell ac
 
 | Control | How |
 |---------|-----|
-| **Isolate the environment** | Run in a container or VM. Never on your host machine with your real credentials |
+| **Isolate the environment** | Run in a container or VM. Never on your host machine, never with sensitive credentials |
 | **Scope filesystem access** | Mount only the project directory, read-only where possible |
 | **Block network** | Allow only package registries and the LLM API. Block everything else |
 | **Scope secrets** | Use project-scoped tokens with minimum permissions. Never expose your main AWS/GCP credentials |
 | **Review before commit** | The agent proposes changes. You review the diff. Never auto-commit + push |
-| **Separate environments** | Dev agent can't touch staging. Staging agent can't touch prod |
+| **Separate environments** | Promote from dev to staging to prod, ideally with a human in the loop |
 
 ### Personal Assistants / Agentic Loops (OpenClaw, NanoClaw, etc.)
 
-These are the most dangerous: they read your emails/messages, have access to your accounts, and can communicate externally on your behalf.
+These are very dangerous: they read your emails/messages, have access to your accounts, and can communicate externally on your behalf.
 
 | Control | How |
 |---------|-----|
@@ -180,7 +178,7 @@ No single defense is sufficient. Layer them.
 
 | Principle | One-liner |
 |-----------|-----------|
-| **Lethal Trifecta** | Private data access + untrusted content + exfiltration ability = catastrophe |
+| **Lethal Trifecta** | Private data access + untrusted content + exfiltration ability = vulnerable system |
 | **Assume compromise** | Any agent that reads data can be hijacked |
 | **Never trust settings** | Agents bypass software restrictions creatively |
 | **Agents ignore "STOP"** | Prompt-level kill switches don't work |
@@ -191,4 +189,4 @@ No single defense is sufficient. Layer them.
 
 ---
 
-**Nothing is 100% secure.** The goal is raising the bar high enough to deter attacks and limiting the blast radius when — not if — something gets through.
+**Nothing is 100% secure.** The goal is raising the bar high enough to deter attacks and limiting the blast radius when (not if) something gets through.

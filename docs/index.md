@@ -9,7 +9,7 @@ hide:
 # Agentic Security
 
 <p class="subtitle">
-A step-by-step guide to securing AI agents against prompt injection — practical defense patterns, from simple detection to secure multi-agent architectures.
+A step-by-step guide to securing AI agents against prompt injection, with practical defense patterns, ranging from simple detection to secure multi-agent architectures.
 </p>
 
 [:octicons-rocket-16: &nbsp; Start with Principles](principles.md){ .md-button .md-button--primary }
@@ -21,7 +21,7 @@ A step-by-step guide to securing AI agents against prompt injection — practica
 
 ## The Lethal Trifecta
 
-Your AI agent is vulnerable if it has all three:
+The Lethal Trifecta was coined by Simon Willison. Your AI agent is vulnerable if it has all three:
 
 <div class="grid cards" markdown>
 
@@ -49,19 +49,21 @@ Unlike SQL injection or XSS, there's **no parameterized-query equivalent for LLM
 
 ---
 
-## Threat Model
+## Threat Model, in a Nutshell
 
-**Assume the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?*
+For me, the threat model when working with AI is always: **Assume the agent can go rogue.** Ask yourself: *if this agent is fully compromised right now, what's the worst that can happen?*
+
+Then work from there to design your system in a way that the outcome would be acceptable.
 
 | Blast Radius | Example | Acceptable? |
 |-------------|---------|-------------|
-| Agent sends 1 email to wrong person | Scoped token, approval required | Usually yes |
+| Agent sends 1 email to wrong person | Scoped token, approval required | Usually yes, because it won't reach the destination |
 | Agent exfiltrates all contacts | Full contact access, outbound network | Usually no |
 | Agent pushes malicious code to prod | Git credentials, CI/CD access | Never |
 | Agent deletes database | DB write credentials in env | Never |
 
 !!! tip "Rule of thumb"
-    If the blast radius is unacceptable, you need **more isolation — not better prompts**.
+    If the blast radius is unacceptable, you need **more isolation and more deterministic controls around the agent (not better prompts)**.
 
 → Full threat modeling guide: [Threat Model](reference/threat_model.md)
 
@@ -121,7 +123,6 @@ Unlike SQL injection or XSS, there's **no parameterized-query equivalent for LLM
 
 </div>
 
-<small>These labels are directional, not measured protection rates. Real outcomes depend on architecture, tooling, prompts, and operations.</small>
 
 ---
 
