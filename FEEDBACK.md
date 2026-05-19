@@ -6,107 +6,191 @@ Format: one item per row. Status: `[ ]` open, `[x]` addressed, `[-]` won't do. U
 
 ## `docs/index.md`
 
-### High
-
-- [x] **A1 — Revert subtitle.** Your uncommitted diff swapped "— practical defense patterns, from simple detection to..." for "with practical defense patterns, ranging from...". Em-dash is punchier; "ranging from" is filler.
-  Reply: I don't want it to sound too AI-ish
-
-- [x] **A2 — Willison attribution buried the lede.** Line 24 now opens with "The Lethal Trifecta was coined by Simon Willison." Substance ("vulnerable if it has all three") got demoted. Suggest: `Coined by Simon Willison: your AI agent is vulnerable if it has all three.` Or move attribution to a parenthetical/footnote.
-  Reply: ok, I like your suggestion
-  Applied: replaced with the suggested phrasing.
-
-- [x] **A3 — First-person voice on landing page.** Line 54 "For me, the threat model when working with AI is always:" — first-person fits `principles.md`, jars on landing page. Original "**Assume the agent can go rogue.**" was a stronger lede.
-  Reply: Ok
-  Applied: reverted lede; folded the "design so the worst case is acceptable" sentence into the same paragraph.
-
-- [x] **A4 — Rule-of-thumb edit weakened punch.** Line 66 parenthetical buries the contrast. Suggest: `you need **deterministic controls — isolation, scoped tokens, schema validation — not better prompts.**`
-  Reply: ok, but kill the em-dash
-  Applied: `you need **deterministic controls (isolation, scoped tokens, schema validation), not better prompts**.` (no em-dashes)
-
-### Medium
-
-- [x] **A5 — Defense Levels grid omits MCP (9) and Memory (10).** New chapters are invisible from the landing page. Add a 7th card "Specialized topics" or a footer note.
-  Reply: let's add, but specialized topics sounds.. bland. maybe supporting systems?
-  Applied: new `## Supporting Systems` grid below Defense Levels with MCP + Memory cards.
-
-- [x] **A6 — Cheatsheet sits inside "Defense Levels" grid** but isn't a level. Retitle the section or split into two grids (Defense Levels + Quick Refs).
-  Reply: ok split into two 
-  Applied: removed Cheatsheet from Defense Levels grid; added it as a bullet in Getting Started so we don't end up with 3 grids on the landing page.
-
-- [x] **A7 — Blast-radius cell verbose.** Line 60 "Usually yes, because it won't reach the destination" — the "approval required" Example already implies the rationale. Could be just "Usually yes."
-  Reply: I was a bit confused the first time I read this.
-  Applied: collapsed to "Usually yes" — the Example column carries the rationale.
-
-### Low
-
-- [x] **A8 — Extra blank line at line 126** left over from the `<small>` deletion.
-  Reply: remove
-  Applied: gone (collapsed via the surrounding structural rewrite of the grids section).
-
-- [x] **A9 — "externally communicate" appears twice in close succession** in the Exfiltrate card (lines 38, 44). Tighten.
-  Reply: tighten
-  Applied: `The agent can take outbound actions: send emails, make API calls, write to external services.`
+- [x] **A1 — Revert subtitle.**
+- [x] **A2 — Willison attribution buried the lede.**
+- [x] **A3 — First-person voice on landing page.**
+- [x] **A4 — Rule-of-thumb edit weakened punch.**
+- [x] **A5 — Defense Levels grid omits MCP (9) and Memory (10).**
+- [x] **A6 — Cheatsheet sits inside "Defense Levels" grid**
+- [x] **A7 — Blast-radius cell verbose.**
+- [x] **A8 — Extra blank line at line 126**
+- [x] **A9 — "externally communicate" appears twice in close succession**
 
 ---
 
 ## `docs/principles.md`
 
-### High
+- [x] **P1 — Typo + dead parenthetical.**
+- [x] **P2 — "etc..." closes a foundational list.**
+- [x] **P3 — Axiom 4 framing has three layered corrections.**
+- [x] **P4 — Insider references.**
+- [-] **P5 — Axiom 1 intern metaphor tangled.**
+- [x] **P6 — §4 (Pre-Packaged Agents) overlaps with `guide/7`.**
+- [x] **P7 — Deep-dive links go to GitHub `.py` files**
+- [-] **P8 — Mixed register.**
+- [x] **P9 — "very dangerous" in §4 (line 121) editorializes**
+- [x] **P10 — "...you get the idea" in sed/awk code block (line 53)**
 
-- [x] **P1 — Typo + dead parenthetical.** Line 66 "(view instructions a suggestions)" — meant "as," and the parenthetical adds nothing. Just delete it.
-  Reply: let's keep it but fix typo
-  Applied: typo fixed, parenthetical kept.
+---
 
-- [x] **P2 — "etc..." closes a foundational list.** Line 77 undercuts the strong four-bullet pattern of Axiom 4. Either commit to four as canonical, or add a fifth (e.g., `Don't ask the agent to keep secrets — don't put secrets in its context`).
-  Reply: ok, let's cut the etc
-  Applied: removed.
+## Cross-file (Batch A)
 
-- [x] **P3 — Axiom 4 framing has three layered corrections.** Line 70 "deterministically remove, or rather not provide, access. As a wrapper. Not as a setting." Suggest: `Restrictions must be enforced *outside* the agent — by the surrounding system, not by the agent's own configuration. The agent itself is unreliable; the wrapper is what makes it safe.`
-  Reply: ok, sounds good
-  Applied: replaced with the suggestion (commas not em-dash, given your anti-em-dash signal in A4).
+- [x] **X1 — Defense ordering disagrees between the two pages.**
 
-- [x] **P4 — Insider references.** `letai` (line 41) and `OpenClaw, NanoClaw` (line 119) read like inside jokes to external readers. Qualify letai ("a multi-agent orchestrator at Nubia Labs"); replace OpenClaw/NanoClaw with widely-known examples (Manus, AutoGPT, Devin) or descriptive labels.
-  Reply: OpenClaw and NanoClaw are real and widespread. letai you're right. But it's at Liwala.
-  Applied: letai → "a multi-agent orchestrator at Liwala." OpenClaw/NanoClaw left as-is. (Note: the line referencing them was removed altogether as part of P6 — see below.)
+---
+
+# Review Feedback — Batch B (mkdocs reference layer)
+
+Files: `docs/reference/{tools, attack_taxonomy, threat_model, cheatsheet, architecture, tradeoffs, references}.md`. These define canonical descriptions for the rest of the site — where they drift, readers see two answers to the same question. Items prefixed `B`; cross-file items prefixed `XB`.
+
+---
+
+## `docs/reference/tools.md`
+
+- [x] **B1 — Broken notebook paths in Detection Techniques table.**
+- [x] **B2 — Vigil and Rebuff detail sections.**
 
 ### Medium
 
-- [-] **P5 — Axiom 1 intern metaphor tangled.** Line 35 "doesn't know very well how to distinguish good from evil and who might follow instructions from anyone..." Suggest: `Treat every agent as a brilliant, eager-to-please intern who can't tell your instructions apart from instructions buried in a PDF by an attacker — and will happily follow either.`
-  Reply: hmmm.. I'd keep the one I wrote
-  Decision: keep original. Not applied.
+- [ ] **B3 — "Framework Integration Gap" section at the bottom** (lines 505-567) is tonally different from the rest of the file — a 60-line editorial about why frameworks don't integrate security, ending with "This is why this repo exists." Good content but doubles the file's job (tools comparison + opinion piece). Two options: (a) move to its own page (e.g., `reference/framework_integration.md` or end of `architecture.md`); (b) leave but add a short anchor explaining it's editorial framing.
+  Reply: 
 
-- [x] **P6 — §4 (Pre-Packaged Agents) overlaps with `guide/7`.** Structural choice: principles = teaser + link, guide/7 = practical tables; or the inverse. Recommend principles stays short, guide/7 owns the tables.
-  Reply: ok but let's update the tables if I updated smth there
-  Applied: (1) ported your two table updates in `principles.md` to `guide/7` — "Isolate the environment" (now says "never with sensitive credentials") and "Separate environments" (now says "Promote from dev to staging to prod, ideally with a human in the loop"). (2) Collapsed `principles.md` §4 to a one-paragraph teaser pointing to `guide/7`. The three tables and the deep-dive link are gone from principles; all of that content now lives in (or is reachable from) guide/7.
+- [x] **B4 — "Choosing the Right Tool" audience categories.**
 
-- [x] **P7 — Deep-dive links go to GitHub `.py` files**, not in-site guide chapters (lines 98, 143, 155, 161, 167, 173). Bounces readers out of the docs site at every section break. Point to guide chapter as primary, notebook as secondary.
-  Reply:  I agree, let's point to guide chapter as primary
-  Applied: every deep-dive link in `principles.md` now points to a guide chapter. The §4 tool-validation link disappeared via the P6 collapse; §3 dry-run now points to `guide/4_secure_architecture.md#dry-run-evaluation`; §5 step links point to the corresponding `guide/*.md`. Each guide chapter already links to its notebook at the top, so the notebook is one click away.
+---
+
+## `docs/reference/attack_taxonomy.md`
+
+### High
+
+- [ ] **B5 — Defense Prioritization numbering overlaps.** Lines 361-382: Must Have lists 1-5, Should Have starts at *5* and goes 5-10, Nice to Have starts at *9* and goes 9-14. Numbers double up and the reader can't tell what's in which bucket. Either restart numbering per bucket (1-5 / 1-6 / 1-6) or drop numbers and use bullets.
+  Reply: let's use bullets
+
+### Medium
+
+- [ ] **B6 — Lethal Trifecta wording differs across the site.** This file's version (line 319: "Emails, credentials, PII, internal docs") is one of five subtly-different phrasings. See cross-file item **XB1** below for the full picture and the decision.
+  Reply:
+
+---
+
+## `docs/reference/threat_model.md`
+
+### High
+
+- [ ] **B7 — References section links to GitHub notebooks** (lines 165-166: "Isolation notebooks", "Secure architecture notebooks") instead of guide chapters. Same fix as Batch A's P7. Point to `guide/3_isolation.md` and `guide/4_secure_architecture.md` as primary; guide chapters already link to their notebooks.
+  Reply: let's link to chapters
+
+- [ ] **B8 — "more isolation — not better prompts" wording** (line 87) is the old form. We rewrote this in `index.md` (A4) to: "deterministic controls (isolation, scoped tokens, schema validation), not better prompts." Align so the threat-model page and the landing page say the same thing.
+  Reply: let's align
+
+### Medium
+
+- [ ] **B9 — "Step 4: Choose Your Controls" bucket ordering** (lines 95-119) is Infrastructure → Software → Detection. We just established (X1) that deployment order is Isolation → Detection → Software architecture. Reorder the three buckets: Infrastructure → Detection → Software.
+  Reply:
+
+---
+
+## `docs/reference/cheatsheet.md`
+
+### Medium
+
+- [ ] **B10 — Decision Tree's first question is misleading.** Lines 22-27: "Is the input from a trusted source?" — even a trusted user can paste an email that contains untrusted RAG/web content, so "trusted source" is the wrong axis. Rephrase: "Does any untrusted content reach the LLM?" (RAG, email body, web pages, user uploads — anything not authored by your own team).
+  Reply:
 
 ### Low
 
-- [-] **P8 — Mixed register.** Line 56 "It's creative. It is not optimizing for intention, but rather for task completion." Suggest: `It's creative — optimizing for task completion, not user intent.`
-  Reply: lets keep what it is
-  Decision: keep original. Not applied.
+- [ ] **B11 — Level 2 example shows only delimiters.** Lines 56-70: prompt engineering = delimiters is too narrow. `guide/2_prompt_engineering.md` also covers sandwich defense, instruction hierarchy, system-prompt hardening, XML tagging. Worth a one-liner pointing readers there, or expand the snippet.
+  Reply:
 
-- [x] **P9 — "very dangerous" in §4 (line 121) editorializes** in a way the rest of the doc doesn't. Cut.
-  Reply: ok
-  Applied: removed as a side effect of the P6 collapse (the whole Personal Assistants subsection now lives in guide/7, which uses "the most dangerous class" — a categorical claim, not editorializing — so I left that alone).
-
-- [x] **P10 — "...you get the idea" in sed/awk code block (line 53)** is casual relative to surrounding voice. End the block after `awk`; add one sentence outside it.
-  Reply: ok
-  Applied: dropped the "echo" entry and the "...you get the idea" line; added a sentence after the block: *"We could have kept removing tools indefinitely. With bash available, the agent will always find a workaround."*
+- [ ] **B12 — Level 5 mermaid is one example, not canonical.** Line 97 chains Detection → Delimiters → Isolation → Typed Extraction → Plan → Evaluate → Validate → Execute. Readers may take it as the definitive ordering. Add a one-line caption: "Example pipeline — many orderings are valid."
+  Reply:
 
 ---
 
-## Cross-file (the only thing I'd call a bug)
+## `docs/reference/architecture.md`
 
-- [x] **X1 — Defense ordering disagrees between the two pages.**
-  - `index.md` "Defense Levels": Detection → Prompt Eng → Isolation → Secure Arch → Defense in Depth (curriculum order).
-  - `principles.md` §5 "Implementation Path": Isolation → Software Arch → Detection → Defense in Depth (omits Prompt Eng).
+### High
 
-  Two valid intents tangled: **reading order** vs **deployment order**. If you want both, make it explicit on principles §5 — retitle to "Implementation Order (different from the reading order)" and say so in one sentence. Otherwise readers assume one page is wrong.
-  Reply: I have mixed feelings here. I would say it should be isolation, then detection, etc... WDYT?
-  Applied: kept `index.md` numbered 1–5 in curriculum order (matches directory structure — renumbering would cascade through `guide/*.md` and `notebooks/*` paths). Rewrote `principles.md` §5 as **Implementation Order** with your preferred sequence: Isolation → Detection → Secure Architecture → Defense in Depth. Prompt Engineering dropped from the deployment list (marginal, never relied on alone). Added one sentence explaining this is the *deployment* order vs. the Guide's *reading* order so the two pages no longer look contradictory.
+- [ ] **B13 — "Defense Tiers" 1-4 framing conflicts with "Defense Levels" 1-5 used everywhere else.** Same class of bug as X1. Tiers (Hope and Prayer / Probabilistic Guardrails / Defense in Depth / Architectural Separation) is a maturity model; Levels (Detection / Prompt Eng / Isolation / Secure Arch / Defense in Depth) is the curriculum. Both names are useful, but "Tier 3 = Defense in Depth" and "Level 5 = Defense in Depth" overload the term.
+
+  Options:
+  1. **Rename** Tiers → "Maturity Levels" (or "Maturity Ladder") and add one sentence explaining the difference. *Cheapest, recommended.*
+  2. **Drop** Tiers entirely; rework the section using existing Defense Level vocabulary.
+  3. **Move** Tiers to a separate "Maturity Model" page.
+  Reply:
+
+- [ ] **B14 — Bottom-of-page "Threat Model" section** (lines 242-262) duplicates `threat_model.md` in a less-developed form. Collapse to a one-paragraph teaser + link.
+  Reply:
+
+### Medium
+
+- [ ] **B15 — Practical Guidelines 1-8 overlap with `tradeoffs.md` and `guide/4_secure_architecture.md`.** Same patterns (Scope Tools / Read+Write separation / Typed Extraction / Symbolic References / Confirmation / Provenance / Dry-Run / Output Validation) are described in three places. Drift risk.
+
+  Structural question: **what is this file's unique value?** Strongest sections are "What Doesn't Work" and "Defense Tiers" (maturity ladder). Suggest scope-reducing to those two; the Practical Guidelines either deleted or collapsed to a brief "Cross-pattern principles" pointer to `guide/4`.
+  Reply:
+
+- [ ] **B16 — Symbolic References is orphaned.** Section 4 of this file is the only real description of the Symbolic References pattern on the site (verified: 4 mentions here, 1 in `attack_taxonomy.md`'s defense prioritization, nowhere else). Either give it a proper home in `guide/4_secure_architecture.md` so it's not living in a reference-only page, or drop it (the CaMeL section in `guide/4` covers the same intuition).
+  Reply:
 
 ---
+
+## `docs/reference/tradeoffs.md`
+
+### High
+
+- [ ] **B17 — "Recommendation" omits isolation entirely.** Lines 226-238: "Start with Dual LLM as your baseline architecture" — but we just established (X1) that the deployment order is Isolation → Detection → Secure Architecture → Defense in Depth. Starting with Dual LLM is software-architecture-first and contradicts `principles.md` §5.
+
+  Suggested rewrite: insert "Start with Isolation (works on any agent, no code changes)" as step 1, push Dual LLM to step 2 onward. Otherwise readers get different deployment advice on different pages.
+  Reply:
+
+### Medium
+
+- [ ] **B18 — Pattern 5 "Combined Defense" doesn't include detection or isolation** (lines 173-180). It layers: delimiters → typed extraction → plan → evaluate → output validation. `cheatsheet.md` Level 5 includes detection and isolation in its example chain. Two pages, two definitions of "combined defense." Either standardize, or be explicit that this is *one* combined stack of several.
+  Reply:
+
+---
+
+## `docs/reference/references.md`
+
+### Medium
+
+- [ ] **B19 — Tools Documentation table** (lines 80-86) lists Vigil and Rebuff with no inactive/archived marker. `tools.md` marks them inactive. One page saying "active," another saying "inactive" is a small credibility hit. Either add `(inactive)` / `(archived)` markers, or drop those two rows.
+  Reply:
+
+---
+
+## Cross-file (Batch B)
+
+- [ ] **XB1 — Lethal Trifecta wording drifts across 5 files.** Appears in `index.md`, `principles.md`, `attack_taxonomy.md`, `threat_model.md`, `cheatsheet.md`, each subtly different. Examples for "Access to Private Data":
+  - `index.md`: "...emails, files, credentials, PII — one of the most common purposes of tools."
+  - `principles.md`: "Emails, files, credentials, PII, internal docs"
+  - `attack_taxonomy.md`: "Emails, credentials, PII, internal docs"
+  - `threat_model.md`: "_List every source of private data the agent can read_" (template — fine as-is)
+  - `cheatsheet.md`: "Can read your emails, files, credentials, PII"
+
+  Recommend: pick **`principles.md`** as canonical, then have `index.md` / `attack_taxonomy.md` / `cheatsheet.md` use punchier elliptical versions — but in *identical wording* across those three. I'd lock canonical wording and propagate. Want me to do that as part of this batch?
+  Reply:
+
+- [ ] **XB2 — "Defense Tiers" vs "Defense Levels" naming.** Resolution depends on B13. If you keep both, we need one sentence somewhere (probably `architecture.md`) explaining the difference. If you drop Tiers, this is moot.
+  Reply:
+
+- [ ] **XB3 — Pattern naming consistency.** Some patterns have multiple names across the reference layer:
+  - "Quarantined LLM" (tradeoffs.md, guide/4, architecture.md §1) = "Reader Agent" (architecture.md §2)
+  - "Privileged LLM" (tradeoffs.md, guide/4, architecture.md §1) = "Writer Agent" (architecture.md §2)
+
+  My vote: standardize on "Quarantined LLM" / "Privileged LLM" (matches Simon Willison's original Dual LLM post and is more precise than Reader/Writer — a privileged LLM also reads).
+  Reply:
+
+- [ ] **XB4 — Deployment-order recommendation should match across `principles.md` §5 and `tradeoffs.md` "Recommendation".** See B17 — these two currently disagree. Resolved if B17 is applied.
+  Reply:
+
+---
+
+## My pick if you only do four things (Batch B)
+
+1. **B13 + XB2** — decide Tiers vs Levels and write the one-sentence clarifier. One coherent ordering across the site.
+2. **B17 + XB4** — fix `tradeoffs.md` Recommendation so it agrees with the X1 deployment order from Batch A.
+3. **B7 + B8 + B9** — propagate the Batch A fixes (P7 link policy, A4 wording, deployment ordering) into `threat_model.md`.
+4. **XB1** — lock canonical Lethal Trifecta wording. Easiest win for cross-file consistency.
+
+The rest is opinionated polish, plus **B1** (broken links — small but worth fixing regardless).

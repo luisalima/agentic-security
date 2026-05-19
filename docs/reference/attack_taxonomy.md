@@ -359,27 +359,27 @@ The [OWASP Agentic Top 10](https://genai.owasp.org/resource/owasp-top-10-for-age
 ## Defense Prioritization
 
 ### Must Have (Day 1)
-1. Least privilege tool access
-2. Human-in-the-loop for high-risk actions
-3. Logging and monitoring
-4. Input/output rate limiting
-5. MCP server allowlisting and tool validation
+- Least privilege tool access
+- Human-in-the-loop for high-risk actions
+- Logging and monitoring
+- Input/output rate limiting
+- MCP server allowlisting and tool validation
 
 ### Should Have (Production)
-5. Architectural separation (Dual LLM or typed extraction)
-6. Provenance tagging
-7. Output validation
-8. Anomaly detection
-9. Memory isolation and context integrity
-10. Agent identity governance (NHI)
+- Architectural separation (Dual LLM or typed extraction)
+- Provenance tagging
+- Output validation
+- Anomaly detection
+- Memory isolation and context integrity
+- Agent identity governance (NHI)
 
 ### Nice to Have (High-Security)
-9. Formal capability policies
-10. Dry-run evaluation
-11. Symbolic references
-12. Full sandboxing
-13. Circuit breakers for cascading failure prevention
-14. Inter-agent communication encryption (mTLS)
+- Formal capability policies
+- Dry-run evaluation
+- Symbolic references
+- Full sandboxing
+- Circuit breakers for cascading failure prevention
+- Inter-agent communication encryption (mTLS)
 
 ## Incident Response
 

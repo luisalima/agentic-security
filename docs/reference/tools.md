@@ -9,7 +9,7 @@ A comprehensive comparison of tools for defending against prompt injection and o
 | [ATR](https://github.com/Agent-Threat-Rule/agent-threat-rules) | Detection | MIT | 108 rules, 685 regex patterns — "Sigma for prompt injection" (Cisco/OWASP) | ✅ Active |
 | [Pipelock](https://github.com/luckyPipewrench/pipelock) | Firewall | OSS | Inline agent firewall — DLP, SSRF, prompt injection blocking (Go) | ✅ Active |
 | [PurpleLlama](https://github.com/meta-llama/PurpleLlama) | Firewall | MIT/Llama | LlamaFirewall + PromptGuard 2 + CodeShield + CyberSecEval (Meta) | ✅ Active |
-| [LLM Guard](https://llm-guard.com/) | Guardrails | MIT | Runtime input/output scanning | ✅ Active |
+| [LLM Guard](https://protectai.github.io/llm-guard/) | Guardrails | MIT | Runtime input/output scanning | ✅ Active |
 | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | Guardrails | Apache 2.0 | Dialog flow control (NVIDIA) | ✅ Active |
 | [Promptfoo](https://github.com/promptfoo/promptfoo) | Testing | MIT | Evaluation + red teaming (50+ vuln types) | ✅ Active |
 | [Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M) | Model | Llama | Free 86M-param injection classifier | ✅ Active |
@@ -34,27 +34,12 @@ A comprehensive comparison of tools for defending against prompt injection and o
 ## Detection Tools
 
 ### Vigil ⚠️ (Inactive since 2023)
-**Self-hosted prompt injection scanner with multiple detection methods**
 
-> **Historical note:** Solo-developer project by Adam Swanda (deadbits). Last release Dec 2023 (v0.10.3-alpha). The author joined Robust Intelligence (acquired by Cisco), and development stopped. Kept here as a reference for its pioneering multi-layer architecture.
+Self-hosted scanner that pioneered the multi-layer approach to prompt injection detection (YARA + vector similarity + ML classifier + canary tokens + sentiment).
 
-```python
-from vigil.vigil import Vigil
+> **Historical note:** Solo-developer project by Adam Swanda (deadbits). Last release Dec 2023 (v0.10.3-alpha). The author joined Robust Intelligence (acquired by Cisco), and development stopped.
 
-app = Vigil.from_config('conf/server.conf')
-result = app.input_scanner.perform_scan(input_prompt="Ignore previous instructions")
-```
-
-| Scanner | Method |
-|---------|--------|
-| Vector DB | Similarity search against known attacks |
-| YARA | Pattern matching rules (like malware detection) |
-| Transformer | ML classifier (deberta-v3-base-injection) |
-| Canary Tokens | Detect prompt leakage |
-| Sentiment | Detect manipulation attempts |
-
-**Pros:** Multiple detection layers, fully self-hosted, customizable YARA rules
-**Cons:** Alpha stage, requires setup (YARA, embeddings)
+The same multi-layer architecture is built from first principles in [Guide §1: Detection](../guide/1_detection.md). For an active production-ready equivalent, see [LLM Guard](#llm-guard) below.
 
 ---
 
@@ -83,26 +68,12 @@ sanitized, results, valid = scan_prompt([PromptInjection()], prompt)
 ---
 
 ### Rebuff ⚠️ (Archived May 2025)
-**Self-hardening prompt injection detector by Protect AI**
 
-> **Historical note:** ProtectAI archived this repo in May 2025 and pivoted to **LLM Guard** as their maintained offering. Rebuff required Pinecone + OpenAI API setup, which was heavy for its value. The canary token concept lives on in other tools.
+Self-hardening detector by Protect AI that combined heuristics, LLM-based detection, vector embeddings of past attacks, and canary tokens.
 
-```python
-from rebuff import Rebuff
+> **Historical note:** ProtectAI archived this repo in May 2025 and pivoted to **LLM Guard** as their maintained offering. Rebuff required Pinecone + OpenAI API setup, which was heavy for its value.
 
-rb = Rebuff(api_token="...", api_url="...")
-result = rb.detect_injection(user_input)
-```
-
-| Layer | Method |
-|-------|--------|
-| 1 | Heuristics (keyword patterns) |
-| 2 | LLM-based detection |
-| 3 | Vector DB (embeddings of past attacks) |
-| 4 | Canary tokens (detect leakage) |
-
-**Pros:** Self-hardening (learns from detected attacks), canary tokens built-in
-**Cons:** Prototype stage, requires API setup
+The canary token concept is covered from first principles in [Guide §1: Detection](../guide/1_detection.md). For active runtime scanning, see [LLM Guard](#llm-guard) above.
 
 ---
 
@@ -464,39 +435,44 @@ Each technique has tradeoffs. This repo includes notebooks demonstrating how the
 | LLM-as-Judge | `notebooks/1_detection/4_llm_as_judge.py` | Nuanced, context-aware | Meta-injection risk |
 | Canary Tokens | `notebooks/1_detection/5_canary_tokens.py` | Detects leakage | Doesn't prevent injection |
 | Delimiters | `notebooks/2_prompt_engineering/1_delimiters.py` | Simple, no ML | Easily bypassed |
-| Dual LLM | `notebooks/4_secure_architecture_software/dual_llm.py` | Strong isolation | 2x latency/cost |
-| Typed Extraction | `notebooks/4_secure_architecture_software/typed_extraction.py` | Schema constraints | Requires modeling |
-| Dry-Run Eval | `notebooks/4_secure_architecture_software/dry_run.py` | Validates actions | Evaluator can be fooled |
+| Dual LLM | `notebooks/4_secure_architecture_software/1_dual_llm.py` | Strong isolation | 2x latency/cost |
+| Typed Extraction | `notebooks/4_secure_architecture_software/2_typed_extraction.py` | Schema constraints | Requires modeling |
+| Dry-Run Eval | `notebooks/4_secure_architecture_software/3_dry_run.py` | Validates actions | Evaluator can be fooled |
 
 ---
 
 ## Choosing the Right Tool
 
-### For Startups / Small Teams
-- **LLM Guard** — Open source, easy to start (ProtectAI)
-- **Meta Prompt Guard** — Free classifier, runs locally, no API needed
-- **Guardrails AI** — Composable validators, open-source hub
+Pick by what you need to do.
 
-### For Enterprise
-- **Lakera Guard** — Managed, fast, proven (80M+ attack data points)
-- **Prompt Shields** — If already on Azure
+### Drop-in input/output scanning
+- **LLM Guard** — Open source, runtime input/output scanning (ProtectAI / Palo Alto Networks)
+- **Meta Prompt Guard** — Free 86M-param classifier, runs locally, no API needed
+- **Guardrails AI** — Composable validators, open-source validator hub
 
-### For Security Teams / Red Teaming
-- **Promptfoo** — OSS red-teaming with 50+ vulnerability types, CI/CD native
+### Continuous red teaming
+- **Promptfoo** — CI/CD-native, YAML config, 50+ vulnerability types
 - **Garak** — Comprehensive probe library (NVIDIA)
-- **Augustus** — If you prefer Go
-- **DeepTeam** — 50+ vuln types with OWASP/NIST framework mapping
+- **Augustus** — Go-based single-binary scanner
+- **DeepTeam** — OWASP/NIST framework mapping, 50+ vuln types
 
-### For Conversational AI
-- **NeMo Guardrails** — Dialog flow control via Colang DSL
-
-### For MCP / Tool Security
-- **MCP-Scan** — Quick config scanning for tool poisoning
+### MCP / tool security
+- **MCP-Scan** — Config scanning for tool poisoning and rug pulls
 - **Docker MCP Gateway** — Container isolation for MCP servers
 - **Invariant Guardrails** — Runtime policy enforcement for tool calls
 
-### For Research / Learning
-- **This repo!** — Understand how each technique works
+### Multi-turn dialog control
+- **NeMo Guardrails** — Programmable dialog policies via Colang DSL
+
+### Research / learning
+- **This repo** — Build each defense from first principles in the notebooks
+
+### Managed / commercial offerings
+For teams who don't want to self-host:
+
+- **Lakera Guard** (Check Point) — Sub-50ms latency, 100+ languages, 80M+ attack data points
+- **Microsoft Prompt Shields** — Managed service in Azure AI Content Safety
+- **OpenAI Guardrails** — Native to the OpenAI Agents SDK
 
 ---
 

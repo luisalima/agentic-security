@@ -84,7 +84,7 @@ Ask: **if this agent is fully compromised right now, what's the worst that can h
 | Agent pushes malicious code to prod | Git credentials, CI/CD access | Never |
 | Agent deletes database | DB write credentials in env | Never |
 
-**If the blast radius is unacceptable, you need more isolation — not better prompts.**
+**If the blast radius is unacceptable, you need deterministic controls (isolation, scoped tokens, schema validation), not better prompts.**
 
 ---
 
@@ -162,5 +162,5 @@ Not unlikely. Not difficult. **Impossible** — enforced by infrastructure, not 
 
 - [Principles](../principles.md) — Core axioms and the Read → Propose → Approve → Execute pattern
 - [Attack Taxonomy](attack_taxonomy.md) — Catalogue of attack vectors and risk matrix
-- [Isolation notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/3_isolation_infra_level) — Infra-level isolation patterns
-- [Secure architecture notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks/4_secure_architecture_software) — Software-level defenses
+- [Isolation guide](../guide/3_isolation.md) — Infra-level isolation patterns
+- [Secure Architecture guide](../guide/4_secure_architecture.md) — Software-level defenses
