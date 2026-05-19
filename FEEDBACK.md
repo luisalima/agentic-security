@@ -75,35 +75,17 @@ Files: `docs/reference/{tools, attack_taxonomy, threat_model, cheatsheet, archit
 
 ## `docs/reference/threat_model.md`
 
-### High
-
-- [ ] **B7 — References section links to GitHub notebooks** (lines 165-166: "Isolation notebooks", "Secure architecture notebooks") instead of guide chapters. Same fix as Batch A's P7. Point to `guide/3_isolation.md` and `guide/4_secure_architecture.md` as primary; guide chapters already link to their notebooks.
-  Reply: let's link to chapters
-
-- [ ] **B8 — "more isolation — not better prompts" wording** (line 87) is the old form. We rewrote this in `index.md` (A4) to: "deterministic controls (isolation, scoped tokens, schema validation), not better prompts." Align so the threat-model page and the landing page say the same thing.
-  Reply: let's align
-
-### Medium
-
-- [ ] **B9 — "Step 4: Choose Your Controls" bucket ordering** (lines 95-119) is Infrastructure → Software → Detection. We just established (X1) that deployment order is Isolation → Detection → Software architecture. Reorder the three buckets: Infrastructure → Detection → Software.
-  Reply:
+- [x] **B7 — References section links to GitHub notebooks**
+- [x] **B8 — "more isolation — not better prompts" wording**
+- [x] **B9 — "Step 4: Choose Your Controls" bucket ordering**
 
 ---
 
 ## `docs/reference/cheatsheet.md`
 
-### Medium
-
-- [ ] **B10 — Decision Tree's first question is misleading.** Lines 22-27: "Is the input from a trusted source?" — even a trusted user can paste an email that contains untrusted RAG/web content, so "trusted source" is the wrong axis. Rephrase: "Does any untrusted content reach the LLM?" (RAG, email body, web pages, user uploads — anything not authored by your own team).
-  Reply:
-
-### Low
-
-- [ ] **B11 — Level 2 example shows only delimiters.** Lines 56-70: prompt engineering = delimiters is too narrow. `guide/2_prompt_engineering.md` also covers sandwich defense, instruction hierarchy, system-prompt hardening, XML tagging. Worth a one-liner pointing readers there, or expand the snippet.
-  Reply:
-
-- [ ] **B12 — Level 5 mermaid is one example, not canonical.** Line 97 chains Detection → Delimiters → Isolation → Typed Extraction → Plan → Evaluate → Validate → Execute. Readers may take it as the definitive ordering. Add a one-line caption: "Example pipeline — many orderings are valid."
-  Reply:
+- [x] **B10 — Decision Tree's first question is misleading.**
+- [x] **B11 — Level 2 example shows only delimiters.**
+- [x] **B12 — Level 5 mermaid is one example, not canonical.**
 
 ---
 
@@ -117,17 +99,17 @@ Files: `docs/reference/{tools, attack_taxonomy, threat_model, cheatsheet, archit
   1. **Rename** Tiers → "Maturity Levels" (or "Maturity Ladder") and add one sentence explaining the difference. *Cheapest, recommended.*
   2. **Drop** Tiers entirely; rework the section using existing Defense Level vocabulary.
   3. **Move** Tiers to a separate "Maturity Model" page.
-  Reply:
+  Reply: 1
 
 - [ ] **B14 — Bottom-of-page "Threat Model" section** (lines 242-262) duplicates `threat_model.md` in a less-developed form. Collapse to a one-paragraph teaser + link.
-  Reply:
+  Reply: Yes, agreed
 
 ### Medium
 
 - [ ] **B15 — Practical Guidelines 1-8 overlap with `tradeoffs.md` and `guide/4_secure_architecture.md`.** Same patterns (Scope Tools / Read+Write separation / Typed Extraction / Symbolic References / Confirmation / Provenance / Dry-Run / Output Validation) are described in three places. Drift risk.
 
   Structural question: **what is this file's unique value?** Strongest sections are "What Doesn't Work" and "Defense Tiers" (maturity ladder). Suggest scope-reducing to those two; the Practical Guidelines either deleted or collapsed to a brief "Cross-pattern principles" pointer to `guide/4`.
-  Reply:
+  Reply: Agreed. Let's add links.
 
 - [ ] **B16 — Symbolic References is orphaned.** Section 4 of this file is the only real description of the Symbolic References pattern on the site (verified: 4 mentions here, 1 in `attack_taxonomy.md`'s defense prioritization, nowhere else). Either give it a proper home in `guide/4_secure_architecture.md` so it's not living in a reference-only page, or drop it (the CaMeL section in `guide/4` covers the same intuition).
   Reply:

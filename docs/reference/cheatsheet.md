@@ -20,11 +20,13 @@ Your agent is vulnerable if it has ALL THREE:
 
 ```mermaid
 flowchart TD
-    A{"Is the input from\na trusted source?"} -- YES --> B["Proceed\n(but still validate outputs)"]
-    A -- NO --> C{"Does the agent\nhave tool access?"}
+    A{"Could attacker-controllable\ncontent reach the LLM?"} -- NO --> B["Lower risk\n(still validate outputs)"]
+    A -- YES --> C{"Does the agent\nhave tool access?"}
     C -- NO --> D["Lower risk\n(still use detection)"]
     C -- YES --> E["Apply defense in depth:\n1. Detection\n2. Prompt hardening\n3. Architectural separation"]
 ```
+
+*Trusted teammates count too: third-party content they ingest (READMEs, forwarded emails, web pages, RAG documents) is attacker-controllable even when the team itself is trusted.*
 
 ---
 
@@ -53,6 +55,8 @@ flowchart TD
 
 ### Level 2: Prompt Engineering
 **Goal:** Harden the prompt itself
+
+Delimiters are the simplest tactic. See [Guide §2: Prompt Engineering](../guide/2_prompt_engineering.md) for sandwich defense, instruction hierarchy, system-prompt hardening, and XML tagging.
 
 ```python
 # Random delimiters
@@ -96,6 +100,8 @@ Summarize the above content.
 flowchart LR
     A[Detection] --> B[Delimiters] --> C[Isolation] --> D[Typed Extraction] --> E[Plan] --> F[Evaluate] --> G[Validate] --> H[Execute]
 ```
+
+*Example pipeline — many orderings are valid.*
 
 ---
 

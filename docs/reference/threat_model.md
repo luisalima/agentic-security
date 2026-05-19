@@ -103,6 +103,13 @@ Work through this checklist for your system:
 - [ ] Timeout: maximum execution time
 - [ ] Kill switch: infrastructure-level termination (not prompt-level)
 
+### Detection (layer on top)
+
+- [ ] Input scanning for known injection patterns
+- [ ] Canary tokens to detect data exfiltration
+- [ ] Behavioral monitoring for anomalous tool usage
+- [ ] Logging of all tool calls and LLM interactions
+
 ### Software (if you control the code)
 
 - [ ] Untrusted data processed by a separate LLM with no tool access
@@ -110,13 +117,6 @@ Work through this checklist for your system:
 - [ ] Outbound actions require approval (human or evaluator)
 - [ ] Deterministic validation rules for high-risk actions
 - [ ] Tool schemas validated against manifests
-
-### Detection (layer on top)
-
-- [ ] Input scanning for known injection patterns
-- [ ] Canary tokens to detect data exfiltration
-- [ ] Behavioral monitoring for anomalous tool usage
-- [ ] Logging of all tool calls and LLM interactions
 
 ---
 
