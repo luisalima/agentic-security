@@ -488,8 +488,6 @@ Most agent orchestration frameworks treat security as the developer's job, but t
 | AutoGen (v0.4+) | None first-party. The docs explicitly tell developers to "implement your own security features"; guardrails are a documented reflection pattern (custom Guardrails Agents), not shipped primitives. |
 | Pydantic AI | Typed I/O by default, output validators, Pydantic-validated tool input schemas, and per-tool approval gates. Framed as ergonomics, but the primitives genuinely narrow the attack surface. |
 
-NeMo Guardrails sits in a different category (it's a dedicated security framework, not an agent orchestrator) and is listed in the main tools table above. Haystack and LlamaIndex are primarily RAG/search frameworks and aren't directly comparable on agent-orchestration security stance.
-
 ---
 
 ## References
