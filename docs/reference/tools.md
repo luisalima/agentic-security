@@ -485,7 +485,7 @@ Most agent orchestration frameworks treat security as the developer's job, but t
 |-----------|------------------------------|
 | LangChain / LangGraph | First-party guardrail middleware: PII detection, human-in-the-loop approval, and `@before_agent` / `@after_agent` decorators with hooks for input, output, and tool results. |
 | CrewAI | Task-level guardrails (string- and function-based), built-in hallucination check, and validators for PII / prompt-attack / harmful content. |
-| AutoGen (v0.4+) | None first-party. The docs explicitly tell developers to "implement your own security features"; guardrails are a documented reflection pattern (custom Guardrails Agents), not shipped primitives. |
+| AutoGen | **In maintenance mode since early 2026**; Microsoft now points new users to **Microsoft Agent Framework**. v0.7.5 defaults code execution to a sandboxed Docker executor with security warnings. No other first-party security primitives; an open community proposal ([microsoft/autogen#7669](https://github.com/microsoft/autogen/issues/7669)) for ATR-rule wrappers is unmerged. |
 | Pydantic AI | Typed I/O by default, output validators, Pydantic-validated tool input schemas, and per-tool approval gates. Framed as ergonomics, but the primitives genuinely narrow the attack surface. |
 
 ---
