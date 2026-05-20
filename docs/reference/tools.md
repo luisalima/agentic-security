@@ -446,23 +446,23 @@ Each technique has tradeoffs. This repo includes notebooks demonstrating how the
 Pick by what you need to do.
 
 ### Drop-in input/output scanning
-- **LLM Guard** — Open source, runtime input/output scanning (ProtectAI / Palo Alto Networks)
-- **Meta Prompt Guard** — Free 86M-param classifier, runs locally, no API needed
-- **Guardrails AI** — Composable validators, open-source validator hub
+- **[LLM Guard](https://protectai.github.io/llm-guard/)** — Open source, runtime input/output scanning (ProtectAI / Palo Alto Networks)
+- **[Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M)** — Free 86M-param classifier, runs locally, no API needed
+- **[Guardrails AI](https://guardrailsai.com/)** — Composable validators, open-source validator hub
 
 ### Continuous red teaming
-- **Promptfoo** — CI/CD-native, YAML config, 50+ vulnerability types
-- **Garak** — Comprehensive probe library (NVIDIA)
-- **Augustus** — Go-based single-binary scanner
-- **DeepTeam** — OWASP/NIST framework mapping, 50+ vuln types
+- **[Promptfoo](https://github.com/promptfoo/promptfoo)** — CI/CD-native, YAML config, 50+ vulnerability types
+- **[Garak](https://github.com/NVIDIA/garak)** — Comprehensive probe library (NVIDIA)
+- **[Augustus](https://github.com/praetorian-inc/augustus)** — Go-based single-binary scanner
+- **[DeepTeam](https://github.com/confident-ai/deepteam)** — OWASP/NIST framework mapping, 50+ vuln types
 
 ### MCP / tool security
-- **MCP-Scan** — Config scanning for tool poisoning and rug pulls
-- **Docker MCP Gateway** — Container isolation for MCP servers
-- **Invariant Guardrails** — Runtime policy enforcement for tool calls
+- **[MCP-Scan](https://github.com/AltimateAI/mcp-scan)** — Config scanning for tool poisoning and rug pulls
+- **[Docker MCP Gateway](https://docs.docker.com/ai/mcp-gateway/)** — Container isolation for MCP servers
+- **[Invariant Guardrails](https://github.com/invariantlabs-ai/invariant)** — Runtime policy enforcement for tool calls
 
 ### Multi-turn dialog control
-- **NeMo Guardrails** — Programmable dialog policies via Colang DSL
+- **[NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails)** — Programmable dialog policies via Colang DSL
 
 ### Research / learning
 - **This repo** — Build each defense from first principles in the notebooks
@@ -470,10 +470,10 @@ Pick by what you need to do.
 ### Managed / commercial offerings
 For teams who don't want to self-host:
 
-- **Lakera Guard** (Check Point) — Sub-50ms latency, 100+ languages, 80M+ attack data points
-- **Microsoft Prompt Shields** — Managed service in Azure AI Content Safety
-- **OpenAI Guardrails** — Native to the OpenAI Agents SDK
-- **AWS Bedrock Guardrails** — Content filters, denied topics, and PII redaction baked into the Bedrock API
+- **[Lakera Guard](https://www.lakera.ai/)** (Check Point) — Sub-50ms latency, 100+ languages, 80M+ attack data points
+- **[Microsoft Prompt Shields](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection)** — Managed service in Azure AI Content Safety
+- **[OpenAI Guardrails](https://platform.openai.com/docs/guides/agents)** — Native to the OpenAI Agents SDK
+- **[AWS Bedrock Guardrails](https://aws.amazon.com/bedrock/guardrails/)** — Content filters, denied topics, and PII redaction baked into the Bedrock API
 
 ---
 
@@ -483,10 +483,10 @@ Most agent orchestration frameworks treat security as the developer's job, but t
 
 | Framework | Built-in security primitives |
 |-----------|------------------------------|
-| LangChain / LangGraph | First-party guardrail middleware: PII detection, human-in-the-loop approval, and `@before_agent` / `@after_agent` decorators with hooks for input, output, and tool results. |
-| CrewAI | Task-level guardrails (string- and function-based), built-in hallucination check, and validators for PII / prompt-attack / harmful content. |
-| AutoGen | **In maintenance mode since early 2026**; Microsoft now points new users to **Microsoft Agent Framework**. v0.7.5 defaults code execution to a sandboxed Docker executor with security warnings. No other first-party security primitives; an open community proposal ([microsoft/autogen#7669](https://github.com/microsoft/autogen/issues/7669)) for ATR-rule wrappers is unmerged. |
-| Pydantic AI | Typed I/O by default, output validators, Pydantic-validated tool input schemas, and per-tool approval gates. Framed as ergonomics, but the primitives genuinely narrow the attack surface. |
+| [LangChain](https://www.langchain.com/) / [LangGraph](https://www.langchain.com/langgraph) | First-party guardrail middleware: PII detection, human-in-the-loop approval, and `@before_agent` / `@after_agent` decorators with hooks for input, output, and tool results. |
+| [CrewAI](https://www.crewai.com/) | Task-level guardrails (string- and function-based), built-in hallucination check, and validators for PII / prompt-attack / harmful content. |
+| [AutoGen](https://github.com/microsoft/autogen) | **In maintenance mode since early 2026**; Microsoft now points new users to **[Microsoft Agent Framework](https://learn.microsoft.com/en-us/agent-framework/)**. v0.7.5 defaults code execution to a sandboxed Docker executor with security warnings. No other first-party security primitives; an open community proposal ([microsoft/autogen#7669](https://github.com/microsoft/autogen/issues/7669)) for ATR-rule wrappers is unmerged. |
+| [Pydantic AI](https://ai.pydantic.dev/) | Typed I/O by default, output validators, Pydantic-validated tool input schemas, and per-tool approval gates. Framed as ergonomics, but the primitives genuinely narrow the attack surface. |
 
 ---
 
