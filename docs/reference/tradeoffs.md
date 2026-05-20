@@ -170,12 +170,17 @@ def validate_plan(plan):
 
 **Repo label:** High-risk reference architecture.
 
-**What it does:** Layers multiple patterns:
-1. Random delimiters
-2. Typed extraction
-3. Plan generation
-4. LLM-based evaluation
-5. Deterministic output validation
+**What it does:** Layers multiple defenses across all five [Defense Levels](../guide/0_vulnerabilities.md). One example stack — yours will vary by threat model and operational capacity:
+
+1. **Detection** — input scanning + canary tokens
+2. **Isolation** — container, network restrictions, scoped credentials
+3. **Prompt hardening** — random delimiters
+4. **Typed extraction** — constrained schemas between agents
+5. **Plan generation** — separated from execution
+6. **LLM-based evaluation** — independent review of the plan
+7. **Deterministic output validation** — final guardrails before execution
+
+The point isn't this specific ordering — it's that no single layer is enough, and the right stack depends on your system. The principle is "assume each layer can fail; combine layers so each catches what the others miss."
 
 **Protects against:** Multiple attack vectors simultaneously. Each layer catches what previous layers miss.
 
@@ -225,14 +230,14 @@ The goal isn't perfect security (impossible). It's finding the right balance for
 
 ## Recommendation
 
-For most production systems:
+The patterns on this page are the *software-level* layer of defense. Isolation and detection come first in the [deployment order](../principles.md#5-implementation-order) from Principles — and many production systems will be safe enough with isolation alone. When the threat model justifies adding software-level defenses, the patterns above complement each other rather than compete:
 
-1. **Start with Dual LLM** (Pattern 2) as your baseline architecture
-2. **Add Typed Extraction** (Pattern 3) if you can define strict schemas
-3. **Add Deterministic Output Validation** always—this is cheap and catches obvious mistakes
-4. **Add Human-in-the-Loop** for truly dangerous actions (irreversible, exfiltration-capable)
-5. **Layer in Dry-Run Evaluation** (Pattern 4) if you have budget and latency tolerance
+- **Typed Extraction** (Pattern 3) fits structured tasks well — the schema itself becomes the security boundary. Often the simplest software pattern to add.
+- **Dual LLM** (Pattern 2) is worth the 2x cost when the privileged agent has tools that can exfiltrate or take destructive actions. Pairs well with typed extraction.
+- **Deterministic Output Validation** is always worth adding — cheap and catches obvious mistakes an LLM evaluator would miss.
+- **Human-in-the-Loop** belongs on irreversible or exfiltration-capable actions, no matter which other patterns are in place.
+- **Dry-Run Evaluation** (Pattern 4) suits high-stakes plan-then-execute flows where you can absorb the latency.
 
-Skip delimiters-only (Pattern 1) as a primary defense—it's not enough alone. Use it as one layer in a stack.
+Skip delimiters-only (Pattern 1) as a primary defense — it's not enough alone. Use it as one layer in a stack.
 
-Skip the full combined approach (Pattern 5) unless you're in a high-security context with the engineering capacity to maintain it.
+Skip the full Combined Defense (Pattern 5) unless you're in a high-security context with the engineering capacity to maintain it.

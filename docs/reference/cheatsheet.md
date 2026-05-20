@@ -8,9 +8,9 @@ One-page quick reference for securing AI agents.
 
 Your agent is vulnerable if it has ALL THREE:
 
-1. **Access to Private Data** — Can read your emails, files, credentials, PII
-2. **Exposure to Untrusted Content** — Attacker-controlled text or images can reach the LLM (emails, documents, web, RAG)
-3. **Ability to Exfiltrate** — Can externally communicate to steal data (send email, API calls, outbound network)
+1. **Access to Private Data** — Emails, files, credentials, PII, internal docs
+2. **Exposure to Untrusted Content** — Emails, web pages, RAG documents, user uploads (any text or images controlled by an attacker)
+3. **Ability to Exfiltrate** — Send emails, make API calls, write to external services (any outbound communication)
 
 **Remove any one to significantly reduce risk.**
 

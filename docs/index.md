@@ -29,19 +29,19 @@ Coined by Simon Willison: your AI agent is vulnerable if it has all three.
 
     ---
 
-    The agent can read your emails, files, credentials, PII — one of the most common purposes of tools.
+    Emails, files, credentials, PII, internal docs — usually the whole point of giving an agent tools.
 
 -   :material-earth:{ .lg .middle } __Exposure to Untrusted Content__
 
     ---
 
-    Text or images controlled by a malicious attacker can reach the LLM: emails, web pages, RAG documents, user uploads.
+    Emails, web pages, RAG documents, user uploads — any text or images controlled by an attacker.
 
 -   :material-export:{ .lg .middle } __Ability to Exfiltrate__
 
     ---
 
-    The agent can take outbound actions: send emails, make API calls, write to external services.
+    Send emails, make API calls, write to external services — any way the agent can communicate outward.
 
 </div>
 

@@ -265,6 +265,31 @@ if blocked:
 
 ---
 
+## Symbolic References
+
+The privileged LLM sees variable names, not raw content. A controller manages the mapping between symbols and values, and substitutes the real content only when a tool call actually needs it. This keeps payload bytes out of the privileged LLM's context window.
+
+**Repo label:** Defense-in-depth layer.
+
+```python
+# Bad: untrusted content goes directly into the privileged prompt
+prompt = f"The email says: {email_body}. Should we reply?"
+
+# Better: privileged LLM sees only symbols
+variables = {
+    "$EMAIL_1": email_body,
+    "$SENDER_1": sender_address,
+}
+prompt = "Analyze $EMAIL_1 from $SENDER_1. Should we reply?"
+# Controller substitutes the real values only at tool-execution time
+```
+
+**Key insight:** If the privileged LLM can't see the attacker's bytes, the attacker can't inject through that channel. The controller becomes the only place where untrusted content meets privileged actions, and the controller is deterministic — not an LLM.
+
+This is closely related to [CaMeL](#camel-capability-based-security) (below): CaMeL adds capability tagging on top of the symbolic-reference idea so the policy engine can reject tool calls that would put untrusted data into a side-effecting parameter.
+
+---
+
 ## CaMeL: Capability-Based Security
 
 Track **data provenance** and enforce **capability policies** on tool calls. Data from untrusted sources (emails, web pages) is tagged and prevented from flowing into side-effecting tools. Based on [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813) (2025).

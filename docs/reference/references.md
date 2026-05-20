@@ -78,11 +78,11 @@ Essential reading from the person who named and defined prompt injection:
 
 | Tool | Documentation | Focus |
 |------|---------------|-------|
-| [Vigil](https://vigil.deadbits.ai/) | Multi-layer detection | YARA, vectors, ML, canaries |
+| [Vigil](https://vigil.deadbits.ai/) ⚠️ inactive since 2023 | Multi-layer detection | YARA, vectors, ML, canaries |
 | [LLM Guard](https://protectai.github.io/llm-guard/) | Runtime guardrails | Input/output scanning |
 | [Garak](https://docs.garak.ai/) | Red teaming | Vulnerability probing |
 | [NeMo Guardrails](https://docs.nvidia.com/nemo/guardrails/) | Dialog control | Colang DSL |
-| [Rebuff](https://github.com/protectai/rebuff) | Self-hardening detection | Canary tokens |
+| [Rebuff](https://github.com/protectai/rebuff) ⚠️ archived May 2025 | Self-hardening detection | Canary tokens |
 
 ---
 
