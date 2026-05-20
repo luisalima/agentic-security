@@ -56,6 +56,7 @@ These principles apply across every pattern in [Guide §4: Secure Architecture](
 - **Prefer typed data over freeform text** between agents. The schema is the security boundary.
 - **Outbound and irreversible actions require explicit confirmation.** Never agent-decided.
 - **Tag every value with its source.** Provenance is what makes capability-based policies possible.
+- **Log every tool call and trust-boundary crossing.** Audit trails don't stop attacks; they're what lets you detect a compromised agent after the fact, understand the blast radius, and recover. See [Observability & Audit Trails](../guide/1b_observability.md).
 
 For full implementations (Dual LLM, Typed Extraction, Symbolic References, Dry-Run Evaluation, Tool/MCP Validation, CaMeL), see the [Guide chapter](../guide/4_secure_architecture.md).
 
