@@ -473,74 +473,22 @@ For teams who don't want to self-host:
 - **Lakera Guard** (Check Point) — Sub-50ms latency, 100+ languages, 80M+ attack data points
 - **Microsoft Prompt Shields** — Managed service in Azure AI Content Safety
 - **OpenAI Guardrails** — Native to the OpenAI Agents SDK
+- **AWS Bedrock Guardrails** — Content filters, denied topics, and PII redaction baked into the Bedrock API
 
 ---
 
----
+## Framework Security Stance
 
-## The Framework Integration Gap
+Most agent orchestration frameworks treat security as the developer's job, but the gap has been closing. Worth knowing when you pick one (verified May 2026):
 
-### Why Don't LangChain, LlamaIndex, etc. Integrate Security?
+| Framework | Built-in security primitives |
+|-----------|------------------------------|
+| LangChain / LangGraph | First-party guardrail middleware: PII detection, human-in-the-loop approval, and `@before_agent` / `@after_agent` decorators with hooks for input, output, and tool results. |
+| CrewAI | Task-level guardrails (string- and function-based), built-in hallucination check, and validators for PII / prompt-attack / harmful content. |
+| AutoGen (v0.4+) | None first-party. The docs explicitly tell developers to "implement your own security features"; guardrails are a documented reflection pattern (custom Guardrails Agents), not shipped primitives. |
+| Pydantic AI | Typed I/O by default, output validators, Pydantic-validated tool input schemas, and per-tool approval gates. Framed as ergonomics, but the primitives genuinely narrow the attack surface. |
 
-| Framework | Focus | Security Approach |
-|-----------|-------|-------------------|
-| **LangChain** | Orchestration, chains, agents | "Use callbacks for DIY" |
-| **LlamaIndex** | RAG, data connectors | Data residency only |
-| **CrewAI** | Multi-agent orchestration | "Careful guardrails" (manual) |
-| **AutoGen** | Agent conversations | Human-in-the-loop |
-| **Haystack** | Search pipelines | No built-in protection |
-
-### Why This Gap Exists
-
-1. **Different priorities** - Frameworks optimize for developer experience and capabilities, not security
-2. **"Shared responsibility"** - They explicitly say security is your problem
-3. **Performance concerns** - Detection adds 10-50ms latency per request
-4. **Liability avoidance** - No one wants to promise security they can't guarantee
-5. **Rapidly evolving threats** - New attacks appear faster than frameworks update
-6. **No standard interface** - Each security tool has different APIs
-
-### What Integration Should Look Like
-
-```python
-# Hypothetical: What LangChain COULD do
-from langchain.security import PromptShield
-
-chain = LLMChain(
-    llm=llm,
-    prompt=prompt,
-    input_guards=[
-        PromptInjectionDetector(),
-        PIIScanner(),
-    ],
-    output_guards=[
-        SensitiveDataFilter(),
-        FactualityChecker(),
-    ],
-)
-```
-
-### Who IS Doing It Right?
-
-| Solution | Approach |
-|----------|----------|
-| **NeMo Guardrails** | Security-first framework with Colang DSL |
-| **Azure AI Content Safety** | Integrated into Azure OpenAI endpoints |
-| **AWS Bedrock Guardrails** | Built into Bedrock API |
-| **Anthropic's Constitutional AI** | Trained into the model |
-| **Docker MCP Gateway** | Container isolation + network controls for MCP |
-| **OWASP Agentic Top 10 (2026)** | Industry-standard threat taxonomy for agents |
-
-### The Real Solution
-
-Until frameworks integrate security properly, you need to:
-
-1. **Wrap your LLM calls** with security layers (LLM Guard, Meta Prompt Guard)
-2. **Use architectural patterns** (Dual LLM, typed extraction) 
-3. **Add deterministic validation** on top of probabilistic detection
-4. **Red-team continuously** (Promptfoo, Garak)
-5. **Assume breach** and limit blast radius
-
-This is why this repo exists—to teach the patterns you need to implement yourself.
+NeMo Guardrails sits in a different category (it's a dedicated security framework, not an agent orchestrator) and is listed in the main tools table above. Haystack and LlamaIndex are primarily RAG/search frameworks and aren't directly comparable on agent-orchestration security stance.
 
 ---
 

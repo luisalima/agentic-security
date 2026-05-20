@@ -22,10 +22,4 @@ Format: files with all feedback addressed roll up to a single tick. Open items k
 - [x] **`docs/reference/references.md`** — B19 (inactive/archived markers).
 - [x] **Cross-file (Batch B)** — XB1 (Lethal Trifecta wording propagated to `index.md`, `attack_taxonomy.md`, `cheatsheet.md`), XB2 (resolved by B13 rename + explainer sentence), XB3 (Reader/Writer Agent terminology gone via B15 deletion; canonical "Quarantined LLM / Privileged LLM" definitions live in `guide/4`), XB4 (resolved by B17).
 
-### Still open in `docs/reference/tools.md`
-
-- [x] **B1 — Broken notebook paths.**
-- [x] **B2 — Vigil and Rebuff detail sections.**
-- [ ] **B3 — "Framework Integration Gap" section.** Decision: cut the editorial, keep a tight "Framework Security Stance" table comparing LangChain/LangGraph, LlamaIndex, CrewAI, AutoGen, Pydantic AI on built-in security primitives. Move AWS Bedrock Guardrails to "Managed / commercial offerings." Open question: verify each framework's current stance (5 background agents 529'd during Anthropic API overload; retry pending).
-  Reply:
-- [x] **B4 — "Choosing the Right Tool" audience categories.**
+- [x] **`docs/reference/tools.md`** — B1, B2, B4 (round 1); B3 (this round): editorial cut, replaced with a verified "Framework Security Stance" table (LangChain/LangGraph, CrewAI, AutoGen, Pydantic AI), LlamaIndex dropped per your call, AWS Bedrock Guardrails added to commercial offerings.
