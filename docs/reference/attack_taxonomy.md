@@ -1,5 +1,7 @@
 # Attack Taxonomy for Agentic AI Systems
 
+Most attack vectors below derive their danger from agents that have all three [Lethal Trifecta factors](../principles.md#the-lethal-trifecta) — private data access, exposure to untrusted content, and exfiltration ability.
+
 ## Attack Surface Overview
 
 ```
@@ -309,16 +311,6 @@ LLM suggests: "pip install flask-security-utils"
 - Use SBOM and dependency pinning
 - Never auto-install packages suggested by LLMs
 - Scan installed packages for malicious behavior
-
-## The Lethal Trifecta
-
-Catastrophic risk requires ALL THREE:
-
-| Component | Examples | Break It To Reduce Risk |
-|-----------|----------|-------------------------|
-| Access to Private Data | Emails, files, credentials, PII, internal docs | Minimize context, use references, scoped access |
-| Exposure to Untrusted Content | Emails, web pages, RAG documents, user uploads | Use only curated/internal data, quarantine untrusted input |
-| Ability to Exfiltrate | Send emails, make API calls, write to external services | Read-only tools, require approval, block outbound |
 
 ## Risk Assessment Matrix
 
