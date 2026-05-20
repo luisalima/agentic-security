@@ -16,9 +16,11 @@ All items resolved before the file-by-file review began: CI green, metadata comp
 
 `docs/index.md`, `docs/principles.md`. Reviewed and applied. Key decisions: locked deployment-vs-curriculum order distinction; added Supporting Systems grid for MCP + Memory; collapsed `principles.md` §4 to a teaser pointing at `guide/7`. See [FEEDBACK.md](FEEDBACK.md) Batch A.
 
-### Batch B — mkdocs reference layer ✅
+### Batch B — mkdocs reference layer ⏳
 
 `docs/reference/{tools, attack_taxonomy, threat_model, cheatsheet, architecture, tradeoffs, references}.md`. Reviewed and applied. Key changes: canonical Lethal Trifecta wording locked across 5 files; `architecture.md` restructured (270 → 80 lines, "Defense Tiers" renamed to "Maturity Levels", Symbolic References moved to `guide/4`); `tradeoffs.md` recommendation rewritten to not endorse Dual LLM as the baseline; `tools.md` Framework Security Stance table verified against live docs (May 2026); LLM Guard URL fixed across 4 files. See [FEEDBACK.md](FEEDBACK.md) Batch B.
+
+**Reopened 2026-05-20** — `tools.md` had a second pass: per-tool freshness audit (17 parallel agents) + landscape expansion. Quick-ref grew from 22 → 43 entries; new full sections for AgentDojo, Bishop Fox AIMap, Cloudflare Firewall for AI, Cisco AI Defense, HiddenLayer AISec, Wiz AI-SPM, Straiker; new top-level "AI Gateways & Firewalls" section covering 11 more commercial vendors; Vigil/Rebuff demoted to a "Historical / archived detectors" subsection. Material API/CLI corrections to LLM Guard, Promptfoo, Garak, Augustus, PyRIT (repo + Orchestrator→Attack rename), DeepTeam, NeMo, Invariant, Agentic Radar. MCP-Scan rebranded to Snyk Agent-Scan (Snyk acquired Invariant Labs). Meta Prompt Guard upgraded to Llama Prompt Guard 2. Guardrails AI dedicated section removed — vendor pivoted to Snowglobe synthetic data. Needs a re-read before re-ticking.
 
 ### Batch C — Guide chapters: foundations ⏳
 
