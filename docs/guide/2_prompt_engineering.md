@@ -37,7 +37,7 @@ Wrap untrusted content in randomized delimiters and instruct the LLM to treat ev
 <UNTRUSTED_a7f3b2c1_END>
 ```
 
-Microsoft Research tested this approach and found **spotlighting reduces attack success rates from >50% to <2%** ([Defending LLMs via Backtranslation](https://arxiv.org/abs/2403.14720)).
+Microsoft Research tested this approach and found **spotlighting reduces attack success rates from >50% to <2%** ([Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720)).
 
 However, [Simon Willison points out](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/): attackers can say "ignore the delimiters" without ever using the delimiter characters. **Both are right** — delimiters help significantly against naive attacks, but sophisticated attackers can still bypass them.
 
@@ -238,7 +238,7 @@ This combines: role anchoring, explicit negatives, instruction hierarchy, sandwi
 
 ## References
 
-- **Microsoft Research** — [Spotlighting: Defending LLMs via Backtranslation](https://arxiv.org/abs/2403.14720)
+- **Hines et al. (Microsoft, 2024)** — [Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720)
 - **Wallace et al. (2024)** — [The Instruction Hierarchy](https://arxiv.org/abs/2404.13208)
 - **Willison** — [Delimiters won't save you](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)
 - **Anthropic** — [Using XML tags in prompts](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags)

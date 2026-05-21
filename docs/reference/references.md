@@ -18,9 +18,9 @@ Academic papers, blog posts, and resources on LLM security and prompt injection.
 
 | Paper | Authors | Year | Key Contribution |
 |-------|---------|------|------------------|
-| [Defending LLMs against Jailbreaking Attacks via Backtranslation (Spotlighting)](https://arxiv.org/abs/2403.14720) | Microsoft Research | 2024 | Random delimiter defense; reduces attack success from >50% to <2% |
+| [Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720) | Hines et al. (Microsoft) | 2024 | Random delimiter defense; reduces attack success from >50% to <2% |
 | [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363) | Chen et al. | 2024 | Structured data extraction as defense |
-| [CaMeL: Capability-based Memory for LLMs](https://arxiv.org/abs/2503.18813) | Google DeepMind | 2025 | Capability-based security architecture; typed data flow |
+| [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813) | Google DeepMind | 2025 | Capability-based security architecture; typed data flow |
 | [Jatmo: Prompt Injection Defense by Task-Specific Finetuning](https://arxiv.org/abs/2312.17673) | Piet et al. | 2023 | Fine-tuning models to resist injection |
 
 ### Jailbreaking & Red Teaming

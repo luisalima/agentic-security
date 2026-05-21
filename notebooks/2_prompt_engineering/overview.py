@@ -61,7 +61,7 @@ def _(mo):
     Microsoft Research tested delimiter-based defenses and found:
 
     > "Spotlighting reduces attack success rates from >50% to <2%"
-    > — [Defending LLMs via Backtranslation](https://arxiv.org/abs/2403.14720)
+    > — [Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720)
 
     However, Simon Willison's response:
 
@@ -123,7 +123,7 @@ def _(mo):
 
     ## References
 
-    - **Microsoft Research** — [Spotlighting: Defending LLMs via Backtranslation](https://arxiv.org/abs/2403.14720)
+    - **Hines et al. (Microsoft, 2024)** — [Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720)
     - **Wallace et al. (2024)** — [The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions](https://arxiv.org/abs/2404.13208)
     - **Simon Willison** — [Delimiters won't save you](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)
     - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM01: Prompt Injection
