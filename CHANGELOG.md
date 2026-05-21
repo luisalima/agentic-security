@@ -38,8 +38,7 @@ All notable changes to this project will be documented in this file.
 
 ### Updated
 
-- Tools landscape covers DeepTeam, Guardrails AI, OpenAI Guardrails, MCP-Scan,
-  Docker MCP Gateway, Agentic Radar, Giskard, Invariant Guardrails
+- Tools landscape covers 43 entries across detection, red-teaming, guardrails, MCP security, and AI gateways/firewalls — including DeepTeam, OpenAI Guardrails, Snyk Agent-Scan (formerly MCP-Scan), Docker MCP Gateway, Agentic Radar, Giskard, Invariant Guardrails, AgentDojo, Cisco AI Defense, Cloudflare Firewall for AI, HiddenLayer, Wiz AI-SPM, and Bishop Fox AIMap
 - Acquisition status: Lakera Guard (Check Point, Sep 2025),
   Protect AI/LLM Guard (Palo Alto Networks, Jul 2025)
 - References updated across README.md, docs/principles.md, docs/reference/references.md
