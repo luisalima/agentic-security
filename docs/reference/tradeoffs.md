@@ -170,7 +170,7 @@ def validate_plan(plan):
 
 **Repo label:** High-risk reference architecture.
 
-**What it does:** Layers multiple defenses across all five [Defense Levels](../guide/0_vulnerabilities.md). One example stack — yours will vary by threat model and operational capacity:
+**What it does:** Layers multiple defenses across all five [Defense Levels](../index.md#defense-levels). One example stack — yours will vary by threat model and operational capacity:
 
 1. **Detection** — input scanning + canary tokens
 2. **Isolation** — container, network restrictions, scoped credentials

@@ -164,7 +164,7 @@ Plugins are now selected in `promptfooconfig.yaml` (e.g., `plugins: [hijacking, 
 
 These projects are notable for the patterns they pioneered but are no longer maintained. The underlying techniques (multi-layer scanning, canary tokens, vector-similarity matching) are covered from first principles in [Guide §1: Detection](../guide/1_detection.md).
 
-For maintained drop-in alternatives, consider [PurpleLlama / LlamaFirewall](#purplellama--llamafirewall-meta) (Meta), [Lakera Guard](#lakera-guard) (commercial), or [LLM Guard](#llm-guard) — with the caveat that LLM Guard has not released since May 2025.
+For maintained drop-in alternatives, consider [PurpleLlama / LlamaFirewall](#purplellama-llamafirewall-meta) (Meta), [Lakera Guard](#lakera-guard) (commercial), or [LLM Guard](#llm-guard) — with the caveat that LLM Guard has not released since May 2025.
 
 #### [Vigil](https://github.com/deadbits/vigil-llm) — Inactive since 2023
 

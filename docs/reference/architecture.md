@@ -8,7 +8,7 @@ LLMs process instructions and data in the same channel (the context window). The
 
 ## Maturity Levels
 
-This is an organizational *maturity model* — where teams typically sit on the security curve, in increasing order of rigor. It is distinct from the [Defense Levels](../guide/0_vulnerabilities.md) in the Guide, which name specific technique categories (Detection, Prompt Engineering, Isolation, Secure Architecture, Defense in Depth). A team at any maturity level can adopt any combination of Defense Levels.
+This is an organizational *maturity model* — where teams typically sit on the security curve, in increasing order of rigor. It is distinct from the [Defense Levels](../index.md#defense-levels) in the Guide, which name specific technique categories (Detection, Prompt Engineering, Isolation, Secure Architecture, Defense in Depth). A team at any maturity level can adopt any combination of Defense Levels.
 
 ### Hope and Prayer (most common)
 
