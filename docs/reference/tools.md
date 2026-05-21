@@ -675,7 +675,7 @@ Most agent orchestration frameworks treat security as the developer's job, but t
 
 ## References
 
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
 - [tldrsec — Prompt Injection Defenses](https://github.com/tldrsec/prompt-injection-defenses) — Comprehensive catalog of every practical and proposed defense
 - [Microsoft Spotlighting Paper](https://arxiv.org/abs/2403.14720)
 - [Simon Willison on Prompt Injection](https://simonwillison.net/series/prompt-injection/)

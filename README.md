@@ -76,7 +76,7 @@ cd agentic-security
 uv sync
 
 # For local LLM testing (optional)
-# Install Ollama: https://ollama.ai
+# Install Ollama: https://ollama.com
 ollama pull llama3.1:8b
 ```
 

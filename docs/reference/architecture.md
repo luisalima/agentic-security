@@ -90,8 +90,8 @@ The full threat-modeling workflow lives in [Threat Model](threat_model.md). At m
 
 ## References
 
-- Simon Willison, "Dual LLM Pattern" (2023): https://simonwillison.net/2023/Apr/25/dual-llm-pattern/
-- Google DeepMind, "CaMeL: Capability-based Memory for LLMs" (2025): https://arxiv.org/abs/2503.18813
-- Microsoft, "Spotlighting" (2024): https://www.microsoft.com/en-us/research/publication/defending-llms-against-jailbreaking-attacks-via-backtranslation/
-- "StruQ: Structured Queries for LLM Security" (2024): https://arxiv.org/abs/2402.06363
-- OWASP Top 10 for LLM Applications: https://owasp.org/www-project-top-10-for-large-language-model-applications/
+- Simon Willison (2023) — [Dual LLM Pattern](https://simonwillison.net/2023/Apr/25/dual-llm-pattern/)
+- Google DeepMind (2025) — [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813)
+- Hines et al., Microsoft (2024) — [Defending Against Indirect Prompt Injection Attacks With Spotlighting](https://arxiv.org/abs/2403.14720)
+- Chen et al. (2024) — [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363)
+- OWASP — [Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)

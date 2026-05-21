@@ -149,6 +149,6 @@ Block or flag if the agent tries to:
 ## Resources
 
 - **This Repo:** [Interactive notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks)
-- **OWASP:** [Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/) · [Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+- **OWASP:** [Top 10 for LLMs](https://genai.owasp.org/llm-top-10/) · [Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 - **Simon Willison:** [Prompt Injection Series](https://simonwillison.net/series/prompt-injection/)
 - **NCSC:** [Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-not-sql-injection)

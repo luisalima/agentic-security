@@ -64,7 +64,7 @@ Essential reading from the person who named and defined prompt injection:
 
 | Resource | Organization | Description |
 |----------|--------------|-------------|
-| [OWASP Top 10 for LLM Applications (2025)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | OWASP | Industry standard risk ranking; LLM01 = Prompt Injection |
+| [OWASP Top 10 for LLM Applications (2025)](https://genai.owasp.org/llm-top-10/) | OWASP | Industry standard risk ranking; LLM01 = Prompt Injection |
 | [OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) | OWASP | Agentic-specific risks |
 | [OWASP GenAI Data Security Risks & Mitigations (2026)](https://genai.owasp.org/resource/owasp-genai-data-security-risks-mitigations-2026/) | OWASP | Data security for GenAI |
 | [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) | NIST | Broader AI risk guidance |

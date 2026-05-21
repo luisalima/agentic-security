@@ -236,4 +236,4 @@ Monitor for patterns that indicate compromise:
 - [HashiCorp: Zero Trust for Agentic Systems](https://www.hashicorp.com/blog/zero-trust-for-agentic-systems-managing-non-human-identities-at-scale)
 - [NHI Management Group: NHI Challenges](https://nhimg.org/nhi-challenges)
 - [SPIFFE: Secure Production Identity Framework](https://spiffe.io/)
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)

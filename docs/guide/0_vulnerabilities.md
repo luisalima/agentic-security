@@ -1,6 +1,6 @@
 # Vulnerabilities
 
-Prompt injection is the **#1 security risk** for LLM-powered agents ([OWASP LLM Top 10, 2025](https://owasp.org/www-project-top-10-for-large-language-model-applications/)). This section covers the fundamental vulnerability, how it scales across turns and agents, and real-world incidents.
+Prompt injection is the **#1 security risk** for LLM-powered agents ([OWASP LLM Top 10, 2025](https://genai.owasp.org/llm-top-10/)). This section covers the fundamental vulnerability, how it scales across turns and agents, and real-world incidents.
 
 !!! tip "Try the notebooks"
     For runnable examples, see [`notebooks/0_vulnerabilities/`](https://github.com/luisalima/agentic-security/tree/main/notebooks/0_vulnerabilities).
@@ -176,7 +176,7 @@ CVE-2025-32711: A crafted email sent to a victim is automatically processed by C
 - **Greshake et al. (2023)** — [Not what you've signed up for](https://arxiv.org/abs/2302.12173) — foundational paper on indirect prompt injection
 - **Meta AI (2025)** — [Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/)
 - **Nasr, Carlini et al. (2025)** — [The Attacker Moves Second](https://arxiv.org/abs/2510.09023) — adaptive attacks bypass all defenses with >90% success
-- **OWASP (2025)** — [Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- **OWASP (2025)** — [Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
 - **Microsoft (2024)** — [Crescendo: Multi-Turn LLM Jailbreak](https://crescendo-the-multiturn-jailbreak.github.io/)
 - **Anthropic (2024)** — [Many-Shot Jailbreaking](https://www.anthropic.com/research/many-shot-jailbreaking)
 - **Zou et al. (2024)** — [PoisonedRAG](https://arxiv.org/abs/2402.07867)
