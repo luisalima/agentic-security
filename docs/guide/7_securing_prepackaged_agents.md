@@ -17,7 +17,7 @@ These have the full [Lethal Trifecta](../principles.md): they have access to you
 
 Your coding agent reads a malicious `README.md` in a cloned repo. The README contains hidden instructions. The agent follows them — exfiltrating your `.env`, SSH keys, or AWS credentials via a curl command it "helpfully" runs.
 
-This is not hypothetical. See [Clinejection](https://www.theregister.com/2025/04/14/ai_code_assistants_sabotage/) and similar documented attacks.
+This is not hypothetical. See [Clinejection](https://adnanthekhan.com/posts/clinejection/) ([Snyk analysis](https://snyk.io/blog/cline-supply-chain-attack-prompt-injection-github-actions/), [Cline post-mortem](https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm)) and similar documented attacks.
 
 ### Controls
 
