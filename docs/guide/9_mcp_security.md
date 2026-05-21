@@ -175,8 +175,8 @@ scanner = MCPScanner(allowed_servers={"filesystem", "calculator"})
 
 | Tool | What It Does |
 |------|-------------|
-| [MCP-Scan](https://github.com/AltimateAI/mcp-scan) | Scans MCP configs for tool poisoning, rug pulls |
-| [Docker MCP Gateway](https://docs.docker.com/ai/mcp-gateway/) | Container isolation + network blocking for MCP |
+| [Snyk Agent-Scan](https://github.com/snyk/agent-scan) | Scans MCP configs + agent skill files for tool poisoning, tool shadowing (formerly MCP-Scan) |
+| [Docker MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/) | Container isolation + network blocking for MCP |
 | [Agentic Radar](https://github.com/splx-ai/agentic-radar) | CLI scanner for agentic workflow security gaps |
 | [Invariant Guardrails](https://github.com/invariantlabs-ai/invariant) | Runtime policy enforcement for MCP tool calls |
 | This repo: `mcp_security.py` | Tool poisoning scanner + rug pull detector |

@@ -29,7 +29,7 @@ A comprehensive comparison of tools for defending against prompt injection and o
 | [Cisco MCP-Scanner](https://github.com/cisco-ai-defense/mcp-scanner) | MCP Security | Apache 2.0 | YARA + LLM-as-judge MCP server scanner | ✅ Active |
 | [MCP-Shield](https://github.com/riseandignite/mcp-shield) | MCP Security | OSS | Detects tool poisoning + hidden instructions in installed MCP servers | ✅ Active |
 | [Agentic Radar](https://github.com/splx-ai/agentic-radar) | MCP Security | OSS | CLI scanner for agentic workflows (LangGraph, CrewAI, AutoGen, OpenAI Agents, n8n) | ✅ Active |
-| [Docker MCP Gateway](https://docs.docker.com/ai/mcp-gateway/) | MCP Security | OSS | Container isolation + network blocking for MCP servers | ✅ Active |
+| [Docker MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/) | MCP Security | OSS | Container isolation + network blocking for MCP servers | ✅ Active |
 | [MCPX](https://lunar.dev/) | MCP Security | OSS | Single governed entry point for MCP servers (Lunar.dev) | ✅ Active |
 | [Invariant Guardrails](https://github.com/invariantlabs-ai/invariant) | MCP Security | OSS | Runtime policy enforcement for MCP tool calls | ✅ Active |
 | [Giskard](https://github.com/Giskard-AI/giskard-oss) | Testing | Apache 2.0 | Agent/LLM evaluation library; security scanning in beta | ✅ Active |
@@ -420,7 +420,7 @@ Originally `invariantlabs-ai/mcp-scan`. **Snyk acquired Invariant Labs in 2025**
 
 ---
 
-### [Docker MCP Gateway](https://docs.docker.com/ai/mcp-gateway/)
+### [Docker MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/)
 **Container-based firewall for MCP server traffic**
 
 | Feature | Detail |
@@ -626,7 +626,7 @@ Pick by what you need to do.
 - **[Snyk Agent-Scan](https://github.com/snyk/agent-scan)** — Config + skill scanning for tool poisoning, tool shadowing (formerly MCP-Scan)
 - **[Cisco MCP-Scanner](https://github.com/cisco-ai-defense/mcp-scanner)** — YARA + LLM-as-judge MCP scanner
 - **[MCP-Shield](https://github.com/riseandignite/mcp-shield)** — Detects tool poisoning in installed MCP servers
-- **[Docker MCP Gateway](https://docs.docker.com/ai/mcp-gateway/)** — Container isolation for MCP servers
+- **[Docker MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/)** — Container isolation for MCP servers
 - **[Invariant Guardrails](https://github.com/invariantlabs-ai/invariant)** — Runtime policy enforcement for tool calls
 - **[Agentic Radar](https://github.com/splx-ai/agentic-radar)** — Static analysis of LangGraph / CrewAI / OpenAI Agents / AutoGen / n8n pipelines
 

@@ -138,7 +138,7 @@ Block or flag if the agent tries to:
 | Red teaming (comprehensive) | [DeepTeam](https://github.com/confident-ai/deepteam) |
 | Red teaming (CI/CD native) | [Promptfoo](https://github.com/promptfoo/promptfoo) |
 | Enterprise, managed | [Lakera Guard](https://www.lakera.ai/) (Check Point) |
-| MCP server security | [MCP-Scan](https://github.com/AltimateAI/mcp-scan) |
+| MCP server security | [Snyk Agent-Scan](https://github.com/snyk/agent-scan) (formerly MCP-Scan) |
 | Output validation | [Guardrails AI](https://guardrailsai.com/) |
 | Dialog control | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
 
