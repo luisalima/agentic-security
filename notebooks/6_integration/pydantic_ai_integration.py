@@ -118,8 +118,7 @@ def _(mo):
     (e.g., due to injection), the agent pauses instead of executing.
 
     ```python
-    from pydantic_ai import Agent, RunContext
-    from pydantic_ai.agent import DeferredToolRequests
+    from pydantic_ai import Agent, DeferredToolRequests, RunContext
 
     agent = Agent('openai:gpt-4o', output_type=str | DeferredToolRequests)
 
@@ -172,7 +171,7 @@ def _(mo):
     def send_email(ctx: RunContext[None], to: str, subject: str, body: str) -> str:
         \"\"\"Send an email. Unknown recipients require approval.\"\"\"
         if not ctx.tool_call_approved and to not in KNOWN_CONTACTS:
-            raise ApprovalRequired(f"Unknown recipient: {to}")
+            raise ApprovalRequired(metadata={"reason": "unknown recipient", "to": to})
         return f"Email sent to {to}"
 
     # alice@company.com → auto-approved (known contact)
@@ -357,7 +356,7 @@ def _(mo):
             send_email(ctx=mock_ctx(approved=False), to="evil@attacker.com",
                        subject="secrets", body="...")
         except ApprovalRequired as e:
-            assert "Unknown recipient" in str(e)
+            assert e.metadata and e.metadata.get("reason") == "unknown recipient"
     ```
 
     **Why test:** Security constraints are only useful if they actually work.
