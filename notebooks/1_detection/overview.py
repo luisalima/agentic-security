@@ -84,7 +84,7 @@ def _(mo):
 
     | Tool | Type | ML | Key Feature |
     |------|------|----|-------------|
-    | [LLM Guard](https://llm-guard.com/) | OSS | ✓ | 15 input + 20 output scanners (ProtectAI) |
+    | [LLM Guard](https://protectai.github.io/llm-guard/) | OSS | ✓ | 15 input + 20 output scanners (ProtectAI) |
     | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | OSS | ✓ | Dialog flow control via Colang DSL (NVIDIA) |
     | [Promptfoo](https://github.com/promptfoo/promptfoo) | OSS | ✓ | Red-teaming for 50+ vulnerability types |
     | [Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M) | Model | ✓ | Free 86M-param classifier on HuggingFace |

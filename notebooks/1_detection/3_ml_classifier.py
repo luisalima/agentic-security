@@ -243,7 +243,7 @@ def _(mo):
 
     **Tools using ML classification:**
     - [Vigil](https://vigil.deadbits.ai/overview/use-vigil/scanners/transformer)
-    - [LLM Guard](https://llm-guard.com/input_scanners/prompt_injection/)
+    - [LLM Guard](https://protectai.github.io/llm-guard/input_scanners/prompt_injection/)
     - [Rebuff](https://github.com/protectai/rebuff)
     """)
     return
@@ -294,7 +294,7 @@ def _(mo):
     - **deepset** — [DeBERTa Injection Model](https://huggingface.co/deepset/deberta-v3-base-injection)
     - **ProtectAI** — [Prompt Injection Model](https://huggingface.co/protectai/deberta-v3-base-prompt-injection)
     - **Vigil** — [Transformer Scanner](https://vigil.deadbits.ai/overview/use-vigil/scanners/transformer)
-    - **LLM Guard** — [Prompt Injection Scanner](https://llm-guard.com/input_scanners/prompt_injection/)
+    - **LLM Guard** — [Prompt Injection Scanner](https://protectai.github.io/llm-guard/input_scanners/prompt_injection/)
 
     ---
 

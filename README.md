@@ -162,7 +162,7 @@ See [docs/reference/tools.md](docs/reference/tools.md) for detailed comparison. 
 
 | Need | Tool |
 |------|------|
-| Quick start, open source | [LLM Guard](https://llm-guard.com/) |
+| Quick start, open source | [LLM Guard](https://protectai.github.io/llm-guard/) |
 | Red teaming (comprehensive) | [DeepTeam](https://github.com/confident-ai/deepteam) |
 | Red teaming (CI/CD native) | [Promptfoo](https://github.com/promptfoo/promptfoo) |
 | Enterprise, managed | [Lakera Guard](https://www.lakera.ai/) (Check Point) |
