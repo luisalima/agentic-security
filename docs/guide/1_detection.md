@@ -39,7 +39,7 @@ User Input → [YARA] → [Vector DB] → [ML Classifier] → LLM
 YARA is a pattern-matching tool originally designed for malware detection, repurposed to scan prompts for known injection signatures — exact strings or regex patterns.
 
 !!! tip "Production alternative: ATR"
-    [Agent Threat Rules (ATR)](https://github.com/Agent-Threat-Rule/agent-threat-rules) provides 108 detection rules with 685 regex patterns — "like Sigma, but for prompt injection." Already adopted by Cisco AI Defense and OWASP. MIT licensed.
+    [Agent Threat Rules (ATR)](https://github.com/Agent-Threat-Rule/agent-threat-rules) provides 425 detection rules with 2,400+ regex patterns — "like Sigma, but for prompt injection." Already adopted by Cisco AI Defense and OWASP. MIT licensed.
     ```bash
     npm install -g agent-threat-rules && atr scan <file>
     ```
@@ -219,11 +219,11 @@ Use random tokens per request, not static ones.
 
 | Tool | Type | Key Feature |
 |------|------|-------------|
-| [ATR](https://github.com/Agent-Threat-Rule/agent-threat-rules) | OSS | 108 rules, 685 regex patterns — "Sigma for prompt injection" (Cisco/OWASP) |
+| [ATR](https://github.com/Agent-Threat-Rule/agent-threat-rules) | OSS | 425 rules, 2,400+ regex patterns — "Sigma for prompt injection" (Cisco/OWASP) |
 | [LLM Guard](https://protectai.github.io/llm-guard/) | OSS | 15 input + 20 output scanners (ProtectAI) |
 | [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | OSS | Dialog flow control via Colang DSL (NVIDIA) |
 | [Promptfoo](https://github.com/promptfoo/promptfoo) | OSS | Red-teaming for 50+ vulnerability types |
-| [Meta Prompt Guard](https://huggingface.co/meta-llama/Prompt-Guard-86M) | Model | Free 86M-param classifier on HuggingFace |
+| [Llama Prompt Guard 2](https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M) | Model | Free 86M-param classifier on HuggingFace (Meta) |
 | [Lakera Guard](https://www.lakera.ai/) | Commercial | Enterprise API, <50ms, 80M+ attack data points |
 
 **Historical (archived/inactive):**

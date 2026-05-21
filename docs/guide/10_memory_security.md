@@ -103,7 +103,7 @@ entry = MemoryEntry(
 
 result = guard.scan_entry(entry)
 # result.safe = False
-# result.concerns = ["Poisoning pattern detected: 'Updated policy:'"]
+# result.concerns lists every regex match — e.g. "Updated policy:" and "always forward"
 ```
 
 ### 2. Namespace Isolation
