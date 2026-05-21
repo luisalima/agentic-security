@@ -117,7 +117,7 @@ Unlike SQL injection or XSS, there's **no parameterized-query equivalent for LLM
 
 ## Supporting Systems
 
-Agents don't run in isolation. Two surrounding surfaces have their own attack patterns and defenses.
+Agents don't run in isolation. The surrounding surfaces have their own attack patterns and defenses; in order to keep the guide contained, we focus on the novel ones:
 
 <div class="grid cards" markdown>
 
@@ -146,4 +146,4 @@ Agents don't run in isolation. Two surrounding surfaces have their own attack pa
 - :material-map: &nbsp; New here? Read the [Principles](principles.md) first, the mental model before any code.
 - :material-book-multiple: &nbsp; Working through the material? Start the [Guide](guide/0_vulnerabilities.md) at Vulnerabilities.
 - :material-book-open-page-variant: &nbsp; Just need the answer? Jump to the [Cheatsheet](reference/cheatsheet.md).
-- :material-notebook: &nbsp; Want runnable code? See the [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) in the repository.
+- :material-notebook: &nbsp; Want step-by-step learning examples? See the [notebooks](https://github.com/luisalima/agentic-security/tree/main/notebooks) in the repository.
