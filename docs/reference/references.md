@@ -22,6 +22,7 @@ Academic papers, blog posts, and resources on LLM security and prompt injection.
 | [StruQ: Defending Against Prompt Injection with Structured Queries](https://arxiv.org/abs/2402.06363) | Chen et al. | 2024 | Structured data extraction as defense |
 | [CaMeL: Defeating Prompt Injections by Design](https://arxiv.org/abs/2503.18813) | Google DeepMind | 2025 | Capability-based security architecture; typed data flow |
 | [Jatmo: Prompt Injection Defense by Task-Specific Finetuning](https://arxiv.org/abs/2312.17673) | Piet et al. | 2023 | Fine-tuning models to resist injection |
+| [Design Patterns for Securing LLM Agents against Prompt Injections](https://arxiv.org/abs/2506.08837) | Beurer-Kellner et al. | 2025 | Catalog of architectural design patterns with security-utility tradeoff analysis (ETH / IBM / Google / Microsoft co-authored) |
 
 ### Jailbreaking & Red Teaming
 
