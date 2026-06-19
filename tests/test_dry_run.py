@@ -87,6 +87,21 @@ class TestDryRunDeterministicValidation:
         valid, reason = evaluator.validate_plan_deterministic(plan, "forward this")
         assert not valid
 
+    def test_blocks_unknown_tool(self, evaluator):
+        plan = ExecutionPlan(
+            summary="Delete records",
+            actions=[
+                PlannedAction(
+                    tool="delete_database",
+                    reason="cleanup",
+                    params={"confirm": True},
+                ),
+            ],
+        )
+        valid, reason = evaluator.validate_plan_deterministic(plan, "clean up old records")
+        assert not valid
+        assert "not allowed" in reason.lower()
+
     def test_blocks_send_on_summarize_request(self, evaluator):
         """Even to known contacts, sending shouldn't happen for summarize requests."""
         plan = ExecutionPlan(
@@ -210,6 +225,38 @@ class TestDryRunFullPipeline:
         ev = DryRunEvaluator(client=mock)
         result = ev.run("read my email", "email content here")
         assert result["approved"]
+
+    def test_run_blocks_unknown_tool_even_if_llm_approves(self):
+        plan_json = json.dumps(
+            {
+                "summary": "Delete records",
+                "actions": [
+                    {
+                        "tool": "delete_database",
+                        "reason": "cleanup",
+                        "params": {"confirm": True},
+                    },
+                ],
+            }
+        )
+        eval_json = json.dumps(
+            {
+                "approved": True,
+                "risk_level": "low",
+                "concerns": [],
+                "recommendation": "Proceed",
+            }
+        )
+        mock = MockClient(
+            responses=[
+                {"content": plan_json},
+                {"content": eval_json},
+            ]
+        )
+        ev = DryRunEvaluator(client=mock)
+        result = ev.run("clean up old records", "context")
+        assert not result["approved"]
+        assert "not allowed" in result["deterministic_validation"]["reason"].lower()
 
 
 class TestSystemPrompts:

@@ -12,15 +12,21 @@ controller, dry-run evaluator, and combined defense layers.
 from __future__ import annotations
 
 DEFAULT_KNOWN_CONTACTS = {"alice@company.com", "bob@external.com"}
+DEFAULT_ALLOWED_TOOLS = {"send_email", "forward_email", "read_email", "draft_reply"}
 
 
 class OutputValidator:
     """Rule-based validator for tool calls and execution plans."""
 
-    def __init__(self, known_contacts: set[str] | None = None):
+    def __init__(
+        self,
+        known_contacts: set[str] | None = None,
+        allowed_tools: set[str] | None = None,
+    ):
         self.known_contacts = (
             known_contacts if known_contacts is not None else DEFAULT_KNOWN_CONTACTS
         )
+        self.allowed_tools = allowed_tools if allowed_tools is not None else DEFAULT_ALLOWED_TOOLS
 
     def validate_tool_call(
         self,
@@ -36,6 +42,9 @@ class OutputValidator:
         Returns:
             (valid, reason) tuple.
         """
+        if tool_name not in self.allowed_tools:
+            return False, f"Tool is not allowed: {tool_name}"
+
         if tool_name in ("send_email", "forward_email"):
             recipient = params.get("to", "")
             if recipient not in self.known_contacts:

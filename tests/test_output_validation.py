@@ -27,6 +27,11 @@ class TestValidateToolCall:
         )
         assert not valid
 
+    def test_blocks_unknown_tool(self, validator):
+        valid, reason = validator.validate_tool_call("delete_database", {"confirm": True})
+        assert not valid
+        assert "not allowed" in reason.lower()
+
     # ------------------------------------------------------------------
     # Safe tool calls should pass
     # ------------------------------------------------------------------
@@ -71,6 +76,14 @@ class TestValidatePlan:
         valid, concerns = validator.validate_plan(actions, "do something")
         assert not valid
         assert len(concerns) > 0
+
+    def test_blocks_plan_with_unknown_tool(self, validator):
+        actions = [
+            {"tool": "delete_database", "params": {"confirm": True}},
+        ]
+        valid, concerns = validator.validate_plan(actions, "clean up old records")
+        assert not valid
+        assert any("not allowed" in c.lower() for c in concerns)
 
     def test_blocks_summarize_with_send(self, validator):
         actions = [
