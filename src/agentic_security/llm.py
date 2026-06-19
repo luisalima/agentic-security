@@ -14,8 +14,11 @@ from pydantic import BaseModel
 
 def parse_tool_calls_from_text(content: str, available_tools: list[dict] | None) -> list[dict]:
     """
-    Parse tool calls from LLM text output when formal tool calling isn't used.
-    This handles models like Ollama that output JSON inline.
+    Parse explicit tool calls from LLM text output when formal tool calling isn't used.
+
+    The fallback only accepts a whole-response JSON object with a ``tool_calls``
+    list. It intentionally does not scan prose for JSON-looking fragments,
+    because untrusted content can contain tool-call-shaped text.
     """
     if not content or not available_tools:
         return []
@@ -23,42 +26,84 @@ def parse_tool_calls_from_text(content: str, available_tools: list[dict] | None)
     tool_names = set()
     for tool in available_tools:
         func = tool.get("function", tool)
-        tool_names.add(func["name"])
+        name = func.get("name")
+        if isinstance(name, str):
+            tool_names.add(name)
+
+    payload = _load_tool_call_payload(content)
+    if not isinstance(payload, dict):
+        return []
+
+    raw_calls = payload.get("tool_calls")
+    if not isinstance(raw_calls, list):
+        return []
 
     parsed_calls = []
     seen = set()  # Avoid duplicates
 
-    # Pattern 1: {"name": "tool_name", "parameters": {...}} - greedy match for nested braces
-    for tool_name in tool_names:
-        pattern = (
-            rf'\{{\s*"name"\s*:\s*"{tool_name}"\s*,\s*"parameters"\s*:\s*(\{{[^{{}}]*\}})\s*\}}'
-        )
-        for match in re.finditer(pattern, content):
-            params_str = match.group(1)
-            try:
-                params = json.loads(params_str)
-                key = (tool_name, json.dumps(params, sort_keys=True))
-                if key not in seen:
-                    seen.add(key)
-                    parsed_calls.append({"name": tool_name, "arguments": params})
-            except json.JSONDecodeError:
-                pass
+    for raw_call in raw_calls:
+        parsed = _normalize_text_tool_call(raw_call, tool_names)
+        if parsed is None:
+            continue
 
-    # Pattern 2: Look for JSON objects with tool names as keys
-    for tool_name in tool_names:
-        # Match "tool_name": {...} or tool_name({...})
-        pattern = rf'"{tool_name}"\s*:\s*(\{{[^{{}}]*\}})'
-        for match in re.finditer(pattern, content):
-            try:
-                params = json.loads(match.group(1))
-                key = (tool_name, json.dumps(params, sort_keys=True))
-                if key not in seen:
-                    seen.add(key)
-                    parsed_calls.append({"name": tool_name, "arguments": params})
-            except json.JSONDecodeError:
-                pass
+        key = (parsed["name"], json.dumps(parsed["arguments"], sort_keys=True))
+        if key not in seen:
+            seen.add(key)
+            parsed_calls.append(parsed)
 
     return parsed_calls
+
+
+def _load_tool_call_payload(content: str) -> Any:
+    """Load a whole-response JSON object, optionally wrapped in a JSON fence."""
+    stripped = content.strip()
+    fence_match = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", stripped, flags=re.DOTALL | re.I)
+    if fence_match:
+        stripped = fence_match.group(1).strip()
+
+    try:
+        return json.loads(stripped)
+    except json.JSONDecodeError:
+        return None
+
+
+def _normalize_text_tool_call(raw_call: Any, tool_names: set[str]) -> dict | None:
+    """Normalize one text fallback call to ``{"name": str, "arguments": dict}``."""
+    if not isinstance(raw_call, dict):
+        return None
+
+    if isinstance(raw_call.get("function"), dict):
+        function = raw_call["function"]
+        name = function.get("name")
+        raw_arguments = function.get("arguments", {})
+    else:
+        name = raw_call.get("name")
+        raw_arguments = raw_call.get("arguments", raw_call.get("parameters", {}))
+
+    if not isinstance(name, str) or name not in tool_names:
+        return None
+
+    arguments = _parse_tool_arguments(raw_arguments)
+    if arguments is None:
+        return None
+
+    return {"name": name, "arguments": arguments}
+
+
+def _parse_tool_arguments(raw_arguments: Any) -> dict | None:
+    """Parse tool arguments supplied as either a JSON object or JSON object string."""
+    if isinstance(raw_arguments, dict):
+        return raw_arguments
+
+    if isinstance(raw_arguments, str):
+        try:
+            parsed = json.loads(raw_arguments)
+        except json.JSONDecodeError:
+            return None
+        if isinstance(parsed, dict):
+            return parsed
+
+    return None
 
 
 class LLMClient(ABC):
