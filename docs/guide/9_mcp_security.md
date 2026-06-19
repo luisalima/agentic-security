@@ -82,7 +82,7 @@ scanner = MCPScanner(
 server = MCPServerConfig(
     name="weather",
     command="npx",
-    args=["mcp-weather"],
+    args=["mcp-weather@1.0.0"],
     tools=server_manifest["tools"],
 )
 
@@ -128,7 +128,7 @@ MCPServerConfig(
 MCPServerConfig(
     name="db-tool",
     command="npx",
-    args=["mcp-postgres"],
+    args=["mcp-postgres@1.0.0"],
     env={"DATABASE_URL": "postgres://readonly:scoped@proxy:5432/sandbox"},
 )
 ```

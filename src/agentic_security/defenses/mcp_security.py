@@ -77,6 +77,10 @@ SENSITIVE_ENV_VARS: set[str] = {
     "GOOGLE_APPLICATION_CREDENTIALS",
 }
 
+SHELL_COMMANDS: set[str] = {"sh", "bash", "zsh", "cmd", "powershell", "pwsh"}
+PACKAGE_RUNNERS: set[str] = {"npx", "uvx", "pipx"}
+SHELL_CONTROL_PATTERN = re.compile(r"(?:;|&&|\|\||\||`|\$\()", re.IGNORECASE)
+
 
 class MCPScanner:
     """Scans MCP server configurations for security concerns."""
@@ -85,9 +89,11 @@ class MCPScanner:
         self,
         max_description_length: int = 500,
         allowed_servers: set[str] | None = None,
+        require_allowlist: bool = True,
     ):
         self.max_description_length = max_description_length
         self.allowed_servers = allowed_servers
+        self.require_allowlist = require_allowlist
 
     def scan_server(self, server: MCPServerConfig) -> MCPScanResult:
         """Scan a single MCP server configuration for security concerns."""
@@ -95,8 +101,13 @@ class MCPScanner:
         tool_concerns: dict[str, list[str]] = {}
 
         # Check allowlist
-        if self.allowed_servers is not None and server.name not in self.allowed_servers:
+        if self.allowed_servers is None:
+            if self.require_allowlist:
+                concerns.append("No MCP server allowlist configured")
+        elif server.name not in self.allowed_servers:
             concerns.append(f"Server '{server.name}' is not in the allowed servers list")
+
+        concerns.extend(self._scan_server_command(server))
 
         # Check for sensitive env vars being passed
         for env_var in server.env:
@@ -152,6 +163,53 @@ class MCPScanner:
                 issues.append(f"Poisoning pattern detected: '{match.group(0)}'")
         return issues
 
+    def _scan_server_command(self, server: MCPServerConfig) -> list[str]:
+        """Scan MCP server process configuration for risky execution patterns."""
+        concerns: list[str] = []
+        command = self._command_name(server.command)
+
+        if not command:
+            concerns.append("MCP server command is empty")
+            return concerns
+
+        if command in SHELL_COMMANDS:
+            concerns.append(f"Shell command used for MCP server: {server.command}")
+
+        for arg in server.args:
+            if SHELL_CONTROL_PATTERN.search(arg):
+                concerns.append(f"Shell control operator found in argument: {arg}")
+                break
+
+        if command in PACKAGE_RUNNERS:
+            package_spec = self._first_package_arg(server.args)
+            if package_spec is None:
+                concerns.append(f"Package runner command has no package argument: {server.command}")
+            elif not self._is_pinned_package_spec(package_spec):
+                concerns.append(f"Unpinned package execution: {package_spec}")
+
+        return concerns
+
+    @staticmethod
+    def _command_name(command: str) -> str:
+        """Return the executable basename for a command string."""
+        return command.rsplit("/", maxsplit=1)[-1].lower()
+
+    @staticmethod
+    def _first_package_arg(args: list[str]) -> str | None:
+        """Return the first likely package spec from a package-runner argv list."""
+        for arg in args:
+            if arg in {"run"} or arg.startswith("-"):
+                continue
+            return arg
+        return None
+
+    @staticmethod
+    def _is_pinned_package_spec(package_spec: str) -> bool:
+        """Return whether a package spec includes an explicit version."""
+        if package_spec.startswith("@"):
+            return package_spec.count("@") >= 2 and not package_spec.endswith("@")
+        return "@" in package_spec and not package_spec.endswith("@")
+
     def scan_manifest(self, servers: list[MCPServerConfig]) -> list[MCPScanResult]:
         """Scan a list of MCP server configurations."""
         return [self.scan_server(server) for server in servers]
@@ -182,14 +240,24 @@ class RugPullDetector:
     def check_tools(self, server_name: str, tools: list[dict]) -> list[str]:
         """Check tools against registered hashes. Returns list of changed tool names."""
         changed: list[str] = []
+        current_names: set[str] = set()
         for tool in tools:
             name = tool.get("name", "unknown")
+            current_names.add(name)
             key = f"{server_name}:{name}"
 
             current_hash = self._hash_tool(tool)
 
-            if key in self._known_hashes:
-                if self._known_hashes[key] != current_hash:
+            if key not in self._known_hashes:
+                changed.append(name)
+            elif self._known_hashes[key] != current_hash:
+                changed.append(name)
+
+        prefix = f"{server_name}:"
+        for key in self._known_hashes:
+            if key.startswith(prefix):
+                name = key[len(prefix) :]
+                if name not in current_names and name not in changed:
                     changed.append(name)
 
         return changed

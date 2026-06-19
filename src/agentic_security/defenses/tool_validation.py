@@ -177,6 +177,10 @@ class ToolValidator:
         if has_category:
             allowed = SAFE_TOOL_CATEGORIES[effective_category]
 
+        if not has_category and tool.permissions:
+            concerns.append(f"No permission policy defined for category '{effective_category}'")
+            return concerns
+
         # Flag suspicious permissions only when we have a known category
         if has_category:
             for perm in tool.permissions:

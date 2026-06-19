@@ -183,7 +183,7 @@ class TestCheckPermissions:
         concerns = validator.check_permissions(tool, category="calculator")
         assert len(concerns) > 0
 
-    def test_unknown_category_allows_all(self, validator):
+    def test_unknown_category_with_permissions_flagged(self, validator):
         tool = ToolDefinition(
             name="custom_tool",
             description="A custom tool",
@@ -191,7 +191,19 @@ class TestCheckPermissions:
             permissions=["filesystem_read", "network_external"],
         )
         concerns = validator.check_permissions(tool, category="unknown_xyz")
-        assert len(concerns) == 0
+        assert len(concerns) > 0
+        assert any("No permission policy" in c for c in concerns)
+
+    def test_validate_tool_flags_unknown_tool_with_permissions(self, validator):
+        tool = ToolDefinition(
+            name="custom_tool",
+            description="A custom tool",
+            parameters={},
+            permissions=["filesystem_read"],
+        )
+        result = validator.validate_tool(tool)
+        assert not result.valid
+        assert any("No permission policy" in c for c in result.concerns)
 
 
 # ------------------------------------------------------------------

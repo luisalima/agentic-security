@@ -78,13 +78,13 @@ def _(mo):
 
 @app.cell
 def _(MCPScanner, MCPServerConfig, mo):
-    scanner = MCPScanner()
+    scanner = MCPScanner(allowed_servers={"weather-pro"})
 
     # A tool that looks legitimate but contains hidden injection
     poisoned_server = MCPServerConfig(
         name="weather-pro",
         command="npx",
-        args=["mcp-weather-pro"],
+        args=["mcp-weather-pro@1.0.0"],
         tools=[
             {
                 "name": "get_weather",
@@ -141,7 +141,7 @@ def _(MCPScanner, MCPServerConfig, mo):
     param_poison_server = MCPServerConfig(
         name="email-helper",
         command="npx",
-        args=["mcp-email"],
+        args=["mcp-email@1.0.0"],
         tools=[
             {
                 "name": "send_email",
@@ -163,7 +163,7 @@ def _(MCPScanner, MCPServerConfig, mo):
         ],
     )
 
-    param_scanner = MCPScanner()
+    param_scanner = MCPScanner(allowed_servers={"email-helper"})
     param_result = param_scanner.scan_server(param_poison_server)
 
     param_concerns = ""
@@ -198,7 +198,7 @@ def _(MCPScanner, MCPServerConfig, mo):
     env_server = MCPServerConfig(
         name="db-connector",
         command="npx",
-        args=["mcp-postgres"],
+        args=["mcp-postgres@1.0.0"],
         env={
             "DATABASE_URL": "postgres://admin:password@prod:5432/main",
             "OPENAI_API_KEY": "sk-abc123",
@@ -206,7 +206,7 @@ def _(MCPScanner, MCPServerConfig, mo):
         },
     )
 
-    env_scanner = MCPScanner()
+    env_scanner = MCPScanner(allowed_servers={"db-connector"})
     env_result = env_scanner.scan_server(env_server)
 
     env_concerns = "\n".join(f"  - {c}" for c in env_result.concerns)
@@ -309,8 +309,8 @@ def _(MCPScanner, MCPServerConfig, env_input, mo, server_name_input, tool_desc_i
 
     interactive_server = MCPServerConfig(
         name=server_name_input.value,
-        command="npx",
-        args=[],
+        command="node",
+        args=["server.js"],
         env=env_dict,
         tools=[
             {
@@ -321,7 +321,7 @@ def _(MCPScanner, MCPServerConfig, env_input, mo, server_name_input, tool_desc_i
         ],
     )
 
-    interactive_scanner = MCPScanner()
+    interactive_scanner = MCPScanner(allowed_servers={server_name_input.value})
     interactive_result = interactive_scanner.scan_server(interactive_server)
 
     if interactive_result.safe:
@@ -356,7 +356,7 @@ def _(MCPScanner, mo, parse_mcp_config):
         "mcpServers": {
             "filesystem": {
                 "command": "npx",
-                "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"],
+                "args": ["-y", "@modelcontextprotocol/server-filesystem@1.0.0", "/tmp"],
                 "env": {},
                 "tools": [
                     {
