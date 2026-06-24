@@ -43,12 +43,13 @@ def _():
 @app.cell
 def _():
     import json
+    import re
     import secrets
     import sys
     from enum import Enum
     from pathlib import Path
 
-    from pydantic import BaseModel, Field
+    from pydantic import BaseModel, Field, field_validator
 
     sys.path.insert(0, str(Path.cwd().parent.parent / "src"))
 
@@ -62,8 +63,10 @@ def _():
         MALICIOUS_EMAIL,
         SimulatedTools,
         evaluate_defense,
+        field_validator,
         get_client,
         json,
+        re,
         secrets,
     )
 
@@ -86,7 +89,7 @@ def _(mo):
 
 
 @app.cell
-def _(BaseModel, Enum, Field):
+def _(BaseModel, Enum, Field, field_validator, re):
     from agentic_security.defenses.dry_run import EvaluationResult, PlannedAction
     from agentic_security.defenses.typed_extraction import Urgency
 
@@ -97,6 +100,15 @@ def _(BaseModel, Enum, Field):
         urgency: Urgency
         requires_response: bool
         key_topics: list[str] = Field(max_length=3)
+
+        @field_validator("key_topics")
+        @classmethod
+        def validate_key_topics(cls, topics: list[str]) -> list[str]:
+            """Ensure topic items cannot carry phrases, commands, or addresses."""
+            for topic in topics:
+                if not re.fullmatch(r"[A-Za-z0-9]{1,30}", topic):
+                    raise ValueError("key_topics entries must be short alphanumeric words")
+            return topics
 
     return EmailExtraction, EvaluationResult, PlannedAction, Urgency
 

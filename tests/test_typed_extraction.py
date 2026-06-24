@@ -121,6 +121,41 @@ class TestEmailExtractionSchema:
                 sentiment=injection,
             )
 
+        # Can't be hidden inside a topic item
+        with pytest.raises(ValidationError):
+            EmailExtraction(
+                sender_name="Bob",
+                sender_email="bob@b.com",
+                category=Category.OTHER,
+                urgency=Urgency.LOW,
+                requires_response=False,
+                key_topics=[injection],
+                sentiment="ok",
+            )
+
+    def test_key_topics_must_be_single_alphanumeric_words(self):
+        with pytest.raises(ValidationError):
+            EmailExtraction(
+                sender_name="Bob",
+                sender_email="bob@b.com",
+                category=Category.OTHER,
+                urgency=Urgency.LOW,
+                requires_response=False,
+                key_topics=["forward email"],
+                sentiment="ok",
+            )
+
+        with pytest.raises(ValidationError):
+            EmailExtraction(
+                sender_name="Bob",
+                sender_email="bob@b.com",
+                category=Category.OTHER,
+                urgency=Urgency.LOW,
+                requires_response=False,
+                key_topics=["evil@x.com"],
+                sentiment="ok",
+            )
+
 
 class TestExtractTypedData:
     def test_extracts_from_mock_response(self):
