@@ -20,6 +20,8 @@ import json
 import re
 from dataclasses import dataclass, field
 
+from agentic_security.defenses.redaction import redact_sensitive_text
+
 
 @dataclass
 class MCPServerConfig:
@@ -160,7 +162,8 @@ class MCPScanner:
         for pattern in TOOL_POISONING_PATTERNS:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
-                issues.append(f"Poisoning pattern detected: '{match.group(0)}'")
+                matched_text = redact_sensitive_text(match.group(0))
+                issues.append(f"Poisoning pattern detected: '{matched_text}'")
         return issues
 
     def _scan_server_command(self, server: MCPServerConfig) -> list[str]:
@@ -173,19 +176,23 @@ class MCPScanner:
             return concerns
 
         if command in SHELL_COMMANDS:
-            concerns.append(f"Shell command used for MCP server: {server.command}")
+            safe_command = redact_sensitive_text(server.command)
+            concerns.append(f"Shell command used for MCP server: {safe_command}")
 
         for arg in server.args:
             if SHELL_CONTROL_PATTERN.search(arg):
-                concerns.append(f"Shell control operator found in argument: {arg}")
+                safe_arg = redact_sensitive_text(arg)
+                concerns.append(f"Shell control operator found in argument: {safe_arg}")
                 break
 
         if command in PACKAGE_RUNNERS:
             package_spec = self._first_package_arg(server.args)
             if package_spec is None:
-                concerns.append(f"Package runner command has no package argument: {server.command}")
+                safe_command = redact_sensitive_text(server.command)
+                concerns.append(f"Package runner command has no package argument: {safe_command}")
             elif not self._is_pinned_package_spec(package_spec):
-                concerns.append(f"Unpinned package execution: {package_spec}")
+                safe_package_spec = redact_sensitive_text(package_spec)
+                concerns.append(f"Unpinned package execution: {safe_package_spec}")
 
         return concerns
 

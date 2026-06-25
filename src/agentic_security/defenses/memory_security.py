@@ -22,6 +22,8 @@ import re
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 
+from agentic_security.defenses.redaction import redact_sensitive_text
+
 
 @dataclass
 class MemoryEntry:
@@ -112,7 +114,8 @@ class MemoryGuard:
         for pattern in MEMORY_POISONING_PATTERNS:
             match = re.search(pattern, entry.value, re.IGNORECASE)
             if match:
-                concerns.append(f"Poisoning pattern detected: '{match.group(0)}'")
+                matched_text = redact_sensitive_text(match.group(0))
+                concerns.append(f"Poisoning pattern detected: '{matched_text}'")
 
         # Untrusted sources get extra scrutiny
         if entry.source not in self.trusted_sources:
@@ -126,7 +129,8 @@ class MemoryGuard:
                 for pattern in directive_patterns:
                     match = re.search(pattern, entry.value, re.IGNORECASE)
                     if match:
-                        concerns.append(f"Untrusted source contains directive: '{match.group(0)}'")
+                        matched_text = redact_sensitive_text(match.group(0))
+                        concerns.append(f"Untrusted source contains directive: '{matched_text}'")
 
         return MemoryScanResult(
             key=entry.key,

@@ -44,6 +44,18 @@ class TestMemoryGuard:
         result = guard.scan_entry(entry)
         assert not result.safe
 
+    def test_credential_concern_redacts_secret_value(self):
+        guard = MemoryGuard()
+        entry = MemoryEntry(
+            key="config",
+            value="The api_key is sk-abc123def456",
+            source="tool:read_config",
+        )
+        result = guard.scan_entry(entry)
+        concerns = "\n".join(result.concerns)
+        assert "sk-abc123def456" not in concerns
+        assert "api_key is [REDACTED]" in concerns
+
     def test_instruction_injection_detected(self):
         guard = MemoryGuard()
         entry = MemoryEntry(

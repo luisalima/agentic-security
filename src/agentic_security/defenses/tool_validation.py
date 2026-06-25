@@ -20,6 +20,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from agentic_security.defenses.redaction import redact_sensitive_text
+
 
 @dataclass
 class ToolDefinition:
@@ -150,7 +152,8 @@ class ToolValidator:
         for pattern in INJECTION_PATTERNS:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
-                concerns.append(f"Injection pattern detected: '{match.group(0)}'")
+                matched_text = redact_sensitive_text(match.group(0))
+                concerns.append(f"Injection pattern detected: '{matched_text}'")
         return concerns
 
     def check_permissions(
