@@ -1,6 +1,6 @@
 """Tests for memory security defenses."""
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from agentic_security.defenses.memory_security import (
     MemoryEntry,
@@ -177,5 +177,5 @@ class TestMemoryStore:
         store.write("ns", "temp", "temporary", "user_input")
         # Manually expire it
         entry = store._store["ns"]["temp"]
-        entry.expires_at = datetime.now(UTC) - timedelta(hours=1)
+        entry.expires_at = datetime.now(timezone.utc) - timedelta(hours=1)
         assert store.read("ns", "temp") is None

@@ -20,7 +20,7 @@ from __future__ import annotations
 import hashlib
 import re
 from dataclasses import dataclass, field
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from agentic_security.defenses.redaction import redact_sensitive_text
 
@@ -32,7 +32,7 @@ class MemoryEntry:
     key: str
     value: str
     source: str  # e.g., "user_input", "tool:read_email", "rag:document_123"
-    created_at: datetime = field(default_factory=lambda: datetime.now(UTC))
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     expires_at: datetime | None = None
     trust_level: str = "untrusted"  # "trusted", "untrusted", "verified"
     content_hash: str = ""
@@ -160,7 +160,7 @@ class MemoryGuard:
             value=value,
             source=source,
             trust_level=trust,
-            expires_at=datetime.now(UTC) + self.default_ttl,
+            expires_at=datetime.now(timezone.utc) + self.default_ttl,
         )
         result = self.scan_entry(entry)
         return entry, result
@@ -231,7 +231,7 @@ class MemoryStore:
         if entry is None:
             return None
 
-        if entry.expires_at and datetime.now(UTC) > entry.expires_at:
+        if entry.expires_at and datetime.now(timezone.utc) > entry.expires_at:
             del ns[key]
             return None
 
