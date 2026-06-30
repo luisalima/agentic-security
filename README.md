@@ -2,6 +2,13 @@
 
 **A step-by-step guide to securing AI agents against prompt injection.**
 
+> 🚧 **Work in progress, and contributions are welcome.** This is a living
+> learning guide, not a finished reference. It is scoped deliberately: prompt
+> injection, reasoned from first principles, not the whole OWASP AI surface. I am
+> publishing it in pieces and walking through the reasoning essay by essay on
+> [luisalima.com](https://luisalima.com/series/defending-against-prompt-injection/).
+> Found a gap, a better defense, or a broken assumption? Open an issue or a PR.
+
 AI agents are vulnerable to prompt injection attacks. This is more concerning since they can take actions and "live" in spaces that can access (and edit) private information. This repository provides practical, runnable examples of defense patterns, from simple detection to secure multi-agent architectures.
 
 > **Start here: [Principles](docs/principles.md)** — The mental model for agentic security, before you touch any code.
@@ -173,7 +180,7 @@ See [docs/reference/tools.md](docs/reference/tools.md) for detailed comparison. 
 
 ## Contributing
 
-This guide aims to be an encompassing learning resource for agentic AI security, especially focused on prompt injection. Contributions welcome:
+This is a living learning resource, scoped on purpose: **prompt injection** — the through-line of agent security — and the architectural defenses around it, not the entire OWASP agentic top-10. It's a work in progress, and contributions are welcome:
 
 - New attack patterns and defenses
 - Framework integration examples (LangChain, LlamaIndex, etc.)
