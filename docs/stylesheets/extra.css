@@ -1,7 +1,7 @@
 /* ===========================================================================
- * Agentic Security — "Refined" theme
- * Near-monochrome base, single indigo accent. Inspired by Linear, Resend,
- * Substack, Tailwind. Flat, quiet, typography-forward.
+ * Agentic Security — Luisa Lima site-aligned theme
+ * Uses the same Google Sans Code family, restrained surfaces, dashed links,
+ * and custom color tokens from luisalima.com.
  * ======================================================================== */
 
 /* ---------------------------------------------------------------------------
@@ -9,8 +9,8 @@
  * ------------------------------------------------------------------------ */
 
 :root {
-  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --md-code-font: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --md-text-font: "Google Sans Code", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --md-code-font: "Google Sans Code", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 /* ---------------------------------------------------------------------------
@@ -20,32 +20,28 @@
  * ------------------------------------------------------------------------ */
 
 [data-md-color-scheme="default"] {
-  /* Primary = header. White, not colored — that's the Linear/Resend move. */
-  --md-primary-fg-color:           #ffffff;
-  --md-primary-fg-color--light:    #fafafa;
-  --md-primary-fg-color--dark:     #f4f4f5;
-  --md-primary-bg-color:           #09090b;   /* text on header */
-  --md-primary-bg-color--light:    #52525b;
+  --md-primary-fg-color:           #fdfdfd;
+  --md-primary-fg-color--light:    #fdfdfd;
+  --md-primary-fg-color--dark:     #e6e6e6;
+  --md-primary-bg-color:           #282728;
+  --md-primary-bg-color--light:    #6b7280;
 
-  /* Accent — the one color the site uses. Indigo. */
-  --md-accent-fg-color:            #4f46e5;   /* indigo-600 */
-  --md-accent-fg-color--transparent: rgba(79, 70, 229, 0.08);
+  --md-accent-fg-color:            #006cac;
+  --md-accent-fg-color--transparent: rgba(0, 108, 172, 0.1);
   --md-accent-bg-color:            #ffffff;
-  --md-accent-bg-color--light:     #eef2ff;
+  --md-accent-bg-color--light:     #fdfdfd;
 
-  /* Body — pure white, near-black text */
-  --md-default-bg-color:           #ffffff;
-  --md-default-fg-color:           #09090b;   /* zinc-950 */
-  --md-default-fg-color--light:    #52525b;   /* zinc-600 */
-  --md-default-fg-color--lighter:  #a1a1aa;   /* zinc-400 */
-  --md-default-fg-color--lightest: #e4e4e7;   /* zinc-200 — borders */
+  --md-default-bg-color:           #fdfdfd;
+  --md-default-fg-color:           #282728;
+  --md-default-fg-color--light:    #6b7280;
+  --md-default-fg-color--lighter:  #9ca3af;
+  --md-default-fg-color--lightest: #ece9e9;
 
-  /* Code — monochrome, not colored */
-  --md-code-bg-color:              #f4f4f5;   /* zinc-100 */
-  --md-code-fg-color:              #18181b;
+  --md-code-bg-color:              #e6e6e6;
+  --md-code-fg-color:              #282728;
 
   /* Links — explicit, so Material's primary-derived default doesn't leak through */
-  --md-typeset-a-color:            #4f46e5;
+  --md-typeset-a-color:            #282728;
 }
 
 /* ---------------------------------------------------------------------------
@@ -53,26 +49,26 @@
  * ------------------------------------------------------------------------ */
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:           #09090b;   /* near-black header */
-  --md-primary-fg-color--light:    #18181b;
-  --md-primary-fg-color--dark:     #000000;
-  --md-primary-bg-color:           #fafafa;
+  --md-primary-fg-color:           #212737;
+  --md-primary-fg-color--light:    #343f60;
+  --md-primary-fg-color--dark:     #212737;
+  --md-primary-bg-color:           #eaedf3;
 
-  --md-accent-fg-color:            #818cf8;   /* indigo-400 */
-  --md-accent-fg-color--transparent: rgba(129, 140, 248, 0.12);
+  --md-accent-fg-color:            #ff6b01;
+  --md-accent-fg-color--transparent: rgba(255, 107, 1, 0.12);
 
-  --md-default-bg-color:           #0a0a0a;   /* near-black */
-  --md-default-bg-color--light:    #111113;
-  --md-default-bg-color--lighter:  #18181b;
-  --md-default-fg-color:           #fafafa;
-  --md-default-fg-color--light:    #a1a1aa;
-  --md-default-fg-color--lighter:  #52525b;
-  --md-default-fg-color--lightest: #27272a;
+  --md-default-bg-color:           #212737;
+  --md-default-bg-color--light:    #343f60;
+  --md-default-bg-color--lighter:  #343f60;
+  --md-default-fg-color:           #eaedf3;
+  --md-default-fg-color--light:    #afb9ca;
+  --md-default-fg-color--lighter:  #7f8ca1;
+  --md-default-fg-color--lightest: #ab4b08;
 
-  --md-code-bg-color:              #18181b;
-  --md-code-fg-color:              #fafafa;
+  --md-code-bg-color:              #343f60;
+  --md-code-fg-color:              #eaedf3;
 
-  --md-typeset-a-color:            #a5b4fc;   /* indigo-300 */
+  --md-typeset-a-color:            #eaedf3;
 }
 
 /* ---------------------------------------------------------------------------
@@ -93,7 +89,7 @@
 
 .md-header__title {
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 /* Tabs — quiet. No colored bar, just text on header-bg, with a thin underline
@@ -130,7 +126,7 @@
 }
 
 [data-md-color-scheme="slate"] .md-search__form {
-  background: #1f1f22;
+  background: #343f60;
 }
 
 /* ---------------------------------------------------------------------------
@@ -144,7 +140,7 @@
 
 .md-typeset h1 {
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-size: 2.1rem;
   margin-bottom: 0.6em;
   color: var(--md-default-fg-color);
@@ -152,7 +148,7 @@
 
 .md-typeset h2 {
   font-weight: 650;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   font-size: 1.5rem;
   margin-top: 2.5em;
   padding-bottom: 0;
@@ -161,7 +157,7 @@
 
 .md-typeset h3 {
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   font-size: 1.15rem;
   margin-top: 2em;
 }
@@ -209,7 +205,7 @@
 
 [data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li:hover,
 [data-md-color-scheme="slate"] .md-typeset .grid > .card:hover {
-  background: #141416;
+  background: #343f60;
 }
 
 .md-typeset .grid.cards > ul > li > hr {
@@ -236,8 +232,18 @@
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
   text-transform: uppercase;
   font-size: 0.7rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
   color: var(--md-default-fg-color--light);
+}
+
+.md-typeset a {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.18em;
+}
+
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
 }
 
 .md-typeset table:not([class]) td {
@@ -331,7 +337,7 @@
 .md-nav__title {
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   color: var(--md-default-fg-color--light);
   font-weight: 600;
 }
@@ -365,7 +371,7 @@
 .md-typeset .hero h1 {
   font-size: 3rem;
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   margin-bottom: 0.3em;
   color: var(--md-default-fg-color);
   /* kill any gradient */

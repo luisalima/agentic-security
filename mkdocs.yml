@@ -1,5 +1,5 @@
 site_name: Agentic Security Guide
-site_url: https://luisalima.github.io/agentic-security/
+site_url: https://luisalima.com/agentic-security/
 site_description: A step-by-step guide to securing AI agents against prompt injection.
 site_author: Luisa Lima
 repo_url: https://github.com/luisalima/agentic-security
@@ -10,8 +10,8 @@ theme:
   name: material
   language: en
   font:
-    text: Inter
-    code: JetBrains Mono
+    text: Google Sans Code
+    code: Google Sans Code
   icon:
     logo: material/shield-lock
     repo: fontawesome/brands/github
