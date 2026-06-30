@@ -193,6 +193,6 @@ For those, you need the [software-level defenses](4_secure_architecture.md) in t
 ## References
 
 - **OWASP GenAI (2025)** — [Top 10 for LLM Applications v2025](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) — LLM06: Excessive Agency
-- **Google** — [Securing Agentic AI: A Comprehensive Framework](https://services.google.com/fh/files/misc/securing_agentic_ai_a_comprehensive_framework.pdf)
+- **Narajala & Narayan** — [Securing Agentic AI: A Comprehensive Threat Model and Mitigation Framework](https://arxiv.org/abs/2504.19956)
 - **AWS** — [Firecracker: Lightweight Virtualization for Serverless Computing](https://www.usenix.org/conference/nsdi20/presentation/agache)
 - **gVisor** — [Container Runtime Sandbox](https://gvisor.dev/)

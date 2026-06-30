@@ -198,7 +198,7 @@ This is a living learning resource, scoped on purpose: **prompt injection** — 
 - [Simon Willison's Prompt Injection Series](https://simonwillison.net/series/prompt-injection/)
 - [Google DeepMind CaMeL Paper](https://arxiv.org/abs/2503.18813)
 - [Microsoft Spotlighting Research](https://arxiv.org/abs/2403.14720)
-- [NCSC — Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-not-sql-injection)
+- [NCSC — Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection)
 - [Zhan et al. — Adaptive Attacks Break Defenses Against Indirect Prompt Injection (NAACL 2025)](https://doi.org/10.18653/v1/2025.findings-naacl.395)
 
 ---

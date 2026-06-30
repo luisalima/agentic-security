@@ -18,6 +18,6 @@ jobs:
           python-version: '3.12'
       - uses: astral-sh/setup-uv@v4
       - name: Install docs dependencies
-        run: uv sync --extra docs
+        run: uv sync --locked --extra docs
       - name: Build and deploy
         run: uv run mkdocs gh-deploy --force

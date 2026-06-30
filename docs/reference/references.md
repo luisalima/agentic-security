@@ -53,11 +53,11 @@ Essential reading from the person who named and defined prompt injection:
 
 - [Anthropic: Many-shot jailbreaking](https://www.anthropic.com/research/many-shot-jailbreaking) (2024) — Long-context attacks
 - [OpenAI: Prompt injection](https://openai.com/index/new-embedding-models-and-api-updates/) — OpenAI's acknowledgment that injection is "unlikely to ever be fully solved"
-- [NCSC — Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-not-sql-injection)
+- [NCSC — Prompt Injection Is Not SQL Injection (Dec 2025)](https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection)
 - [Anthropic — Disrupting AI-Orchestrated Espionage (Sep 2025)](https://www.anthropic.com/news/disrupting-AI-espionage) — First documented AI-orchestrated cyberattack
 - [Microsoft MSRC — How Microsoft Defends Against Indirect Prompt Injection (Jul 2025)](https://www.microsoft.com/en-us/msrc/blog/2025/07/how-microsoft-defends-against-indirect-prompt-injection-attacks/)
 - [tldrsec — Prompt Injection Defenses (comprehensive catalog)](https://github.com/tldrsec/prompt-injection-defenses)
-- [HiddenLayer — 2026 AI Threat Landscape Report](https://hiddenlayer.com/research/2026-ai-threat-landscape/)
+- [HiddenLayer — 2026 AI Threat Landscape Report](https://www.hiddenlayer.com/report-and-guide/threatreport2026)
 
 ---
 
@@ -93,7 +93,7 @@ Essential reading from the person who named and defined prompt injection:
 |---------|--------|-------------|
 | [Vigil Prompt Injection Dataset](https://huggingface.co/datasets/deadbits/vigil-jailbreak-all-MiniLM-L6-v2) | deadbits | Embeddings of known attacks |
 | [HackAPrompt Dataset](https://huggingface.co/datasets/hackaprompt/hackaprompt-dataset) | Schulhoff et al. | Competition submissions |
-| [Jailbreak Chat](https://jailbreakchat.com/) | Community | Crowdsourced jailbreaks |
+| Jailbreak Chat (defunct) | Community | Crowdsourced jailbreaks |
 
 ---
 
@@ -110,7 +110,7 @@ Essential reading from the person who named and defined prompt injection:
 - [CVE-2025-32711 — Microsoft Copilot EchoLeak](https://www.securityweek.com/the-wild-wild-west-of-agentic-ai-an-attack-surface-cisos-cant-afford-to-ignore/) — First zero-click attack against an AI agent
 - [CVE-2025-6514 — mcp-remote OS command injection](https://nvd.nist.gov/vuln/detail/CVE-2025-6514) — Affected 437K environments
 - [Slack AI Data Exfiltration (Aug 2024)](https://www.lakera.ai/blog/agentic-ai-threats-p1) — Memory poisoning via indirect prompt injection
-- [PhantomRaven Supply Chain Attack (2025)](https://socket.dev/blog/phantom-raven) — 126 malicious npm packages via slopsquatting, 86K downloads
+- [PhantomRaven Supply Chain Attack (2025)](https://www.koi.ai/blog/phantomraven-npm-malware-hidden-in-invisible-dependencies) — 126 malicious npm packages via remote dynamic dependencies, 86K downloads
 
 ---
 

@@ -25,7 +25,7 @@ git clone https://github.com/luisalima/agentic-security.git
 cd agentic-security
 
 # Install dependencies (requires uv: https://docs.astral.sh/uv/)
-uv sync --dev
+uv sync --extra dev
 
 # Activate the virtual environment
 source .venv/bin/activate
@@ -35,7 +35,7 @@ uv run ruff check src/ tests/ benchmark/
 uv run pytest tests/ -v --tb=short
 ```
 
-[Marimo](https://marimo.io/) is included in the project dependencies, so `uv sync --dev` is enough to run the notebooks. For local LLM testing, optionally install [Ollama](https://ollama.com/) and pull a model (e.g., `ollama pull llama3.1:8b`).
+[Marimo](https://marimo.io/) is included in the project dependencies, so `uv sync --extra dev` is enough to run tests, linting, and notebooks. For local LLM testing, optionally install [Ollama](https://ollama.com/) and pull a model (e.g., `ollama pull llama3.1:8b`).
 
 ---
 

@@ -89,7 +89,7 @@ All items resolved before the file-by-file review began: CI green, metadata comp
 
 Separate from the file-by-file review. Apply during Batch K.
 
-- [ ] **Lockfile compliance in CI.** Switch `uv sync --dev` → `uv sync --locked --dev` in `.github/workflows/ci.yml` so CI fails on lockfile drift.
+- [x] **Lockfile compliance in CI.** Switched CI/docs installs to `uv sync --locked --extra dev` / `uv sync --locked --extra docs` so CI fails on lockfile drift and installs the optional extras actually used by the workflows.
 - [ ] **Tighten floor versions in `pyproject.toml`.** Lower bounds are 2023-vintage (`openai>=1.0.0`, `anthropic>=0.18.0`, `pydantic>=2.0.0`).
 - [ ] **Supply-chain audit in CI.** Add `pip-audit` step (or equivalent).
 - [ ] **Dependabot / Renovate config.** Add `.github/dependabot.yml` for `pip` + `github-actions`.

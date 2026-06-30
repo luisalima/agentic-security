@@ -36,7 +36,7 @@ Paste the error message, traceback, or unexpected output. Use a code block:
 
 - OS:
 - Python version: (`python --version`)
-- How you installed: (`uv sync --dev` / `uv sync` / pip / other)
+- How you installed: (`uv sync --extra dev` / `uv sync` / other)
 - Branch or commit: (`git rev-parse --short HEAD`)
 
 ## Anything else
