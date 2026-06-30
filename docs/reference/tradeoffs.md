@@ -67,7 +67,7 @@ to claim measured coverage percentages across real deployments.
 **What it does:** 
 - Quarantined LLM processes untrusted content with NO tools
 - Controller validates and passes sanitized output
-- Privileged LLM has tools but never sees raw untrusted content
+- Privileged LLM has tools but is designed not to receive raw untrusted content
 
 **Protects against:**
 - Tool abuse via indirect injection

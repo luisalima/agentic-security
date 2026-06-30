@@ -140,7 +140,7 @@ def _(mo):
     iptables -A OUTPUT -j DROP  # block everything else
     ```
 
-    This prevents data exfiltration even if the agent is fully compromised.
+    This blocks direct exfiltration to non-allowlisted destinations even if the agent is fully compromised.
 
     ### 4. Secret & Filesystem Scoping
 

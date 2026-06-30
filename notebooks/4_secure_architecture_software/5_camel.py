@@ -10,14 +10,14 @@ def _(mo):
     # CaMeL: Capability-Based Security
 
     Track **data provenance** and enforce **capability policies** on tool calls.
-    Data from untrusted sources (emails, web pages) is tagged and prevented
-    from flowing into side-effecting tools (send_email, forward_email).
+    Data from untrusted sources (emails, web pages) is tagged so policy checks
+    can block unsafe flows into side-effecting tools (send_email, forward_email).
 
     **Based on:** [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813)
     — *Defeating Prompt Injections by Design*
 
-    > "Even if the LLM is fully compromised, it cannot exfiltrate private data
-    > because the policy engine enforces capabilities on every tool call."
+    With a correct policy and complete mediation, the LLM can be compromised while
+    the policy engine still blocks unauthorized private-data flows.
 
     <!-- DIAGRAM: diagrams/camel.excalidraw -->
     """)
@@ -311,9 +311,9 @@ def _(mo):
     | **Dry-Run** | Unauthorized actions | Plan review |
     | **CaMeL** | Data exfiltration | Capability tracking |
 
-    CaMeL is the strongest pattern because it provides **provable** security guarantees:
-    if the policy is correct, private data cannot reach unauthorized tools,
-    regardless of what the LLM does.
+    CaMeL is the strongest pattern here because it can provide stronger assurance
+    under explicit assumptions: with a correct policy and complete mediation,
+    private data should not reach unauthorized tools regardless of what the LLM does.
     """)
     return
 

@@ -52,8 +52,8 @@ This is an organizational *maturity model* — where teams typically sit on the 
 These principles apply across every pattern in [Guide §4: Secure Architecture](../guide/4_secure_architecture.md). Worth keeping front-of-mind regardless of which patterns you pick:
 
 - **Scope tools aggressively.** Give each agent the minimum set it actually needs. An email assistant doesn't need `delete_email`; a summarizer doesn't need write tools at all.
-- **Untrusted data and privileged actions never meet directly.** A deterministic controller always sits between them — not another LLM.
-- **Prefer typed data over freeform text** between agents. The schema is the security boundary.
+- **Keep untrusted data and privileged actions from meeting directly.** Put a deterministic controller between them — not another LLM.
+- **Prefer typed data over freeform text** between agents. Tight schemas are one practical security boundary.
 - **Outbound and irreversible actions require explicit confirmation.** Never agent-decided.
 - **Tag every value with its source.** Provenance is what makes capability-based policies possible.
 - **Log every tool call and trust-boundary crossing.** Audit trails don't stop attacks; they're what lets you detect a compromised agent after the fact, understand the blast radius, and recover. See [Observability & Audit Trails](../guide/1b_observability.md).

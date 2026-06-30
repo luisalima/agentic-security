@@ -28,7 +28,7 @@ Input → Detection (YARA, ML) → catches many common attacks
      Execute (if all pass)
 ```
 
-Even if an attacker bypasses detection, delimiters constrain what the LLM sees. Even if delimiters fail, typed extraction strips the payload. Even if extraction is tricked, the dry-run evaluator catches intent mismatch. Even if the evaluator is fooled, deterministic rules block unknown recipients. **Every layer assumes the previous one was breached.**
+Even if an attacker bypasses detection, delimiters clarify what the LLM should treat as data. Even if delimiters fail, typed extraction reduces payload capacity. Even if extraction is tricked, the dry-run evaluator can catch intent mismatch. Even if the evaluator is fooled, deterministic rules can still block known-bad actions such as unknown recipients. **Every layer assumes the previous one was breached.**
 
 ---
 

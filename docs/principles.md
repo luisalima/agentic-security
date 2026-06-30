@@ -90,7 +90,7 @@ flowchart TD
     B -- "approved actions only" --> C
 ```
 
-**Why this works:** Even if the proposer is fully compromised by a prompt injection, it can only *propose* malicious actions. The approval step catches the mismatch between user intent and proposed actions. The executor is deterministic — no LLM to manipulate.
+**Why this works:** Even if the proposer is fully compromised by a prompt injection, it can only *propose* malicious actions. The approval step can catch the mismatch between user intent and proposed actions. The executor is deterministic — no LLM to manipulate.
 
 → *Deep dive:* [Secure Architecture: Dry-Run Evaluation](guide/4_secure_architecture.md#dry-run-evaluation)
 

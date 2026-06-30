@@ -4,7 +4,7 @@ flowchart TD
     Detect -->|passed| Extract[Typed Extraction<br/>Schema constraints]
     Extract --> Validate[Output Validation<br/>Check tool calls]
     Validate -->|blocked| B2[Blocked]
-    Validate -->|passed| Execute[Safe Execution]
+    Validate -->|passed| Execute[Validated Run]
     
     style B1 fill:#e03131,color:#fff
     style B2 fill:#e03131,color:#fff

@@ -222,7 +222,7 @@ def _(mo):
             # Quarantined LLM: extracts data, NO tools
             self.quarantined = ChatOpenAI(model="gpt-4o-mini")
             
-            # Privileged LLM: has tools, never sees raw content
+            # Privileged LLM: has tools, should not receive raw content
             self.privileged = ChatOpenAI(model="gpt-4o")
             
             self.extraction_prompt = ChatPromptTemplate.from_messages([

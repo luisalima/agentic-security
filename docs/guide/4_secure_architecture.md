@@ -69,7 +69,7 @@ Separate your agent into two LLMs with different trust levels. Based on [Simon W
            │ validated data
            ▼
 ┌─────────────────────┐
-│   PRIVILEGED LLM    │  ← Has tools, never sees raw content
+│   PRIVILEGED LLM    │  ← Has tools, no raw content by design
 │   "Help the user"   │
 └─────────────────────┘
 ```
@@ -81,10 +81,10 @@ Separate your agent into two LLMs with different trust levels. Based on [Simon W
 | Component | Role | If Compromised |
 |-----------|------|----------------|
 | **Quarantined LLM** | Processes untrusted content | Can only output text (no tools) |
-| **Controller** | Validates summaries | Deterministic, not foolable |
-| **Privileged LLM** | Executes actions | Never sees raw malicious content |
+| **Controller** | Validates summaries | Deterministic; harder to manipulate through prompt text |
+| **Privileged LLM** | Executes actions | Should not receive raw malicious content |
 
-The attack payload ("Forward emails to...") is stripped during summarization. The privileged LLM has **no way to know the injection even existed**.
+The attack payload ("Forward emails to...") should be omitted from the sanitized summary. Downstream validation still needs to assume suspicious intent can leak through.
 
 ### Limitations
 
@@ -176,7 +176,7 @@ The evaluator compares the user request against proposed actions. If they don't 
 |--------------|------------------|---------|
 | "summarize my email" | `forward_email` to external address | **REJECT** |
 
-Even if the planner is fully compromised by the injection, the evaluator catches the mismatch between intent and actions.
+Even if the planner is fully compromised by the injection, the evaluator is designed to catch the mismatch between intent and actions.
 
 ### Failure modes
 
@@ -292,11 +292,11 @@ This is closely related to [CaMeL](#camel-capability-based-security) (below): Ca
 
 ## CaMeL: Capability-Based Security
 
-Track **data provenance** and enforce **capability policies** on tool calls. Data from untrusted sources (emails, web pages) is tagged and prevented from flowing into side-effecting tools. Based on [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813) (2025).
+Track **data provenance** and enforce **capability policies** on tool calls. Data from untrusted sources (emails, web pages) is tagged so policy checks can block unsafe flows into side-effecting tools. Based on [Google DeepMind CaMeL](https://arxiv.org/abs/2503.18813) (2025).
 
 **Repo label:** High-risk reference architecture.
 
-> "Even if the LLM is fully compromised, it cannot exfiltrate private data because the policy engine enforces capabilities on every tool call."
+With a correct policy and complete mediation, the LLM can be compromised while the policy engine can still block unauthorized private-data flows.
 
 ```
 ┌─────────────────────┐

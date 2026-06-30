@@ -149,8 +149,8 @@ Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-securi
 
 ### What Works
 
-- **Architectural separation** — A privileged LLM never sees raw untrusted content
-- **Typed extraction** — A schema with `max_length=50` fields can't carry sophisticated payloads
+- **Architectural separation** — Keep raw untrusted content out of privileged prompts
+- **Typed extraction** — Tight schemas sharply limit payload capacity
 - **Output validation** — Check what the LLM tries to *do*, not just what it receives
 - **Dry-run evaluation** — Generate plans, evaluate them, then execute
 
