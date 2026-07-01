@@ -326,13 +326,67 @@
   border-left-color: var(--site-warm-accent);
   box-shadow: none;
   font-size: 0.78rem;
-  background: var(--site-warm-accent-surface);
+  background: transparent;
+}
+
+.md-typeset .admonition:is(
+  .abstract,
+  .bug,
+  .danger,
+  .example,
+  .failure,
+  .info,
+  .note,
+  .question,
+  .quote,
+  .success,
+  .tip,
+  .warning
+),
+.md-typeset details:is(
+  .abstract,
+  .bug,
+  .danger,
+  .example,
+  .failure,
+  .info,
+  .note,
+  .question,
+  .quote,
+  .success,
+  .tip,
+  .warning
+) {
+  border-color: var(--md-default-fg-color--lightest);
+  border-left-color: var(--site-warm-accent);
+}
+
+.md-typeset .admonition:focus-within,
+.md-typeset details:focus-within {
+  box-shadow: 0 0 0 0.16rem var(--site-warm-accent-surface);
 }
 
 .md-typeset .admonition-title,
 .md-typeset summary {
   font-weight: 600;
-  background: transparent;
+  background: var(--site-warm-accent-surface);
+  color: var(--site-warm-accent);
+}
+
+.md-typeset .admonition-title::before,
+.md-typeset summary::before,
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before,
+.md-typeset .admonition > .admonition-title::after,
+.md-typeset details > summary::after {
+  background-color: var(--site-warm-accent);
+  color: var(--site-warm-accent);
+}
+
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  background: var(--site-warm-accent-surface);
+  border-color: var(--site-warm-accent);
   color: var(--site-warm-accent);
 }
 
