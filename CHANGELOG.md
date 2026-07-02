@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
 - **Notebooks** — Interactive Marimo notebooks for every defense level
   (0–6) including vulnerabilities, detection, prompt engineering,
   secure architecture, defense in depth, and framework integration
-- **MkDocs site** — Hand-written guide pages and reference docs published to GitHub Pages
+- **MkDocs site** — Hand-written guide pages and reference docs published as the project guide
 - **Reference documentation** (`docs/reference/`): tools landscape,
   attack taxonomy, threat model, cheatsheet, architecture, tradeoffs, references
 - **Principles page** (`docs/principles.md`) — Core axioms and mental model for agentic security

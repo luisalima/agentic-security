@@ -99,7 +99,7 @@ uv run marimo edit notebooks/4_secure_architecture_software/1_dual_llm.py
 
 ### Read the Guide
 
-Don't want to run code? Read the guide on [GitHub Pages](https://luisalima.github.io/agentic-security/).
+Don't want to run code? Read the guide at [luisalima.com](https://luisalima.com/agentic-security/).
 
 ---
 
@@ -115,7 +115,7 @@ agentic-security/
 │   ├── 4_secure_architecture_software/  # Dual LLM, typed extraction, dry-run
 │   ├── 5_defense_in_depth/      # Layered defense
 │   └── 6_integration/           # LangChain, framework patterns
-├── docs/                        # MkDocs site (GitHub Pages)
+├── docs/                        # MkDocs site
 │   ├── guide/                   # Hand-written guide pages
 │   └── reference/               # Tools, attack taxonomy, threat model, etc.
 ├── diagrams/                    # Excalidraw visuals
@@ -126,22 +126,22 @@ agentic-security/
 
 ## Learning Path
 
-Read the full guide on [GitHub Pages](https://luisalima.github.io/agentic-security/), or run the interactive notebooks locally with `uv run marimo edit`.
+Read the full guide at [luisalima.com](https://luisalima.com/agentic-security/), or run the interactive notebooks locally with `uv run marimo edit`.
 
 | Level | Guide | Notebooks |
 |-------|-------|-----------|
-| **0. Vulnerabilities** | [The Problem](https://luisalima.github.io/agentic-security/guide/0_vulnerabilities/) | `notebooks/0_vulnerabilities/` |
-| **1. Detection** | [Detection](https://luisalima.github.io/agentic-security/guide/1_detection/) | `notebooks/1_detection/` |
-| **1b. Observability** | [Observability & Audit Trails](https://luisalima.github.io/agentic-security/guide/1b_observability/) | — |
-| **2. Prompt Engineering** | [Prompt Engineering](https://luisalima.github.io/agentic-security/guide/2_prompt_engineering/) | `notebooks/2_prompt_engineering/` |
-| **3. Isolation (Infra)** | [Isolation](https://luisalima.github.io/agentic-security/guide/3_isolation/) | `notebooks/3_isolation_infra_level/` |
-| **4. Secure Architecture** | [Secure Architecture](https://luisalima.github.io/agentic-security/guide/4_secure_architecture/) | `notebooks/4_secure_architecture_software/` |
-| **5. Defense in Depth** | [Defense in Depth](https://luisalima.github.io/agentic-security/guide/5_defense_in_depth/) | `notebooks/5_defense_in_depth/` |
-| **6. Integration** | [Framework Integration](https://luisalima.github.io/agentic-security/guide/6_integration/) | `notebooks/6_integration/` |
-| **7. Pre-Packaged Agents** | [Securing Pre-Packaged Agents](https://luisalima.github.io/agentic-security/guide/7_securing_prepackaged_agents/) | — |
-| **8. Enterprise Zero Trust** | [Enterprise Zero Trust](https://luisalima.github.io/agentic-security/guide/8_enterprise_zero_trust/) | — |
-| **9. MCP Security** | [MCP Security](https://luisalima.github.io/agentic-security/guide/9_mcp_security/) | `notebooks/4_secure_architecture_software/6_mcp_security.py` |
-| **10. Memory & Context** | [Memory & Context Security](https://luisalima.github.io/agentic-security/guide/10_memory_security/) | `notebooks/4_secure_architecture_software/7_memory_security.py` |
+| **0. Vulnerabilities** | [The Problem](https://luisalima.com/agentic-security/guide/0_vulnerabilities/) | `notebooks/0_vulnerabilities/` |
+| **1. Detection** | [Detection](https://luisalima.com/agentic-security/guide/1_detection/) | `notebooks/1_detection/` |
+| **1b. Observability** | [Observability & Audit Trails](https://luisalima.com/agentic-security/guide/1b_observability/) | — |
+| **2. Prompt Engineering** | [Prompt Engineering](https://luisalima.com/agentic-security/guide/2_prompt_engineering/) | `notebooks/2_prompt_engineering/` |
+| **3. Isolation (Infra)** | [Isolation](https://luisalima.com/agentic-security/guide/3_isolation/) | `notebooks/3_isolation_infra_level/` |
+| **4. Secure Architecture** | [Secure Architecture](https://luisalima.com/agentic-security/guide/4_secure_architecture/) | `notebooks/4_secure_architecture_software/` |
+| **5. Defense in Depth** | [Defense in Depth](https://luisalima.com/agentic-security/guide/5_defense_in_depth/) | `notebooks/5_defense_in_depth/` |
+| **6. Integration** | [Framework Integration](https://luisalima.com/agentic-security/guide/6_integration/) | `notebooks/6_integration/` |
+| **7. Pre-Packaged Agents** | [Securing Pre-Packaged Agents](https://luisalima.com/agentic-security/guide/7_securing_prepackaged_agents/) | — |
+| **8. Enterprise Zero Trust** | [Enterprise Zero Trust](https://luisalima.com/agentic-security/guide/8_enterprise_zero_trust/) | — |
+| **9. MCP Security** | [MCP Security](https://luisalima.com/agentic-security/guide/9_mcp_security/) | `notebooks/4_secure_architecture_software/6_mcp_security.py` |
+| **10. Memory & Context** | [Memory & Context Security](https://luisalima.com/agentic-security/guide/10_memory_security/) | `notebooks/4_secure_architecture_software/7_memory_security.py` |
 
 ---
 

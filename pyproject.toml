@@ -47,10 +47,10 @@ docs-social = [
 ]
 
 [project.urls]
-Homepage = "https://luisalima.github.io/agentic-security/"
+Homepage = "https://luisalima.com/agentic-security/"
 Repository = "https://github.com/luisalima/agentic-security"
 Issues = "https://github.com/luisalima/agentic-security/issues"
-Documentation = "https://luisalima.github.io/agentic-security/"
+Documentation = "https://luisalima.com/agentic-security/"
 Changelog = "https://github.com/luisalima/agentic-security/blob/main/CHANGELOG.md"
 
 [build-system]
