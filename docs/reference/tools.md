@@ -29,6 +29,7 @@ A comprehensive comparison of tools for defending against prompt injection and o
 | [Cisco MCP-Scanner](https://github.com/cisco-ai-defense/mcp-scanner) | MCP Security | Apache 2.0 | YARA + LLM-as-judge MCP server scanner | ✅ Active |
 | [MCP-Shield](https://github.com/riseandignite/mcp-shield) | MCP Security | OSS | Detects tool poisoning + hidden instructions in installed MCP servers | ✅ Active |
 | [Agentic Radar](https://github.com/splx-ai/agentic-radar) | MCP Security | OSS | CLI scanner for agentic workflows (LangGraph, CrewAI, AutoGen, OpenAI Agents, n8n) | ✅ Active |
+| [HOL Guard](https://hol.org/guard) | Agent Security | OSS | Local runtime control for AI coding agents — risky shell, secrets, MCP changes, plugin/skill installs | ✅ Active |
 | [Docker MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/) | MCP Security | OSS | Container isolation + network blocking for MCP servers | ✅ Active |
 | [MCPX](https://lunar.dev/) | MCP Security | OSS | Single governed entry point for MCP servers (Lunar.dev) | ✅ Active |
 | [Invariant Guardrails](https://github.com/invariantlabs-ai/invariant) | MCP Security | OSS | Runtime policy enforcement for MCP tool calls | ✅ Active |
@@ -448,6 +449,16 @@ Analyzes agentic pipelines for security gaps across the entire workflow — tool
 
 **Pros:** Workflow-level analysis (not just prompt-level), framework-aware, 5 frameworks supported
 **Cons:** Static analysis only — does not enforce policy at runtime
+
+---
+
+### [HOL Guard](https://hol.org/guard)
+**Local runtime control for AI coding agents**
+
+Runs on the developer machine and checks supported actions before execution. It can block known threats or pause ambiguous actions for approval across shell commands, secret access, MCP changes, and plugin or skill installs. Guard Local is open source and works offline; Guard Cloud is optional for shared policy and team visibility.
+
+**Pros:** Pre-execution enforcement at the action boundary, local/offline operation, explicit human approval path
+**Cons:** Coverage depends on supported agent and action surfaces; not a cloud MCP gateway or complete prompt-injection preventer
 
 ---
 
