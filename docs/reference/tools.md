@@ -331,15 +331,15 @@ aimap scan-range 10.0.0.0/16 --fingerprint mcp,ollama,vllm,litellm,langserve,gra
 
 | Product | Scope | Capabilities |
 |---------|-------|--------------|
-| **Argus** | Homegrown AI (agents, MCP servers you build and deploy) | [Agentic AI Discovery](https://ai-security-docs.akto.io/akto-argus-agentic-ai-security-for-homegrown-ai/agentic-ai-discovery), automated red teaming in CI/CD, runtime guardrails |
+| **Argus** | Homegrown AI (agents, MCP servers you build and deploy) | [Agentic AI Discovery](https://ai-security-docs.akto.io/akto-argus-agentic-ai-security-for-homegrown-ai/agentic-ai-discovery), automated red teaming (scheduled runs, plus a CLI for local probing), runtime guardrails |
 | **Atlas** | Employee endpoints | Shadow AI discovery, posture, non-human identity governance, endpoint guardrails |
 
 | Feature | Detail |
 |---------|--------|
-| Discovery sources | API gateways, eBPF, Kubernetes, manual import, MCP Recon |
+| Discovery sources | API gateways, eBPF, Kubernetes, cloud connectors (Bedrock, Azure AI Foundry, Vertex AI, Databricks), manual import, MCP Recon |
 | Inventory | Agents and MCP servers, the tools and data they touch, shadow / zombie / third-party agents |
-| Red teaming | 4,000+ AI-specific probes (vendor-reported), mapped to OWASP and MITRE ATLAS |
-| Enforcement | Findings feed runtime guardrails that screen live MCP tool calls and responses |
+| Red teaming | 4,000+ AI-specific probes (vendor-reported): prompt injection, tool abuse, privilege escalation, MCP security; suites for OWASP Top 10 for LLMs |
+| Enforcement | MCP Gateway / Agent Gateway guardrails block prompt injection, tool abuse, schema violations, known attack signatures |
 
 **Pros:** Closes the loop from discovery to test to block in one platform; open-source core; covers both server-side agents and employee endpoints
 **Cons:** Probe counts and detection claims are vendor-reported with no independent benchmark; the full platform is commercial; product details change quickly, so check [Akto's docs](https://ai-security-docs.akto.io/) before relying on them
@@ -644,6 +644,7 @@ Pick by what you need to do.
 - **[DeepTeam](https://github.com/confident-ai/deepteam)** — OWASP/NIST framework mapping, 50+ vuln types
 - **[PyRIT](https://github.com/microsoft/PyRIT)** — Multi-modal red teaming (Microsoft AI Red Team)
 - **[AgentDojo](https://github.com/ethz-spylab/agentdojo)** — Benchmark for agentic prompt-injection defenses (ETH/Invariant)
+- **[Akto Agentic Red Teaming](https://ai-security-docs.akto.io/akto-argus-agentic-ai-security-for-homegrown-ai/agentic-red-teaming)** — 4,000+ probes for agents, MCP servers and models (prompt injection, tool abuse, privilege escalation); [scheduled](https://ai-security-docs.akto.io/akto-argus-agentic-ai-security-for-homegrown-ai/agentic-red-teaming/how-to/schedule-tests) daily / weekly / custom, plus a [CLI](https://ai-security-docs.akto.io/akto-argus-agentic-ai-security-for-homegrown-ai/agentic-red-teaming/how-to/run-tests-in-cli-using-akto) for local probing
 
 ### MCP / tool security
 - **[Snyk Agent-Scan](https://github.com/snyk/agent-scan)** — Config + skill scanning for tool poisoning, tool shadowing (formerly MCP-Scan)
@@ -652,6 +653,7 @@ Pick by what you need to do.
 - **[Docker MCP Gateway](https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/)** — Container isolation for MCP servers
 - **[Invariant Guardrails](https://github.com/invariantlabs-ai/invariant)** — Runtime policy enforcement for tool calls
 - **[Agentic Radar](https://github.com/splx-ai/agentic-radar)** — Static analysis of LangGraph / CrewAI / OpenAI Agents / AutoGen / n8n pipelines
+- **[Akto MCP Security](https://ai-security-docs.akto.io/readme/mcp-security)** — Discovers MCP servers (incl. [MCP Recon](https://ai-security-docs.akto.io/akto-argus-agentic-ai-security-for-homegrown-ai/connectors/others/mcp-recon) IP-range scans) and probes for tool poisoning, excessive permissions, unauthorized endpoint access, insecure authentication (paid feature)
 
 ### Multi-turn dialog control
 - **[NeMo Guardrails](https://github.com/NVIDIA-NeMo/Guardrails)** — Programmable dialog policies via Colang DSL
@@ -679,6 +681,7 @@ For SOC/network-layer coverage across your AI estate:
 - **[Palo Alto Prisma AIRS](https://docs.paloaltonetworks.com/ai-runtime-security)** — Inline injection + DLP in PAN SASE estates
 - **[F5 AI Guardrails](https://www.f5.com/products/ai-guardrails)** — Network-layer proxy (includes CalypsoAI)
 - **[Straiker](https://www.straiker.ai/)** — Agentic-first runtime + red team
+- **[Akto Agentic Guardrails](https://ai-security-docs.akto.io/agentic-guardrails/overview)** — MCP Gateway / Agent Gateway runtime blocking of prompt injection, tool abuse and schema violations (Argus); on-device guardrails and posture for employee endpoints (Atlas)
 - **[HiddenLayer AISec](https://hiddenlayer.com/)** — Model supply-chain scanning + AI Detection & Response
 - **[Wiz AI-SPM](https://www.wiz.io/solutions/ai-spm)** — AI inventory + posture management across cloud providers
 
